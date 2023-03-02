@@ -1,6 +1,7 @@
 const express  = require("express");
 const app = express();
 const { engine } = require('express-handlebars');
+const Post = require('./Model/Post');
 const db = require("./Model/db");
 const admin = require('./routes/admin');
 const path = require('path');
@@ -33,6 +34,24 @@ const path = require('path');
     app.use(express.json());
 
 
+
+    app.post('/add', (req, res) => {
+      Post.create({
+        titulo:  req.body.titulo,
+        conteudo: req.body.conteudo
+      }).then(() => {
+          res.send('Post criado com sucesso!');
+      }).catch((erro) => {
+          res.send('Houve um erro: ' + erro);
+      })
+    });
+  
+
+    app.get('/formularios', function(req, res) {
+      res.render('formularios')
+    })
+
+  
 
 
     // Rotas admin
