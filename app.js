@@ -2,6 +2,7 @@ const express  = require("express");
 const app = express();
 const { engine } = require('express-handlebars');
 const Post = require('./Model/Post');
+const Users = require('./Model/Users');
 const db = require("./Model/db");
 const admin = require('./routes/admin');
 const path = require('path');
@@ -34,7 +35,7 @@ const path = require('path');
     app.use(express.json());
 
 
-
+    // exibe a msg de sucesso ou erro nessa página (rota)
     app.post('/add', (req, res) => {
       Post.create({
         titulo:  req.body.titulo,
@@ -46,6 +47,25 @@ const path = require('path');
       })
     });
   
+
+    app.get('/formularios', function(req, res) {
+      res.render('formularios')
+    })
+
+
+    // CREATE USERS
+    app.post('/admin/users/list', (req, res) => {
+      Users.create({
+        user_name: req.body.name,
+        user_email: req.body.email,
+        user_password: req.body.password,
+        user_contact: req.body.contact
+      }).then(() => {
+        res.send('Usuário cadastrado com sucesso!');
+      }).catch((erro) => {
+        res.send('Usuário não cadastrado: ' + erro);
+      });
+    })
 
     app.get('/formularios', function(req, res) {
       res.render('formularios')
