@@ -67,8 +67,8 @@ const path = require('path');
       });
     })
 
-    app.get('/formularios', function(req, res) {
-      res.render('formularios')
+    app.get('/users/create', function(req, res) {
+      res.render('list')
     })
 
   
