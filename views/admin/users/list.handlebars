@@ -1,38 +1,76 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h5 class="m-0 text-dark" style="font-size: 14px;">Lista de usuários</h5>
+            <a href="/admin/users/create" class="btn btn-success rounded-pill" title="Cadastrar novo usuário" style="border-radius: 50%; font-size: 12px;">Cadastrar novo usuário</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="example" class="cell-border compact stripe table-striped mt-4" style="width:100%">
+              <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+                </thead>
+                  <tbody>
+                      <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011-04-25</td>
+                          <td>$320,800</td>
+                      </tr>
+                        <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011-04-25</td>
+                          <td>$320,800</td>
+                      </tr>
+                    
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Start date</th>
+                          <th>Salary</th>
+                      </tr>
+                  </tfoot>
+                </table>
+          </div>
+        </div>    
+    </div>  
 
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 
+    <script type="text/javascript" language="javascript">
+      $(document).ready(function () {
+          $('#example').DataTable();
+      });
+    </script>
+
+</html>

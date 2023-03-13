@@ -53,6 +53,9 @@ const path = require('path');
     })
 
 
+    
+
+
     // CREATE USERS
     app.post('/admin/users/list', (req, res) => {
       Users.create({
@@ -61,17 +64,16 @@ const path = require('path');
         user_password: req.body.password,
         user_contact: req.body.contact
       }).then(() => {
-        res.send('Usuário cadastrado com sucesso!');
+        res.redirect('list');
       }).catch((erro) => {
         res.send('Usuário não cadastrado: ' + erro);
       });
     })
 
-    app.get('/users/create', function(req, res) {
+    app.get('/admin/users/list', (req, res) => {
       res.render('list')
     })
-
-  
+    
 
 
     // Rotas admin

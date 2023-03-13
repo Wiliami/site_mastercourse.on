@@ -8,6 +8,11 @@ router.get('/users/list', (req, res) => {
 });
 
 
+router.get('/users/create', (req, res) => {
+    res.render('admin/users/create')
+})
+
+
 
 
 module.exports = router;
