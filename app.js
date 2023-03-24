@@ -1,13 +1,11 @@
 const express  = require("express");
 const app = express();
 const { engine } = require('express-handlebars');
-const Post = require('./Model/Post');
+// const Post = require('./Model/Post');
 const Users = require('./Model/Users');
 const db = require("./Model/db");
 const admin = require('./routes/admin');
 const path = require('path');
-
-
 
 
 // config
@@ -35,46 +33,32 @@ const path = require('path');
     app.use(express.json());
 
 
-    // exibe a msg de sucesso ou erro nessa página (rota)
-    app.post('/add', (req, res) => {
-      Post.create({
-        titulo:  req.body.titulo,
-        conteudo: req.body.conteudo
-      }).then(() => {
-          res.send('Post criado com sucesso!');
-      }).catch((erro) => {
-          res.send('Houve um erro: ' + erro);
-      })
-    });
   
-
-    app.get('/formularios', function(req, res) {
-      res.render('formularios')
-    })
-
-
-    
-
-
-    // CREATE USERS
-    app.post('/admin/users/list', (req, res) => {
-      Users.create({
-        user_name: req.body.name,
-        user_email: req.body.email,
-        user_password: req.body.password,
-        user_contact: req.body.contact
-      }).then(() => {
-        res.redirect('list');
-      }).catch((erro) => {
-        res.send('Usuário não cadastrado: ' + erro);
-      });
-    })
+    // no parametro get eu escrevo a minha url: ex.: users/list
+    app.get('/admin/users/create', (req, res) => {
+      res.render('admin/users/create') //caminho das pastas
+    });
 
     app.get('/admin/users/list', (req, res) => {
-      res.render('list')
+      res.render('admin/users/list') // caminho das pastas
     })
-    
 
+    // CREATE USERS ( users system )
+    app.post('/admin/users/list', (req, res) => {
+        Users.create({
+        userName: req.body.nome,
+        userEmail: req.body.email,
+        userPassword: req.body.password,
+        // user_contact: req.body.contact
+        }).then(() => {
+            res.send('Usuário cadastrado com sucesso!');
+        }).catch((erro) => {
+            res.send('Usuário não cadastrado: ' + erro);
+        });
+    });
+
+    
+  
 
     // Rotas admin
     app.use('/admin', admin);

@@ -1,19 +1,19 @@
-<div class="container mt-4">
+<div class="container mt-4">    
     <form action="/admin/users/list" method="POST">
         <div class="mb-3">
             <label for="exampleInputName" class="form-label">Nome</label>
             <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
-            <div id="emailHelp" class="form-text d-none">Nome precisa conter 5 ou mais caracteres</div>
+            <div id="nameMessage" class="form-text d-none">Nome precisa conter 5 ou mais caracteres</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
-            <div id="emailHelp" class="form-text d-none">Digite um e-mail válido</div>
+            <div id="emailMessage" class="form-text d-none">Digite um e-mail válido</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Senha</label>
             <input type="password" class="form-control" id="password" placeholder="12@45M">
-            <div id="emailHelp" class="form-text d-none">Senha precisa conter 6 ou mais caracteres</div>
+            <div id="passwordMessage" class="form-text d-none">Senha precisa conter 6 ou mais caracteres</div>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>

@@ -1,42 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{!-- <form action="add" method="POST">
-        <p>Título: </p>
-        <input type="text" name="titulo">
-        <p>Conteúdo: </p>
-        <textarea name="conteudo"></textarea>
-        <button type="submit">Cadastrar</button>
-    </form> --}}
-
-    <div class="container mt-3">
-       <form action="admin/users/list" method="POST">
-            <div class="mb-3">
-                <label for="exampleInputName" class="form-label">Nome</label>
-                <input type="email" class="form-control" id="exampleInputName" name="name" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail" name="email" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="exampleInputPassword" name="password">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputContact" class="form-label">Contato</label>
-                <input type="text" class="form-control" id="exampleInputContact" name="contact">
-            </div>
-            <button type="submit" class="btn btn-primary">Cadastar</button>
-        </form>
-    </div>
-</body>
-</html>
+<div class="container mt-4">    
+    <form action="/admin/users/list" method="POST">
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
+            <div id="nameMessage" class="form-text d-none">Nome precisa conter 5 ou mais caracteres</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
+            <div id="emailMessage" class="form-text d-none">Digite um e-mail válido</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="password" placeholder="12@45M">
+            <div id="passwordMessage" class="form-text d-none">Senha precisa conter 6 ou mais caracteres</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>
+    </form>
+</div>
