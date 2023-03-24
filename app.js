@@ -11,16 +11,16 @@ const path = require('path');
 // config
     // Template engine
     app.engine(
-        "handlebars",
-        engine({
-          defaultLayout: "main",
-          runtimeOptions: {
-            allowProtoPropertiesByDefault: true,
-            allowProtoMethodsByDefault: true,
-          },
-        })
-      );
-      
+      "handlebars",
+      engine({
+        defaultLayout: "main",
+        runtimeOptions: {
+          allowProtoPropertiesByDefault: true,
+          allowProtoMethodsByDefault: true,
+        },
+      })
+    );
+    
 
 
     // acessa meus arquivos do bootstrap
@@ -32,7 +32,15 @@ const path = require('path');
     app.use(express.urlencoded({extended:false}));
     app.use(express.json());
 
+    
+    app.get('/sobre', (req, res) => {
+      res.render('sobre')
+    })
 
+
+
+
+    // ROTAS: admin
   
     // no parametro get eu escrevo a minha url: ex.: users/list
     app.get('/admin/users/create', (req, res) => {
