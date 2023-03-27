@@ -2,20 +2,66 @@
     <form action="/admin/users/list" method="POST">
         <div class="mb-3">
             <label for="exampleInputName" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
-            <div id="nameMessage" class="form-text d-none">Nome precisa conter 5 ou mais caracteres</div>
+            <input type="text" class="form-control required" id="name" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
+            <span class="form-text span-required d-none">Nome precisa conter 5 ou mais caracteres</span>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
-            <div id="emailMessage" class="form-text d-none">Digite um e-mail válido</div>
+            <input type="email" class="form-control required" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
+            <span class="form-text span-required d-none">Digite um e-mail válido</sp>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="password" placeholder="12@45M">
-            <div id="passwordMessage" class="form-text d-none">Senha precisa conter 6 ou mais caracteres</div>
+            <input type="password" class="form-control required" id="password" placeholder="12@45M">
+            <span class="form-text span-required d-none">Senha precisa conter 6 ou mais caracteres</span>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>
     </form>
 </div>
+
+<script>
+    let form = document.getElementById('form');
+    let campos = document.querySelectorAll('.required')
+    let span = document.querySelectorAll('.span-required')
+
+    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        emailValidate();
+        asswordValidate();
+    });
+
+
+    function setError(index) {
+        campos[index].style.border = '2px solid #e63656';
+        span[index].style.display = 'block';
+    }
+
+
+    function removeError(index) {
+        campos[index].style.border = '';
+        span[index].style.display = 'none';
+    }
+
+
+    function emailValidate() {
+        if(!emailRegex.test(campos[1].value)) {
+            setError(1);
+        } else {
+            removeError(1);
+        }
+    }
+
+
+    function passwordValidate() {
+        if(campos[2].length.value < 8) {
+            setError(2);
+        } else {
+            removeError(2);
+        }
+    }
+
+
+</script> 

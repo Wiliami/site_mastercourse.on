@@ -32,7 +32,20 @@ const path = require('path');
     app.use(express.urlencoded({extended:false}));
     app.use(express.json());
 
-    
+
+
+    app.get('/', (req, res) => {
+      res.render('home')
+    })  
+
+    app.get('/login', (req, res) => {
+      res.render('login')
+    })
+  
+    app.get('/cadastro', (req, res) => {
+      res.render('cadastro')
+    })
+
     app.get('/sobre', (req, res) => {
       res.render('sobre')
     })
