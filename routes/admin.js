@@ -14,7 +14,7 @@ const router = express.Router();
 // });
 
 
-//  ATUALIZACAO 
+// ATUALIZACAO 
 router.get('/admin/users/update', (req, res) => {
     res.render('admin/users/update')
 });

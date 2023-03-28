@@ -22,25 +22,44 @@ const path = require('path');
     );
     
 
-
-    // acessa meus arquivos do bootstrap
     app.use(express.static(__dirname + '/public'));
-    // minha página de views (diretório)
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'handlebars');
-
     app.use(express.urlencoded({extended:false}));
     app.use(express.json());
-
-
 
     app.get('/', (req, res) => {
       res.render('home')
     })  
 
-    app.get('/login', (req, res) => {
-      res.render('login')
+
+
+
+    // ROTA LOGIN: admin
+    app.get('/admin', (req, res) => {
+      res.render('login/admin')
     })
+
+    // ROTA LOGIN: alunos
+    app.get('/alunos', (req, res) => {
+      res.render('login/alunos')
+    })
+
+
+    // VALIDANDO FORMULARIO DE LOGIN
+    // app.post('/login', (req, res) => {
+    //   var erros = [];
+
+    //   if(!req.body.email || typeof req.body.nome == undefined || req.body.nome == null) {
+
+    //   }
+
+
+
+    // })
+
+
+
   
     app.get('/cadastro', (req, res) => {
       res.render('cadastro')
@@ -50,6 +69,11 @@ const path = require('path');
       res.render('sobre')
     })
 
+
+   // PÁGINA NÃO EXISTE
+    app.get('*', function(req, res){
+      res.render('404');
+    });
 
 
 
