@@ -14,9 +14,9 @@
                         <input type="password" class="form-control required" id="inputPassword" placeholder="Senha" oninput="passwordValidate()">
                         <label for="inputPassword">Senha</label>
                         <span class="span-required">A senha deve ter no mínimo 8 caracteres</span>
-                        <div class="invalid-feedback">
+                        {{!-- <div class="invalid-feedback">
                             Please provide a valid city.
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="w-100 btn btn-lg btn-success" type="submit">Entrar</button>
                     <p>
@@ -37,7 +37,7 @@
 </div>
 
 
-<script type="text/javascipt">
+<script>
     const form = document.getElementById('form')
     const campos = document.querySelectorAll('.required')
     const span = document.querySelectorAll('.span-required')

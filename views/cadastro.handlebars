@@ -3,18 +3,21 @@
         <div class="col-md-10 mx-auto col-lg-5">
             <div class="p-4 p-md-5 border rounded-3 bg-light">
                 <h3 class="mb-4 text-center">Crie sua conta</h3>
-                <form action="" method="">
+                <form action="" method="" id="form">
                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="inputName" placeholder="Nome e sobrenome">
+                        <input type="text" class="form-control required" id="inputName" placeholder="Nome e sobrenome">
                         <label for="inputName">Nome</label>
+                        <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="E-mail">
-                        <label for="inputEmail">E-mail</label>      
+                        <input type="email" class="form-control required" id="inputEmail" placeholder="E-mail">
+                        <label for="inputEmail">E-mail</label>
+                        <span class="span-required">Digite um e-mail válido</span>      
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
+                        <input type="password" class="form-control required" id="inputPassword" placeholder="Senha">
                         <label for="inputPassword">Senha</label>
+                        <span class="span-required">Digite um e-mail válido</span>
                     </div>
                     <button class="w-100 btn btn-lg btn-success" type="submit">Criar conta</button>
                 </form>
@@ -26,3 +29,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    const form = document.getElementById('form');
+    const campos = document.querySelectorAll('.required');
+    const spans = document.querySelectorAll('.span-required');
+
+
+    const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+
+    function nameValidate() {
+        if(campos[0].length < 3) {
+            console.log('nome deve ter 3 caracteres')
+        } else {
+            console.log('usuário validado com sucesso')
+        }
+    }
+</script>
