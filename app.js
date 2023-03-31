@@ -33,6 +33,24 @@ const path = require('path');
     })  
 
 
+    app.get('/admin/users/create', (req, res) => {
+      res.render('admin/users/create')
+    })
+
+    app.get('/admin/users/list', (req, res) => {
+      res.render('admin/users/list') // caminho das pastas
+    })
+
+    app.get('/admin/users/update', (req, res) => {
+      res.render('admin/users/update')
+    })
+
+    app.get('/admin/users/delete', (req, res) => {
+      res.render('admin/users/delete')
+    })
+
+
+
 
 
     // ROTA LOGIN: admin
@@ -57,6 +75,23 @@ const path = require('path');
 
 
     // })
+
+
+    app.post('/create-user', (req, res) => {
+      Users.create({
+        // userName: req.body.nome,
+        userEmail: req.body.email,
+        userPassword: req.body.password,
+      }).then(() => {
+        res.send('Usuário cadastrado com sucesso!')
+      }).catch((erro) => {
+        res.send('Não foi possível cadastrar usuário', + erro)
+      })
+    })
+
+    app.post('/add', (req, res) => {
+      res.send('usuário cadastrado com sucesso!')
+    })
 
 
 
@@ -84,14 +119,12 @@ const path = require('path');
       res.render('admin/users/create') //caminho das pastas
     });
 
-    app.get('/admin/users/list', (req, res) => {
-      res.render('admin/users/list') // caminho das pastas
-    })
+ 
 
     // CREATE USERS ( users system )
     app.post('/admin/users/list', (req, res) => {
         Users.create({
-        userName: req.body.nome,
+        userName: req.body.name,
         userEmail: req.body.email,
         userPassword: req.body.password,
         // user_contact: req.body.contact

@@ -1,24 +1,26 @@
-<div class="container mt-4">    
-    <form action="/admin/users/list" method="POST" id="form">
-        <div class="mb-3">
-            <label for="exampleInputName" class="form-label">Nome</label>
-            <input type="text" class="form-control required" id="name" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
-            <span class="form-text span-required d-none">Nome precisa conter 5 ou mais caracteres</span>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">E-mail</label>
-            <input type="email" class="form-control required" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
-            <span class="form-text span-required d-none">Digite um e-mail válido</sp>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Senha</label>
-            <input type="password" class="form-control required" id="password" placeholder="12@45M">
-            <span class="form-text span-required d-none">Senha precisa conter 6 ou mais caracteres</span>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>
-    </form>
-</div>
+{{>_filesHeadHtmlPlatform}}
+    {{>_navbar}}
+    <div class="container mt-4">    
+        <form action="/admin/users/list" method="POST" id="form">
+            <div class="mb-3">
+                <label for="exampleInputName" class="form-label">Nome</label>
+                <input type="text" class="form-control required" id="name" aria-describedby="emailHelp" placeholder="Ex.: André Silva">
+                <span class="form-text span-required d-none">Nome precisa conter 5 ou mais caracteres</span>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                <input type="email" class="form-control required" id="email" aria-describedby="emailHelp" placeholder="example@gmail.com">
+                <span class="form-text span-required d-none">Digite um e-mail válido</sp>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input type="password" class="form-control required" id="password" placeholder="12@45M">
+                <span class="form-text span-required d-none">Senha precisa conter 6 ou mais caracteres</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>
+        </form>
+    </div>
 
 <script>
     let form = document.getElementById('form');
