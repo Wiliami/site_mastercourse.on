@@ -1,12 +1,14 @@
 const express  = require("express");
 const app = express();
 const { engine } = require('express-handlebars');
-// const Post = require('./Model/Post');
-const Users = require('./Model/Users');
-const db = require("./Model/db");
+const User = require('./model/User');
+const db = require("./model/db");
 const admin = require('./routes/admin');
+const teste = require('./routes/cadastro');
+var bcrypt = require('bcryptjs');
 const path = require('path');
 
+var salt = bcrypt.genSaltSync(10);
 
 // config
     // Template engine
@@ -52,6 +54,20 @@ const path = require('path');
 
 
 
+    // DASHBOARD
+    app.get('/dashboard', (req, res) => {
+      res.render('dashboard')
+    })
+
+    app.get('/login', (req, res) => {
+      res.render('login')
+    })
+ 
+
+    // LOGIN  TESTE
+    app.get('/login', (req, res) => {
+      res.render('login')
+    })
 
     // ROTA LOGIN: admin
     app.get('/admin', (req, res) => {
@@ -64,49 +80,37 @@ const path = require('path');
     })
 
 
-    // VALIDANDO FORMULARIO DE LOGIN
-    // app.post('/login', (req, res) => {
-    //   var erros = [];
-
-    //   if(!req.body.email || typeof req.body.nome == undefined || req.body.nome == null) {
-
-    //   }
 
 
 
-    // })
-
-
-    app.post('/create-user', (req, res) => {
-      Users.create({
-        // userName: req.body.nome,
-        userEmail: req.body.email,
-        userPassword: req.body.password,
-      }).then(() => {
-        res.send('Usuário cadastrado com sucesso!')
-      }).catch((erro) => {
-        res.send('Não foi possível cadastrar usuário', + erro)
-      })
-    })
-
-    app.post('/add', (req, res) => {
-      res.send('usuário cadastrado com sucesso!')
-    })
-
-
-
-  
     app.get('/cadastro', (req, res) => {
-      res.render('cadastro')
-    })
+      res.render('cadastro');
+    });
+
+    
+    app.post('/dashboard', (req, res) => {
+      User.create({
+        userName: req.body.nome,
+        userEmail: req.body.email,
+        userPassword: bcrypt.hashSync(req.body.password, salt),
+      }).then(() => {
+        // res.send('<div class="alert alert-primary" role="alert">Usuário cadastrado com sucesso!</div>')
+        res.status(200).json({ success: 'Usuário cadastrado com sucesso!'})
+        bcrypt.compareSync('12345678', userPassword); // true
+      }).catch((erroMessage) => {
+        // res.send('<div class="alert alert-danger" role="alert">Não foi possível cadastrar usuário!</div>')
+        res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + erroMessage})
+      })
+    })  
+
 
     app.get('/sobre', (req, res) => {
       res.render('sobre')
     })
 
 
-   // PÁGINA NÃO EXISTE
-    app.get('*', function(req, res){
+    // PÁGINA NÃO EXISTE
+    app.get('*', (req, res) => {
       res.render('404');
     });
 
@@ -119,27 +123,12 @@ const path = require('path');
       res.render('admin/users/create') //caminho das pastas
     });
 
- 
-
-    // CREATE USERS ( users system )
-    app.post('/admin/users/list', (req, res) => {
-        Users.create({
-        userName: req.body.name,
-        userEmail: req.body.email,
-        userPassword: req.body.password,
-        // user_contact: req.body.contact
-        }).then(() => {
-            res.send('Usuário cadastrado com sucesso!');
-        }).catch((erro) => {
-            res.send('Usuário não cadastrado: ' + erro);
-        });
-    });
-
-    
   
 
     // Rotas admin
     app.use('/admin', admin);
+
+    app.use('/teste', teste);
 
 
 

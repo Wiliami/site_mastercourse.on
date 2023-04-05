@@ -1,49 +1,125 @@
-<div class="container mt-4">
-    <div class="row align-items-center">
-        <div class="col-md-10 mx-auto col-lg-5">
-            <div class="p-4 p-md-5 border rounded-3 bg-light">
-                <h3 class="mb-4 text-center">Crie sua conta</h3>
-                <form action="" method="" id="form">
-                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control required" id="inputName" placeholder="Nome e sobrenome">
-                        <label for="inputName">Nome</label>
-                        <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
+    <style>
+        .span-required {
+            font-size: 14px;
+            margin: 3px 0 0 1px;
+            color: #e63656;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row align-items-center">
+            <div class="col-md-10 mx-auto col-lg-5">
+                <div class="p-4 p-md-5 border rounded-3 bg-light">
+                    <h3 class="mb-4 text-center">Crie sua conta</h3>
+                    <form action="" method="" id="form">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control required" name="nome" placeholder="Nome e sobrenome" onclick="nameValidate()">
+                            <label for="inputName">Nome</label>
+                            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control required" name="email" placeholder="E-mail" onclick="emailValidate()">
+                            <label for="inputEmail">E-mail</label>
+                            <span class="span-required">Digite um e-mail válido</span>      
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control required" name="mainPassword" placeholder="Senha" onclick="mainPasswordValidate()">
+                            <label for="inputPassword">Senha</label>
+                            <span class="span-required">Digite uma senha com no mínimo 8 caracteres</span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control required" name="comparePasswordIS" placeholder="Repita sua senha" onclick="comparePassword()">
+                            <label for="inputPassword">Senha</label>
+                            <span class="span-required">Senha devem ser compatíveis</span>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-success" type="submit">Criar conta</button>
+                    </form>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            Já possui uma conta? <a href="/login" class="ml-2">Login</a>
+                        </div>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control required" id="inputEmail" placeholder="E-mail">
-                        <label for="inputEmail">E-mail</label>
-                        <span class="span-required">Digite um e-mail válido</span>      
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control required" id="inputPassword" placeholder="Senha">
-                        <label for="inputPassword">Senha</label>
-                        <span class="span-required">Digite um e-mail válido</span>
-                    </div>
-                    <button class="w-100 btn btn-lg btn-success" type="submit">Criar conta</button>
-                </form>
-                Já tem uma conta?
-                <a href="/alunos" class="mb-4 text-center">
-                   Acessar o login
-                </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</body>
 
 <script>
-    const form = document.getElementById('form');
-    const campos = document.querySelectorAll('.required');
-    const spans = document.querySelectorAll('.span-required');
-
-
+    const form       = document.getElementById('form');
+    const campos     = document.querySelectorAll('.required');
+    const spans      = document.querySelectorAll('.span-required');
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        nameValidate()
+        emailValidate();
+        mainPasswordValidate();
+        comparePassword();
+    });
+
+
+    function setError(index) {
+        campos[index].style.border = '2px solid #e6336';
+        spans[index].style.display = 'block';
+    }
+
+      function removeError(index) {
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
 
 
     function nameValidate() {
-        if(campos[0].length < 3) {
-            console.log('nome deve ter 3 caracteres')
+        if(campos[0].value.length < 3) {
+            setError(0)
         } else {
-            console.log('usuário validado com sucesso')
+            removeError(0);
         }
     }
+
+
+    function emailValidate() {
+        if(!emailRegex.test(campos[1].value)) {
+            setError(1);
+        } else {
+            removeError(1);
+        }
+    }
+
+
+    function mainPasswordValidate() {
+        if(campos[2].value.length < 8) {
+            setError(2);
+        } else {
+            comparePassword();
+            removeError(2);
+        }
+    }
+
+    function comparePassword() {
+        if(campos[2].value == campos[3].value && campos[3].value.length >= 8) {
+            removeError(3);
+        } else {
+            setError(3);
+        }
+    }
+
 </script>
+
+</html>
+
+
+
