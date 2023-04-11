@@ -6,6 +6,7 @@ const db = require("./model/db");
 const admin = require('./routes/admin');
 const teste = require('./routes/cadastro');
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 const path = require('path');
 
 var salt = bcrypt.genSaltSync(10);
@@ -100,12 +101,51 @@ var salt = bcrypt.genSaltSync(10);
       }).then(() => {
         // res.send('<div class="alert alert-primary" role="alert">Usuário cadastrado com sucesso!</div>')
         res.status(200).json({ success: 'Usuário cadastrado com sucesso!'})
-        bcrypt.compareSync('12345678', userPassword); // true
+        // bcrypt.compareSync('12345678', userPassword); // true
       }).catch((erroMessage) => {
         // res.send('<div class="alert alert-danger" role="alert">Não foi possível cadastrar usuário!</div>')
         res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + erroMessage})
       })
     })  
+
+
+    app.post('/login', async (req, res) => {
+      const user = await User.findOne({
+
+        // console.log(JSON.stringify(user, null, 2))
+        atributes: ['id', 'userName', 'userEmail', 'userPassword'],
+        where: {
+          email: req.body.email
+        }
+      }).then(() => {
+        res.send(user.toJSON());
+      }).catch((erro) => {
+        res.send('usuário não encontrado' + erro)
+      })
+
+      if(user === null) {
+        res.status(400).json({ error: 'Usuário e senha não encontrados'})
+      }
+
+      if(!(bcrypt.compareSync(req.body.password, user.userPassword))) {
+        res.status(400).json({ error: 'Usuário ou a senha incorreta!'})
+      }
+      
+      var token = jwt.sign({id: user.id}, "DSFBEBRERJENJNFJNEJRFERKKLSDM", {
+        expiresIn: '7d'
+      });
+
+
+      return res.json({
+        erro: false,
+        message: 'Login realizado com sucesso',
+        token
+      })
+
+
+    });
+
+
 
 
     app.get('/sobre', (req, res) => {
