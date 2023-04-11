@@ -59,10 +59,14 @@ var salt = bcrypt.genSaltSync(10);
       res.render('dashboard')
     })
 
-    app.get('/login', (req, res) => {
-      res.render('login')
+    app.get('/esqueci-senha', (req, res) => {
+      res.render('forgot')
     })
  
+
+    app.get('/checkout', (req, res) => {
+      res.render('checkout')
+    })
 
     // LOGIN  TESTE
     app.get('/login', (req, res) => {
