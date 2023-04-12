@@ -23,7 +23,7 @@ var salt = bcrypt.genSaltSync(10);
         },
       })
     );
-    
+
 
     app.use(express.static(__dirname + '/public'));
     app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +33,7 @@ var salt = bcrypt.genSaltSync(10);
 
     app.get('/', (req, res) => {
       res.render('home')
-    })  
+    })
 
 
     app.get('/admin/users/create', (req, res) => {
@@ -63,7 +63,7 @@ var salt = bcrypt.genSaltSync(10);
     app.get('/esqueci-senha', (req, res) => {
       res.render('forgot')
     })
- 
+
 
     app.get('/checkout', (req, res) => {
       res.render('checkout')
@@ -92,7 +92,7 @@ var salt = bcrypt.genSaltSync(10);
       res.render('cadastro');
     });
 
-    
+
     app.post('/dashboard', (req, res) => {
       User.create({
         userName: req.body.nome,
@@ -106,44 +106,10 @@ var salt = bcrypt.genSaltSync(10);
         // res.send('<div class="alert alert-danger" role="alert">Não foi possível cadastrar usuário!</div>')
         res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + erroMessage})
       })
-    })  
+    })
 
 
-    app.post('/login', async (req, res) => {
-      const user = await User.findOne({
-
-        // console.log(JSON.stringify(user, null, 2))
-        atributes: ['id', 'userName', 'userEmail', 'userPassword'],
-        where: {
-          email: req.body.email
-        }
-      }).then(() => {
-        res.send(user.toJSON());
-      }).catch((erro) => {
-        res.send('usuário não encontrado' + erro)
-      })
-
-      if(user === null) {
-        res.status(400).json({ error: 'Usuário e senha não encontrados'})
-      }
-
-      if(!(bcrypt.compareSync(req.body.password, user.userPassword))) {
-        res.status(400).json({ error: 'Usuário ou a senha incorreta!'})
-      }
-      
-      var token = jwt.sign({id: user.id}, "DSFBEBRERJENJNFJNEJRFERKKLSDM", {
-        expiresIn: '7d'
-      });
-
-
-      return res.json({
-        erro: false,
-        message: 'Login realizado com sucesso',
-        token
-      })
-
-
-    });
+    
 
 
 
@@ -161,13 +127,13 @@ var salt = bcrypt.genSaltSync(10);
 
 
     // ROTAS: admin
-  
+
     // no parametro get eu escrevo a minha url: ex.: users/list
     app.get('/admin/users/create', (req, res) => {
       res.render('admin/users/create') //caminho das pastas
     });
 
-  
+
 
     // Rotas admin
     app.use('/admin', admin);
