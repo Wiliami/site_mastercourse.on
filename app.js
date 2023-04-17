@@ -8,7 +8,7 @@ const teste = require('./routes/cadastro');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const path = require('path');
-const session = require('expression-session');
+const session = require('express-session');
 const flash = require('connect-flash');
 var salt = bcrypt.genSaltSync(10);
 

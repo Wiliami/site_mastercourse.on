@@ -32,16 +32,16 @@
                             <span class="span-required">Digite um e-mail válido</span>      
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control required" name="mainPassword" placeholder="Senha" oninput="mainPasswordValidate()">
+                            <input type="password" class="form-control required" name="password" autocomplete="on" placeholder="Senha" oninput="mainPasswordValidate()">
                             <label for="inputPassword">Senha</label>
                             <span class="span-required">Digite uma senha com no mínimo 8 caracteres</span>
                         </div>
-                        <div class="form-floating mb-3">
+                        {{!-- <div class="form-floating mb-3">
                             <input type="password" class="form-control required" name="comparePassword" placeholder="Repita sua senha" oninput="comparePassword()">
                             <label for="inputPassword">Senha</label>
                             <span class="span-required">Senha devem ser compatíveis</span>
-                        </div>
-                        <button class="w-100 btn btn-lg btn-success" type="submit">Criar conta</button>
+                        </div> --}}
+                        <input class="w-100 btn btn-lg btn-success" name="button-submit" type="submit" value="Criar conta">
                     </form>
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
@@ -59,17 +59,21 @@
     const campos = document.querySelectorAll('.required');
     const spans = document.querySelectorAll('.span-required');
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    
+    const buttonSubmit = document.querySelector('.button-submit');     
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        nameValidate()
-        emailValidate();
-        mainPasswordValidate();
-        comparePassword();
-    });
+  
 
 
+    if(!buttonSubmit) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            nameValidate()
+            emailValidate();
+            mainPasswordValidate();
+        });
+    }
+
+   
     function setError(index) {
         campos[index].style.border = '2px solid #e6336';
         spans[index].style.display = 'block';
@@ -84,7 +88,7 @@
 
     function nameValidate() {
         if(campos[0].value.length < 3) {
-            setError(0)
+            setError(0);
         } else {
             removeError(0);
         }
@@ -104,18 +108,11 @@
         if(campos[2].value.length < 8) {
             setError(2);
         } else {
-            comparePassword();
             removeError(2);
         }
     }
 
-    function comparePassword() {
-        if(campos[2].value == campos[3].value && campos[3].value.length >= 8) {
-            removeError(3);
-        } else {
-            setError(3);
-        }
-    }
+  
 
 </script>
 
