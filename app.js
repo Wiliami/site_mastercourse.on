@@ -51,6 +51,10 @@ var salt = bcrypt.genSaltSync(10);
       res.render('home')
     })
 
+    app.get('/cursos', (req, res) => {
+      res.render('cursos')
+    })
+
 
     app.get('/admin/users/create', (req, res) => {
       res.render('admin/users/create')
