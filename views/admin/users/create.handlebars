@@ -1,4 +1,14 @@
-{{>_filesHeadHtmlPlatform}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
+</head>
+<body>
     {{>_navbar}}
     <div class="container mt-4">    
         <form action="/admin/users/list" method="POST" id="form">
@@ -17,53 +27,55 @@
                 <input type="password" class="form-control required" id="password" placeholder="12@45M">
                 <span class="form-text span-required d-none">Senha precisa conter 6 ou mais caracteres</span>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a href="/admin/users/list" class="btn btn-outline-secondary">Voltar</a>
+            <button type="submit" class="button is-link">Cadastrar</button>
+            <a href="/admin/users/list" class="button is-light">Voltar</a>
         </form>
     </div>
 
-<script>
-    let form = document.getElementById('form');
-    let campos = document.querySelectorAll('.required')
-    let span = document.querySelectorAll('.span-required')
+    <script>
+        let form = document.getElementById('form');
+        let campos = document.querySelectorAll('.required')
+        let span = document.querySelectorAll('.span-required')
 
-    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        emailValidate();
-        asswordValidate();
-    });
-
-
-    function setError(index) {
-        campos[index].style.border = '2px solid #e63656';
-        span[index].style.display = 'block';
-    }
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            emailValidate();
+            asswordValidate();
+        });
 
 
-    function removeError(index) {
-        campos[index].style.border = '';
-        span[index].style.display = 'none';
-    }
-
-
-    function emailValidate() {
-        if(!emailRegex.test(campos[1].value)) {
-            setError(1);
-        } else {
-            removeError(1);
+        function setError(index) {
+            campos[index].style.border = '2px solid #e63656';
+            span[index].style.display = 'block';
         }
-    }
 
 
-    function passwordValidate() {
-        if(campos[2].length.value < 8) {
-            setError(2);
-        } else {
-            removeError(2);
+        function removeError(index) {
+            campos[index].style.border = '';
+            span[index].style.display = 'none';
         }
-    }
 
 
-</script> 
+        function emailValidate() {
+            if(!emailRegex.test(campos[1].value)) {
+                setError(1);
+            } else {
+                removeError(1);
+            }
+        }
+
+
+        function passwordValidate() {
+            if(campos[2].length.value < 8) {
+                setError(2);
+            } else {
+                removeError(2);
+            }
+        }
+
+    </script> 
+
+</body>
+</html>
