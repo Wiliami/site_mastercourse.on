@@ -1,10 +1,19 @@
-  {{>_filesHeadHtmlPlatform}}
-  {{>_dataTables}}
-  {{>_navbar}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">  
+</head>
+<body>
+    {{>_navbar}}
     <div class="container mt-4">
       <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h5 class="m-0 text-dark" style="font-size: 14px;">Lista de usuários</h5>
+            <h3 class="m-0 text-dark" style="font-size: 14px;">Lista de usuários</h3>
             <a href="/admin/users/create" class="btn btn-success rounded-pill" title="Cadastrar novo usuário" style="border-radius: 50%; font-size: 12px;">Cadastrar novo usuário</a>
         </div>
         <div class="card-body">
@@ -12,56 +21,47 @@
             <table id="example" class="cell-border compact stripe table-striped mt-4" style="width:100%">
               <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Função</th>
                 </tr>
-                </thead>
-                  <tbody>
-                      <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011-04-25</td>
-                          <td>$320,800</td>
-                      </tr>
-                        <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011-04-25</td>
-                          <td>$320,800</td>
-                      </tr>
-                    
-                  </tbody>
-                  <tfoot>
-                      <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
-                      </tr>
-                  </tfoot>
-                </table>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Admin User</td>
+                  <td>admin@gmail.com</td>
+                  <td>999999999</td>
+                  <td>Admin</td>
+                </tr>
+                <tr>
+                  <td>User</td>
+                  <td>user@gmail.com</td>
+                  <td>999559595599</td>
+                  <td>Visitante</td>
+                </tr>  
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Função</th>
+                </tr>
+              </tfoot>
+            </table>
           </div>
         </div>    
+      </div>
     </div>  
-
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript">
       $(document).ready(function () {
           $('#example').DataTable();
       });
     </script>
 
+  </body>
 </html>
