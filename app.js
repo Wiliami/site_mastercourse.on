@@ -55,8 +55,8 @@ var salt = bcrypt.genSaltSync(10);
       res.render('cursos')
     })
 
-    app.get('/forgot', (req, res) => {
-      res.render('forgot')
+    app.get('/forgot-password', (req, res) => {
+      res.render('forgot-password')
     })
 
 
