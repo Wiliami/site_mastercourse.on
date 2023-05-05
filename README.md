@@ -1,8 +1,16 @@
 # Project Website created with Node.js
 
 ## How run project:
-- 1 step run: `npm or yarn install`
-- 2 step run: `nodemon app.js`
+- 1 step run: 
+```
+npm or yarn install
+```
+- 2 step run: 
+```
+nodemon app.js
+```
+
+Use `nodemon app.js` to run the project.
 
 ## Packages used:
 - **Frontend:**
@@ -29,3 +37,10 @@
 ![scree signup](https://user-images.githubusercontent.com/67030481/236533108-c913d009-de49-4063-9cac-974c83f51be6.png)
 
 > Este projeto ainda está em andamento. O servidor do banco de dados não está disponível.
+
+
+```
+git status
+git add
+git commit
+```
