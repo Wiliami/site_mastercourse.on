@@ -28,3 +28,4 @@
 ## Page - SignUp
 ![scree signup](https://user-images.githubusercontent.com/67030481/236533108-c913d009-de49-4063-9cac-974c83f51be6.png)
 
+> Este projeto ainda está em andamento. O servidor do banco de dados não está disponível.
