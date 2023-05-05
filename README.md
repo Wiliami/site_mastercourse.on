@@ -22,10 +22,9 @@
 ## Page Home
 ![home-mastercourse](https://user-images.githubusercontent.com/67030481/236507772-0b649e1c-b56a-4067-9bf1-c1fe6b83fdb4.png)
 
-
 ## Page - SignIn
-![screen-login](https://user-images.githubusercontent.com/67030481/236526510-a110358c-802f-4c24-80e3-44115422fe66.png)
-
+![scree signin](https://user-images.githubusercontent.com/67030481/236531849-453c955f-5e64-45b4-a3d9-9466257e0676.png)
 
 ## Page - SignUp
-![screen - signup](https://user-images.githubusercontent.com/67030481/236526540-732c901f-00ef-4332-912f-80cf60e076e3.png)
+![scree signup](https://user-images.githubusercontent.com/67030481/236533108-c913d009-de49-4063-9cac-974c83f51be6.png)
+
