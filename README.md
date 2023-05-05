@@ -10,7 +10,7 @@ npm or yarn install
 nodemon app.js
 ```
 
-Use `nodemon app.js` to run the project.
+Use `nodemon app.js` run the project.
 
 ## Packages used:
 - **Frontend:**
