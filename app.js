@@ -59,6 +59,10 @@ var salt = bcrypt.genSaltSync(10);
       res.render('forgot-password')
     })
 
+    app.get('/formularios', (req, res) => {
+      res.render('formularios')
+    })
+
 
     app.get('/admin/users/create', (req, res) => {
       res.render('admin/users/create')
@@ -114,6 +118,7 @@ var salt = bcrypt.genSaltSync(10);
       res.render('login/alunos')
     })
 
+    
 
 
 
