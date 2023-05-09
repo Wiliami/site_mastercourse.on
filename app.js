@@ -60,7 +60,7 @@ var salt = bcrypt.genSaltSync(10);
     })
 
     app.get('/meus-cursos', (req, res) => {
-      res.render('meus-cursos')
+      res.render('area-membro/meus-cursos')
     })
 
 
