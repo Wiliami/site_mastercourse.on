@@ -38,11 +38,6 @@ Use `nodemon app.js` run the project.
 ## Page - SignUp
 ![scree signup](https://user-images.githubusercontent.com/67030481/236533108-c913d009-de49-4063-9cac-974c83f51be6.png)
 
-> Este projeto ainda está em andamento. O servidor do banco de dados não está disponível.
+## Page - Dashboard
+![dashboard - master courses](https://github.com/Wiliami/nodejs-website/assets/67030481/cd5617f9-7fce-4c26-a3d4-bbc5c2549965)
 
-
-```
-git status
-git add
-git commit
-```
