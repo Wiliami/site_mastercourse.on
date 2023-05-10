@@ -89,6 +89,7 @@ var salt = bcrypt.genSaltSync(10);
 
 
 
+
     // DASHBOARD
     app.get('/dashboard', (req, res) => {
       res.render('dashboard')
