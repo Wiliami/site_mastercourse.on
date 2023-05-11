@@ -5,75 +5,79 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+  
+
   <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
 </head>
 <body>
-    {{>_navbar}}
-    <div class="container mt-4">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h1 class="m-0 text-dark">Lista de usuários</h1>
-            <a href="/admin/users/create" class="button is-link rounded-pill" title="Cadastrar novo usuário" style="border-radius: 50%; font-size: 12px;">Cadastrar novo usuário</a>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table id="example" class="table is-striped" style="width:100%">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Telefone</th>
-                  <th>Função</th>
-                  <th>Opções</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Admin User</td>
-                  <td>admin@gmail.com</td>
-                  <td>999999999</td>
-                  <td>Admin</td>
-                  <td>
-                    <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
-                    <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>User</td>
-                  <td>user@gmail.com</td>
-                  <td>999559595599</td>
-                  <td>Visitante</td>
-                  <td>
-                    <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
-                    <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
-                  </td>
-                </tr>            
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Telefone</th>
-                  <th>Função</th>      
-                  <th>Opções</th>       
-                </tr>
-              </tfoot>
-            </table>
+    {{>_headerHome}}
+    <main id="main">
+      <section id="contact">
+        <div class="container mt-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h3 class="m-0 text-dark">Usuários</h3>
+                <!-- button is-link rounded-pill -->
+                <a href="/admin/users/create" class="btn btn-success rounded-pill" title="Cadastrar novo usuário" style="border-radius: 50%; font-size: 12px;">Cadastrar novo usuário</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="example" class="table is-striped" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Telefone</th>
+                      <th>Função</th>
+                      <th>Opções</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Admin User</td>
+                      <td>admin@gmail.com</td>
+                      <td>999999999</td>
+                      <td>Admin</td>
+                      <td>
+                        <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
+                        <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>User</td>
+                      <td>user@gmail.com</td>
+                      <td>999559595599</td>
+                      <td>Visitante</td>
+                      <td>
+                        <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
+                        <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
+                      </td>
+                    </tr>            
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Telefone</th>
+                      <th>Função</th>      
+                      <th>Opções</th>       
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>    
           </div>
-        </div>    
-      </div>
-    </div>  
-    
-
-
+        </div>  
+      </section>
+    </main>
+        
+ 
+    </body>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js"></script>
-
-    {{!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" language="javascript">
       $(document).ready(function () {
           $('#example').DataTable({
@@ -103,6 +107,4 @@
           });
       });
     </script>
-
-  </body>
 </html>

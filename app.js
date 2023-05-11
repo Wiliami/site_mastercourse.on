@@ -115,6 +115,10 @@ var salt = bcrypt.genSaltSync(10);
       res.render('dashboard')
     })
 
+    app.get('/dashboardTest', (req, res) => {
+      res.render('dashboardTest')
+    })
+
     app.get('/esqueci-senha', (req, res) => {
       res.render('forgot')
     })
