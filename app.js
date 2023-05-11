@@ -97,6 +97,14 @@ var salt = bcrypt.genSaltSync(10);
     app.get('/perfil-user', (req, res) => {
       res.render('area-membro/perfil-user');
     })
+
+    app.get('/contatos', (req, res) => {
+      res.render('contatos');
+    })
+
+    // app.get('/', (req, res) => {
+    //   res.render('');
+    // })
     
 
 
