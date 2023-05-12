@@ -106,6 +106,20 @@ var salt = bcrypt.genSaltSync(10);
       res.render('area-membro/purchase-user');
     })
 
+    app.get('/area-membro/course-pending', (req, res) => {
+      res.render('area-membro/course-pending');
+    })
+
+    app.get('/area-membro/course-completed', (req, res) => {
+      res.render('area-membro/course-completed');
+    })
+
+    app.get('/area-membro/user-profile', (req, res) => {
+      res.render('area-membro/user-profile');
+    })
+
+
+
     // app.get('/', (req, res) => {
     //   res.render('');
     // })
