@@ -59,7 +59,7 @@ var salt = bcrypt.genSaltSync(10);
       res.render('forgot-password')
     })
 
-    app.get('/meus-cursos', (req, res) => {
+    app.get('/area-membro/meus-cursos', (req, res) => {
       res.render('area-membro/meus-cursos')
     })
 
@@ -100,6 +100,10 @@ var salt = bcrypt.genSaltSync(10);
 
     app.get('/contatos', (req, res) => {
       res.render('contatos');
+    })
+
+    app.get('/area-membro/purchase-user', (req, res) => {
+      res.render('area-membro/purchase-user');
     })
 
     // app.get('/', (req, res) => {
