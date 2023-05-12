@@ -118,6 +118,9 @@ var salt = bcrypt.genSaltSync(10);
       res.render('area-membro/user-profile');
     })
 
+    app.get('/help', (req, res) => {
+      res.render('area-membro/help');
+    })
 
 
     // app.get('/', (req, res) => {
