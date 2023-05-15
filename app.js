@@ -59,9 +59,7 @@ var salt = bcrypt.genSaltSync(10);
       res.render('forgot-password')
     })
 
-    app.get('/area-membro/meus-cursos', (req, res) => {
-      res.render('area-membro/meus-cursos')
-    })
+
 
 
     app.get('/admin/users/create', (req, res) => {
@@ -82,8 +80,15 @@ var salt = bcrypt.genSaltSync(10);
 
 
 
-    app.get('/area-membro/area-curso', (req, res) => {
-      res.render('area-membro/area-curso');
+
+
+    // Cursos do usuário: url's
+    app.get('/area-membro/courses/meus-cursos', (req, res) => {
+      res.render('area-membro/courses/meus-cursos')
+    })
+
+    app.get('/area-membro/courses/area-curso', (req, res) => {
+      res.render('area-membro/courses/area-curso');
     })
 
     app.get('/cursos-lancamentos', (req, res) => {
@@ -106,12 +111,12 @@ var salt = bcrypt.genSaltSync(10);
       res.render('area-membro/purchase-user');
     })
 
-    app.get('/area-membro/course-pending', (req, res) => {
-      res.render('area-membro/course-pending');
+    app.get('/area-membro/courses/course-pending', (req, res) => {
+      res.render('area-membro/courses/course-pending');
     })
 
-    app.get('/area-membro/course-completed', (req, res) => {
-      res.render('area-membro/course-completed');
+    app.get('/area-membro/courses/course-completed', (req, res) => {
+      res.render('area-membro/courses/course-completed');
     })
 
     app.get('/area-membro/user-profile', (req, res) => {
