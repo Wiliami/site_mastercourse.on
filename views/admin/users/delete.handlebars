@@ -1,6 +1,20 @@
-    {{>_filesHeadHtmlPlatform}}
-    {{>_navbar}}
-    <main class="main mt-5">
-        <h1>deletar usuário</h1>
+    {{>_sidebarDashboard}}
+     <main id="main" class="main">
+      <div class="pagetitle">
+        {{!-- <h1>Lista de usuários</h1> --}}
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+            <li class="breadcrumb-item">Administrativo</li>
+            <li class="breadcrumb-item active">Exluir usuário</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 
-    </main>
+      <section class="section dashboard">
+        <div class="row">
+            <h3>Excluir usuário</h3>
+        </div> <!-- End row -->
+
+    </section>
+    {{>_footerFilesScriptDashboard}}

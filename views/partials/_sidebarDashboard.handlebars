@@ -327,14 +327,6 @@
               <i class="bi bi-circle"></i><span>Minha conta</span>
             </a>
           </li>
-        </ul>
-      </li><!-- End Módulo 2 Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-help" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-info-circle"></i><span>Ajuda</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-help" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="/help">
               <i class="bi bi-circle"></i><span>Suporte</span>
@@ -342,23 +334,41 @@
           </li>
         </ul>
       </li><!-- End Módulo 2 Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-admin" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gear"></i><span>Administrativo</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-admin" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/users/create">
+              <i class="bi bi-circle"></i><span>Criar usuário</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/list">
+              <i class="bi bi-circle"></i><span>Lista de usuários</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/update">
+              <i class="bi bi-circle"></i><span>Atualizar usuários</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/delete">
+              <i class="bi bi-circle"></i><span>Excluir ursuários</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Módulo 2 Nav -->
+
     </ul>
   </aside><!-- End Sidebar-->
 
 
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>K. Anderson</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
-          {{!-- <li class="breadcrumb-item active">Dashboard</li> --}}
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section dashboard">
+      <!-- Section -->
       <!-- <div class="row"> -->
 
         <!-- Left side columns -->
@@ -382,6 +392,12 @@
     {{!-- </section>
   </main><!-- End #main --> --}}
 
+
+
+
+
+
+
   <!-- ======= Footer ======= -->
   {{!-- <footer id="footer" class="footer">
     <div class="copyright">
@@ -395,6 +411,13 @@
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </footer><!-- End Footer --> --}}
+
+  
+
+
+
+
+
 
   {{!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

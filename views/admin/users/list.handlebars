@@ -1,13 +1,18 @@
-  {{>_headFilesBootstrapDataTables}} 
-  {{>_sidebarDashboard}}
-  {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css"> --}}
+    {{>_headFilesBootstrapDataTables}}
+    {{>_sidebarDashboard}}
+    <main id="main" class="main">
+      <div class="pagetitle">
+        {{!-- <h1>Lista de usuários</h1> --}}
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+            <li class="breadcrumb-item">Meus cursos</li>
+            <li class="breadcrumb-item active">Todos os cursos</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 
-    {{!-- {{>_headerHome}} --}}
-    {{!-- <main id="main" class="main">
-      
-      <section id="section"> --}}
+      <section class="section dashboard">
         <div class="row">
           <div class="col-lg-12">
 
@@ -50,7 +55,7 @@
                           <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
                           <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
                         </td>
-                      </tr>            
+                      </tr>         
                     </tbody>
                     <tfoot>
                       <tr>
@@ -67,9 +72,13 @@
             </div>
           </div> <!-- End column right -->
         </div> <!-- End row -->
+      </section>
+    </main>
 
-      {{!-- </section>
-    </main> --}}
+
+
+
+    
         
     {{>_footerFilesScriptDashboard}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -97,14 +106,13 @@
                 "previous": "Anterior",
                 "next": "Próximo"
               },
-              searchPlaceholder: 'Pesquisar...',
               search: 'Pesquisar:',
+              searchPlaceholder: 'Pesquisar...',
             }
 
           });
       });
-
-
     </script>
+
   </body>
 </html>
