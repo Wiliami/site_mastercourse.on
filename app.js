@@ -53,9 +53,14 @@ const admin = require('./routes/admin');
     app.use('/', home);
 
     app.use('/home', user);
-    
+
     // Rotas: ADMIN
     app.use('/admin', admin);
+
+
+    app.get('*', (req, res) => {
+      res.render('404');
+    });
 
 
 // RODANDO NA PORTA 8081

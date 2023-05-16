@@ -19,9 +19,6 @@ router.get('/users/delete', (req, res) => {
 });
 
 
-router.get('*', (req, res) => {
-    res.render('404')
-});
 
 
 module.exports = router;

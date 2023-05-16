@@ -55,6 +55,10 @@ router.get('/courses', (req, res) => {
     res.render('courses')
 });
 
+router.get('/account/user-profile', (req, res) => {
+    res.render('account/user-profile');
+});
+
 
 // Comoras de curso
 router.get('/checkout', (req, res) => {
@@ -62,9 +66,8 @@ router.get('/checkout', (req, res) => {
 });
 
 
-router.get('*', (req, res) => {
-    res.render('404');
-});
+
+
 
 
 

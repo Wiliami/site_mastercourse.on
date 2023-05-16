@@ -22,20 +22,9 @@ router.get('/area-membro/courses/area-curso', (req, res) => {
     res.render('area-membro/courses/area-curso');
 });
 
-router.get('/account/settings', (req, res) => {
-    res.render('account/user-profile');
-});
-
-router.get('/account/user-profile', (req, res) => {
-    res.render('account/user-profile');
-});
 
 
 
-
-router.get('*', (req, res) => {
-    res.render('404');
-});
 
 
 module.exports = router;
