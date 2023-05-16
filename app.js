@@ -52,6 +52,7 @@ const admin = require('./routes/admin');
     // Rotas: HOME
     app.use('/', home);
 
+    // Rotas: Usuário
     app.use('/home', user);
 
     // Rotas: ADMIN
