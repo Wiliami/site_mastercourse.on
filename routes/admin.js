@@ -1,28 +1,27 @@
 const express = require("express");
 const router = express.Router();
 
+ 
+router.get('/users/create', (req, res) => {
+    res.render('admin/users/create')
+});
 
-// LISTAGEM
-// router.get('/admin/users/list', (req, res) => {
-//     res.render('admin/users/list') //caminho das pastas
-// });
+router.get('/users/list', (req, res) => {
+    res.render('admin/users/list')
+});
 
-
-// CRIACAO
-// router.get('/admin/users/create', (req, res) => { 
-//     res.render('admin/users/create') // caminho das pastas
-// });
-
-
-// ATUALIZACAO 
-router.get('/admin/users/update', (req, res) => {
+router.get('/users/update', (req, res) => {
     res.render('admin/users/update')
 });
 
-
-// DELETAR
-router.get('/admin/users/delete', (req, res) => {
+router.get('/users/delete', (req, res) => {
     res.render('admin/users/delete')
 });
+
+
+router.get('*', (req, res) => {
+    res.render('404')
+});
+
 
 module.exports = router;
