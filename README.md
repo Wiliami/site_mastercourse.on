@@ -39,7 +39,12 @@ Use `nodemon app.js` run the project.
 ![scree signup](https://user-images.githubusercontent.com/67030481/236533108-c913d009-de49-4063-9cac-974c83f51be6.png)
 
 ## Page - Dashboard
-![dashboard - master courses](https://github.com/Wiliami/nodejs-website/assets/67030481/cd5617f9-7fce-4c26-a3d4-bbc5c2549965)
+![page dashboard](https://github.com/Wiliami/nodejs-website/assets/67030481/fefcc0aa-dd95-4cee-88dc-988635da2315)
 
-Adicionando um comentário no repositório
-Adicionando um comentário no repositório master
+## Page - Courses Users
+![page courses user](https://github.com/Wiliami/nodejs-website/assets/67030481/376407aa-2415-4d95-8318-6a62bf47ff1a)
+
+## Page - Settings Profile User
+![page - settings profile user](https://github.com/Wiliami/nodejs-website/assets/67030481/0eb8ff8e-a9f2-4b9b-b69a-1caabc47a483)
+
+
