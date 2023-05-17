@@ -55,6 +55,11 @@ router.get('/courses', (req, res) => {
     res.render('courses')
 });
 
+router.get('/course-details', (req, res) => {
+    res.render('course-details')
+});
+
+
 router.get('/account/user-profile', (req, res) => {
     res.render('account/user-profile');
 });
