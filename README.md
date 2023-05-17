@@ -1,4 +1,4 @@
-# Project Website created with Node.js
+# Website created with Node.js
 
 ## How run project:
 - 1 step run: 
@@ -46,5 +46,8 @@ Use `nodemon app.js` run the project.
 
 ## Page - Settings Profile User
 ![page - settings profile user](https://github.com/Wiliami/nodejs-website/assets/67030481/0eb8ff8e-a9f2-4b9b-b69a-1caabc47a483)
+
+## Page - Courses User 
+![image](https://github.com/Wiliami/nodejs-website/assets/67030481/20745f86-156d-410d-af98-cec62e5ffdab)
 
 
