@@ -339,30 +339,43 @@
 
 
   <main id="main" class="main">
-    {{!-- <div class="row"> --}}
-      {{!-- <section class="section"> --}}
-        <div class="ratio ratio-16x9 h-75 mt-2 w-100">
-          <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-        </div>
-      {{!-- </section> --}}
-    {{!-- </div> --}}
 
-      {{!-- <div class="container mt-4">
-        <div class="row">
-          <div class="col">
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="col">
-              <button class="rounded-pill btn btn-success" type="button">Marcar como concluída</button>
-            </div>
-          </div>
-          <div class="col">
-            Avaliar curso
-          </div>
+    <!-- Tag video -->
+    <section class="section-lesson-user">
+      <div class="ratio ratio-16x9 h-75 mt-2 w-100">
+        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+      </div>
+
+
+
+    
+      <!-- Tag title e buttons previous and next -->
+      <div class="d-flex justify-content-between mt-4">
+        <h2 class="section-title">Nome da aula</h2>
+        <div class="button-video">
+          <a href="/">
+            <button class="btn btn-primary me-md-2" type="button">Anterior</button>
+          </a>
+          <a href="/">
+            <button class="btn btn-primary" type="button">Avançar</button>
+          </a>
         </div>
-      </div> --}}
+      </div>
+
+
+      <!-- Tag Button action users -->
+      <div class="row">
+        <div class="col-4">
+          <button class="btn btn-primary" type="button">Button</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-primary" type="button">Button</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="button">Button</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 {{>_footerFilesScriptDashboard}}
