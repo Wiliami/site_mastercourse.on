@@ -35,8 +35,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 <body>
+
+
+
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
@@ -254,6 +258,7 @@
 
   </header><!-- End Header -->
 
+
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -338,17 +343,18 @@
   </aside><!-- End Sidebar-->
 
 
-  <main id="main" class="main">
-
-    <!-- Tag video -->
-    <section class="section-lesson-user">
-      <div class="ratio ratio-16x9 h-75 mt-2 w-100">
-        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-      </div>
 
 
+   <main class="main" id="main">
+ 
+      <section class="section">
+        <div class="row">
+          <div class="ratio ratio-16x9 h-75 mt-2">
+            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+          </div>
+        </div> <!-- End row container -->
+      </section>
 
-    
       <!-- Tag title e buttons previous and next -->
       <div class="d-flex justify-content-between mt-4">
         <h2 class="section-title">Nome da aula</h2>
@@ -361,22 +367,24 @@
           </a>
         </div>
       </div>
-
+  
 
       <!-- Tag Button action users -->
       <div class="row">
         <!-- Code -->
-        <div class="col-4">
-          <button class="btn btn-primary" type="button">Button</button>
-        </div>
-        <div class="col-4">
-          <button class="btn btn-primary" type="button">Button</button>
+        <div class="col">
+          {{!-- <button class="btn btn-primary rounded-pill w-100" type="button">Button</button> --}}
+          <div class="progress rounded-pill" style="height: 37px"> 
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div> 
         </div>
         <div class="col">
-          <button class="btn btn-primary" type="button">Button</button>
+          <button class="btn btn-success rounded-pill w-100" type="button">Marcar como conlcuída</button>
         </div>
       </div>
-    </section>
 
-  </main>
+     
+    </main>
+    
+
 {{>_footerFilesScriptDashboard}}
