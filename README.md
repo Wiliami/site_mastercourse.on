@@ -51,3 +51,4 @@ Use `nodemon app.js` run the project.
 ![image](https://github.com/Wiliami/nodejs-website/assets/67030481/20745f86-156d-410d-af98-cec62e5ffdab)
 
 
+create table master c
