@@ -48,7 +48,7 @@
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">MC</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      {{!-- <i class="bi bi-list toggle-sidebar-btn"></i> --}}
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -258,132 +258,64 @@
   </header><!-- End Header -->
 
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
-        <a class="nav-link " href="/dashboard">
-          <i class="bi bi-grid"></i>
-          <span>Nome do curso</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-courses" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-book"></i><span>Módulo 1</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-courses" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/home/area-membro/courses/meus-cursos">
-              <i class="bi bi-circle"></i><span>Aula 1</span>
-            </a>
-          </li>
-          <li>
-            <a href="/home/area-membro/courses/course-completed">
-              <i class="bi bi-circle"></i><span>Aula 2</span>
-            </a>
-          </li>
-            <li>
-            <a href="/home/area-membro/courses/course-pending">
-              <i class="bi bi-circle"></i><span>Aula 3</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Módulo 1 nav -->
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-purchase" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-book"></i><span>Módulo 2</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-purchase" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/home/area-membro/courses/purchase-user">
-              <i class="bi bi-circle"></i><span>Aula 1</span>
-            </a>
-          </li>
-          <li>
-            <a href="/home/area-membro/courses/purchase-user">
-              <i class="bi bi-circle"></i><span>Aula 2</span>
-            </a>
-          </li>
-          <li>
-            <a href="/home/area-membro/courses/purchase-user">
-              <i class="bi bi-circle"></i><span>Aula 3</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Módulo 2 Nav -->
-      
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-settings" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-book"></i><span>Módulo 3</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>  
-        <ul id="components-settings" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/account/user-profile">
-              <i class="bi bi-circle"></i><span>Aula 1</span>
-            </a>
-          </li>
-          <li>
-            <a href="/help">
-              <i class="bi bi-circle"></i><span>Aula 2</span>
-            </a>
-          </li>
-          <li>
-            <a href="/help">
-              <i class="bi bi-circle"></i><span>Aula 3</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Módulo 3 Nav -->
-    </ul>
-  </aside><!-- End Sidebar-->
-
 
 
 
    <main class="main" id="main">
+    
 
-      <section class="section">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Course Details</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+    <section id="course-details" class="course-details">
+      <div class="container" data-aos="fade-up">
+
         <div class="row">
-          <div class="ratio ratio-16x9 h-75 mt-2">
-            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+          <div class="col-lg-8">
+            <img src="assets/img/course-details.jpg" class="img-fluid" alt="">
+            <h3>Et enim incidunt fuga tempora</h3>
+            <p>
+              Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
+              Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
+              Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
+            </p>
           </div>
-        </div> <!-- End row container -->
-      </section>
+          <div class="col-lg-4">
 
-      <!-- Tag title e buttons previous and next -->
-      <div class="d-flex justify-content-between mt-4">
-        <h2 class="section-title">Nome da aula</h2>
-        <div class="button-video">
-          <a href="/">
-            <button class="btn btn-primary me-md-2" type="button">Anterior</button>
-          </a>
-          <a href="/">
-            <button class="btn btn-primary" type="button">Avançar</button>
-          </a>
-        </div>
-      </div>
-  
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Trainer</h5>
+              <p><a href="#">Walter White</a></p>
+            </div>
 
-      <!-- Tag Button action users -->
-      <div class="row d-flex">
-        <!-- Code -->
-        <div class="col">
-          {{!-- <button class="btn btn-primary rounded-pill w-100" type="button">Button</button> --}}
-          <div class="progress rounded-pill" style="height: 37px"> 
-              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-          </div> 
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Course Fee</h5>
+              <p>$165</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Available Seats</h5>
+              <p>30</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Schedule</h5>
+              <p>5.00 pm - 7.00 pm</p>
+            </div>
+
+          </div>
         </div>
-        <div class="col">
-          <button class="btn btn-success rounded-pill w-100" type="button">Marcar como conlcuída</button>
-        </div>
+
       </div>
+    </section><!-- End Cource Details Section -->
 
      
     </main>
-    
+
 
 {{>_footerFilesScriptDashboard}}
