@@ -258,12 +258,113 @@
   </header><!-- End Header -->
 
 
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link " href="/dashboard">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-courses" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-book"></i><span>Meus cursos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-courses" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/home/area-membro/courses/meus-cursos">
+              <i class="bi bi-circle"></i><span>Todos os cursos</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home/area-membro/courses/course-completed">
+              <i class="bi bi-circle"></i><span>Cursos concluídos</span>
+            </a>
+          </li>
+            <li>
+            <a href="/home/area-membro/courses/course-pending">
+              <i class="bi bi-circle"></i><span>Cursos não concluídos</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Módulo 1 nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-purchase" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bag"></i><span>Minhas compras</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-purchase" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/home/area-membro/courses/purchase-user">
+              <i class="bi bi-circle"></i><span>Lista de compras</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Módulo 2 Nav -->
+      
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-settings" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gear"></i><span>Configurações</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-settings" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/account/user-profile">
+              <i class="bi bi-circle"></i><span>Minha conta</span>
+            </a>
+          </li>
+          <li>
+            <a href="/help">
+              <i class="bi bi-circle"></i><span>Suporte</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Módulo 2 Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-admin" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gear"></i><span>Administrativo</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-admin" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/users/create">
+              <i class="bi bi-circle"></i><span>Criar usuário</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/list">
+              <i class="bi bi-circle"></i><span>Lista de usuários</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/update">
+              <i class="bi bi-circle"></i><span>Atualizar usuários</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/users/delete">
+              <i class="bi bi-circle"></i><span>Excluir ursuários</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Módulo 2 Nav -->
+      
+
+    </ul>
+  </aside><!-- End Sidebar-->
+
+
+
 
 
 
    <main class="main" id="main">
 
-     <div class="pagetitle">
+     {{!-- <div class="pagetitle">
         <h1>Nome do curso</h1>
         <nav>
           <ol class="breadcrumb">
@@ -272,19 +373,20 @@
             <li class="breadcrumb-item active">Nome do curso</li>
           </ol>
         </nav>
-      </div><!-- End Page Title -->
+      </div><!-- End Page Title --> --}}
 
     <section class="section">
       <div class="row">
   
-        <div class="col-lg-6">
+        <div class="col-lg">
   
           <div class="card">
-            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" height="400" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Nome da aula</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn btn-success rounded-pill">Marcar como concluída</a>
             </div>
           </div>
         </div>
@@ -292,50 +394,7 @@
 
 
 
-        <div class="col-lg-6">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Lista de aulas</h5>
-
-              <!-- Accordion without outline borders -->
-              <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      Aula #1
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      Aula #2
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      Aula #3
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                  </div>
-                </div>
-              </div><!-- End Accordion without outline borders -->
-
-            </div>
-          </div>
-
-        </div>
+       
       </div>
     </section>
 
