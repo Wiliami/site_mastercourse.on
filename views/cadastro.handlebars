@@ -66,18 +66,16 @@
   
 
 
-    if(!buttonSubmit) {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            nameValidate()
-            emailValidate();
-            mainPasswordValidate();
-        });
-    }
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        nameValidate()
+        emailValidate();
+        mainPasswordValidate();
+    });
 
    
     function setError(index) {
-        campos[index].style.border = '2px solid #e6336';
+        campos[index].style.border = '2px solid #e63656';
         spans[index].style.display = 'block';
     }
 
