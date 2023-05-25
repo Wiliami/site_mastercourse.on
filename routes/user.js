@@ -23,7 +23,7 @@ router.get('/area-membro/courses/area-curso', (req, res) => {
 });
 
 router.get('/area-membro/courses/course-details', (req, res) => {
-    res.render('area-membro/courses/course-deatils');
+    res.render('area-membro/courses/course-details');
 });
 
 
