@@ -22,9 +22,9 @@ router.get('/area-membro/courses/area-curso', (req, res) => {
     res.render('area-membro/courses/area-curso');
 });
 
-
-
-
+router.get('/area-membro/courses/course-details', (req, res) => {
+    res.render('area-membro/courses/course-deatils');
+});
 
 
 module.exports = router;
