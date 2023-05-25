@@ -632,7 +632,7 @@
   @media (min-width: 1200px) {
   
     #main,
-    #footer {
+    #footer-dashboard {
       margin-left: 300px;
     }
   }
@@ -646,7 +646,7 @@
   @media (min-width: 1200px) {
   
     .toggle-sidebar #main,
-    .toggle-sidebar #footer {
+    .toggle-sidebar #footer-dashboard {
       margin-left: 0;
     }
   
@@ -1213,19 +1213,19 @@
   /*--------------------------------------------------------------
   # Footer
   --------------------------------------------------------------*/
-  .footer {
+  .footer-dashboard {
     padding: 20px 0;
     font-size: 14px;
     transition: all 0.3s;
     border-top: 1px solid #cddfff;
   }
   
-  .footer .copyright {
+  .footer-dashboard .copyright {
     text-align: center;
     color: #012970;
   }
   
-  .footer .credits {
+  .footer-dashboard .credits {
     padding-top: 5px;
     text-align: center;
     font-size: 13px;
