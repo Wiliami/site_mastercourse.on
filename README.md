@@ -19,7 +19,7 @@ Use `nodemon app.js` run the project.
   - HTML5
   - CSS3
   - Javascript
-  - Bootstrap
+  - Bootstrap v5.2.3
 - **Backend:**
   - NodeJS
   - Nodemon
