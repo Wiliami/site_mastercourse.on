@@ -70,11 +70,4 @@ router.get('/checkout', (req, res) => {
     res.render('checkout')
 });
 
-router.get('*', (req, res) => {
-    res.render('404')
-});
-
-
-
-
 module.exports = router;
