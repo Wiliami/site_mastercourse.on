@@ -27,4 +27,8 @@ router.get('/area-membro/courses/course-details', (req, res) => {
 });
 
 
+router.get('*', (req, res) => {
+    res.render('home/404')
+});
+
 module.exports = router;
