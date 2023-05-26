@@ -20,8 +20,7 @@
             <div class="card shadow mb-4">
               <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h3 class="m-0 text-dark">Usuários</h3>
-                  <!-- button is-link rounded-pill -->
-                  <a href="/admin/users/create" class="btn btn-success rounded-pill" title="Cadastrar novo usuário" style="border-radius: 50%; font-size: 12px;">Cadastrar novo usuário</a>
+                  <a href="/admin/users/create" class="btn btn-primary rounded-pill mb-4" style="border-radius: 50%; font-size: 13px;">Cadastrar novo usuário</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -37,27 +36,27 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Admin User</td>
+                        <td>Admin</td>
                         <td>admin@gmail.com</td>
                         <td>999999999</td>
                         <td>Admin</td>
                         <td>
-                          <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
-                          <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
+                          <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a>
+                          <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
-                        <td>User</td>
-                        <td>user@gmail.com</td>
+                        <td>Visitante</td>
+                        <td>visitante@gmail.com</td>
                         <td>999559595599</td>
                         <td>Visitante</td>
                         <td>
-                          <a href="/admin/users/update" class="" title="Atualizar"><i class="fas fa-user-edit"></i></a>
-                          <a href="/admin/users/delete" class="" title="Excluir item"><i class="fa-solid fa-trash"></i></a>
+                          <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a>
+                          <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>
                         </td>
                       </tr>         
                     </tbody>
-                    <tfoot>
+                    {{!-- <tfoot>
                       <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
@@ -65,7 +64,7 @@
                         <th>Função</th>      
                         <th>Opções</th>       
                       </tr>
-                    </tfoot>
+                    </tfoot> --}}
                   </table>
                 </div>
               </div>    
@@ -80,7 +79,7 @@
 
     
         
-    {{>_footerFilesScriptDashboard}}
+    {{>_footerDashboard}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
