@@ -15,9 +15,9 @@ router.post('/dashboard', (req, res) => {
         // res.send('<div class="alert alert-primary" role="alert">Usuário cadastrado com sucesso!</div>')
         res.status(200).json({ success: 'Usuário cadastrado com sucesso!'})
         // bcrypt.compareSync('12345678', userPassword); // true
-    }).catch((erroMessage) => {
+    }).catch((errorMessage) => {
         // res.send('<div class="alert alert-danger" role="alert">Não foi possível cadastrar usuário!</div>')
-        res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + erroMessage})
+        res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + errorMessage})
     })
 });
 
