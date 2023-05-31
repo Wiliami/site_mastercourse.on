@@ -1,4 +1,8 @@
 const express = require("express");
+const User = require('../model/User');
+// var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
 const router = express.Router();
 
 
@@ -65,7 +69,7 @@ router.get('/account/user-profile', (req, res) => {
 });
 
 
-// Comoras de curso
+// Compras de curso
 router.get('/checkout', (req, res) => {
     res.render('checkout')
 });
