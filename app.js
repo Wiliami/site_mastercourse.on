@@ -1,14 +1,9 @@
 const express  = require("express");
 const app = express();
 const { engine } = require('express-handlebars');
-const User = require('./model/User');
-const db = require("./model/db");
-var bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
-var salt = bcrypt.genSaltSync(10);
 
 // ROTAS
 const home = require('./routes/home');
@@ -25,26 +20,30 @@ const admin = require('./routes/admin');
   app.use(flash());
 
   app.use((req, res, next) => {
-    res.locals.success_msg = req.flash("success_msg")
-    res.locals.error_msg = req.flash("error_msg")
-    next()
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    next();
   });
 
 // config: Template engine
-    app.engine(
-      "handlebars",
-      engine({
-        defaultLayout: "main",
-        runtimeOptions: {
-          allowProtoPropertiesByDefault: true,
-          allowProtoMethodsByDefault: true,
-        },
-      })
-    );
+    // app.engine(
+    //   "handlebars",
+    //   engine({
+    //     defaultLayout: "main",
+    //     runtimeOptions: {
+    //       allowProtoPropertiesByDefault: true,
+    //       allowProtoMethodsByDefault: true,
+    //     },
+    //   })
+    // );
 
+    
+    
     app.use(express.static(__dirname + '/public'));
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'handlebars');
+    // app.set('view engine', 'handlebars');
+    app.engine('.hbs', engine({extname: '.hbs'}));
+    app.set('view engine', '.hbs');
     app.use(express.urlencoded({extended:false}));
     app.use(express.json());
 
@@ -58,7 +57,7 @@ const admin = require('./routes/admin');
     // Rotas: ADMIN
     app.use('/admin', admin);
 
-
+    // Page not found
     app.get('*', (req, res) => {
       res.render('404');
     });
