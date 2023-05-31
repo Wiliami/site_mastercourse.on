@@ -2,3 +2,4 @@
 /Model/db.js
 /Model/Post.js
 /Model/User.js
+/Model/Admin.js
