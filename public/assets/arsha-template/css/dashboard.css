@@ -1337,3 +1337,12 @@
   font-family: "Poppins", sans-serif;
   color: #37423b;
 }
+
+
+/* Forms Admin => User */
+.span-required {
+  font-size: 14px;
+  margin: 3px 0 0 1px;
+  color: #e63656;
+  display: none;
+}
