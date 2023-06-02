@@ -3,3 +3,5 @@
 /Model/Post.js
 /Model/User.js
 /Model/Admin.js
+/serviceAccountKey.json
+/model/data/dados_usuarios.json
