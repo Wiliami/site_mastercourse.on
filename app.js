@@ -2,7 +2,6 @@ const express  = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
 const app = express();
-
 const signIn = require("./routes/signIn");
 const signUp = require("./routes/SignUp");
 const home = require('./routes/home');
