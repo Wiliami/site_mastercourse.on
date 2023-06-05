@@ -1,110 +1,110 @@
-   {{>_sidebarDashboard}}
-    <main id="main" class="main">
-        <div class="pagetitle">
-            <h1>Criar usuário</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
-                    <li class="breadcrumb-item">Painel Admin</li>
-                    <li class="breadcrumb-item active">Cadastrar usuário</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-        
-        <section class="section dashboard">
-            <div class="row">
-                <div class="col-8">
-                    {{!-- <h1 class="mb-4">Cadastrar usuário</h1> --}}
-                    <form action="/admin/users/list" method="POST" id="form">
-                        <div class="mb-3">
-                            <label for="exampleInputName" class="form-label">Nome</label>
-                            <input type="text" class="form-control required" id="name" name="nameUser" aria-describedby="emailHelp" placeholder="Ex.: André Silva" oninput="nameValidate()">
-                            <span class="form-text span-required">Nome precisa conter 3 ou mais caracteres</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                            <input type="email" class="form-control required" id="email" name="emailUser" aria-describedby="emailHelp" placeholder="example@gmail.com" oninput="emailValidate()">
-                            <span class="form-text span-required">Digite um e-mail válido</sp>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Senha</label>
-                            <input type="password" class="form-control required" id="password" name="mainPassUser" placeholder="Digite sua senha" oninput="mainPasswordValidate()">
-                            <span class="form-text span-required">Senha precisa conter 6 ou mais caracteres</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Repita a senha</label>
-                            <input type="password" class="form-control required" id="password" name="repeatPassUser" placeholder="Repita sua senha" oninput="repeatPasswordValidate()">
-                            <span class="form-text span-required">Senhas devem ser compatíveis</span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                        <a href="/admin/users/list" class="btn btn-dark">Voltar</a>
-                    </form>
-                </div> <!-- Fim da col -->
-            </div> <!-- Fim da row -->
-        </section>
-    </main>
-    {{>_footerDashboard}}
-    {{>_footerFilesScriptsDashboard}}
-
-    <script>
-        let form = document.getElementById('form');
-        let campos = document.querySelectorAll('.required')
-        let span = document.querySelectorAll('.span-required')
-
-        let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            nameValidate()
-            emailValidate();
-            mainPasswordValidate();
-            repeatPasswordValidate();
-        });
+{{>_sidebarDashboard}}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Cadastrar usuário</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+                <li class="breadcrumb-item">Painel Admin</li>
+                <li class="breadcrumb-item active">Cadastrar usuário</li>
+            </ol>
+        </nav>
+    </div> <!-- End Page Title -->
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-8">
+                {{!-- <h1 class="mb-4">Cadastrar usuário</h1> --}}
+                <form action="/admin/users/list" method="POST" id="form">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Nome</label>
+                        <input type="text" class="form-control required" id="name" name="nameUser" aria-describedby="emailHelp" placeholder="Ex.: André Silva" oninput="nameValidate()">
+                        <span class="form-text span-required">Nome precisa conter 3 ou mais caracteres</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                        <input type="email" class="form-control required" id="email" name="emailUser" aria-describedby="emailHelp" placeholder="example@gmail.com" oninput="emailValidate()">
+                        <span class="form-text span-required">Digite um e-mail válido</sp>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Senha</label>
+                        <input type="password" class="form-control required" id="password" name="mainPassUser" placeholder="Digite sua senha" oninput="mainPasswordValidate()">
+                        <span class="form-text span-required">Senha precisa conter 6 ou mais caracteres</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">Repita a senha</label>
+                        <input type="password" class="form-control required" id="password" name="repeatPassUser" placeholder="Repita sua senha" oninput="repeatPasswordValidate()">
+                        <span class="form-text span-required">Senhas devem ser compatíveis</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <a href="/admin/users/list" class="btn btn-dark">Voltar</a>
+                </form>
+            </div> <!-- Fim da col -->
+        </div> <!-- Fim da row -->
+    </section>
+</main>
+{{>_footerDashboard}}
+{{>_footerFilesScriptsDashboard}}
 
 
-        function setError(index) {
-            campos[index].style.border = '2px solid #e63656';
-            span[index].style.display = 'block';
+<script>
+    let form = document.getElementById('form');
+    let campos = document.querySelectorAll('.required')
+    let span = document.querySelectorAll('.span-required')
+
+    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        nameValidate();
+        emailValidate();
+        mainPasswordValidate();
+        repeatPasswordValidate();
+    });
+
+
+    function setError(index) {
+        campos[index].style.border = '2px solid #e63656';
+        span[index].style.display = 'block';
+    }
+
+
+    function removeError(index) {
+        campos[index].style.border = '';
+        span[index].style.display = 'none';
+    }
+
+
+    function nameValidate() {
+        if(campos[0].value.length < 3) {
+            setError(0)
+        } else {
+            removeError(0)
         }
+    }
 
 
-        function removeError(index) {
-            campos[index].style.border = '';
-            span[index].style.display = 'none';
+    function emailValidate() {
+        if(!emailRegex.test(campos[1].value)) {
+            setError(1);
+        } else {
+            removeError(1);
         }
+    }
 
 
-        function nameValidate() {
-            if(campos[0].value.length < 3) {
-                setError(0)
-            } else {
-                removeError(0)
-            }
+    function mainPasswordValidate() {
+        if(campos[2].value.length < 8) {
+            setError(2);
+        } else {
+            removeError(2);
         }
+    }
 
-
-        function emailValidate() {
-            if(!emailRegex.test(campos[1].value)) {
-                setError(1);
-            } else {
-                removeError(1);
-            }
+    function repeatPasswordValidate() {
+            if(campos[3].value.length < 8) {
+            setError(3);
+        } else {
+            removeError(3);
         }
-
-
-        function mainPasswordValidate() {
-            if(campos[2].value.length < 8) {
-                setError(2);
-            } else {
-                removeError(2);
-            }
-        }
-
-        function repeatPasswordValidate() {
-             if(campos[3].value.length < 8) {
-                setError(3);
-            } else {
-                removeError(3);
-            }
-        }
-    </script>
+    }
+</script>
