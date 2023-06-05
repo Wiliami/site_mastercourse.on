@@ -1,6 +1,5 @@
 const express = require("express");
 const User = require('../model/User');
-// var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const router = express.Router();
@@ -29,14 +28,6 @@ router.post('/dashboard', (req, res) => {
 
 router.get('/', (req, res) => {
     res.render('home')
-});
-
-router.get('/login', (req, res) => {
-    res.render('login')
-});
-
-router.get('/cadastro', (req, res) => {
-    res.render('cadastro')
 });
 
 router.get('/sobre', (req, res) => {
@@ -68,10 +59,11 @@ router.get('/account/user-profile', (req, res) => {
     res.render('account/user-profile');
 });
 
-
-// Compras de curso
 router.get('/checkout', (req, res) => {
     res.render('checkout')
 });
+
+
+
 
 module.exports = router;

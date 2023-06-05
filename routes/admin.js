@@ -1,6 +1,8 @@
 const express = require("express");
-const db = require("../model/db");
 const Admin = require("../model/Admin");
+const db = require("../model/db");
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
 const router = express.Router();
 
  
@@ -25,12 +27,15 @@ router.post('/users/list', (req, res) => {
     Admin.create({
         userName: req.body.nameUser,
         userEmail: req.body.emailUser,
-        userMainPassword: req.body.mainPassUser,
-        userPassword: req.body.repeatPassUser
+        userMainPassword: bcrypt.hashSync(req.body.mainPassUser, salt),
+        userPassword: bcrypt.hashSync(req.body.repeatPassUser, salt) 
     }).then( () => {
+        res.status(200).json({ success: 'Usuário cadastrado com sucesso!'});
+    }).catch((errorMessage) => {
+        res.status(400).json({ error: 'Não foi possível cadastrar usuário, ' + errorMessage});
+    }) 
+});
 
-    })
-})
 
 
 

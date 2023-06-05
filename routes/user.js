@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 
+
+
 router.get('/area-membro/courses/meus-cursos', (req, res) => {
-    res.render('area-membro/courses/meus-cursos')
+    res.render('area-membro/courses/meus-cursos');
 });
 
 router.get('/area-membro/courses/course-completed', (req, res) => {
