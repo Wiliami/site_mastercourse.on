@@ -16,7 +16,6 @@ app.set('view engine', '.hbs');
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// Rotas: HOME
 app.use('/', home);
 app.use('/home', user);
 app.use('/admin', routeAdmin);
