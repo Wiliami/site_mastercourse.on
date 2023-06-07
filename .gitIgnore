@@ -5,3 +5,6 @@
 /Model/Admin.js
 /serviceAccountKey.json
 /model/data/dados_usuarios.json
+/middlewares/authenticate-jwt.js
+firebase-init.js
+singIn.js
