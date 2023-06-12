@@ -2,11 +2,9 @@ const express  = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
 const app = express();
-const signIn = require("./routes/signIn");
-const signUp = require("./routes/SignUp");
 const home = require('./routes/home');
 const user = require('./routes/user');
-const routeAdmin = require('./routes/admin');
+const AdminRoute = require('./routes/admin');
 const { request } = require('http');
 const authenticateToken = require("./middlewares/authenticate-jwt");
 var admin = require("firebase-admin");
@@ -29,15 +27,6 @@ var admin = require("firebase-admin");
         })
     })
 
-
-
-    // const user = {
-    //     name: '',
-    //     id: 'X0m4hmykWMXENpSjNpgBLG1xjZG2',
-    //     email: 'oliveirawiliamis34@gmail.com'
-    // }
-
-
     
 
 
@@ -51,9 +40,12 @@ app.use(express.json());
 
 app.use('/', home);
 app.use('/home', user);
-app.use('/admin', routeAdmin);
-app.use('/login', signIn);
-app.use('/cadastro', signUp);
+app.use('/admin', AdminRoute);
+
+
+app.use('/login', (req, res) => res.render('login'));
+app.use('/cadastro', (req, res) => res.render('cadastro'));
+
 app.get('*', (req, res) => res.render('404'));
 
 app.listen(8081, () => console.log('Servidor iniciado na porta 8081: http://localhost:8081') );
