@@ -3,8 +3,6 @@
 /Model/Post.js
 /Model/User.js
 /Model/Admin.js
-/serviceAccountKey.json
-/model/data/dados_usuarios.json
-/middlewares/authenticate-jwt.js
+serviceAccountKey.json
+authenticate-jwt.js
 firebase-init.js
-singIn.js
