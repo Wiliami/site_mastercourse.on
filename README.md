@@ -1,5 +1,5 @@
-# Website created with Node.js ...
-## fisrt step
+# Website created with Node.js
+
 ## How run project:
 - 1 step run: 
 ```
