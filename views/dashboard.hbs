@@ -5,47 +5,33 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
-          {{!-- <li class="breadcrumb-item active">Dashboard</li> --}}
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section">
       <div class="row">
-
         <!-- Left side columns -->
         <div class="col-lg-4">
           <div class="row">
-            {{!-- <p>Column left</p> --}}
+            
           </div>
-        </div><!-- End Left side columns -->
-
+        </div>
 
         <!-- Right side columns -->
         <div class="col-lg-4">
           <div class="row">
-            {{!-- <p>Column right</p> --}}
+            
           </div>
-        </div><!-- End Right side columns -->
-
-
-         <!-- Right side columns -->
-        <div class="col-lg-2">
-          <div class="row">
-            {{!-- <p>Column right</p> --}}
-          </div>
-        </div><!-- End Right side columns -->
-
-         <!-- Right side columns -->
-        <div class="col-lg-2">
-          <div class="row">
-            {{!-- <p>Column right</p> --}}
-          </div>
-        </div><!-- End Right side columns -->
-
+        </div>
       </div> <!-- End row container -->
     </section>
-
   </main><!-- End #main -->
   {{>_footerDashboard}}
   {{>_footerFilesScriptsDashboard}}
+  {{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script> --}}
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="/assets/js/firebase-init.js"></script>
+  <script src="/assets/js/auth-guard.js"></script>
+  <script src="/assets/js/logout.js"></script>
