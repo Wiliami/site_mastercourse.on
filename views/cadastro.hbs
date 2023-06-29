@@ -9,24 +9,31 @@
                                 <h2 class="mb-4 text-center">Criar conta</h2>
                             </div>
                             <div class="mb-md-5 mt-md-4 pb-5">
-                                <form action="/dashboard" method="POST" id="form" class="form-user">
+                                {{!-- <form action="/dashboard" method="POST" id="form" class="form-user"> --}}
+                                <div id="form">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control required" name="nome" placeholder="Nome e sobrenome" oninput="nameValidate()">
+                                        <input type="text" class="form-control required" name="nome" id="name-user" placeholder="Nome e sobrenome" oninput="nameValidate()">
                                         <label for="inputName">Nome</label>
                                         <span class="span-required text-start">Nome deve ter no mínimo 3 caracteres</span>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control required" name="email" placeholder="E-mail" oninput="emailValidate()">
+                                        <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail" oninput="emailValidate()">
                                         <label for="inputEmail">E-mail</label>
-                                        <span class="span-required text-start">Digite um e-mail válido</span>      
+                                        <span class="span-required text-start">Digite um e-mail válido</span> 
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control required" name="password" autocomplete="on" placeholder="Senha" oninput="mainPasswordValidate()">
+                                        <input type="password" class="form-control required" name="password" id="password" autocomplete="on" placeholder="Senha" oninput="mainPasswordValidate()">
                                         <label for="inputPassword">Senha</label>
                                         <span class="span-required text-start">Digite uma senha com no mínimo 8 caracteres</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success w-100" name="button-register" type="submit" value="Criar">
-                                </form>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control required" name="password" autocomplete="on" placeholder="Confirmar senha" oninput="comparePassword()">
+                                        <label for="inputPassword">Confimar senha</label>
+                                        <span class="span-required text-start">Senhas devem ser compatíveis</span>
+                                    </div>
+                                    <input class="btn btn-lg btn-success w-100" name="button-register" id="button-submit-register" onclick="register()" value="Criar">
+                                </div>
+                                {{!-- </form> --}}
                                 <div class="mt-4">
                                     <div class="d-flex justify-content-center links">
                                         <p> Já possui uma conta? <a href="/login" class="ml-2">Login</a></p>
@@ -40,27 +47,37 @@
         </div> 
     </section>   
 </body>
+
+{{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script> --}}
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+<script src="/assets/js/forms/register/register.js"></script>
+
 <script>
-    const form = document.getElementById('form');
+    const buttonSubmit = document.getElementById('button-submit-register');
     const campos = document.querySelectorAll('.required');
     const spans = document.querySelectorAll('.span-required');
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    const buttonSubmit = document.querySelector('.button-submit');     
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+
+    buttonSubmit.addEventListener('click', (e) => {
+        e.preventDefault();
         nameValidate()
-        emailValidate();
+        emailValidate();    
         mainPasswordValidate();
-    });
+        comparePassword();
+    }); 
 
-   
+
+
+
     function setError(index) {
         campos[index].style.border = '2px solid #e63656';
         spans[index].style.display = 'block';
     }
 
-      function removeError(index) {
+    function removeError(index) {
         campos[index].style.border = '';
         spans[index].style.display = 'none';
     }
@@ -73,7 +90,6 @@
         }
     }
 
-
     function emailValidate() {
         if(!emailRegex.test(campos[1].value)) {
             setError(1);
@@ -82,7 +98,6 @@
         }
     }
 
-
     function mainPasswordValidate() {
         if(campos[2].value.length < 8) {
             setError(2);
@@ -90,6 +105,12 @@
             removeError(2);
         }
     }
-  
+
+    function comparePassword() {
+        if(campos[2].value == campos[3].value && campos[3].value.length >= 8) {
+            removeError(3);
+        } else {
+            setError(3);
+        }
+    }
 </script>
-</html>
