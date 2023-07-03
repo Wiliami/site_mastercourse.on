@@ -1,5 +1,5 @@
 <body style="background-color: #37517e">
-   <section class="vh-100">
+    <section class="vh-100">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -9,26 +9,27 @@
                                 <div class="section-title">
                                     <h2 class="mb-4 text-center mb-5">Login</h2>
                                 </div>
-                                <form action="/dashboard" method="POST" id="form" class="form-user">
+                                {{!-- <form id="form" class="form-user"> --}}
+                                <div id="form" class="form-user">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control required" id="inputEmail" name="email"  placeholder="E-mail" oninput="emailValidate()">
+                                        <input type="email" class="form-control required" name="email" id="email"  placeholder="E-mail" oninput="emailValidate()">
                                         <label for="inputEmail">E-mail</label>
                                         <span class="span-required text-start">Digite um e-mail válido</span>
                                     </div>
-
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control required" id="inputPassword" name="password" placeholder="Senha" oninput="passwordValidate()">
+                                        <input type="password" class="form-control required" name="password" id="password" placeholder="Senha" oninput="passwordValidate()">
                                         <label for="inputPassword">Senha</label>
                                         <span class="span-required text-start">A senha deve ter no mínimo 8 caracteres</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success w-100" name="button-login" type="submit" value="Entrar">
-                                </form>
+                                    <input class="btn btn-lg btn-success w-100" id="button-login" onclick="login()" type="submit" value="Entrar">
+                                </div>
+                                {{!-- </form> --}}
                                 <div class="mt-4">
                                     <div class="links">
                                         <p class="mb-0">Não tem uma conta? <a href="/cadastro">Criar uma</a></p>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                        <p><a href="/forgot-password" >Esqueceu a senha?</a></p>
+                                        <p><a href="" onclick="recoverPassword()">Esqueceu a senha?</a></p>
                                     </div>
                                 </div> 
                             </div>
@@ -39,53 +40,50 @@
         </div>
     </section>
 </body>
-{{!-- <script src="../routes/signiIn.js"></script> --}}
+
+{{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script> --}}
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+<script src="/assets/js/forms/login/login.js"></script>
+
+
 <script>
-    const form = document.getElementById('form')
-    const campos = document.querySelectorAll('.required')
-    const span = document.querySelectorAll('.span-required')
-    
-    const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const buttonSubmit = document.getElementById('button-login');
+const campos = document.querySelectorAll('.required');
+const span = document.querySelectorAll('.span-required');
+const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        emailValidate();
-        passwordValidate();
-    });
+buttonSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    emailValidate();
+    passwordValidate();
+});
 
+function setError(index) {
+    campos[index].style.border = '2px solid #e63656';
+    span[index].style.display = 'block'; 
+}
 
-    function setError(index) {
-        campos[index].style.border = '2px solid #e63656';
-        span[index].style.display = 'block'; 
+function removeError(index) {
+    campos[index].style.border = '';
+    span[index].style.display = 'none';
+}
+
+function emailValidate() {
+    if(!emailRegex.test(campos[0].value)) {
+        setError(0)
+    } else {
+        removeError(0)
     }
+} 
 
-    function removeError(index) {
-        campos[index].style.border = '';
-        span[index].style.display = 'none';
+function passwordValidate() {
+    if(campos[1].value.length < 8)  {
+        setError(1)
+    } else {
+        removeError(1)
     }
-
-
-
-    function emailValidate() {
-        if(!emailRegex.test(campos[0].value)) {
-            setError(0)
-        } else {
-            removeError(0)
-        }
-    }
-
-    function passwordValidate() {
-        if(campos[1].value.length < 8)  {
-            setError(1)
-        } else {
-            removeError(1)
-        }
-    }
+}
 </script>
-</html>
-
-
-
-
-
