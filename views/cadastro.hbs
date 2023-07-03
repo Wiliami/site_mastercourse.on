@@ -10,7 +10,7 @@
                             </div>
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 {{!-- <form action="/dashboard" method="POST" id="form" class="form-user"> --}}
-                                <div id="form">
+                                <div id="form" class="form-user">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control required" name="nome" id="name-user" placeholder="Nome e sobrenome" oninput="nameValidate()">
                                         <label for="inputName">Nome</label>
@@ -31,7 +31,7 @@
                                         <label for="inputPassword">Confimar senha</label>
                                         <span class="span-required text-start">Senhas devem ser compatíveis</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success w-100" name="button-register" id="button-submit-register" onclick="register()" value="Criar">
+                                    <input class="btn btn-lg btn-success w-100" name="button-register" id="button-submit-register" type="submit" onclick="register()" value="Criar">
                                 </div>
                                 {{!-- </form> --}}
                                 <div class="mt-4">
