@@ -5,9 +5,6 @@
 ```
 npm or yarn install
 ```
-```
-npm or yarn install
-```
 This command will install node_modules
 
 - 2 step run: 
