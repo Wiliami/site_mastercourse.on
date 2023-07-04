@@ -11,7 +11,9 @@ This command will install node_modules
 ```
 nodemon app.js
 ```
-
+```
+nodemon app.js
+```
 Use `nodemon app.js` run the project.
 
 ## Packages used:
