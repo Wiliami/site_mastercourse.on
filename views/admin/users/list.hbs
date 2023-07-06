@@ -37,7 +37,7 @@
                     <tbody>
                       <tr>
                         <td>Admin</td>
-                        <td>admin@gmail.com</td>
+                        <td>admin.com</td>
                         <td>(99) 9 9999-9999</td>
                         <td>Admin</td>
                         <td>
@@ -45,16 +45,6 @@
                           <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>Visitante</td>
-                        <td>visitante@gmail.com</td>
-                        <td>(99) 9 9999-9999</td>
-                        <td>Visitante</td>
-                        <td>
-                          <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a>
-                          <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>
-                        </td>
-                      </tr>         
                     </tbody>
                   </table>
                 </div>
@@ -64,12 +54,7 @@
         </div> <!-- End row -->
       </section>
     </main>
-
-
-
-
     
-        
     {{>_footerDashboard}}
     {{>_footerFilesScriptsDashboard}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -105,5 +90,13 @@
       });
     </script>
 
+    <!-- Firebase files init -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="/assets/js/firebase-init.js"></script>
+    <script src="/assets/js/auth-guard.js"></script>
+    <script src="/assets/js/painel/admin/users/list.js"></script>
+    <script src="/assets/js/logout.js"></script>
   </body>
 </html>
