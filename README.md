@@ -59,3 +59,4 @@ create table master c
 acess to course
 
 ## controllers
+text here demo it default
