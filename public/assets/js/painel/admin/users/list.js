@@ -1,5 +1,7 @@
+
 $(document).ready(function () {
     var datatables = $('#example').DataTable({
+    
       autoWidth: false,
       processing: true,
         columnDefs: [
@@ -23,10 +25,10 @@ $(document).ready(function () {
         search: 'Pesquisar:',
         searchPlaceholder: 'Pesquisar...',
       }
-
+      
     });
 
-  
+
     firebase.auth().onAuthStateChanged(userAuthenticated => {
         if (userAuthenticated) {
             findUsers(userAuthenticated);
@@ -43,18 +45,9 @@ $(document).ready(function () {
         });
     }
     
-    
+    $('#loading').show();
     function addUsersToScreen(users) {
-        datatables.on('processing.dt', function(e, settings, processing) {
-          if (processing) {
-            $('#loading').show();
-          } else {
-            $('#loading').hide();
-          }
-        });
-    
         users.forEach(user => {
-            
             datatables.row
                 .add([
                     user.name,
@@ -62,21 +55,7 @@ $(document).ready(function () {
                     '<a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a> ' +
                     '<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a> '
                 ])
-                .draw(false);    
-            // const name = document.createElement('td');
-            // name.innerHTML = user.name;
-            // tr.appendChild(name);
-    
-            // const email = document.createElement('td');
-            // email.innerHTML = user.email;
-            // tr.appendChild(email);
-    
-            // const buttonOptions = document.createElement('td');
-            // buttonOptions.innerHTML = '<a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a>';
-            // buttonOptions.innerHTML += '<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>';
-            // tr.appendChild(buttonOptions);
-    
-            // tbody.appendChild(tr);
+                .draw(false);
         });
     }
 

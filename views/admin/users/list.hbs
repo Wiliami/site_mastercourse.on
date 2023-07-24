@@ -11,12 +11,10 @@
           </ol>
         </nav>
       </div><!-- End Page Title -->
-
       <section class="section dashboard">
         <div class="row">
           <div class="col-lg-12">
-
-            {{!-- <div class="container mt-4"> --}}
+            <div class="container mt-4">
             <div class="card shadow mb-4">
               <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h3 class="m-0 text-dark">Usuários</h3>
@@ -29,22 +27,21 @@
                       <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Função</th>
                         <th>Opções</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Admin</td>
-                        <td>admin.com</td>
-                        <td>(99) 9 9999-9999</td>
-                        <td>Admin</td>
-                        <td>
-                          <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-person-check-fill"></i></a>
-                          <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>
-                        </td>
-                      </tr>
+                      <!-- Spinner wheels -->
+                      <div class="spinner-grow text-success" role="status" style="display:none;">
+                        <span class="sr-only" id="loading">Loading...</span>
+                      </div>
+                      <div class="spinner-grow text-success" role="status" style="display:none;">
+                        <span class="sr-only" id="loading">Loading...</span>
+                      </div>
+                      <div class="spinner-grow text-success" role="status" style="display:none;">
+                        <span class="sr-only" id="loading">Loading...</span>
+                      </div>
+                      
                     </tbody>
                   </table>
                 </div>
@@ -56,39 +53,10 @@
     </main>
     
     {{>_footerDashboard}}
-    {{>_footerFilesScriptsDashboard}}
+    {{>_footerFilesDashboard}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script type="text/javascript" language="javascript">
-      $(document).ready(function () {
-          $('#example').DataTable({
-            autoWidth: false,
-              columnDefs: [
-                {
-                    targets: ['_all'],
-                    className: 'mdc-data-table__cell',
-                },
-              ],
-
-
-            "language": {
-              "lengthMenu": "Mostrando _MENU_ registros por página",
-              "zeroRecords": "Nenhum registro foi encontrado",
-              "info": "Mostrando página _PAGE_ de _PAGES_ registros",
-              "infoEmpty": "Nenhum registro foi encontrado",
-              "infoFiltered": "(filtrado de _MAX_ registros no total)",
-              "paginate": {
-                "previous": "Anterior",
-                "next": "Próximo"
-              },
-              search: 'Pesquisar:',
-              searchPlaceholder: 'Pesquisar...',
-            }
-
-          });
-      });
-    </script>
 
     <!-- Firebase files init -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
