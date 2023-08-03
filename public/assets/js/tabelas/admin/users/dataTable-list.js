@@ -22,7 +22,7 @@ $(document).ready(function() {
           "previous": "Anterior",
           "next": "Próximo"
         },
-        search: 'Pesquisar:',
+        search: 'Pesquisar: ',
         searchPlaceholder: 'Pesquisar...',
       }
       
@@ -89,7 +89,7 @@ $(document).ready(function() {
             .add([
                 user.name,
                 user.email,
-                new Date(user.create_date.seconds * 1000).toLocaleString('pt-br'),
+                user.create_date?.seconds ? new Date(user.create_date?.seconds * 1000).toLocaleDateString('pt-br') : '',
                 user.cad_user,
                 user.update_user,
                 `<a href="/admin/users/update?id=${encodeURIComponent(userId)}" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
@@ -97,10 +97,10 @@ $(document).ready(function() {
             ])
             .draw(false);
         });
-  
+
       } else {
-        // remover classe de looping
-        
+        $( ".spinner-border" ).remove();
+        $(".dataTables_empty").text('Nenhum registro foi encontrado!');
       }
     
     }
