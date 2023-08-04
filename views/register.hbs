@@ -1,0 +1,56 @@
+<body style="background-color: #37517e">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card text-dark" style="border-radius: 1rem;">
+                        <div class="card-body bg-light p-5 rounded text-center">
+                            <div class="section-title">
+                                <h2 class="mb-4 text-center">Criar conta</h2>
+                            </div>
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                {{!-- <form action="/dashboard" method="POST" id="form" class="form-user"> --}}
+                                <div id="form" class="form-user">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control required" name="nome" id="name-user" placeholder="Nome e sobrenome" oninput="nameValidate()">
+                                        <label for="inputName">Nome</label>
+                                        <span class="span-required text-start">Nome deve ter no mínimo 3 caracteres</span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail" oninput="emailValidate()">
+                                        <label for="inputEmail">E-mail</label>
+                                        <span class="span-required text-start">Digite um e-mail válido</span> 
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control required" name="password" id="password" autocomplete="on" placeholder="Senha" oninput="mainPasswordValidate()">
+                                        <label for="inputPassword">Senha</label>
+                                        <span class="span-required text-start">Digite uma senha com no mínimo 8 caracteres</span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control required" name="password" autocomplete="on" placeholder="Confirmar senha" oninput="comparePassword()">
+                                        <label for="inputPassword">Confimar senha</label>
+                                        <span class="span-required text-start">Senhas devem ser compatíveis</span>
+                                    </div>
+                                    <input class="btn btn-lg btn-success w-100" name="button-register" id="button-submit-register" type="submit" onclick="register()" value="Criar">
+                                </div>
+                                {{!-- </form> --}}
+                                <div class="mt-4">
+                                    <div class="d-flex justify-content-center links">
+                                        <p> Já possui uma conta? <a href="/login" class="ml-2">Login</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>   
+        </div> 
+    </section>   
+</body>
+
+{{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script> --}}
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+<script src="/assets/js/forms/register/register-firebase.js"></script>
+<script src="/assets/js/forms/register/validation.js"></script>
