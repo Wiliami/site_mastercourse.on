@@ -11,22 +11,34 @@
                                 </div>
                                 {{!-- <form id="form" class="form-user"> --}}
                                 <div id="form" class="form-user">
+                                    <div class="alert alert-success" id="error-success" role="alert" style="display: none;">
+                                        <!-- Success login -->
+                                    </div>
+                                    <div class="alert alert-danger" id="error-message" role="alert" style="display: none;">
+                                        <!-- Validation field -->
+                                    </div>
+                                    <div class="alert alert-danger" id="error-field-empty" role="alert" style="display: none;">
+                                        <!-- Empty field -->
+                                    </div>
+
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control required" name="email" id="email"  placeholder="E-mail" oninput="emailValidate()">
+                                        <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail">
                                         <label for="inputEmail">E-mail</label>
                                         <span class="span-required text-start">Digite um e-mail válido</span>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control required" name="password" id="password" placeholder="Senha" oninput="passwordValidate()">
+                                        <input type="password" class="form-control required" name="password" id="password" placeholder="Senha">
                                         <label for="inputPassword">Senha</label>
                                         <span class="span-required text-start">A senha deve ter no mínimo 8 caracteres</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success w-100" id="button-login" onclick="login()" type="submit" value="Entrar">
+                                    <input class="btn btn-lg btn-success w-100" id="button-submit" onclick="login()" type="submit" value="Entrar">
                                 </div>
                                 {{!-- </form> --}}
                                 <div class="mt-4">
                                     <div class="links">
-                                        <p class="mb-0">Não tem uma conta? <a href="/cadastro">Criar uma</a></p>
+                                        <p class="mb-0">Não tem uma conta? 
+                                            <a href="/cadastro">Criar uma</a>
+                                        </p>
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <p><a href="" onclick="recoverPassword()">Esqueceu a senha?</a></p>
@@ -46,4 +58,4 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/forms/login/login-firebase.js"></script>
-<script src="/assets/js/forms/login/validation.js"></script>
+{{!-- <script src="/assets/js/forms/login/validation.js"></script> --}}
