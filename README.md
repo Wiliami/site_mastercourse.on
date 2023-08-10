@@ -11,8 +11,9 @@ This command will install node_modules
 ```
 nodemon app.js
 ```
+- 3 step run:
 ```
-nodemon app.js
+  nodemon 3.0.0
 ```
 Use `nodemon app.js` run the project.
 
