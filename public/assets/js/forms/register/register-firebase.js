@@ -5,15 +5,24 @@ firebase.auth().onAuthStateChanged(user => {
 })  
 
 function register() {
-    const email = form.email().value;
-    const password = form.password().value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(() => {
+    let email;
+    let mainPasword;
+    let pass;
+    firebase.auth().createUserWithEmailAndPassword(
+        form.email().value, form.password().value
+    ).then(() => {
         window.location.href = "/dashboard";
     }).catch((error) => {
-        alert(getErrorMessage(error));
+        $("").show("");
+        $("").text("");
     })
 }
+
+// 1 - Validação de login; ok
+// 2 - Validação de cadastro;
+// 3 - Validação Lista de usuários;
+// 4 - Editar usuários;
+// 5 - Excluir usuários
 
 function getErrorMessage(error) {
     if(error.code == "auth/email-already-in-use") {

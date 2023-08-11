@@ -4,8 +4,6 @@ firebase.auth().onAuthStateChanged(userAuthenticated => {
     }
 });
 
-
-
 function findUsers() {
     firebase.firestore()
     .collection('users')
@@ -15,8 +13,6 @@ function findUsers() {
         addUserstoScreen(users);
     });
 }
-
-
 
 function addUserstoScreen(users) {
     const orderedList = document.getElementById('users');
@@ -36,7 +32,6 @@ function addUserstoScreen(users) {
         const password = document.createElement('td');
         password.innerHTML = user.password;
         tr.appendChild(password);
-
 
         orderedList.appendChild(tr);
     });

@@ -16,11 +16,11 @@ function login() {
     let inputPassword = document.getElementById('password').value;
 
     if(inputEmail === '') {
-        $("#error-field-empty").show();
-        $("#error-field-empty").text('Preencha todos os campos');
+        $(".span-required").show();
+        $(".span-required").text('Preencha todos os campos!');
     } if(inputPassword === '') {
-        $("#error-field-empty").show();
-        $("#error-field-empty").text('Preencha todos os campos');
+        $(".span-required").show();
+        $(".span-required").text('Preencha todos os campos!');
     } else {
         firebase.auth().signInWithEmailAndPassword(
             form.email().value, form.password().value
