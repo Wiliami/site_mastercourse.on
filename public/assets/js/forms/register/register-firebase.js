@@ -2,12 +2,12 @@ firebase.auth().onAuthStateChanged(user => {
     if(user) {
         window.location.href = "/dashboard";
     }
-})  
+});
 
 function register() {
-    let email;
-    let mainPasword;
-    let pass;
+    let name = document.getElementById('');
+    let email = document.getElementById('');
+    let password = document.getElementById('');
     firebase.auth().createUserWithEmailAndPassword(
         form.email().value, form.password().value
     ).then(() => {
