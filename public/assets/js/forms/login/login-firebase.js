@@ -4,10 +4,9 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
-function register() {
+function Register() {
     window.location.href = '/cadastro';
 }
-
 
 
 // Validar usuário autenticado
@@ -16,21 +15,20 @@ function login() {
     let inputPassword = document.getElementById('password').value;
 
     if(inputEmail === '') {
-        $(".span-required").show();
-        $(".span-required").text('Preencha todos os campos!');
+        $("#error-field-empty").show();
+        $("#error-field-empty").text('Preencha todos os campos!');
     } if(inputPassword === '') {
-        $(".span-required").show();
-        $(".span-required").text('Preencha todos os campos!');
+        $("#error-field-empty").show();
+        $("#error-field-empty").text('Preencha todos os campos!');
     } else {
         firebase.auth().signInWithEmailAndPassword(
             form.email().value, form.password().value
-        ).then(res => {
+        ).then((res) => {
             window.location.href = "/dashboard";
         }).catch((error) => {
             $("#error-field-empty").remove();
             $("#error-message").show();
-            $("#error-message").text('E-mail ou senha incorreto!');
-            // alert(getErrorMessage(error));
+            $("#error-message").text('E-mail ou senha incorretos!');
         });
     }
 }
@@ -63,6 +61,5 @@ function getErrorMessage(error) {
 
 const form = {
     email: () => document.getElementById("email"),
-    loginButton: () => document.getElementById("login-button"),
     password: () => document.getElementById("password"),
 }
