@@ -9,11 +9,13 @@
                                 <div class="section-title">
                                     <h2 class="mb-4 text-center mb-5">Login</h2>
                                 </div>
+                                <div id="preloader" style="display: none;"></div>
+                               
                                 {{!-- <form id="form" class="form-user"> --}}
                                 <div id="form" class="form-user">
-                                    {{!-- <div class="alert alert-success" id="error-success" role="alert" style="display: none;">
+                                    <div class="alert alert-success" id="error-success" role="alert" style="display: none;">
                                         <!-- Success login -->
-                                    </div> --}}
+                                    </div>
                                     <div class="alert alert-danger" id="error-message" role="alert" style="display: none;">
                                         <!-- Validation field -->
                                     </div>
@@ -37,7 +39,7 @@
                                 <div class="mt-4">
                                     <div class="links">
                                         <p class="mb-0">Não tem uma conta? 
-                                            <a href="" onclick="register()">Criar uma</a>
+                                            <a href="/cadastro">Criar uma</a>
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-center">
