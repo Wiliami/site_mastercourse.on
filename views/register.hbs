@@ -10,9 +10,12 @@
                             </div>
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 {{!-- <form action="/dashboard" method="POST" id="form" class="form-user"> --}}
+                                {{>_alertSuccess}}
+                                {{>_alertDanger}}
+                                <div id="preloader" style="display: none;"></div>
                                 <div id="form" class="form-user">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control required" name="nome" id="name-user" placeholder="Nome e sobrenome" oninput="nameValidate()">
+                                        <input type="text" class="form-control required" name="nome" id="username" placeholder="Nome e sobrenome" oninput="nameValidate()">
                                         <label for="inputName">Nome</label>
                                         <span class="span-required text-start">Nome deve ter no mínimo 3 caracteres</span>
                                     </div>
@@ -27,7 +30,7 @@
                                         <span class="span-required text-start">Digite uma senha com no mínimo 8 caracteres</span>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control required" name="password" autocomplete="on" placeholder="Confirmar senha" oninput="comparePassword()">
+                                        <input type="password" class="form-control required" name="password" id="confirmPassword" autocomplete="on" placeholder="Confirmar senha" oninput="comparePassword()" required>
                                         <label for="inputPassword">Confimar senha</label>
                                         <span class="span-required text-start">Senhas devem ser compatíveis</span>
                                     </div>
@@ -48,9 +51,9 @@
     </section>   
 </body>
 
-{{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script> --}}
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/forms/register/register-firebase.js"></script>
 <script src="/assets/js/forms/register/validation.js"></script>
