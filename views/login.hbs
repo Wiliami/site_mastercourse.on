@@ -13,15 +13,10 @@
                                
                                 {{!-- <form id="form" class="form-user"> --}}
                                 <div id="form" class="form-user">
-                                    <div class="alert alert-success" id="error-success" role="alert" style="display: none;">
-                                        <!-- Success login -->
-                                    </div>
-                                    <div class="alert alert-danger" id="error-message" role="alert" style="display: none;">
-                                        <!-- Validation field -->
-                                    </div>
-                                    <div class="alert alert-danger" id="error-field-empty" role="alert" style="display: none;">
-                                        <!-- Empty field -->
-                                    </div>
+                                
+                                    <div class="alert alert-danger" id="error-field-empty" role="alert" style="display: none;"></div>
+                                    {{>_alertSuccess}}
+                                    {{>_alertDanger}}
 
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control required" name="field-validate" id="email" placeholder="E-mail">
