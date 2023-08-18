@@ -6,4 +6,3 @@
 serviceAccountKey.json
 authenticate-jwt.js
 firebase-init.js
-authenticate.js

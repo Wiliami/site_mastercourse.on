@@ -10,8 +10,9 @@ function createUser() {
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
     .then(data => {
         firebase.firestore().collection('users').doc(data.user.uid).set(user);
-        $("#success-message").show();
-        $("#success-message").text('Usuário cadastrado com sucesso!');
+        console.log('Usuário cadastrado com sucesso!');
+        // $("#success-message").show();
+        // $("#success-message").text('Usuário cadastrado com sucesso!');
     }).catch((error) => {
         console.log('Houve um erro ao tentar cadastrar usuário', error);
     })

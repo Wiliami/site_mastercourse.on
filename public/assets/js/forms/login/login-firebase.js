@@ -14,19 +14,20 @@ function login() {
     let inputEmail = document.getElementById('email').value;
     let inputPassword = document.getElementById('password').value;
 
-    if(inputEmail === '') {
+    if(inputEmail === '' || inputPassword === '') {
         $("#error-field-empty").show();
         $("#error-field-empty").text('Preencha todos os campos!');
-    } if(inputPassword === '') {
-        $("#error-field-empty").show();
-        $("#error-field-empty").text('Preencha todos os campos!');
+        $("#error-message").hide();
     } else {
+        $("#preloader").show();
         firebase.auth().signInWithEmailAndPassword(
-            form.email().value, form.password().value
+            inputEmail, inputPassword
         ).then((res) => {
-            window.location.href = "/dashboard";
+            $("#preloader").hide();
+            window.location.href = '/dashboard';
         }).catch((error) => {
-            $("#error-field-empty").remove();
+            $("#preloader").hide();
+            $("#error-field-empty").hide();
             $("#error-message").show();
             $("#error-message").text('E-mail ou senha incorretos!');
         });

@@ -5,24 +5,27 @@ firebase.auth().onAuthStateChanged(user => {
 });
 
 function register() {
-    let name = document.getElementById('');
-    let email = document.getElementById('');
-    let password = document.getElementById('');
-    firebase.auth().createUserWithEmailAndPassword(
-        form.email().value, form.password().value
-    ).then(() => {
-        window.location.href = "/dashboard";
-    }).catch((error) => {
-        $("").show("");
-        $("").text("");
-    })
-}
+    const user = {
+        create_date: new Date(),
+        name: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    }
 
-// 1 - Validação de login; ok
-// 2 - Validação de cadastro;
-// 3 - Validação Lista de usuários;
-// 4 - Editar usuários;
-// 5 - Excluir usuários
+    $("#preloader").show();
+    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+    .then((data) => {
+        $("#preloader").hide();
+        firebase.firestore().collection('users').doc(data.user.uid).set(user);
+        
+        console.log('Usuário cadastrado com sucesso!');
+    }).catch((error) => {
+        $("#preloader").hide();
+        console.log('Houve um erro ao tentar cadastrar usuário', error);
+        // $("error-message").show();
+        // $("error-message").text("Este e-mail já está sendo usado por outro usuário!");
+    });
+}
 
 function getErrorMessage(error) {
     if(error.code == "auth/email-already-in-use") {
@@ -39,7 +42,7 @@ function getErrorMessage(error) {
 
 
 const form = {
-    name: () => document.ggetElementById('name-user'),
+    name: () => document.ggetElementById('username'),
     email: () => document.getElementById('email'),
     password: () => document.getElementById('password')
 }

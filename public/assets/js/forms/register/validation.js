@@ -1,11 +1,12 @@
-const buttonSubmit = document.getElementById('button-submit-register');
+const buttonSubmit = document.getElementById('form');
 const campos = document.querySelectorAll('.required');
 const spans = document.querySelectorAll('.span-required');
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 buttonSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    nameValidate()
+    disableButton();
+    nameValidate();
     emailValidate();    
     mainPasswordValidate();
     comparePassword();
@@ -53,3 +54,29 @@ function comparePassword() {
         setError(3);
     }
 }
+
+function disableButton() {
+    $(document).ready(function() {
+        $('input[type="submit"]').attr('disabled', true);
+        $('input[type="text"], input[type="email"], input[type="password"]').on('keyup',function() {
+            if($(this).val() != '') {
+                $('input[type="submit"]').attr('disabled' , false);
+            }else{
+                $('input[type="submit"]').attr('disabled' , true);
+            }
+        });
+    });
+}
+
+
+// function enableButtonWhenAllFieldsFilled() {
+//     const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+//     const submitButton = document.querySelector('input[type="submit"]');
+
+//     inputs.forEach(input => {
+//         input.addEventListener('keyup', function() {
+//             const allFieldsFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+//             submitButton.disabled = !allFieldsFilled;
+//         });
+//     });
+// }
