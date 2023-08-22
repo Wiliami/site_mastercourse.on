@@ -13,13 +13,14 @@
 
     <section class="section dashboard">
       <div class="row">
+        {{>_preloader}}
 
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
             <!-- Content -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
+              <div class="col course-details">
                 <div class="card">
                   <img src="" class="card-img-top" alt="Banner do curso">
                   <div class="card-body">
@@ -29,7 +30,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col">
+              <div class="col course-details">
                 <div class="card">
                   <img src="..." class="card-img-top" alt="Banner do curso">
                   <div class="card-body">
@@ -39,7 +40,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col">
+              <div class="col course-details">
                 <div class="card">
                   <img src="..." class="card-img-top" alt="Banner do curso">
                   <div class="card-body">
@@ -49,7 +50,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col">
+              <div class="col course-details">
                 <div class="card">
                   <img src="..." class="card-img-top" alt="Banner do curso">
                   <div class="card-body">
@@ -77,3 +78,15 @@
   {{!-- {{>_footerFilesScriptDashboard}} --}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
+
+
+  <script>
+    let detailsCourse = document.querySelectorAll('course-details');
+    console.log(detailsCourse);
+
+    if(detailsCourse.length) {
+      console.lo('Existe cursos')
+    } else {
+      console.log('não existre dados')
+    }
+  </script>
