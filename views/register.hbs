@@ -9,34 +9,33 @@
                                 <h2 class="mb-1 text-center" style="font-size: 25px;">Criar conta</h2>
                             </div>
                             <div class="mb-md-0 mt-md-1 pb-1">
-                                {{!-- <form action="/dashboard" method="POST" id="form" class="form-user"> --}}
+                                {{>_preloader}}
                                 {{>_alertSuccess}}
                                 {{>_alertDanger}}
-                                <div id="preloader" style="display: none;"></div>
+                                {{>_emptyFieldError}}
                                 <div id="form" class="form-user">
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control required" name="nome" id="username" placeholder="Nome e sobrenome" oninput="nameValidate()">
-                                        <label for="inputName" style="font-size: 12px;">Nome</label>
-                                        <span class="span-required text-start" style="font-size: 12px;">Nome deve ter no mínimo 3 caracteres</span>
+                                        <input type="text" class="form-control required" name="nome" id="username" placeholder="Nome e sobrenome">
+                                        <label for="inputName" style="font-size: 15px;">Nome</label>
+                                        <span class="span-required text-start" style="font-size: 15px;">Nome deve ter no mínimo 3 caracteres</span>
                                     </div>
                                     <div class="form-floating mb-2">
-                                        <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail" oninput="emailValidate()">
-                                        <label for="inputEmail" style="font-size: 12px;">E-mail</label>
-                                        <span class="span-required text-start" style="font-size: 12px;">Digite um e-mail válido</span> 
+                                        <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail">
+                                        <label for="inputEmail" style="font-size: 15px;">E-mail</label>
+                                        <span class="span-required text-start" style="font-size: 15px;">Digite um e-mail válido</span> 
                                     </div>
                                     <div class="form-floating mb-2">
-                                        <input type="password" class="form-control required" name="password" id="password" autocomplete="on" placeholder="Senha" oninput="mainPasswordValidate()">
-                                        <label for="inputPassword" style="font-size: 12px;">Senha</label>
-                                        <span class="span-required text-start" style="font-size: 12px;">Digite uma senha com no mínimo 8 caracteres</span>
+                                        <input type="password" class="form-control required" name="password" id="password" autocomplete="on" placeholder="Senha">
+                                        <label for="inputPassword" style="font-size: 15px;">Senha</label>
+                                        <span class="span-required text-start" style="font-size: 15px;">Digite uma senha com no mínimo 8 caracteres</span>
                                     </div>
                                     <div class="form-floating mb-2">
-                                        <input type="password" class="form-control required" name="password" id="confirmPassword" autocomplete="on" placeholder="Confirmar senha" oninput="comparePassword()" required>
-                                        <label for="inputPassword" style="font-size: 12px;">Confimar senha</label>
-                                        <span class="span-required text-start" style="font-size: 12px;">Senhas devem ser compatíveis</span>
+                                        <input type="password" class="form-control required" name="password" id="confirmPassword" autocomplete="on" placeholder="Confirmar senha">
+                                        <label for="inputPassword" style="font-size: 15px;">Confimar senha</label>
+                                        <span class="span-required text-start" style="font-size: 15px;">Senhas devem ser compatíveis</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success w-100" style="font-size: 15px;" name="button-register" id="button-submit-register" type="submit" onclick="register()" value="Criar">
+                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" name="button-register" id="button-submit-register" type="submit" onclick="register()" value="Criar">
                                 </div>
-                                {{!-- </form> --}}
                                 <div class="mt-4">
                                     <div class="d-flex justify-content-center links">
                                         <p style="font-size: 15px;"> Já possui uma conta? <a href="/login" class="ml-2">Login</a></p>
@@ -56,4 +55,5 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/forms/register/register-firebase.js"></script>
-<script src="/assets/js/forms/register/validation.js"></script>
+<script src="/assets/js/loading.js"></script>
+{{!-- <script src="/assets/js/forms/register/validation.js"></script> --}}
