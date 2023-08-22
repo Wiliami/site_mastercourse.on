@@ -8,29 +8,44 @@ function Register() {
     window.location.href = '/cadastro';
 }
 
+function showLoading() {
+    $('#preloader').show();
+}
+
+function hideLoading() {
+    setTimeout(() => {
+      $('#preloader').hide();
+    }, "2000");
+}
+
 
 // Validar usuário autenticado
 function login() {
-    let inputEmail = document.getElementById('email').value;
-    let inputPassword = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    if(inputEmail === '' || inputPassword === '') {
+    if(email && password) {
+        showLoading();
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+            hideLoading();
+            console.log('Usuário logado com sucesso!');
+        })
+        .catch((error) => {
+            hideLoading();
+            if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                $("#error-message").show();
+                $("#error-message").text("E-mail ou senha incorreta!");
+            } else {
+                $("#error-message").show();
+                $("#error-message").text("Ocorreu um erro ao efetuar o login.");
+            }
+        });
+    } else {
+        showLoading();
+        hideLoading();
         $("#error-field-empty").show();
         $("#error-field-empty").text('Preencha todos os campos!');
-        $("#error-message").hide();
-    } else {
-        $("#preloader").show();
-        firebase.auth().signInWithEmailAndPassword(
-            inputEmail, inputPassword
-        ).then((res) => {
-            // $("#preloader").hide();
-            window.location.href = '/dashboard';
-        }).catch((error) => {
-            $("#preloader").hide();
-            $("#error-field-empty").hide();
-            $("#error-message").show();
-            $("#error-message").text('E-mail ou senha incorretos!');
-        });
     }
 }
 
