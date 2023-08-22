@@ -1,5 +1,4 @@
 const express = require("express");
-const User = require('../model/User');
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 const router = express.Router();

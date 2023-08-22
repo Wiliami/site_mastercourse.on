@@ -6,7 +6,7 @@ const path = require('path');
 const home = require('./routes/home');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
-const checkIfAuthenticated = require("./middlewares/authenticate");
+// const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +20,7 @@ app.use('/login', (req, res) => res.render('login'));
 app.use('/cadastro', (req, res) => res.render('register'));
 
 // Rotas com permissão de acesso: Token válido
-app.use('/home', checkIfAuthenticated, routeUser);
+app.use('/home', routeUser);
 app.use('/admin', routeUserAdmin);
 
 app.get('*', (req, res) => res.render('404'));
