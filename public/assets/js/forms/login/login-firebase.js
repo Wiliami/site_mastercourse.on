@@ -23,7 +23,7 @@ function login() {
         firebase.auth().signInWithEmailAndPassword(
             inputEmail, inputPassword
         ).then((res) => {
-            $("#preloader").hide();
+            // $("#preloader").hide();
             window.location.href = '/dashboard';
         }).catch((error) => {
             $("#preloader").hide();
