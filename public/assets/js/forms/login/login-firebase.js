@@ -15,9 +15,8 @@ function showLoading() {
 function hideLoading() {
     setTimeout(() => {
       $('#preloader').hide();
-    }, "2000");
+    }, 2000);
 }
-
 
 // Validar usuário autenticado
 function login() {
@@ -33,6 +32,7 @@ function login() {
         })
         .catch((error) => {
             hideLoading();
+            $("#error-field-empty").hide();
             if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                 $("#error-message").show();
                 $("#error-message").text("E-mail ou senha incorreta!");
@@ -44,20 +44,12 @@ function login() {
     } else {
         showLoading();
         hideLoading();
+        $("#error-message").hide();
         $("#error-field-empty").show();
-        $("#error-field-empty").text('Preencha todos os campos!');
+        $("#error-field-empty").text('Campos obrigatórios!');
     }
 }
 
-function recoverPassword() {
-    firebase.auth().sendPasswordResetEmail(
-    form.email().value
-    ).then(() => {
-        alert('Email enviado com sucesso!');
-    }).catch(error => {
-        alert(getErrorMessage(error));
-    });
-}
 
 function getErrorMessage(error) {
     if (error.code == "auth/user-not-found") {
@@ -73,9 +65,4 @@ function getErrorMessage(error) {
         return "Preencha o campo de senha";
     }
     return error.message;
-}
-
-const form = {
-    email: () => document.getElementById("email"),
-    password: () => document.getElementById("password"),
 }

@@ -13,4 +13,5 @@ router.get('/forgot-password', (req, res) => res.render('forgot-password'));
 router.get('/courses', (req, res) => res.render('courses'));
 router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
+router.get('/home/teste', (req, res) => res.render('teste1'));
 module.exports = router;
