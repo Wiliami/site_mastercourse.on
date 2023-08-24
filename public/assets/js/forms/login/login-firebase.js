@@ -2,9 +2,9 @@ firebase.auth().onAuthStateChanged(user => {
     if(user) {
         window.location.href = "/dashboard";
     }
-})
+});
 
-function Register() {
+function register() {
     window.location.href = '/cadastro';
 }
 
@@ -13,9 +13,12 @@ function showLoading() {
 }
 
 function hideLoading() {
-    setTimeout(() => {
-      $('#preloader').hide();
-    }, 2000);
+    $('#preloader').hide();
+}
+
+function showError(message) {
+    $('#error-message').text(message);
+    $('#error-message').show();
 }
 
 // Validar usuário autenticado
@@ -32,21 +35,18 @@ function login() {
         })
         .catch((error) => {
             hideLoading();
-            $("#error-field-empty").hide();
-            if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-                $("#error-message").show();
-                $("#error-message").text("E-mail ou senha incorreta!");
+            if (error.code === 'auth/invalid-email') {
+                showError("Endereço de e-mail inválido!");
+            } else if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                showError("E-mail ou senha incorreta!");
             } else {
-                $("#error-message").show();
-                $("#error-message").text("Ocorreu um erro ao efetuar o login.");
+                showError("Ocorreu um erro ao efetuar o login.");
             }
         });
     } else {
         showLoading();
         hideLoading();
-        $("#error-message").hide();
-        $("#error-field-empty").show();
-        $("#error-field-empty").text('Campos obrigatórios!');
+        showError('Preencha todos os campos!');
     }
 }
 
