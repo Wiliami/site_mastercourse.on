@@ -12,49 +12,40 @@
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
-      <div class="row">
-        {{>_preloader}}
-  
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-            <!-- Content -->
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col course-details">
-                <div class="card">
-                  <img src="/assets/arsha-template/img/cta-bg.jpg" class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">Javascript ES6</h5>
-                    <p class="card-text">Aprendizado de uma das linaguagens mais populares do mercado e do mundo. Você aprenderá os principais conceitos da linguagem com projetos 3 projetos reais.</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a>
-                  </div>
-                </div>
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card">
+              <img src="" class="card-img-top" alt="Banner do curso">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                This is a longer card with supporting text below as
+                a natural lead-in to additional content. This content
+                is a little bit longer.</p>
+              <a href="/home/area-membro/courses/course-details" class="btn btn-primary">Ver detalhes</a>
               </div>
-              <div class="col course-details">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">Javascript ES6</h5>
-                    <p class="card-text">Aprendizado de uma das linaguagens mais populares do mercado e do mundo. Você aprenderá os principais conceitos da linguagem com projetos 3 projetos reais.</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a>
-                  </div>
-                </div>
-              </div>  
             </div>
-          </div><!-- End row -->
-        </div><!-- End Left side columns -->
+          </div>
+        </div>
+      </div><!-- End Left side columns -->  
 
 
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-          <!-- Recent Activity -->
+      <!-- Right side columns -->
+      <div class="col-lg-4">
 
-        </div><!-- End Right side columns -->
+      </div><!-- End Right side columns -->
 
-      </div> <!-- End row -->
+  
     </section><!-- End Section -->
   </main>
-
-  {{!-- {{>_footerFilesScriptDashboard}} --}}
+  {{>_preloader}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
+  <!-- Firebase files init -->
+  <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+  <script src="/assets/js/firebase-init.js"></script>
+  <script src="/assets/js/courses/meus-cursos-firebase.js"></script>

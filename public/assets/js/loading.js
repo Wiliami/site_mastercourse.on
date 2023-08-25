@@ -1,9 +1,7 @@
-function hideLoading() {
-    setTimeout(() => {
-      $('#preloader').hide()
-    }, "2000");
-  }
-  
-hideLoading();
+$(document).ready(() => {
+    $('#preloader').show();
 
-// module.exports = hideLoading;
+    setTimeout(() => {
+        $('#preloader').hide();
+    }, 2000);
+});
