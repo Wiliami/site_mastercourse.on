@@ -13,7 +13,9 @@ function showLoading() {
 }
 
 function hideLoading() {
-    $('#preloader').hide();
+    setTimeout(() => {
+        $('#preloader').hide();
+    }, 2000);
 }
 
 function showError(message) {
@@ -36,7 +38,7 @@ function login() {
         .catch((error) => {
             hideLoading();
             if (error.code === 'auth/invalid-email') {
-                showError("Endereço de e-mail inválido!");
+                showError("Por favor, informe um e-mail válido!");
             } else if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                 showError("E-mail ou senha incorreta!");
             } else {
