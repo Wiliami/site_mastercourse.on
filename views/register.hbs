@@ -10,7 +10,7 @@
                             </div>
                             <div class="mb-md-0 mt-md-1 pb-1">
                                 {{>_preloader}}
-                                {{>_showError}}
+                                {{>_alertDanger}}
                                 <div id="form" class="form-user">
                                     <div class="form-floating mb-2">
                                         <input type="text" class="form-control required" name="nome" id="username" placeholder="Nome e sobrenome">
@@ -47,11 +47,7 @@
         </div> 
     </section>   
 </body>
-
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/forms/register/register-firebase.js"></script>
-<script src="/assets/js/loading.js"></script>
-{{!-- <script src="/assets/js/forms/register/validation.js"></script> --}}

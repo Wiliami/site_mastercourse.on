@@ -9,6 +9,7 @@ function showLoading() {
 }
 
 function hideLoading() {
+    setTimeout
     $('#preloader').hide();
 }
 
