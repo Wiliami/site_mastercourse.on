@@ -12,6 +12,9 @@
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
+      <div class="alert alert-danger" role="alert">
+        Nenhum curso foi encontrado!
+      </div>
       <div class="row">
         {{>_preloader}}
 
@@ -84,9 +87,17 @@
     let detailsCourse = document.querySelectorAll('course-details');
     console.log(detailsCourse);
 
-    if(detailsCourse.length) {
+    if(detailsCourse) {
       console.lo('Existe cursos')
     } else {
       console.log('não existre dados')
     }
+  </script>
+
+  <script>
+    function shwoError(resposta) {
+      return resposta;
+    }
+
+    shwoError('uma mensagem');
   </script>

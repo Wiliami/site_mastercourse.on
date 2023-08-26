@@ -42,7 +42,7 @@ function login() {
             }
         });
     } else {
-        showLoading();
+        // showLoading();
         hideLoading();
         $("#error-field-empty").show();
         $("#error-field-empty").text('Preencha todos os campos!');
