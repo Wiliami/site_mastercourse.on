@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     firebase.auth().onAuthStateChanged(userAuthenticated => {
       if (userAuthenticated) {
-          userAuthenticated.getIdToken().then(token => console.log(token)); // Pegar o Token do usuário
+          userAuthenticated.getIdToken().then(token => token); // Pegar o Token do usuário
           findUsers(userAuthenticated);
       }
     });
@@ -78,7 +78,7 @@ $(document).ready(function() {
       }
     }
 
-    getUserData();
+    // getUserData();
 
 
     const userId = '6dMj9qVDycQeCwnmjQ7DbF6BEZN2'; // example => id user

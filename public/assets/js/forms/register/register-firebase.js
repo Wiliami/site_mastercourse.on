@@ -9,11 +9,14 @@ function showLoading() {
 }
 
 function hideLoading() {
-    setTimeout(() => {
-      $('#preloader').hide();
-    }, "2000");
+    setTimeout
+    $('#preloader').hide();
 }
 
+function showError(message) {
+    $('#error-message').text(message);
+    $('#error-message').show();
+}
 
 
 function register() {  
@@ -22,8 +25,13 @@ function register() {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
-    if(username && email && password && confirmPassword) {
+    if(username && email && password && confirmPassword) {  
         showLoading();
+        if(password !== confirmPassword) {
+            hideLoading();
+            showError("As senhas digitadas não coincidem!");
+            return;
+        }
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((data) => {
             const user = {
@@ -41,18 +49,17 @@ function register() {
         .catch((error) => {
             hideLoading();
             if (error.code === 'auth/email-already-in-use') {
-                $("#error-message").show();
-                $("#error-message").text("Este e-mail já está cadastrado!");
+                showError("Este e-mail já está cadastrado!");
+            } else if(error.code === 'auth/weak-password') {
+                showError("A Senha deve ter no mínimo 6 caracteres!");
             } else {
-                $("#error-message").show();
-                $("#error-message").text("Ocorreu um erro durante o cadastro do usuário.");
+                showError("Ocorreu um erro durante o cadastro do usuário.");
             }
         });
     } else {
         showLoading();
         hideLoading();
-        $("#error-field-empty").show();
-        $("#error-field-empty").text("Preencha todos os campos!");
+        showError("Preencha todos os campos!");
     }
 }
 
