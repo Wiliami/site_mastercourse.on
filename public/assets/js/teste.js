@@ -19,7 +19,18 @@
 // Armazenar e organizar informações (dados)
 //
 
+// const users = [
+//     {name: 'Albert Einstein', idade: 49, sexo: 'Masculino'},
+//     {name: 'Galileu Galilei', idade: 35, sexo: 'Masculino'},
+//     {name: 'David Hume', idade: 30, sexo: 'Masculino'},
+//     {name: 'Isaac Newton', idade: 40, sexo: 'Masculino'},
+// ];
 
-const name = false;
+// const ul = document.getElementById('data-list');
 
-document.body.innerText = 'Olá, ' +(name || 'nome não informado!');
+// users.forEach(user => {
+//     const listUsers = document.createElement('li');
+//     listUsers.innerText = user.name + ' ' + user.idade + ' ' + user.sexo;
+
+//     ul.appendChild(listUsers);
+// })
