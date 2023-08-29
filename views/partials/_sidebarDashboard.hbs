@@ -38,6 +38,22 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+   <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .footer-dashboard {
+        background-color: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+        padding: 20px;
+        margin-top: auto; /* Pushes the footer to the bottom */
+    }
+  </style>
 </head>
 <body>
   <!-- ======= Header ======= -->
@@ -51,7 +67,7 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <form class="search-form d-flex align-items-center" method="POST" action="#" id="searchForm">
         <input type="text" name="query" placeholder="Pesquisar" id="searchInput" title="Enter search keyword">
         <button type="submit" title="Search" id="searchButton"><i class="bi bi-search"></i></button>
       </form>
