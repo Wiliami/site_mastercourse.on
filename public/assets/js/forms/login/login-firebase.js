@@ -41,6 +41,8 @@ function login() {
                 showError("Por favor, informe um e-mail válido!");
             } else if(error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                 showError("E-mail ou senha incorreta!");
+            } else if(error.code.includes('network error')) {
+                showError('Erro de rede: Verifique sua conexão com a internet.');
             } else {
                 showError("Ocorreu um erro ao efetuar o login.");
             }
