@@ -1,6 +1,10 @@
 firebase.auth().onAuthStateChanged(userAuthenticated => {
     if (userAuthenticated) {
-        findUsers(userAuthenticated);
+        const displayName = userAuthenticated.email;
+        console.log("Nome do usuário:", displayName);
+        $('#username').text()
+    } else {
+        console.log("Nenhum usuário autenticado.")
     }
 });
 
@@ -10,9 +14,12 @@ function findUsers() {
     .get()
     .then(snapshot => {
         const users = snapshot.docs.map(doc => doc.data());
-        addUserstoScreen(users);
+        // addUserstoScreen(users);
+        console.log(users);
     });
 }
+
+findUsers();
 
 function addUserstoScreen(users) {
     const orderedList = document.getElementById('users');

@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
     if(user) {
-        window.location.href = "/dashboard";
+        window.location.href = "#";
     }
 });
 
@@ -9,8 +9,9 @@ function showLoading() {
 }
 
 function hideLoading() {
-    setTimeout
-    $('#preloader').hide();
+    setTimeout(() => {
+        $('#preloader').hide();
+    }, 2000);
 }
 
 function showError(message) {
@@ -36,9 +37,9 @@ function register() {
         .then((data) => {
             const user = {
                 create_date: new Date(),
-                name: username,
+                displayName: username,  
                 email: email,
-                password: password
+                password: password 
             };
             return firebase.firestore().collection('users').doc(data.user.uid).set(user)
         })

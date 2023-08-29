@@ -46,7 +46,7 @@ function login() {
             }
         });
     } else {
-        // showLoading();
+        showLoading();
         hideLoading();
         showError('Preencha todos os campos!');
     }

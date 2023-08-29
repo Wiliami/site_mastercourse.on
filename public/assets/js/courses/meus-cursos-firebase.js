@@ -13,11 +13,8 @@ function findCourses() {
     .then(snapshot => {
         const courses = snapshot.docs.map(doc => doc.data());
         console.log(courses);
-
-
-        courses.forEach(course => {
-            
-        })
+        // courses.forEach(course => {
+        // })
     }); 
 }
 
