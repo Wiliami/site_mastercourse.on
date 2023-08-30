@@ -25,4 +25,4 @@ app.use('/admin', routeUserAdmin);
 
 app.get('*', (req, res) => res.render('404'));
 
-app.listen(8081, () => console.log('Servidor iniciado na porta 8081: http://localhost:8081'));
+app.listen(8080, () => console.log('Servidor iniciado na porta 8080: http://localhost:8080'));

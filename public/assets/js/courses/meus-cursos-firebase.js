@@ -6,24 +6,34 @@ firebase.auth().onAuthStateChanged(userAuthenticated => {
 
 
 function displayAllCourses() {
+    const rowContainer = document.getElementById("data-course");
+    rowContainer.innerHTML = "";
+
+    showSpinner();
+
     firebase.firestore()
     .collection('courses')
     .get()
     .then(snapshot => {
+        hideSpinner();
+        
         const courses = snapshot.docs.map(doc => doc.data());
 
-        const rowContainer = document.getElementById("data-course");
-        rowContainer.innerHTML = "";
 
-        courses.forEach(course => {
-            const card = createCourseCard(course);
-            rowContainer.appendChild(card);
-        });
+        if(courses.length === 0) {
+            showError('Nenhum curso foi econtrado!');
+        } else {
+            hideError();
+            courses.forEach(course => {
+                const card = createCourseCard(course);
+                rowContainer.appendChild(card);
+            });
+        }
     });
 }
 
 
-function findCourses(query) {
+function searchCourses(query) {
     firebase.firestore()
     .collection('courses')
     .get()
@@ -40,12 +50,12 @@ function findCourses(query) {
         // Limpar conteúdo atual
         const rowContainer = document.getElementById("data-course");
         rowContainer.innerHTML = "";
-
+        hideError();
         showSpinner();
         if(filteredCourses.length === 0) {
             hideSpinner();
             rowContainer.innerHTML = "";
-            showError('Nenhum curso foi encontrado!');
+            showError('Nenhum resultado correspondente encontrado!');
         } else {
             hideSpinner();
             rowContainer.innerHTML = "";
@@ -87,7 +97,7 @@ searchForm.addEventListener("submit", (e) => {
     const searchInput = document.getElementById("searchInput");
     const query = searchInput.value.trim().toLowerCase();
     if(query !== "") {
-        findCourses(query);
+        searchCourses(query);
     } else {
         displayAllCourses();
     }
@@ -95,8 +105,10 @@ searchForm.addEventListener("submit", (e) => {
 
 
 function showError(message) {
-    $('#error-message').show();
-    $('#error-message').text(message);
+    setTimeout(() => {
+        $('#error-message').show();
+        $('#error-message').text(message);
+    }, 2000)
 }
 
 function hideError() {
@@ -108,5 +120,10 @@ function showSpinner() {
 }
 
 function hideSpinner() {
-    $('#spinner').hide();
+    setTimeout(() => {
+        $('#spinner').hide();
+    }, 2000);
 }
+
+$('#searchInput').attr('placeholder', 'Pesquisar cursos...');
+$('#searchInput').attr('required');
