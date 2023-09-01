@@ -1,17 +1,14 @@
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
+    const rowContainer = document.getElementById("data-course");
+    const searchInput = document.getElementById("searchInput")
+
     firebase.auth().onAuthStateChanged(userAuthenticated => {
         if (userAuthenticated) {
             displayAllCourses(); // Pegar o Token do usuário
         }; 
     });
 
-    const rowContainer = document.getElementById("data-course");
+
 
     function createCourseCard(course) {
         const card = document.createElement('div');
@@ -53,12 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     }
     
-    $('#searchInput').attr('placeholder', 'Pesquisar cursos...');
-    $('#searchInput').attr('required');
-
+    searchInput.setAttribute('placeholder', 'Pesquisar cursos...');
+    searchInput.required = true;
 
     function displayAllCourses() {
-   
         rowContainer.innerHTML = "";
     
         showLoading();
@@ -84,6 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     displayAllCourses();
 
+    
+
+    searchInput.setAttribute('placeholder', 'Pesquisar cursos');
+    searchInput.required = true;
+
     const searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -97,42 +97,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-});
+function searchCourses(query) {
+    loading();
+    firebase.firestore()
+    .collection('courses')
+    .get()
+    .then(snapshot => {
+        const courses = snapshot.docs.map(doc => doc.data());
 
-// function searchCourses(query) {
-//     showLoading();
-//     firebase.firestore()
-//     .collection('courses')
-//     .get()
-//     .then(snapshot => {
-//         const courses = snapshot.docs.map(doc => doc.data());
-
-//         const filteredCourses = courses.filter(course => {
-//             const courseName = course.nameCourse.toLowerCase();
-//             const courseDescription = course.description.toLowerCase();
-//             return courseName.includes(query) || courseDescription.includes(query);
-//         });
+        const filteredCourses = courses.filter(course => {
+            const courseName = course.nameCourse.toLowerCase();
+            const courseDescription = course.description.toLowerCase();
+            return courseName.includes(query) || courseDescription.includes(query);
+        });
         
-//         // Elemento pai
-//         // Limpar conteúdo atual
-//         const rowContainer = document.getElementById("data-course");
-//         rowContainer.innerHTML = "";
-//         hideError();
-//         hideLoading();
-//         if(filteredCourses.length === 0) {
-//             rowContainer.innerHTML = "";
-//             showError('Nenhum resultado correspondente encontrado!');
-//         } else {
-//             hideLoading();
-//             rowContainer.innerHTML = "";
-//             hideError();
-//             filteredCourses.forEach(course => {
-//                 const card = createCourseCard(course);
-//                 rowContainer.appendChild(card);
-//             });
-//             hideLoading();
-//         }
-//     }); 
-// }
+        // Elemento pai
+        // Limpar conteúdo atual
+        const rowContainer = document.getElementById("data-course");
+        rowContainer.innerHTML = "";
+        hideError();
+        hideLoading();
+        if(filteredCourses.length === 0) {
+            rowContainer.innerHTML = "";
+            showError('Nenhum resultado correspondente encontrado!');
+        } else {
+            hideLoading();
+            rowContainer.innerHTML = "";
+            hideError();
+            filteredCourses.forEach(course => {
+                const card = createCourseCard(course);
+                rowContainer.appendChild(card);
+            });
+            hideLoading();
+        }
+    }); 
+}
 
 
+});
