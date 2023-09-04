@@ -17,27 +17,35 @@ router.get('/checkout', (req, res) => res.render('checkout'));
 
 
 
-router.get('/area-membro/courses/meus-cursos', async(req, res) => {
-//    const courses = req.body.query;   
-    res.render('area-membro/courses/meus-cursos', {courses});
+router.get('/area-membro/courses/meus-cursos', (req, res) => {
+    res.render('area-membro/courses/meus-cursos');
 });
 
 
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
-    //    const courses = req.body.query;
+
+    // if (!req.body.hasOwnProperty('query')) {
+    //     return res.status(400).json({ error: 'O campo "query" é obrigatório no corpo da solicitação.' });
+    // }
+    const query = req.body.query;
     
         try {
-           const snapshot = await admin.firestore().collection('courses').get();
-           const courses = snapshot.docs.map(doc => doc.data());
+           const coursesRef = admin.firestore().collection('courses');
 
+           const snapshot = await coursesRef
+           .where('nameCourse', '>=', query)
+           .get();
 
-           res.send(courses);
+            const courses = snapshot.docs.map(doc => doc.data());
+            console.log('Courses found:', courses);
+
+            res.json(courses);
      
         } catch (error) {
             console.log('Erro ao obter dados: ', error);
             res.status(500).send('Erro ao obter os dados.');
         }
     
-    });
+});
 
 module.exports = router;
