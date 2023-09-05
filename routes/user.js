@@ -37,7 +37,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
            .get();
 
             const courses = snapshot.docs.map(doc => doc.data());
-            console.log('Courses found:', courses);
+            // console.log('Courses found:', courses);
 
             res.json(courses);
      
