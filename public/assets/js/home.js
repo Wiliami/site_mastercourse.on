@@ -1,11 +1,5 @@
 firebase.auth().onAuthStateChanged(userAuthenticated => {
-    if (userAuthenticated) {
-        const displayName = userAuthenticated.email;
-        console.log("Nome do usuário:", displayName);
-        $('#username').text()
-    } else {
-        console.log("Nenhum usuário autenticado.")
-    }
+    if (userAuthenticated) {}
 });
 
 function findUsers() {
