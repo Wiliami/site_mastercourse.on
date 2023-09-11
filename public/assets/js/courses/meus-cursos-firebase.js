@@ -1,7 +1,7 @@
 $(document).ready(() => {
     const searchInput = $('#searchInput');
     const rowContainer = document.getElementById("data-course");
-    let searchTimeout;
+    // let searchTimeout;
     // firebase.auth().onAuthStateChanged(userAuthenticated => {
     //     if (userAuthenticated) {
     //         console.log('Está autenticado!'); // Pegar o Token do usuário
@@ -13,9 +13,9 @@ $(document).ready(() => {
 
 
     function searchCourses(query) {
-        clearTimeout(searchTimeout);
+        // clearTimeout(searchTimeout);
 
-        searchTimeout = setTimeout(() => {
+        // searchTimeout = setTimeout(() => {
             $.ajax({
                 url: '/home/area-membro/courses/meus-cursos',
                 method: 'POST',
@@ -33,7 +33,7 @@ $(document).ready(() => {
                     console.log('Erro na pesquisa', error);
                 }
             });
-        }, 300);
+        // }, 100);
     }
 
 
