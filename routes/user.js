@@ -4,7 +4,7 @@ const admin = require('firebase-admin');
 const { json } = require("sequelize");
 
 admin.initializeApp({
-    credential: admin.credential.cert('serviceAccountKey.json'),
+    credential: admin.credential.cert('serviceAccountKey.json')
 });
 
 router.get('/area-membro/courses/course-completed', (req, res) => res.render('area-membro/courses/course-completed'));
@@ -24,7 +24,7 @@ router.get('/area-membro/courses/meus-cursos', async(req, res) => {
 
 
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
-    //    const courses = req.body.query;
+    //  const courses = req.body.query;
     
         try {
            const snapshot = await admin.firestore().collection('courses').get();
