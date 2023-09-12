@@ -45,22 +45,6 @@
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
   <!-- Firebase files init -->
-  <script>
-    $(document).ready(() => {
-      $('#searchInput').on('input', () => {
-        const query = $(this).val();
-  
-        $ajax({
-            url: '/area-membro/courses/meus-cursos',
-            method: 'POST',
-            data: { query: query },
-            success: (data) => {
-              $('#data-course').html(data);
-            } 
-        });
-      });
-    });
-  </script>
   <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
   <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
   <script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
