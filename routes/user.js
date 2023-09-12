@@ -33,11 +33,10 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
            const coursesRef = admin.firestore().collection('courses');
 
            const snapshot = await coursesRef
-           .where('nameCourse', '>=', query)
+           .where('nameCourse', '==', query, '__name__')
            .get();
 
             const courses = snapshot.docs.map(doc => doc.data());
-            // console.log('Courses found:', courses);
 
             res.json(courses);
      
