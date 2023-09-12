@@ -4,7 +4,7 @@ const admin = require('firebase-admin');
 const { json } = require("sequelize");
 
 admin.initializeApp({
-    credential: admin.credential.cert('serviceAccountKey.json'),
+    credential: admin.credential.cert('serviceAccountKey.json')
 });
 
 router.get('/area-membro/courses/course-completed', (req, res) => res.render('area-membro/courses/course-completed'));
@@ -28,6 +28,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
     //     return res.status(400).json({ error: 'O campo "query" é obrigatório no corpo da solicitação.' });
     // }
     const query = req.body.query;
+    //  const courses = req.body.query;
     
         try {
            const coursesRef = admin.firestore().collection('courses');
