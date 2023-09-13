@@ -35,7 +35,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
 
            const snapshot = await coursesRef
            .where('nameCourse', '==', query, '__name__')
-           .get();
+           .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());
 
