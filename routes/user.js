@@ -23,18 +23,14 @@ router.get('/area-membro/courses/meus-cursos', (req, res) => {
 
 
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
-
-    // if (!req.body.hasOwnProperty('query')) {
-    //     return res.status(400).json({ error: 'O campo "query" é obrigatório no corpo da solicitação.' });
-    // }
     const query = req.body.query;
-    //  const courses = req.body.query;
     
         try {
            const coursesRef = admin.firestore().collection('courses');
 
+           const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
-           .where('nameCourse', '==', query, '__name__')
+           .where('nameCourse', '>=', query, 'i')
            .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());
