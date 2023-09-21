@@ -14,8 +14,6 @@ $(document).ready(() => {
     displayAllCourses();
 
     searchInput.on('input', () => {
-        rowContainer.innerHTML = "";
-
         const query = searchInput.val().trim().toLowerCase();
         console.log(query)
 
@@ -26,11 +24,42 @@ $(document).ready(() => {
         }
     });
 
-   
+
+    function searchCourses(query) {
+        if (query !== "") { 
+            $.ajax({
+                url: '/home/area-membro/courses/meus-cursos',
+                method: 'POST',
+                data: { query: query },
+                    success: (data) => {
+                        // console.log(data);
+                        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
+
+                        const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
 
 
-    
+                        data.forEach((course) => {
+                            // Verifica se o curso já foi adicionado
+                            if(!uniqueCourses[course.nameCourse]) {
+                                uniqueCourses[course.nameCourse] = true; // Marca o curso como adicionado
+                                const card = createCourseCard(course);
+                                rowContainer.appendChild(card);
+                            }
+                        })
+                    },
+                    error: (error) => {
+                        console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
+                        showError('Erro ao buscar cursos. Por favor, tente novamente mais tarde.');
+                    }
+            });
+        } else {
+            displayAllCourses();
+        }   
+    }
+
+
     function displayAllCourses() {
+        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
 
         firebase.firestore()
         .collection('courses')
@@ -47,31 +76,6 @@ $(document).ready(() => {
                 });
             }
         });
-    }
-
-
-    function searchCourses(query) {
-        if (query !== "") { 
-            $.ajax({
-                url: '/home/area-membro/courses/meus-cursos',
-                method: 'POST',
-                data: { query: query },
-                    success: (data) => {
-                        // console.log(data);
-                        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
-
-                        data.forEach((course) => {
-                            const card = createCourseCard(course);
-                            rowContainer.appendChild(card);
-                        })
-                    },
-                    error: (error) => {
-                        console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
-                    }
-            });
-        } else {
-            displayAllCourses();
-        }   
     }
  
     function createCourseCard(course) {

@@ -28,14 +28,15 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
         try {
            const coursesRef = admin.firestore().collection('courses');
 
-           const lowerCaseQuery = query.toLowerCase();
+        // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
-           .where('nameCourse', '>=', query, 'i')
+           .where('nameCourseLowerCase', '>=', query)
            .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());
 
             res.json(courses);
+            console.log(courses);
      
         } catch (error) {
             console.log('Erro ao obter dados: ', error);
