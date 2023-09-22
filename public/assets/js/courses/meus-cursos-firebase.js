@@ -31,26 +31,26 @@ $(document).ready(() => {
                 url: '/home/area-membro/courses/meus-cursos',
                 method: 'POST',
                 data: { query: query },
-                    success: (data) => {
-                        // console.log(data);
-                        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
+                success: (data) => {
+                    // console.log(data);
+                    rowContainer.innerHTML = ""; // Limpe o conteúdo atual
 
-                        const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
+                    const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
 
 
-                        data.forEach((course) => {
-                            // Verifica se o curso já foi adicionado
-                            if(!uniqueCourses[course.nameCourse]) {
-                                uniqueCourses[course.nameCourse] = true; // Marca o curso como adicionado
-                                const card = createCourseCard(course);
-                                rowContainer.appendChild(card);
-                            }
-                        })
-                    },
-                    error: (error) => {
-                        console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
-                        showError('Erro ao buscar cursos. Por favor, tente novamente mais tarde.');
-                    }
+                    data.forEach((course) => {
+                        // Verifica se o curso já foi adicionado
+                        if(!uniqueCourses[course.nameCourseLowerCase]) {
+                            uniqueCourses[course.nameCourseLowerCase] = true; // Marca o curso como adicionado
+                            const card = createCourseCard(course);
+                            rowContainer.appendChild(card);
+                        }
+                    })
+                },
+                error: (error) => {
+                    console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
+                    showError('Erro ao buscar cursos. Por favor, tente novamente mais tarde.');
+                }
             });
         } else {
             displayAllCourses();
@@ -101,5 +101,9 @@ $(document).ready(() => {
         $('#error-message').show();
         $('#error-message').text(message);
     }
+
+    searchInput.attr('placeholder', 'Pesquisar por cursos...');
+    searchInput.attr('required', 'true');
+
 
 });

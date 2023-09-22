@@ -31,6 +31,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
         // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
            .where('nameCourseLowerCase', '>=', query)
+           .where('nameCourseLowerCase', '<=', query + '\uf8ff')  // Garante que seja um prefixo
            .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());
