@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
     if(user) {
-        window.location.href = "#";
+        window.location.href = "/dashboard";
     }
 });
 
@@ -28,26 +28,35 @@ function register() {
 
     if(username && email && password && confirmPassword) {  
         showLoading();
+
         if(password !== confirmPassword) {
             hideLoading();
             showError("As senhas digitadas não coincidem!");
             return;
         }
+        
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((data) => {
-            const user = {
-                create_date: new Date(),
-                displayName: username,  
-                email: email,
-                password: password 
-            };
-            return firebase.firestore().collection('users').doc(data.user.uid).set(user)
+        .then((userCredential) => {
+            const user = firebase.auth().currentUser;
+
+            return user.updateProfile({
+                displayName: username
+            }).then(() => { 
+                const userData = {
+                    create_date: new Date(),
+                    username: username,
+                    email: email,
+                    password: password,
+                    update_date: new Date()
+                };
+                return firebase.firestore().collection('users').doc(userCredential.user.uid).set(userData)
+            });
         })
         .then(() => {
             hideLoading();
             console.log('Usuário cadastrado com sucesso!');
-        })
-        .catch((error) => {
+        }).catch((error) => {
+            console.log('Erro durante o cadastro do usuário: ', error);
             hideLoading();
             if (error.code === 'auth/email-already-in-use') {
                 showError("Este e-mail já está cadastrado!");
