@@ -1,21 +1,22 @@
 $(document).ready(() => {
     firebase.auth().onAuthStateChanged(userAuthenticated => {
         if (userAuthenticated) {
-            console.log('Está autenticado!'); // Pegar o Token do usuário
+            displayAllCourses();
         } else {
-            console.log('O usuário não está autenticado!');
+            showError('Usuário não autenticado!');
         }
     });
 
-    const searchInput = $('#searchInput');
+
     const rowContainer = document.getElementById("data-course");
+    const searchInput = $('#searchInput');
+    searchInput.attr('placeholder', 'Digite o nome do curso...');
+    searchInput.attr('title', 'Pesquisar cursos...');
 
-
-    displayAllCourses();
-
-    searchInput.on('input', () => {
+   
+    searchInput.on('input', () => { 
         const query = searchInput.val().trim().toLowerCase();
-        console.log(query)
+        // console.log(query)
 
         if(query !== "") {
             searchCourses(query);
@@ -23,20 +24,27 @@ $(document).ready(() => {
             displayAllCourses();
         }
     });
-    function renderCourses(courses) {
+
+
+    function renderCourses(courses, searchQuery) {
         const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
 
         rowContainer.innerHTML = ""; // Limpe o conteúdo atual
 
-        courses.forEach((course) => {
-            if(!uniqueCourses[course.nameCourseLowerCase]) {
-                uniqueCourses[course.nameCourseLowerCase] = true;
-                const card = createCourseCard(course);
-                rowContainer.appendChild(card);
-            }
-        })
+        if(courses.length === 0) {
+            showError(`Nenhum curso correspondente foi encontrado para a pesquisa: <strong>${searchQuery}<strong>`);
+        } else {
+            hideError();
+            courses.forEach((course) => {
+                if(!uniqueCourses[course.nameCourseLowerCase]) {
+                    uniqueCourses[course.nameCourseLowerCase] = true;
+                    const card = createCourseCard(course);
+                    rowContainer.appendChild(card);
+                }
+            })
+        }
+        
     }
-    
 
 
     function searchCourses(query) {
@@ -46,18 +54,17 @@ $(document).ready(() => {
                 method: 'POST',
                 data: { query: query },
                 success: (data) => {
-                    renderCourses(data);                    
+                    renderCourses(data, query)                 
                 },
                 error: (error) => {
                     console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
-                    showError('Erro ao buscar cursos. Por favor, tente novamente mais tarde.');
+                    showError('Erro ao pesquisar cursos. Por favor, tente novamente mais tarde.');
                 }
             });
         } else {
             displayAllCourses();
         }   
     }   
-
 
 
     function displayAllCourses() {
@@ -77,7 +84,8 @@ $(document).ready(() => {
             }
         });
     }
- 
+
+
     function createCourseCard(course) {
         const card = document.createElement('div');
         card.className = 'col';
@@ -97,17 +105,15 @@ $(document).ready(() => {
         return card;
     }
     
+
     function showError(message) {
         $('#error-message').show();
         $('#error-message').html(message);
     }
 
+
     function hideError() {
         $('#error-message').hide();
     }
-
-    searchInput.attr('placeholder', 'Pesquisar por cursos...');
-    searchInput.attr('required', 'true');
-
-
+    
 });
