@@ -6,7 +6,7 @@ const path = require('path');
 const home = require('./routes/home');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
-import { createServer } from 'node:server';
+// import { createServer } from 'node:server';
 // const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));

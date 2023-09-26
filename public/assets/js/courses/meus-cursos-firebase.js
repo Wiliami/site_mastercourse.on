@@ -23,6 +23,20 @@ $(document).ready(() => {
             displayAllCourses();
         }
     });
+    function renderCourses(courses) {
+        const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
+
+        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
+
+        courses.forEach((course) => {
+            if(!uniqueCourses[course.nameCourseLowerCase]) {
+                uniqueCourses[course.nameCourseLowerCase] = true;
+                const card = createCourseCard(course);
+                rowContainer.appendChild(card);
+            }
+        })
+    }
+    
 
 
     function searchCourses(query) {
@@ -32,20 +46,7 @@ $(document).ready(() => {
                 method: 'POST',
                 data: { query: query },
                 success: (data) => {
-                    // console.log(data);
-                    rowContainer.innerHTML = ""; // Limpe o conteúdo atual
-
-                    const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
-
-
-                    data.forEach((course) => {
-                        // Verifica se o curso já foi adicionado
-                        if(!uniqueCourses[course.nameCourseLowerCase]) {
-                            uniqueCourses[course.nameCourseLowerCase] = true; // Marca o curso como adicionado
-                            const card = createCourseCard(course);
-                            rowContainer.appendChild(card);
-                        }
-                    })
+                    renderCourses(data);                    
                 },
                 error: (error) => {
                     console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
@@ -55,7 +56,8 @@ $(document).ready(() => {
         } else {
             displayAllCourses();
         }   
-    }
+    }   
+
 
 
     function displayAllCourses() {
@@ -69,11 +71,9 @@ $(document).ready(() => {
 
             if(courses.length === 0) {
                 showError('Nenhum curso foi econtrado!');   
-            } else {    
-                courses.forEach(course => {
-                    const card = createCourseCard(course);
-                    rowContainer.appendChild(card);
-                });
+            } else {  
+                hideError();  
+                renderCourses(courses);
             }
         });
     }
@@ -99,7 +99,11 @@ $(document).ready(() => {
     
     function showError(message) {
         $('#error-message').show();
-        $('#error-message').text(message);
+        $('#error-message').html(message);
+    }
+
+    function hideError() {
+        $('#error-message').hide();
     }
 
     searchInput.attr('placeholder', 'Pesquisar por cursos...');
