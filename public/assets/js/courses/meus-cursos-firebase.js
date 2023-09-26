@@ -1,56 +1,74 @@
 $(document).ready(() => {
+    firebase.auth().onAuthStateChanged(userAuthenticated => {
+        if (userAuthenticated) {
+            console.log('Está autenticado!'); // Pegar o Token do usuário
+        } else {
+            console.log('O usuário não está autenticado!');
+        }
+    });
+
     const searchInput = $('#searchInput');
     const rowContainer = document.getElementById("data-course");
-    // let searchTimeout;
-    // firebase.auth().onAuthStateChanged(userAuthenticated => {
-    //     if (userAuthenticated) {
-    //         console.log('Está autenticado!'); // Pegar o Token do usuário
-    //     }; 
-    // });
+
 
     displayAllCourses();
-    
+
+    searchInput.on('input', () => {
+        const query = searchInput.val().trim().toLowerCase();
+        console.log(query)
+
+        if(query !== "") {
+            searchCourses(query);
+        } else {
+            displayAllCourses();
+        }
+    });
 
 
     function searchCourses(query) {
-        // clearTimeout(searchTimeout);
-
-        // searchTimeout = setTimeout(() => {
+        if (query !== "") { 
             $.ajax({
                 url: '/home/area-membro/courses/meus-cursos',
                 method: 'POST',
                 data: { query: query },
                 success: (data) => {
-
+                    // console.log(data);
                     rowContainer.innerHTML = ""; // Limpe o conteúdo atual
-    
+
+                    const uniqueCourses = {};  // Usaremos um objeto para garantir a unicidade dos cursos
+
+
                     data.forEach((course) => {
-                        const card = createCourseCard(course);
-                        rowContainer.appendChild(card);
-                    });
+                        // Verifica se o curso já foi adicionado
+                        if(!uniqueCourses[course.nameCourseLowerCase]) {
+                            uniqueCourses[course.nameCourseLowerCase] = true; // Marca o curso como adicionado
+                            const card = createCourseCard(course);
+                            rowContainer.appendChild(card);
+                        }
+                    })
                 },
                 error: (error) => {
-                    console.log('Erro na pesquisa', error);
+                    console.error('Erro ao pesquisar os cursos: ', error);  // Adicione este log para verificar os erros
+                    showError('Erro ao buscar cursos. Por favor, tente novamente mais tarde.');
                 }
             });
-        // }, 100);
+        } else {
+            displayAllCourses();
+        }   
     }
 
 
-
     function displayAllCourses() {
-        // rowContainer.innerHTML = "";
-       
-        
+        rowContainer.innerHTML = ""; // Limpe o conteúdo atual
+
         firebase.firestore()
         .collection('courses')
         .get()
         .then(snapshot => {
-            
             const courses = snapshot.docs.map(doc => doc.data());
-    
+
             if(courses.length === 0) {
-                showError('Nenhum curso foi econtrado!');
+                showError('Nenhum curso foi econtrado!');   
             } else {    
                 courses.forEach(course => {
                     const card = createCourseCard(course);
@@ -59,19 +77,7 @@ $(document).ready(() => {
             }
         });
     }
-    
-    searchInput.on('input', () => {
-        const query = searchInput.val().trim().toLowerCase();
-        console.log(query)
-    
-        if (query !== "") { 
-            searchCourses(query);
-        } else {
-            displayAllCourses();
-        }   
-    });
-
-
+ 
     function createCourseCard(course) {
         const card = document.createElement('div');
         card.className = 'col';
@@ -91,12 +97,13 @@ $(document).ready(() => {
         return card;
     }
     
-   
-
-
     function showError(message) {
         $('#error-message').show();
         $('#error-message').text(message);
     }
+
+    searchInput.attr('placeholder', 'Pesquisar por cursos...');
+    searchInput.attr('required', 'true');
+
 
 });

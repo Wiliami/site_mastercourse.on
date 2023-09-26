@@ -23,24 +23,21 @@ router.get('/area-membro/courses/meus-cursos', (req, res) => {
 
 
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
-
-    // if (!req.body.hasOwnProperty('query')) {
-    //     return res.status(400).json({ error: 'O campo "query" é obrigatório no corpo da solicitação.' });
-    // }
     const query = req.body.query;
-    //  const courses = req.body.query;
     
         try {
            const coursesRef = admin.firestore().collection('courses');
 
+        // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
-           .where('nameCourse', '>=', query)
-           .get();
+           .where('nameCourseLowerCase', '>=', query)
+           .where('nameCourseLowerCase', '<=', query + '\uf8ff')  // Garante que seja um prefixo
+           .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());
-            // console.log('Courses found:', courses);
 
             res.json(courses);
+            console.log(courses);
      
         } catch (error) {
             console.log('Erro ao obter dados: ', error);
