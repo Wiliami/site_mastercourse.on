@@ -17,6 +17,7 @@ router.get('/checkout', (req, res) => res.render('checkout'));
 
 
 
+
 router.get('/area-membro/courses/meus-cursos', (req, res) => {
     res.render('area-membro/courses/meus-cursos');
 });

@@ -17,8 +17,6 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use('/', home);
-app.use('/login', (req, res) => res.render('login'));
-app.use('/cadastro', (req, res) => res.render('register'));
 
 // Rotas com permissão de acesso: Token válido
 app.use('/home', routeUser);
