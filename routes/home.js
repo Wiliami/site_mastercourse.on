@@ -4,6 +4,13 @@ const salt = bcrypt.genSaltSync(10);
 const router = express.Router();
 const admin = require('firebase-admin');
 
+admin.initializeApp({
+    credential: admin.credential.cert('serviceAccountKey.json')
+});
+
+const db = admin.firestore();
+
+
 
 router.get('/', (req, res) => res.render('home'));
 router.get('/login', (req, res) => res.render('login'));
@@ -29,13 +36,23 @@ router.post('/cadastro', async(req, res) => {
         return res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
     }
 
+    if(error.code === 'auth/email-already-in-use') {
+        return res.status(400).send('Esta e-mail já está cadastrado por outro usuário!');
+    }
+
     try {
         const createUser = await admin.auth().createUser({
             displayName: username,
             email,
             password,
         });
-        
+
+
+        await db.collection('users').doc(createUser.uid.uid).set({
+            displayName: username,
+            email,
+        })
+
         console.log('Novo usuário criado com sucesso: ', createUser.uid);
         res.status(201).send('Usuário cadastrado com sucesso!');
     } catch (error) {
