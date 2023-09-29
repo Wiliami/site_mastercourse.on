@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 const router = express.Router();
+const admin = require('firebase-admin');
 
 
 router.get('/', (req, res) => res.render('home'));
@@ -17,10 +18,31 @@ router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
 
-router.get('/cadastro', (req, res) => res.render('register'));
+router.get('/cadastro', (req, res) => {
+    res.render('register');
+});
 
-router.post('/cadastro', (req, res) => {
-    res.send('Olá, Mundo');
+router.post('/cadastro', async(req, res) => {
+    const { username, email, password } = req.body;
+
+    if(password.length < 6) {
+        return res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
+    }
+
+    try {
+        const createUser = await admin.auth().createUser({
+            displayName: username,
+            email,
+            password,
+        });
+        
+        console.log('Novo usuário criado com sucesso: ', createUser.uid);
+        res.status(201).send('Usuário cadastrado com sucesso!');
+    } catch (error) {
+        console.log('Erro ao criar usuário: ', error);
+        res.status(500).send('Erro ao criar usuário');
+    }
+
 });
 
 module.exports = router;
