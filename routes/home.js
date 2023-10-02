@@ -24,6 +24,24 @@ router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
+router.get('/verificar-email', (req, res) => {
+    res.render('verificar-email');
+})
+
+
+router.post('/verificar-email', (req, res) => {
+    const { email } = req.body;
+
+    const emailEmUso = true;    
+
+    if(emailEmUso) {
+        res.status(400).send('E-mail já está em uso');
+    } else {
+        res.status(200).send('E-mail disponível...');
+    }
+
+})
+
 
 router.get('/cadastro', (req, res) => {
     res.render('register');
@@ -32,12 +50,8 @@ router.get('/cadastro', (req, res) => {
 router.post('/cadastro', async(req, res) => {
     const { username, email, password } = req.body;
 
-    if(password.length < 6) {
-        return res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
-    }
-
-    if(error.code === 'auth/email-already-in-use') {
-        return res.status(400).send('Esta e-mail já está cadastrado por outro usuário!');
+    if(!password || password.length < 6) {
+        res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
     }
 
     try {
@@ -48,16 +62,24 @@ router.post('/cadastro', async(req, res) => {
         });
 
 
-        await db.collection('users').doc(createUser.uid.uid).set({
+        await db.collection('users').doc(createUser.uid).set({
+            create_date: new Date(),
             displayName: username,
             email,
+            password,
+            update_date: new Date(),
         })
 
         console.log('Novo usuário criado com sucesso: ', createUser.uid);
         res.status(201).send('Usuário cadastrado com sucesso!');
     } catch (error) {
-        console.log('Erro ao criar usuário: ', error);
-        res.status(500).send('Erro ao criar usuário');
+        if(error.code === 'auth/email-already-exists') {
+            res.status(400).send('Esta e-mail já está cadastrado por outro usuário!');
+        } else {
+            console.log('Erro ao criar usuário: ', error);
+            res.status(500).send('Erro ao criar usuário');
+        }
+          
     }
 
 });

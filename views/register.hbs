@@ -14,7 +14,7 @@
                                
                                 <form id="form" class="form-user" action="/cadastro" method="POST">
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control required" name="nome" id="username" placeholder="Nome e sobrenome">
+                                        <input type="text" class="form-control required" name="username" id="username" placeholder="Nome e sobrenome">
                                         <label for="inputName" style="font-size: 15px;">Nome</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Nome deve ter no mínimo 3 caracteres</span>
                                     </div>
@@ -30,10 +30,10 @@
                                     </div>
                                     <div class="form-floating mb-2">
                                         <input type="password" class="form-control required" name="confirmPassword" id="confirmPassword" autocomplete="on" placeholder="Confirmar senha">
-                                        <label for="inputPassword" style="font-size: 15px;">Confimar senha</label>
+                                        <label for="inputPassword" style="font-size: 15px;">Confirmar senha</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Senhas devem ser compatíveis</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" name="button-register" id="button-submit-register" type="submit" value="Criar">
+                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" name="register" id="register" type="submit" value="Criar">
                                 </form>
                                 <div class="mt-4">
                                     <div class="d-flex justify-content-center links">
@@ -48,114 +48,28 @@
         </div> 
     </section>   
 </body>
-<script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+{{!-- <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
 <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
-<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
-{{!-- <script src="/assets/js/firebase-init.js"></script> --}}
-
-
+<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script> --}}
 
 <script>
-    /*
-    firebase.auth().onAuthStateChanged(user => {
-        if(user) {
-            window.location.href = "#";
-        }
-    });
+ $(document).ready(() => {
+    $('#form').submit((e) => {
+        e.preventDefault();
 
-    function showLoading() {
-        $('#preloader').show();
-    }
+        var email = $('#email').val();
 
-    function hideLoading() {
-        setTimeout(() => {
-            $('#preloader').hide();
-        }, 2000);
-    }
-
-    function showError(message) {
-        $('#error-message').text(message);
-        $('#error-message').show();
-    }
-
-    function register() {  
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-        if(username && email && password && confirmPassword) {  
-            showLoading();
-
-            if(password !== confirmPassword) {
-                hideLoading();
-                showError("As senhas digitadas não coincidem!");
-                return;
+        $.ajax({
+            type: 'POST',
+            url: '/verificar-email',
+            data: { email: email },
+            success: (res) => {
+                $('#error-message').text('Esta e-mail já está cadastrado por outro usuários').show();
+            },
+            error: (xrs, status, error) => {
+                console.error('Erro ao verificar o email: ', error);
             }
-            
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = firebase.auth().currentUser;
-
-                return user.updateProfile({
-                    displayName: username
-                }).then(() => { 
-                    const userData = {
-                        create_date: new Date(),
-                        username: username,
-                        email: email,
-                        password: password,
-                        update_date: new Date()
-                    };
-                    return firebase.firestore().collection('users').doc(userCredential.user.uid).set(userData)
-                });
-            })
-            .then(() => {
-                hideLoading();
-                console.log('Usuário cadastrado com sucesso!');
-            }).catch((error) => {
-                console.log('Erro durante o cadastro do usuário: ', error);
-                hideLoading();
-                if (error.code === 'auth/email-already-in-use') {
-                    showError("Este e-mail já está cadastrado!");
-                } else if(error.code === 'auth/weak-password') {
-                    showError("A Senha deve ter no mínimo 6 caracteres!");
-                } else {
-                    showError("Ocorreu um erro durante o cadastro do usuário.");
-                }
-            });
-        } else {
-            showLoading();
-            hideLoading();
-            showError("Preencha todos os campos!");
-        }
-    }
-
-
-
-    function getErrorMessage(error) {
-        if(error.code == "auth/email-already-in-use") {
-            return "Email já está em uso";
-        }   
-        if(error.code == "auth/invalid-email") {
-            return "Preencha o campo de e-mail";
-        }
-        if(error.code == "auth/missing-password") {
-            return "Preencha o campo de senha";
-        }
-        return error.message;
-    }
-
-
-    const form = {
-        name: () => document.ggetElementById('username'),
-        email: () => document.getElementById('email'),
-        password: () => document.getElementById('password'),
-        confirmPassword: () => document.getElementById('confirmPassword')
-    }
-
-    */
-    
-
-</script>   
-{{!-- <script src="/assets/js/forms/register/register-firebase.js"></script> --}}
+        })
+    })
+ })
+</script>
