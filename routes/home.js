@@ -25,13 +25,10 @@ router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
 router.get('/verificar-email', (req, res) => {
-    res.render('verificar-email');
-})
+    res.render('verify-email');
+});
 
-
-router.post('/verificar-email', (req, res) => {
-    const { email } = req.body;
-
+router.get('/verificar-email', (req, res) => {
     const emailEmUso = true;    
 
     if(emailEmUso) {
@@ -39,8 +36,9 @@ router.post('/verificar-email', (req, res) => {
     } else {
         res.status(200).send('E-mail disponível...');
     }
-
 })
+
+
 
 
 router.get('/cadastro', (req, res) => {
