@@ -48,9 +48,6 @@
         </div> 
     </section>   
 </body>
-{{!-- <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
-<script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
-<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script> --}}
 
 <script>
  $(document).ready(() => {
@@ -61,16 +58,17 @@
 
         $.ajax({
             type: 'POST',
-            url: '/verificar-email',
-            data: JSON.stringify({ email: email }),
-            contentType: 'application/json',
-            success: (response) => {
-                $('#error-message').text('Este e-mail já está cadastrado por outro usuários').show();
+            url: '/cadastro',
+            data: { email: email },
+            success: (res) => {
+                $('#preloader').show();
+                $('#error-message').text('Esta e-mail já está cadastrado por outro usuários').show();
             },
             error: (xrs, status, error) => {
+                $('#preloader').hid();
                 console.error('Erro ao verificar o email: ', error);
             }
-        })
+        });
     })
  })
 </script>
