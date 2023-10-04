@@ -24,36 +24,6 @@ router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
-<<<<<<< HEAD
-
-
-router.post('/verificar-email', (req, res) => {
-    const { email } = req.body;
-
-=======
-router.get('/verificar-email', (req, res) => {
-    res.render('verify-email');
-});
-
-router.get('/verificar-email', (req, res) => {
-    const emailEmUso = true;    
->>>>>>> ae896d3c906d91c06925054044b8269f0b7265fa
-
-    if(email) {
-        res.status(400).send('E-mail já está em uso');
-    } else {
-        res.status(200).send('E-mail disponível...');
-    }
-<<<<<<< HEAD
-
-});
-=======
-})
->>>>>>> ae896d3c906d91c06925054044b8269f0b7265fa
-
-
-
-
 router.get('/cadastro', (req, res) => {
     res.render('register');
 });
