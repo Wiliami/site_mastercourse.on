@@ -24,23 +24,19 @@ router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
-router.get('/verificar-email', (req, res) => {
-    res.render('verificar-email');
-})
 
 
 router.post('/verificar-email', (req, res) => {
     const { email } = req.body;
 
-    const emailEmUso = true;    
 
-    if(emailEmUso) {
+    if(email) {
         res.status(400).send('E-mail já está em uso');
     } else {
         res.status(200).send('E-mail disponível...');
     }
 
-})
+});
 
 
 router.get('/cadastro', (req, res) => {

@@ -33,7 +33,7 @@
                                         <label for="inputPassword" style="font-size: 15px;">Confirmar senha</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Senhas devem ser compatíveis</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" name="register" id="register" type="submit" value="Criar">
+                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" type="submit" value="Criar">
                                 </form>
                                 <div class="mt-4">
                                     <div class="d-flex justify-content-center links">
@@ -55,16 +55,17 @@
 <script>
  $(document).ready(() => {
     $('#form').submit((e) => {
-        e.preventDefault();
+        e.preventDefault(); 
 
         var email = $('#email').val();
 
         $.ajax({
             type: 'POST',
             url: '/verificar-email',
-            data: { email: email },
-            success: (res) => {
-                $('#error-message').text('Esta e-mail já está cadastrado por outro usuários').show();
+            data: JSON.stringify({ email: email }),
+            contentType: 'application/json',
+            success: (response) => {
+                $('#error-message').text('Este e-mail já está cadastrado por outro usuários').show();
             },
             error: (xrs, status, error) => {
                 console.error('Erro ao verificar o email: ', error);
