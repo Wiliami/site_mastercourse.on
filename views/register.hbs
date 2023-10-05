@@ -1,4 +1,4 @@
-<body style="background-color: #37517e">
+<div style="background-color: #37517e">
     <section class="vh-100">
         <div class="container py-0 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -47,10 +47,10 @@
             </div>   
         </div> 
     </section>   
-</body>
+</div>
 
 <script>
- $(document).ready(() => {
+$(document).ready(() => {
     $('#form').submit((e) => {
         e.preventDefault(); 
 
@@ -58,14 +58,14 @@
 
         $.ajax({
             type: 'POST',
-            url: '/cadastro',
-            data: { email: email },
-            success: (res) => {
-                $('#preloader').show();
-                $('#error-message').text('Esta e-mail já está cadastrado por outro usuários').show();
+            url: '/verificar-email/',
+            data: JSON.stringify({ email: email }),
+            contentType: 'application/json',
+            success: function(response) {
+                console.log('Erro do servidor: ', response);
             },
-            error: (xrs, status, error) => {
-                $('#preloader').hide();
+            error: function(xrs, status, error) {
+                $('#error-message').text('Erro ao verificar o e-mail').show();
                 console.error('Erro ao verificar o email: ', error);
             }
         });

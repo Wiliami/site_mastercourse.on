@@ -24,17 +24,6 @@ router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
-
-router.post('/verificar-email', (req, res) => {
-    const { email  } =  req.body
-    // const emailEmUso = true;    
-
-    res.json({ message: 'E-mail verificado com sucesso' });
-})
-
-
-
-
 router.get('/cadastro', (req, res) => {
     res.render('register');
 });
