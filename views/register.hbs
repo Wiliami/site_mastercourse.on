@@ -65,7 +65,7 @@
                 $('#error-message').text('Esta e-mail já está cadastrado por outro usuários').show();
             },
             error: (xrs, status, error) => {
-                $('#preloader').hid();
+                $('#preloader').hide();
                 console.error('Erro ao verificar o email: ', error);
             }
         });
