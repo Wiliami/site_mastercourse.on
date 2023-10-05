@@ -58,17 +58,18 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: '/verificar-email/',
+            url: '/verificar',
             data: JSON.stringify({ email: email }),
             contentType: 'application/json',
             success: function(response) {
-                console.log('Erro do servidor: ', response);
+                // $('#error-message').text('Este E-mail já está cadastrado por outro usuário').show();
+                console.log('Este E-mail já está cadastrado por outro usuário');
             },
             error: function(xrs, status, error) {
-                $('#error-message').text('Erro ao verificar o e-mail').show();
+                // $('#error-message').text('Erro ao verificar o e-mail').show();
                 console.error('Erro ao verificar o email: ', error);
             }
         });
     })
- })
+ }) 
 </script>

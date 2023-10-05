@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/email', (req, res) => {
     const { email } = req.body;
 
     // Simulando a verificação do e-mail
