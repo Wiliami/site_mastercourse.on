@@ -30,7 +30,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
         try {
            const coursesRef = admin.firestore().collection('courses');
 
-        // const lowerCaseQuery = query.toLowerCase();
+            // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
            .where('nameCourseLowerCase', '>=', query)
            .where('nameCourseLowerCase', '<=', query + '\uf8ff')  // Garante que seja um prefixo
