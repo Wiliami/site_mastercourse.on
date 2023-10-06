@@ -21,7 +21,7 @@ router.get('/checkout', (req, res) => res.render('checkout'));
 
 router.get('/area-membro/courses/meus-cursos', (req, res) => {
     res.render('area-membro/courses/meus-cursos');
-},);
+});
 
 
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
@@ -33,7 +33,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
             // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
            .where('nameCourseLowerCase', '>=', query)
-           .where('nameCourseLowerCase', '<=', query + '\uf8ff')  // Garante que seja um prefixo
+           .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
            .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());

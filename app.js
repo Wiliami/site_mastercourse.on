@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/', home);
 app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
 app.use('/admin', routeUserAdmin);
-app.use('/verificar', verifyUserEmailRoute);
+app.use('/verificar-email', verifyUserEmailRoute);
 
 app.get('*', (req, res) => res.render('404'));
 
