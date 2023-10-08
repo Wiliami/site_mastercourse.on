@@ -3,9 +3,10 @@ const router = express.Router();
 const admin = require('firebase-admin');
 const { json } = require("sequelize");
 
-// admin.initializeApp({
-//     credential: admin.credential.cert('serviceAccountKey.json')
-// });
+
+admin.initializeApp({
+    credential: admin.credential.cert('serviceAccountKey.json')
+}, 'meus-cursos');
 
 router.get('/area-membro/courses/course-completed', (req, res) => res.render('area-membro/courses/course-completed'));
 router.get('/area-membro/courses/course-pending', (req, res) => res.render('area-membro/courses/course-pending'));
@@ -29,10 +30,10 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
         try {
            const coursesRef = admin.firestore().collection('courses');
 
-        // const lowerCaseQuery = query.toLowerCase();
+            // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
            .where('nameCourseLowerCase', '>=', query)
-           .where('nameCourseLowerCase', '<=', query + '\uf8ff')  // Garante que seja um prefixo
+           .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
            .get();  
 
             const courses = snapshot.docs.map(doc => doc.data());

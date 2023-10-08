@@ -1,7 +1,7 @@
 const express = require("express");
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
-const router = express.Router();
 const admin = require('firebase-admin');
 
 admin.initializeApp({
@@ -9,8 +9,6 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-
-
 
 router.get('/', (req, res) => res.render('home'));
 router.get('/login', (req, res) => res.render('login'));
@@ -47,7 +45,6 @@ router.post('/cadastro', async(req, res) => {
             create_date: new Date(),
             displayName: username,
             email,
-            password,
             update_date: new Date(),
         })
 
@@ -55,7 +52,8 @@ router.post('/cadastro', async(req, res) => {
         res.status(201).send('Usuário cadastrado com sucesso!');
     } catch (error) {
         if(error.code === 'auth/email-already-exists') {
-            res.status(400).send('Esta e-mail já está cadastrado por outro usuário!');
+            console.log('Este e-mail já está cadastrado por outro usuário!');
+            res.status(400).send('Este e-mail já está cadastrado por outro usuário!');
         } else {
             console.log('Erro ao criar usuário: ', error);
             res.status(500).send('Erro ao criar usuário');
