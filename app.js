@@ -6,7 +6,7 @@ const path = require('path');
 const home = require('./routes/home');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
-const verifyUserEmailRoute = require('./routes/verificarEmailuser');
+const verifyUserEmailRoute = require('./routes/verificarEmail');
 // const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));
