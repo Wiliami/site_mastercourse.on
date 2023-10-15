@@ -26,6 +26,8 @@ function register() {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
+    
+
     if(username && email && password && confirmPassword) {  
         showLoading();
 
@@ -90,7 +92,7 @@ function getErrorMessage(error) {
 
 
 const form = {
-    name: () => document.ggetElementById('username'),
+    name: () => document.getElementById('username'),
     email: () => document.getElementById('email'),
     password: () => document.getElementById('password'),
     confirmPassword: () => document.getElementById('confirmPassword')
