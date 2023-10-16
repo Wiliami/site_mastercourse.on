@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const admin = require('firebase-admin');
+const { db } = require('../firebaseConfig');
 
-
-const db = admin.firestore();
 
 router.post('/', async (req, res) => {
     const { email } = req.body; 
@@ -28,7 +26,6 @@ router.post('/', async (req, res) => {
             res.status(500).send('Erro ao verificar o e-mail.');
         }
     }
-
 
 });
 
