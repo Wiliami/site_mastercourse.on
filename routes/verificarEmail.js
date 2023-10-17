@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const admin = require('firebase-admin');
+const { db } = require('../firebaseConfig');
 
 
-const db = admin.firestore();
 
 router.post('/', async (req, res) => {
-    const { email } = req.body; 
+    const { email } = req.body;
     console.log('Email recebido:', email);
 
     if(!email) {

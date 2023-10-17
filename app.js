@@ -7,6 +7,7 @@ const home = require('./routes/home');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
 const verifyUserEmailRoute = require('./routes/verificarEmail');
+const register = require('./routes/register');
 // const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));
@@ -20,6 +21,7 @@ app.use('/', home);
 app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
 app.use('/admin', routeUserAdmin);
 app.use('/verificar-email', verifyUserEmailRoute);
+app.use('/cadastro', register);
 
 app.get('*', (req, res) => res.render('404'));
 

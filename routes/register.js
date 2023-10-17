@@ -1,17 +1,14 @@
-const admin = require('firebase-admin');
+const express = require('express');
+const router = express.Router();
+const { admin, db } = require('../firebaseConfig');
 
-admin.initializeApp({
-    credential: admin.credential.cert('serviceAccountKey.json')
-});
 
-const db = admin.firestore();
-
-router.get('/cadastro', (req, res) => {
+router.get('/', (req, res) => {
     res.render('register');
 });
 
 
-router.post('/cadastro', async(req, res) => {
+router.post('/', async(req, res) => {
     const { username, email, password } = req.body;
 
     if(!password || password.length < 6) {
@@ -47,3 +44,6 @@ router.post('/cadastro', async(req, res) => {
     }
 
 });
+
+
+module.exports = router;

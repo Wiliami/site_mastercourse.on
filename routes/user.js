@@ -4,9 +4,7 @@ const admin = require('firebase-admin');
 const { json } = require("sequelize");
 
 
-admin.initializeApp({
-    credential: admin.credential.cert('serviceAccountKey.json')
-}, 'meus-cursos');
+
 
 router.get('/area-membro/courses/course-completed', (req, res) => res.render('area-membro/courses/course-completed'));
 router.get('/area-membro/courses/course-pending', (req, res) => res.render('area-membro/courses/course-pending'));
