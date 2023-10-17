@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { admin, db } = require('../firebaseConfig');
-
+const { admin, db } = require('../firebaseConfig')
 
 router.get('/', (req, res) => {
     res.render('register');

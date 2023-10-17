@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use('/', home);
+app.use('/cadastro', register);
 app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
 app.use('/admin', routeUserAdmin);
 app.use('/verificar-email', verifyUserEmailRoute);

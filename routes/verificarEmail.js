@@ -3,7 +3,6 @@ const router = express.Router();
 const { db } = require('../firebaseConfig');
 
 
-
 router.post('/', async (req, res) => {
     const { email } = req.body;
     console.log('Email recebido:', email);
@@ -27,7 +26,6 @@ router.post('/', async (req, res) => {
             res.status(500).send('Erro ao verificar o e-mail.');
         }
     }
-
 
 });
 
