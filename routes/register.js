@@ -21,7 +21,6 @@ router.post('/', async(req, res) => {
             password,
         });
 
-
         await db.collection('users').doc(createUser.uid).set({
             create_date: new Date(),
             displayName: username,
