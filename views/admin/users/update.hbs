@@ -38,31 +38,33 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
+                                    
+
+                                    <div class="row mb-3" id="users">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nome</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control" id="fullName">
+                                            <input name="fullName" id="username" type="text" class="form-control" placeholder="Nome do usuário" value="{{user.name}}">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email">
+                                            <input name="email" id="user-email" type="email" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Contato</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="phone" type="text" class="form-control" id="Phone">
+                                            <input name="phone" id="user-phone" type="text" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Job" class="col-md-4 col-lg-3 col-form-label">Função</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="job" type="text" class="form-control" id="Job" value="Visitante">
+                                            <input name="job" id="user-funcao" type="text" class="form-control" id="Job" value="Visitante">
                                         </div>
                                     </div>
 
@@ -70,7 +72,7 @@
                                     <div class="row mb-3">
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Endereço</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="address" type="text" class="form-control" id="Address">
+                                            <input name="address" id="user-adress" type="text" class="form-control">
                                         </div>
                                     </div>
 
@@ -116,3 +118,10 @@
     </main>
     {{>_footerDashboard}}
     {{>_footerFilesDashboard}}
+     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="/assets/js/firebase-init.js"></script>
+    <script src="/assets/js/auth-guard.js"></script>
+    <script src="/assets/js/painel/tabelas/admin/users/dataTable-update.js"></script>
+    <script src="/assets/js/logout.js"></script>

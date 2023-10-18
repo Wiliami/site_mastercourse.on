@@ -15,6 +15,12 @@
             <div class="col-8">
                 {{!-- <h1 class="mb-4">Cadastrar usuário</h1> --}}
                 {{!-- <form action="/admin/users/list" method="POST" id="form"> --}}
+                <div class="alert alert-success" role="alert">
+                    Usuário cadastrado com sucesso!
+                </div>
+                 <div class="alert alert-danger" role="alert">
+                    Este e-mail já está em usado por outro usuário!
+                </div>
                 <div id="form">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Nome</label>
@@ -52,7 +58,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/auth-guard.js"></script>
-<script src="/assets/js/painel/admin/users/create.js"></script>
+<script src="/assets/js/painel/tabelas/admin/users/dataTable-create.js"></script>
 <script src="/assets/js/logout.js"></script>
 
 
