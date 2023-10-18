@@ -11,7 +11,7 @@ router.post('/', async(req, res) => {
     const { username, email, password } = req.body;
 
     if(!password || password.length < 6) {
-        res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
+        return res.status(400).send('A senha deve ter pelo menos 6 caracteres.');
     }
 
     try {
