@@ -1,12 +1,14 @@
 const express  = require('express');
-const { engine } = require('express-handlebars');
-const path = require('path');
 const app = express();
-const home = require('./routes/home');
-const user = require('./routes/user');
-const AdminRoute = require('./routes/admin');
+const { engine } = require('express-handlebars');
 const { request } = require('http');
-// const authenticateToken = require("./middlewares/authenticate-jwt"); 
+const path = require('path');
+const home = require('./routes/home');
+const register = require('./routes/register');
+const routeUser = require('./routes/user');
+const routeUserAdmin = require('./routes/admin');
+const verifyUserEmailRoute = require('./routes/verificarEmail');
+// const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
@@ -16,11 +18,11 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use('/', home);
-app.use('/home', user);
-app.use('/admin', AdminRoute);
-app.use('/login', (req, res) => res.render('login'));
-app.use('/cadastro', (req, res) => res.render('cadastro'));
+app.use('/cadastro', register);
+app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
+app.use('/admin', routeUserAdmin);
+app.use('/verificar-email', verifyUserEmailRoute);
 
 app.get('*', (req, res) => res.render('404'));
 
-app.listen(8081, () => console.log('Servidor iniciado na porta 8081: http://localhost:8081') );
+app.listen(8080, () => console.log('Servidor iniciado na porta 8080: http://localhost:8080 🔥'));   

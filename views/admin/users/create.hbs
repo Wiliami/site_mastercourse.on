@@ -13,6 +13,7 @@
     <section class="section dashboard">
         <div class="row">
             <div class="col-8">
+<<<<<<< HEAD
                 {{!-- <h1 class="mb-4">Cadastrar usuário</h1> --}}
                 {{!-- <form action="/admin/users/list" method="POST" id="form"> --}}
                 <div class="alert alert-success" role="alert">
@@ -21,6 +22,11 @@
                  <div class="alert alert-danger" role="alert">
                     Este e-mail já está em usado por outro usuário!
                 </div>
+=======
+                <div class="alert alert-success" id="success-message" role="alert" style="display: none;">
+                    Usuário cadastrado com sucesso!
+                </div>
+>>>>>>> 61736bfed6603910d722fc9f1d6c26217e8bd4fb
                 <div id="form">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Nome</label>
@@ -43,7 +49,9 @@
                         <span class="form-text span-required">Senhas devem ser compatíveis</span>
                     </div>
                     <button onclick="createUser()" class="btn btn-primary">Cadastrar</button>
-                    <a onclick="routeListUsers()" class="btn btn-dark">Voltar</a>
+                    <button class="btn btn-dark">
+                        <a onclick="routeListUsers()">Voltar</a>
+                    </button>
                 </div> {{!-- </form> --}}
             </div> <!-- Fim da col -->
         </div> <!-- Fim da row -->
@@ -51,13 +59,12 @@
 </main>
 {{>_footerDashboard}}
 {{>_footerFilesDashboard}}
-
-
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/auth-guard.js"></script>
+<<<<<<< HEAD
 <script src="/assets/js/painel/tabelas/admin/users/dataTable-create.js"></script>
 <script src="/assets/js/logout.js"></script>
 
@@ -124,3 +131,8 @@
         }
     }
 </script>
+=======
+<script src="/assets/js/tabelas/admin/users/dataTable-create.js"></script>
+<script src="/assets/js/forms/validation/create.js"></script>
+<script src="/assets/js/logout.js"></script>
+>>>>>>> 61736bfed6603910d722fc9f1d6c26217e8bd4fb

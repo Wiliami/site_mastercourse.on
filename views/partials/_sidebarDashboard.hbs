@@ -12,7 +12,10 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- JQuery version 3.7.0 -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <!-- Google Fonts -->
+
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -35,6 +38,22 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+   <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .footer-dashboard {
+        /* background-color: #f8f9fa; 
+        border-top: 1px solid #e9ecef;
+        padding: 20px; 8*/
+        margin-top: auto; /* Pushes the footer to the bottom */
+    }
+  </style>
 </head>
 <body>
   <!-- ======= Header ======= -->
@@ -48,9 +67,9 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      <form class="search-form v-100 d-flex align-items-center" method="POST" action="#" id="searchForm">
+        <input type="text" name="query" placeholder="" id="searchInput" title="">
+        <button type="hidden" title="Search" id="searchButton" disabled><i class="bi bi-search" id="searchIcon"></i></button>
       </form>
     </div><!-- End Search Bar -->
 
@@ -221,7 +240,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/account/user-profile">
+              <a class="dropdown-item d-flex align-items-center" href="/home/account/user-profile">
                 <i class="bi bi-person"></i>
                 <span>Minha conta</span>
               </a>
@@ -264,10 +283,10 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-courses" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#component-courses" data-bs-toggle="collapse" href="#">
           <i class="bi bi-book"></i><span>Meus cursos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-courses" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="component-courses" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="/home/area-membro/courses/meus-cursos">
               <i class="bi bi-circle"></i><span>Todos os cursos</span>
@@ -283,22 +302,36 @@
               <i class="bi bi-circle"></i><span>Cursos não concluídos</span>
             </a>
           </li>
+        </ul>
+      </li><!-- End Módulo 1 nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#component-purchase" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bag-fill"></i><span>Minhas compras</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="component-purchase" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/home/area-membro/courses/purchase-user">
-              <i class="bi bi-circle"></i><span>Minhas compras</span>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Todos meus produtos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Lista de desejos</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Módulo 1 nav -->
+      </li><!-- End Módulo 2 nav -->
       
       
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-settings" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#component-settings" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gear"></i><span>Configurações</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>  
-        <ul id="components-settings" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="component-settings" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/account/user-profile">
+            <a href="/home/account/user-profile">
               <i class="bi bi-circle"></i><span>Minha conta</span>
             </a>
           </li>
@@ -313,10 +346,10 @@
 
       <!-- Área Administrativa -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-admin" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#component-admin" data-bs-toggle="collapse" href="#">
           <i class="bi bi-person-lock"></i><span>Painel Admin</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-admin" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="component-admin" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="/admin/users/list">
               <i class="bi bi-circle"></i><span>Lista de usuários</span>
@@ -324,17 +357,12 @@
           </li>
           <li>
             <a href="/admin/users/create">
-              <i class="bi bi-circle"></i><span>Cadastrar usuário</span>
+              <i class="bi bi-circle"></i><span>Cadastrar usuários</span>
             </a>
           </li>
           <li>
-            <a href="/admin/users/update">
+            <a href="/home/account/user-profile">
               <i class="bi bi-circle"></i><span>Editar usuários</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/users/delete">
-              <i class="bi bi-circle"></i><span>Excluir usuários</span>
             </a>
           </li>
         </ul>

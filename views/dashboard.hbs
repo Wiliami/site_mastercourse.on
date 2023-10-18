@@ -1,14 +1,13 @@
   {{>_sidebarDashboard}}
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Seja bem-vindo, K. Anderson</h1>
+    <h1 id="usersame"></h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
         </ol>
       </nav>
     </div>
-
     <section class="section">
       <div class="row">
         <!-- Left side columns -->
@@ -17,16 +16,12 @@
               <tboby id="users"></tbody>
           </div>
         </div>
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-          <div class="row">
-            
-          </div>
-        </div>
+        
       </div> <!-- End row container -->
+
     </section>
   </main><!-- End #main -->
+  {{>_preloader}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -34,5 +29,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
   <script src="/assets/js/firebase-init.js"></script>
   <script src="/assets/js/auth-guard.js"></script>
-  <script src="/assets/js/painel/home.js"></script>
+  <script src="/assets/js/home.js"></script>
   <script src="/assets/js/logout.js"></script>
+  <script src="/assets/js/loading.js"></script>

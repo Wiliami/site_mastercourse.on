@@ -22,7 +22,7 @@ $(document).ready(function() {
           "previous": "Anterior",
           "next": "Próximo"
         },
-        search: 'Pesquisar:',
+        search: 'Pesquisar: ',
         searchPlaceholder: 'Pesquisar...',
       }
       
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     firebase.auth().onAuthStateChanged(userAuthenticated => {
       if (userAuthenticated) {
-          // userAuthenticated.getIdToken().then(token => console.log(token)); // Pegar o Token do usuário
+          userAuthenticated.getIdToken().then(token => token); // Pegar o Token do usuário
           findUsers(userAuthenticated);
       }
     });
@@ -46,18 +46,63 @@ $(document).ready(function() {
       });
     }
 
+    function getUserData() {
+      try {
+        // Verifica se há um usuário autenticado
+        const user = firebase.auth().currentUser;
+    
+        if (user) {
+          console.log("Usuário logado:", user.uid); // Exemplo: imprimir o UID do usuário logado
+    
+          // Aqui você pode usar o UID do usuário para acessar dados específicos no Firestore
+          const db = firebase.firestore();
+          const userDocumentRef = db.collection("users").doc(user.uid);
+    
+          // Exemplo de como obter os dados do usuário no Firestore
+          userDocumentRef.get()
+            .then((doc) => {
+              if (doc.exists) {
+                console.log("Dados do usuário:", doc.data());
+              } else {
+                console.log("Documento do usuário não encontrado!");
+              }
+            })
+            .catch((error) => {
+              console.error("Erro ao obter os dados do usuário:", error);
+            });
+        } else {
+          console.log("Nenhum usuário logado.");
+        }
+      } catch (error) {
+        console.error("Erro ao configurar o Firebase:", error);
+      }
+    }
+
+    // getUserData();
+
+
     const userId = '6dMj9qVDycQeCwnmjQ7DbF6BEZN2'; // example => id user
     function addUsersToScreen(users) {
-      users.forEach(user => {
-        tabela.row
+      if(users.length) {
+        users.forEach(user => {
+          tabela.row
             .add([
                 user.name,
                 user.email,
+                user.create_date?.seconds ? new Date(user.create_date?.seconds * 1000).toLocaleDateString('pt-br') : '',
+                user.cad_user,
+                user.update_user,
                 `<a href="/admin/users/update?id=${encodeURIComponent(userId)}" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
                 `<a href="/admin/users/delete?id=${encodeURIComponent(userId)}" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>`
             ])
             .draw(false);
-      });
+        });
+
+      } else {
+        $( ".spinner-border" ).remove();
+        $(".dataTables_empty").text('Nenhum registro foi encontrado!');
+      }
+    
     }
 
 });

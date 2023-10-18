@@ -1,4 +1,23 @@
-{{>_sidebarDashboard}}
+  {{>_sidebarDashboard}}
+  <head>
+    <style>
+       .search-input {
+          padding: 10px 30px 10px 10px;
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position: right center;
+      }
+
+      #searchIcon {
+        cursor: pointer; /* Altera o cursor para parecer clicável */
+      }
+
+      #searchIcon.hidden {
+        display: none; /* Esconde a lupa quando está indisponível */
+      }
+    </style>
+   
+  </head>
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Meus cursos</h1>
@@ -9,71 +28,46 @@
           <li class="breadcrumb-item active">Todos os cursos</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
-    <section class="section dashboard">
-      <div class="row">
 
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
+    <section class="section dashboard"> 
+      {{_loading}}
+      {{>_alertDanger}}
+      
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+          <div class="row row-cols-1 row-cols-md-3 g-4" id="data-course">
             <!-- Content -->
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">Javascript ES6</h5>
-                    <p class="card-text">Aprendizado de uma das linaguagens mais populares do mercado e do mundo. Você aprenderá os principais conceitos da linguagem com projetos 3 projetos reais.</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">Desenvolvimento web</h5>
-                    <p class="card-text">Neste curso você aprenderá tags e semânticas do HMTL5 e CSS3. Faremos um projeto do zero para você colocar no seu portfólio</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">Lógica de Programação</h5>
-                    <p class="card-text">Um curso voltado para aprendizado na estrutura de dados e também na lógica por trás de projetos das diversas áreas da programção</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Banner do curso">
-                  <div class="card-body">
-                    <h5 class="card-title">React JS</h5>
-                    <p class="card-text">Construiremos do zero um projeto de E-commerce para ser usado por diversos clientes. Aprenderemos a montar uma aplicação em cima de um framework baseado em componentes e otimizado para web.</p>
-                    <a href="/home/area-membro/courses/course-details" class="btn btn-outline-dark stretched-link">Acessar curso</a> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End row -->
-        </div><!-- End Left side columns -->
+          </div>
+      </div>
+      
+      <!-- Right side columns -->
+      <!-- <div class="col-lg-4"></div> -->
+    </section>
 
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-          <!-- Recent Activity -->
-
-        </div><!-- End Right side columns -->
-
-      </div> <!-- End row -->
-    </section><!-- End Section -->
+    
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled" id="previousPage">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+        </li>
+        <li class="page-item"><a class="page-link" id="page1" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" id="page2" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" id="page3" href="#">3</a></li>
+        <li class="page-item" id="nextPage">
+          <a class="page-link" href="#">Próximo</a>
+        </li>
+      </ul>
+    </nav>
   </main>
-
-  {{!-- {{>_footerFilesScriptDashboard}} --}}
+    
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
+  <!-- Firebase files init -->
+  <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+  <script src="/assets/js/firebase-init.js"></script>
+  <script src="/assets/js/courses/meus-cursos-firebase.js"></script>
+  <script src="/assets/js/courses/pagination.js"></script>

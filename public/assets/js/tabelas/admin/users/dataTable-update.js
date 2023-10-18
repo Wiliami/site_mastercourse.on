@@ -16,7 +16,6 @@
 
 
   function addUsersToScreen(users) {
-
     users.forEach(user => {
         const name = document.getElementById('username');
         name.innerHTML = user.name;
