@@ -13,20 +13,9 @@
     <section class="section dashboard">
         <div class="row">
             <div class="col-8">
-<<<<<<< HEAD
-                {{!-- <h1 class="mb-4">Cadastrar usuário</h1> --}}
-                {{!-- <form action="/admin/users/list" method="POST" id="form"> --}}
-                <div class="alert alert-success" role="alert">
-                    Usuário cadastrado com sucesso!
-                </div>
-                 <div class="alert alert-danger" role="alert">
-                    Este e-mail já está em usado por outro usuário!
-                </div>
-=======
                 <div class="alert alert-success" id="success-message" role="alert" style="display: none;">
                     Usuário cadastrado com sucesso!
                 </div>
->>>>>>> 61736bfed6603910d722fc9f1d6c26217e8bd4fb
                 <div id="form">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Nome</label>
@@ -64,75 +53,6 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="/assets/js/firebase-init.js"></script>
 <script src="/assets/js/auth-guard.js"></script>
-<<<<<<< HEAD
-<script src="/assets/js/painel/tabelas/admin/users/dataTable-create.js"></script>
-<script src="/assets/js/logout.js"></script>
-
-
-<script>
-    let buttonSubmit = document.getElementById('form');
-    let campos = document.querySelectorAll('.required')
-    let span = document.querySelectorAll('.span-required')
-
-    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-    buttonSubmit.addEventListener('click', (e) => {
-        e.preventDefault();
-        nameValidate();
-        emailValidate();
-        mainPasswordValidate();
-        confirmPassword();
-    });
-
-
-    function setError(index) {
-        campos[index].style.border = '2px solid #e63656';
-        span[index].style.display = 'block';
-    }
-
-
-    function removeError(index) {
-        campos[index].style.border = '';
-        span[index].style.display = 'none';
-    }
-
-
-    function nameValidate() {
-        if(campos[0].value.length < 3) {
-            setError(0)
-        } else {
-            removeError(0)
-        }
-    }
-
-
-    function emailValidate() {
-        if(!emailRegex.test(campos[1].value)) {
-            setError(1);
-        } else {
-            removeError(1);
-        }
-    }
-
-
-    function mainPasswordValidate() {
-        if(campos[2].value.length < 8) {
-            setError(2);
-        } else {
-            removeError(2);
-        }
-    }
-
-    function confirmPassword() {
-            if(campos[2].value == campos[3].value && campos[3].value.length >= 8) {
-            removeError(3);
-        } else {
-            setError(3);
-        }
-    }
-</script>
-=======
 <script src="/assets/js/tabelas/admin/users/dataTable-create.js"></script>
 <script src="/assets/js/forms/validation/create.js"></script>
 <script src="/assets/js/logout.js"></script>
->>>>>>> 61736bfed6603910d722fc9f1d6c26217e8bd4fb
