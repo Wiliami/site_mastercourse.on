@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const admin = require('firebase-admin');
 const { json } = require("sequelize");
+const { db } = require('../firebaseConfig');
 
 
-admin.initializeApp({
-    credential: admin.credential.cert('serviceAccountKey.json')
-}, 'meus-cursos');
 
 router.get('/area-membro/courses/course-completed', (req, res) => res.render('area-membro/courses/course-completed'));
 router.get('/area-membro/courses/course-pending', (req, res) => res.render('area-membro/courses/course-pending'));
@@ -15,9 +12,7 @@ router.get('/area-membro/courses/area-curso', (req, res) => res.render('area-mem
 router.get('/area-membro/courses/course-details', (req, res) => res.render('area-membro/courses/course-details'));
 router.get('/account/user-profile', (req, res) => res.render('account/user-profile'));
 router.get('/checkout', (req, res) => res.render('checkout'));
-
-
-
+router.get('/posts', (req, res) => res.render('postagens'));
 
 router.get('/area-membro/courses/meus-cursos', (req, res) => {
     res.render('area-membro/courses/meus-cursos');
@@ -28,7 +23,7 @@ router.post('/area-membro/courses/meus-cursos', async(req, res) => {
     const query = req.body.query;
     
         try {
-           const coursesRef = admin.firestore().collection('courses');
+           const coursesRef = db.collection('courses');
 
             // const lowerCaseQuery = query.toLowerCase();
            const snapshot = await coursesRef
