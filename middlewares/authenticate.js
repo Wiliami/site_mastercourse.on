@@ -1,3 +1,5 @@
+const { db } = require('../firebaseConfig');
+
 const firebaseAuthMiddleware = (req, res, next) => {
   const idToken = req.headers.authorization;
 

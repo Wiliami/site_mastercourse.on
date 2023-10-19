@@ -5,6 +5,7 @@ const { db } = require('../firebaseConfig');
 router.post('/', async (req, res) => {
     const { email } = req.body;
     console.log('Email recebido:', email || 'E-mail não informado.');
+
   
     if(!email) {
         console.error('Preencha todos os campos.');
