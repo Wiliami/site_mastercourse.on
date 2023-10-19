@@ -13,7 +13,7 @@
                                 {{>_alertDanger}}
                                 {{>_alertSuccess}}
                                
-                                <form id="form" class="form-user" action="/cadastro" method="POST">
+                                <form id="form" class="form-user" action="" method="POST">
                                     <div class="form-floating mb-2">
                                         <input type="text" class="form-control required" name="username" id="username" placeholder="Nome e sobrenome">
                                         <label for="inputName" style="font-size: 15px;">Nome</label>
@@ -55,22 +55,24 @@ $(document).ready(() => {
     $('#form').submit((e) => {
         e.preventDefault(); 
 
-        var email = $('#email').val();
+        const email = $('#email').val(),
 
         $.ajax({
             type: 'POST',
             url: '/verificar-email',
             data: JSON.stringify({ email: email }),
             contentType: 'application/json',
-            success: function(response) {
+            success: (response) => {
                 $('#error-message').text(response).show();
                 console.log('Resposta do servidor:', response);
-            },
-            error: function(xrs, status, error) {
-                // $('#error-message').text('Error ao verificar E-mail').show();
+            },  
+            error: function(xhr, status, error) {
                 console.error('Erro ao verificar o email:', error);
+                $('#error-message').text(xhr.responseText).show();  
             }
         });
     })
- })
+
+    // $('submit').submit((e) = {})
+ });
 </script>

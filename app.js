@@ -4,10 +4,10 @@ const { engine } = require('express-handlebars');
 const { request } = require('http');
 const path = require('path');
 const home = require('./routes/home');
+const register = require('./routes/register');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
 const verifyUserEmailRoute = require('./routes/verificarEmail');
-const register = require('./routes/register');
 // const checkIfAuthenticated = require("./middlewares/authenticate");
 
 app.use(express.static(__dirname + '/public'));
