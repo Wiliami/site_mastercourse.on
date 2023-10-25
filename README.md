@@ -11,11 +11,11 @@ nodemon app.js
 ```
 Use `nodemon app.js` run the project.
 
-## Packages used:
+## Tools used in the project:
 - **Frontend:**
   - JQuery
-  - Express-handlebars
   - Bootstrap
+  - Express-handlebars
 - **Backend:**
   - NodeJS
   - Express
@@ -25,13 +25,8 @@ Use `nodemon app.js` run the project.
 ## Page Home
 ![home-mastercourse](https://user-images.githubusercontent.com/67030481/236507772-0b649e1c-b56a-4067-9bf1-c1fe6b83fdb4.png)
 
-
-
-## Page - SignIn
-![tela de login](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/a7fdb8cb-9b22-4982-9caf-22c9ce435817)
-
-## Page - SignUp
-![tela de cadastro](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/f664aa95-7b10-4b95-8c2e-500c0cd3b1e7)
+## Screen Forms
+![telas do sistema](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/d1379109-b8d6-4a77-883a-ce547aaa762a)
 
 ## Page - Dashboard
 ![page dashboard](https://github.com/Wiliami/nodejs-website/assets/67030481/fefcc0aa-dd95-4cee-88dc-988635da2315)
