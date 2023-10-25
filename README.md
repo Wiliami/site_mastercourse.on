@@ -15,7 +15,7 @@ Use `nodemon app.js` run the project.
 - **Frontend:**
   - JQuery
   - Express-handlebars
-  - Bootstrap v5.2.3
+  - Bootstrap
 - **Backend:**
   - NodeJS
   - Express
