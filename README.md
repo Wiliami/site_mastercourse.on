@@ -1,12 +1,10 @@
 # Website created with Node.js
 
 ## How run project:
-- 1 step run: 
+- 1 step run: Install all dependencies
 ```
-npm or yarn install
+npm install
 ```
-This command will install node_modules
-
 - 2 step run: 
 ```
 nodemon app.js
@@ -55,13 +53,3 @@ Use `nodemon app.js` run the project.
 ## Page - Courses User 
 ![image](https://github.com/Wiliami/nodejs-website/assets/67030481/20745f86-156d-410d-af98-cec62e5ffdab)
 
-
-create table master c
-
-## Screen user course lesson
-acess to course
-
-## controllers
-text here demo it default
-
-## comment here default
