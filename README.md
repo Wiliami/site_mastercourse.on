@@ -13,17 +13,13 @@ Use `nodemon app.js` run the project.
 
 ## Packages used:
 - **Frontend:**
-  - HTML5
-  - CSS3
-  - Javascript
+  - JQuery
+  - Express-handlebars
   - Bootstrap v5.2.3
 - **Backend:**
   - NodeJS
-  - Nodemon
-  - Mysql2
-  - Sequelize
   - Express
-  - Express-handlebars
+  - Firebase
 
 
 ## Page Home
