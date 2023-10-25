@@ -9,10 +9,6 @@ npm install
 ```
 nodemon app.js
 ```
-- 3 step run:
-```
-  nodemon 3.0.0
-```
 Use `nodemon app.js` run the project.
 
 ## Packages used:
