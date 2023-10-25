@@ -15,14 +15,17 @@ router.post('/', async (req, res) => {
             console.log('Este e-mail já está cadastrado.');
             res.status(400).send('Este e-mail já está cadastrado.');
             return;
+        } else {
+            res.status(200).send('Tudo certo');
+            return;
         }
 
     } catch (error) {
         console.error('Erro ao verificar o e-mail: ', error);
         res.status(500).send('Erro ao verificar o e-mail.');
+        return;
     }
-
-
+    
 });
 
 module.exports = router;

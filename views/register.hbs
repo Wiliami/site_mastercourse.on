@@ -50,36 +50,19 @@
     </section>   
 </div>
 
-<script>
-    function checkVariableISAble() {
-        if(username1) {
-            console.log('Variável já foi declarada!');
-        } else {
-            console.log('Variável disponível');
-        }
-    }
-
-    checkVariableISAble();
-
-</script>
 
 <script>
 $(document).ready(() => {
-    $('#form').submit((e) => {
-        e.preventDefault(); 
-
-        const username = $('#username').val();
+    $("#email").change(() => {
         const email = $('#email').val();
-        const password = $('#password').val();
-        const confirmPassword = $('#confirmPassword').val();
-
+        
         $.ajax({
             type: 'POST',
             url: '/verificar-email',
             data: JSON.stringify({ email: email }),
             contentType: 'application/json',
             success: (response) => {
-                $('#error-message').text(response).show();
+                $('#error-message').text('').hide();
                 console.log('Resposta do servidor:', response);
             },  
             error: function(xhr, status, error) {
@@ -87,6 +70,14 @@ $(document).ready(() => {
                 $('#error-message').text(xhr.responseText).show();  
             }
         });
+    })
+    $('#form').submit((e) => {
+        e.preventDefault(); 
+
+        const username = $('#username').val();
+        const email = $('#email').val();
+        const password = $('#password').val();
+        const confirmPassword = $('#confirmPassword').val();
 
         $.ajax({
             type: 'POST',
