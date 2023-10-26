@@ -28,15 +28,5 @@ Use `nodemon app.js` run the project.
 ## Screen Forms
 ![telas do sistema](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/d1379109-b8d6-4a77-883a-ce547aaa762a)
 
-## Page - Dashboard
-![page dashboard](https://github.com/Wiliami/nodejs-website/assets/67030481/fefcc0aa-dd95-4cee-88dc-988635da2315)
-
-## Page - Courses Users
-![page courses user](https://github.com/Wiliami/nodejs-website/assets/67030481/376407aa-2415-4d95-8318-6a62bf47ff1a)
-
-## Page - Settings Profile User
-![page - settings profile user](https://github.com/Wiliami/nodejs-website/assets/67030481/0eb8ff8e-a9f2-4b9b-b69a-1caabc47a483)
-
-## Page - Courses User 
-![image](https://github.com/Wiliami/nodejs-website/assets/67030481/20745f86-156d-410d-af98-cec62e5ffdab)
-
+## Screen System
+![tela](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/a6f60d1d-30b6-44ac-9018-f4c792591484)
