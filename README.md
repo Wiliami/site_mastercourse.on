@@ -1,47 +1,32 @@
 # Website created with Node.js
 
 ## How run project:
-- 1 step run: 
+- 1 step run: Install all dependencies
 ```
-npm or yarn install
+npm install
 ```
-This command will install node_modules
-
 - 2 step run: 
 ```
 nodemon app.js
 ```
-- 3 step run:
-```
-  nodemon 3.0.0
-```
 Use `nodemon app.js` run the project.
 
-## Packages used:
+## Tools used in the project:
 - **Frontend:**
-  - HTML5
-  - CSS3
-  - Javascript
-  - Bootstrap v5.2.3
+  - JQuery
+  - Bootstrap
+  - Express-handlebars
 - **Backend:**
   - NodeJS
-  - Nodemon
-  - Mysql2
-  - Sequelize
   - Express
-  - Express-handlebars
+  - Firebase
 
 
 ## Page Home
 ![home-mastercourse](https://user-images.githubusercontent.com/67030481/236507772-0b649e1c-b56a-4067-9bf1-c1fe6b83fdb4.png)
 
-
-
-## Page - SignIn
-![tela de login](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/a7fdb8cb-9b22-4982-9caf-22c9ce435817)
-
-## Page - SignUp
-![tela de cadastro](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/f664aa95-7b10-4b95-8c2e-500c0cd3b1e7)
+## Screen Forms
+![telas do sistema](https://github.com/Wiliami/site_mastercourse.on/assets/67030481/d1379109-b8d6-4a77-883a-ce547aaa762a)
 
 ## Page - Dashboard
 ![page dashboard](https://github.com/Wiliami/nodejs-website/assets/67030481/fefcc0aa-dd95-4cee-88dc-988635da2315)
@@ -55,13 +40,3 @@ Use `nodemon app.js` run the project.
 ## Page - Courses User 
 ![image](https://github.com/Wiliami/nodejs-website/assets/67030481/20745f86-156d-410d-af98-cec62e5ffdab)
 
-
-create table master c
-
-## Screen user course lesson
-acess to course
-
-## controllers
-text here demo it default
-
-## comment here default
