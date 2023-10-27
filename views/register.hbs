@@ -34,7 +34,7 @@
                                         <label for="inputPassword" style="font-size: 15px;">Confirmar senha</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Senhas devem ser compatíveis</span>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-4 w-100" style="font-size: 17px;" type="submit" value="Criar">
+                                    <input class="btn btn-lg btn-success mt-4 w-100" id="submit" style="font-size: 17px;" type="submit" disabled value="Criar">
                                 </form>
                                 <div class="mt-4">
                                     <div class="d-flex justify-content-center links">
@@ -64,6 +64,16 @@ $(document).ready(() => {
             success: (response) => {
                 $('#error-message').text('').hide();
                 console.log('Resposta do servidor:', response);
+
+                const isEmailValid = response;
+                const form = $('#form');
+                const buttonSubmit = form.find('button[type="submit"]');
+
+                if(isEmailValid) {
+                    buttonSubmit.prop("disabled", false);
+                } else {
+                    buttonSubmit.prop("disabled", true);
+                }
             },  
             error: function(xhr, status, error) {
                 console.error('Erro ao verificar o email:', error);
