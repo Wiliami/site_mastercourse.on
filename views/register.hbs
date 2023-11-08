@@ -11,7 +11,7 @@
                             <div class="mb-md-0 mt-md-1 pb-1">
                                 {{>_preloader}}
                                 {{>_alertDanger}}
-                                {{>_alertSuccess}}
+                                {{>_a   lertSuccess}}
                                
                                 <form id="form" class="form-user" action="" method="POST">
                                     <div class="form-floating mb-2">
@@ -53,6 +53,17 @@
 
 <script>
 $(document).ready(() => {
+    const form = $('#form');
+    const buttonSubmit = form.find('input[type="submit"]');
+
+    function habilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", false);
+    }
+    function desabilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", true);
+    }
+
+
     $("#email").change(() => {
         const email = $('#email').val();
         
@@ -66,7 +77,6 @@ $(document).ready(() => {
                 $('#error-message').text('').hide();
 
                 const isEmailValid = verifyValidityEmail(response);
-            
 
                 if (isEmailValid) {
                 // Email é válido
@@ -82,31 +92,23 @@ $(document).ready(() => {
                 desabilitarBotaoDeEnvio();
             }
         });
-    })
-
-    const form = $('#form');
-    const buttonSubmit = form.find('input[type="submit"]');
-
-    function habilitarBotaoDeEnvio() {
-        return buttonSubmit.prop("disabled", false);
-    }
-
-    function desabilitarBotaoDeEnvio() {
-        return buttonSubmit.prop("disabled", true);
-    }
+    });
        
     function verifyValidityEmail(response) {
-        console.log('Resposta do servidor:', response);
-        if(response && response.status) {
-            console.log('Campos "status" na resposta:', response.status);
-            return response.status === 'valid';
+        if(response && response.isValid) {
+            return response.isValid === true;
         } else {
-            console.log('Resposta não contém um campo "status" ou está vazio.');
             return false;
         }
     }
 
-    console.log(verifyValidityEmail());
+    function verifyFieldsEmpty(username, password, confirmPassword) {
+        if(username, password, confirmPassword) {
+            habilitarBotaoDeEnvio();
+        } else {
+            desabilitarBotaoDeEnvio();
+        }
+    }
 
 
     $('#form').submit((e) => {
