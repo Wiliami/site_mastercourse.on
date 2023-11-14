@@ -21,8 +21,8 @@
                                     </div>
                                     <div class="form-floating mb-2">
                                         <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail">
-                                            <label for="inputEmail" style="font-size: 15px;">E-mail</label>
-                                            <span class="span-required text-start" style="font-size: 15px;">Digite um e-mail válido</span> 
+                                        <label for="inputEmail" style="font-size: 15px;">E-mail</label>
+                                        <span class="span-required text-start" style="font-size: 15px;">Digite um e-mail válido</span> 
                                     </div>
                                     <div class="form-floating mb-2">
                                         <input type="password" class="form-control required" name="password" id="password" placeholder="Senha">
@@ -49,16 +49,25 @@
         </div> 
     </section>   
 </div>
-
+{{!-- <script src="/assets/js/forms/register/register_validation.js"></script> --}}
 
 <script>
 $(document).ready(() => {
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
+    const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"], input[type="confirmPassword"]');
 
-    $("#email").change(() => {
+
+    function verificarCamposVazios() {
+        return inputFields.toArray().some(field => $(field).val().trim() === '');
+    }
+
+    function verificarEmailValido() {
         const email = $('#email').val();
-        
+        if(email === '') {
+            return false;
+        }
+
         $.ajax({
             type: 'POST',
             url: '/verificar-email',
@@ -69,14 +78,14 @@ $(document).ready(() => {
                 $('#error-message').text('').hide();
 
                 const isEmailValid = verifyValidityEmail(response);
-            
 
-                if (isEmailValid && !fieldsEmpty()) {
+                if (isEmailValid && !verificarCamposVazios()) {
                 // Email é válido
                     habilitarBotaoDeEnvio();
                 } else {
                     // Email não é válido
                     desabilitarBotaoDeEnvio();
+                    showError('Este e-mail já está cadastrado.');
                 }
             },  
             error: function(xhr, status, error) {
@@ -85,19 +94,26 @@ $(document).ready(() => {
                 desabilitarBotaoDeEnvio();
             }
         });
-    });
+    }   
 
+    inputFields.on('input', () => {
+        if(!verificarCamposVazios()) {
+            verificarEmailValido();
+        } else {
+            desabilitarBotaoDeEnvio();
+        }
+    });     
 
-    function fieldsEmpty() {
-        const username = $('#username').val();
-        const email = $('#emai').val();
-        const password = $('#password').val();
-        const confirmPassword = $('#confirmPassword').val();
-
-        return !username && !email && !password && !confirmPassword;
+    function verifyValidityEmail(response) {
+        console.log('Resposta do servidor:', response);
+        if(response && response.isValid !== undefined) {
+            console.log('Campo "isValid" na resposta:', response.isValid);
+            return response.isValid === true;    
+        } else {
+            console.log('Resposta não contém um campo "isValid" ou está vazio.');
+            return false;
+        }
     }
-
-    
 
     function habilitarBotaoDeEnvio() {
         return buttonSubmit.prop("disabled", false);
@@ -106,20 +122,15 @@ $(document).ready(() => {
     function desabilitarBotaoDeEnvio() {
         return buttonSubmit.prop("disabled", true);
     }
-       
-    function verifyValidityEmail(response) {
-        console.log('Resposta do servidor:', response);
-        if(response && response.isValid !== undefined) {
-            console.log('Campos "isValid" na resposta:', response.isValid);
-            return response.isValid === true;    
-        } else {
-            console.log('Resposta não contém um campo "isValid" ou está vazio.');
-            return false;
-        }
+
+    function showError(message) {
+        const messageError = $('#error-message');
+        messageError.text(message);
+        messageError.show();
     }
     
 
-    $('#form').submit((e) => {
+    form.on('submit', (e) => {
         e.preventDefault(); 
  
         const username = $('#username').val();
@@ -148,7 +159,5 @@ $(document).ready(() => {
         });
 
     });
-
-    
  });
 </script>
