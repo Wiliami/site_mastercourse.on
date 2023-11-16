@@ -92,6 +92,7 @@ $(document).ready(() => {
                 console.error('Erro ao verificar o email:', error);
                 $('#error-message').text(xhr.responseText).show();  
                 desabilitarBotaoDeEnvio();
+                showError('Informe um e-mal válido.');
             }
         });
     }   
