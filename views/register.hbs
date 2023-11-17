@@ -49,24 +49,25 @@
         </div> 
     </section>   
 </div>
-
+{{!-- <script src="/assets/js/forms/register/register_validation.js"></script> --}}
 
 <script>
 $(document).ready(() => {
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
+    const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"], input[type="confirmPassword"]');
 
-    function habilitarBotaoDeEnvio() {
-        return buttonSubmit.prop("disabled", false);
+
+    function verificarCamposVazios() {
+        return inputFields.toArray().some(field => $(field).val().trim() === '');
     }
-    function desabilitarBotaoDeEnvio() {
-        return buttonSubmit.prop("disabled", true);
-    }
 
-
-    $("#email").change(() => {
+    function verificarEmailValido() {
         const email = $('#email').val();
-        
+        if(email === '') {
+            return false;
+        }
+
         $.ajax({
             type: 'POST',
             url: '/verificar-email',
@@ -78,28 +79,55 @@ $(document).ready(() => {
 
                 const isEmailValid = verifyValidityEmail(response);
 
-                if (isEmailValid) {
+                if (isEmailValid && !verificarCamposVazios()) {
                 // Email é válido
                     habilitarBotaoDeEnvio();
                 } else {
                     // Email não é válido
                     desabilitarBotaoDeEnvio();
+                    showError('Este e-mail já está cadastrado.');
                 }
             },  
             error: function(xhr, status, error) {
                 console.error('Erro ao verificar o email:', error);
                 $('#error-message').text(xhr.responseText).show();  
                 desabilitarBotaoDeEnvio();
+                showError('Informe um e-mal válido.');
             }
         });
-    });
-       
-    function verifyValidityEmail(response) {
-        if(response && response.isValid) {
-            return response.isValid === true;
+    }   
+
+    inputFields.on('input', () => {
+        if(!verificarCamposVazios()) {
+            verificarEmailValido();
         } else {
+            desabilitarBotaoDeEnvio();
+        }
+    });     
+
+    function verifyValidityEmail(response) {
+        console.log('Resposta do servidor:', response);
+        if(response && response.isValid !== undefined) {
+            console.log('Campo "isValid" na resposta:', response.isValid);
+            return response.isValid === true;    
+        } else {
+            console.log('Resposta não contém um campo "isValid" ou está vazio.');
             return false;
         }
+    }
+
+    function habilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", false);
+    }
+
+    function desabilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", true);
+    }
+
+    function showError(message) {
+        const messageError = $('#error-message');
+        messageError.text(message);
+        messageError.show();
     }
 
     function verifyFieldsEmpty(username, password, confirmPassword) {
@@ -111,9 +139,9 @@ $(document).ready(() => {
     }
 
 
-    $('#form').submit((e) => {
+    form.on('submit', (e) => {
         e.preventDefault(); 
-
+ 
         const username = $('#username').val();
         const email = $('#email').val();
         const password = $('#password').val();
@@ -140,7 +168,5 @@ $(document).ready(() => {
         });
 
     });
-
-    
  });
 </script>
