@@ -79,12 +79,12 @@ $(document).ready(() => {
 
                 const isEmailValid = verifyValidityEmail(response);
 
-                if (isEmailValid && !verificarCamposVazios()) {
+                if (verificarCamposVazios() || !verificarCamposVazios()) {
                 // Email é válido
-                    habilitarBotaoDeEnvio();
+                    desabilitarBotaoDeEnvio();
                 } else {
                     // Email não é válido
-                    desabilitarBotaoDeEnvio();
+                    habilitarBotaoDeEnvio();
                     showError('Este e-mail já está cadastrado.');
                 }
             },  
