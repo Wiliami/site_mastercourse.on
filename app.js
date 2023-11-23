@@ -4,6 +4,7 @@ const { engine } = require('express-handlebars');
 const { request } = require('http');
 const path = require('path');
 const home = require('./routes/home');
+const login = require('./routes/login');
 const register = require('./routes/register');
 const routeUser = require('./routes/user');
 const routeUserAdmin = require('./routes/admin');
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use('/', home);
+app.use('/login', login);
 app.use('/cadastro', register);
 app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
 app.use('/admin', routeUserAdmin);
