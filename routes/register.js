@@ -20,7 +20,7 @@ router.post('/', async(req, res) => {
     
             if(password !== confirmPassword) {
                 console.log('As senhas não coincidem.');
-                res.status(400).send('As senhas não coincidem.');
+                res.status(400).send('As senhas devem ser iguais.');
                 return;
             }
     

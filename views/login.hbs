@@ -11,6 +11,7 @@
                                 </div>   
                                 <form method="POST" action="" id="form" class="form-user">
                                     {{>_preloader}}
+                                    {{>_alertSuccess}}
                                     {{>_alertDanger}}
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail" autocomplete="off">
@@ -59,9 +60,11 @@
             contentType: 'application/json',
             success: (response) => {
                 console.log('Resposta do servidor:', response);
+                $('#error-success').text(response).show();
             },
             error: function(xhr, status, error) {
-                console.error('Erro ao tentar logar:', error)
+                console.error('Erro ao tentar logar:', error);
+                $('#error-message').text(xhr.responseText).show();
             }
 
         });

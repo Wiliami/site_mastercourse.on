@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         if(error.code === 'auth/user-not-found') {
             console.log('Este e-mail não está cadastrado.');
             // res.status(200).send('Tudo certo');
-            res.status(200).json({ isValid: true })
+            res.status(200).json({ isValid: true });
         } else {
             console.error('Erro ao verificar o e-mail');
             // res.status(500).send('Erro ao verificar o e-mail');
