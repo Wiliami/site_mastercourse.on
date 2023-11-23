@@ -13,7 +13,7 @@
                                 {{>_alertDanger}}
                                 {{>_alertSuccess}}
                                
-                                <form id="form" class="form-user" action="" method="POST">
+                                <form method="POST" action="" id="form" class="form-user">
                                     <div class="form-floating mb-2">
                                         <input type="text" class="form-control required" name="username" id="username" placeholder="Nome e sobrenome">
                                         <label for="inputName" style="font-size: 15px;">Nome</label>
@@ -53,10 +53,14 @@
 
 <script>
 $(document).ready(() => {
+    const username = $('#username').val();
+    const email = $('#email').val();
+    const password = $('#password').val();
+    const confirmPassword = $('#confirmPassword').val();
+    
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
     const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"], input[type="confirmPassword"]');
-
 
     function verificarCamposVazios() {
         return inputFields.toArray().some(field => $(field).val().trim() === '');
@@ -79,12 +83,12 @@ $(document).ready(() => {
 
                 const isEmailValid = verifyValidityEmail(response);
 
-                if (verificarCamposVazios() || !verificarCamposVazios()) {
+                if (isEmailValid && !verificarCamposVazios()) {
                 // Email é válido
-                    desabilitarBotaoDeEnvio();
+                    habilitarBotaoDeEnvio();
                 } else {
                     // Email não é válido
-                    habilitarBotaoDeEnvio();
+                    desabilitarBotaoDeEnvio();
                     showError('Este e-mail já está cadastrado.');
                 }
             },  
@@ -138,15 +142,9 @@ $(document).ready(() => {
         }
     }
 
-
     form.on('submit', (e) => {
         e.preventDefault(); 
- 
-        const username = $('#username').val();
-        const email = $('#email').val();
-        const password = $('#password').val();
-        const confirmPassword = $('#confirmPassword').val();
-
+        
         $.ajax({
             type: 'POST',
             url: '/cadastro',
@@ -154,7 +152,7 @@ $(document).ready(() => {
                 username: username,
                 email: email,
                 password: password,
-                confirmPassword: confirmPassword 
+                confirmPassword: confirmPassword
             }),
             contentType: 'application/json',
             success: (response) => {
