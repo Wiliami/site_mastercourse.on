@@ -53,11 +53,6 @@
 
 <script>
 $(document).ready(() => {
-    const username = $('#username').val();
-    const email = $('#email').val();
-    const password = $('#password').val();
-    const confirmPassword = $('#confirmPassword').val();
-    
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
     const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"], input[type="confirmPassword"]');
@@ -144,6 +139,11 @@ $(document).ready(() => {
 
     form.on('submit', (e) => {
         e.preventDefault(); 
+
+        const username = $('#username').val();
+        const email = $('#email').val();
+        const password = $('#password').val();
+        const confirmPassword = $('#confirmPassword').val();
         
         $.ajax({
             type: 'POST',
