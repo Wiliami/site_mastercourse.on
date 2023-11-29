@@ -17,7 +17,7 @@ function isEmailValid(email) {
 }
 
 router.post('/', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, uid } = req.body;
 
     if(email && password)  {
 
@@ -33,13 +33,17 @@ router.post('/', async (req, res) => {
 
         try {
             // const userRecord = await admin.auth().getUserByEmail(email);
+            // console.log(userRecord);
             // await admin.auth().updateUser(userRecord.uid, { password });
 
-            const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-            const user = userCredential.user;
+            const customToken = await admin.auth().createCustomToken(uid);
+            console.log(customToken);
+            res.status(200).json({ token: customToken });
 
-            console.log('Usuário autenticado com sucesso.');
-            res.status(200).send('Usuário autenticado com sucesso.');
+
+        
+            // console.log('Usuário autenticado com sucesso.');
+            // res.status(200).send('Usuário autenticado com sucesso.');
         } catch (error) {
             console.log('Erro ao autenticar usuário', error);
             res.status(401).send('Falha na autenticação.');    
