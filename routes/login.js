@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { admin } = require('../firebaseConfig');
+const { admin,db } = require('../firebaseConfig');
 const jwt = require('jsonwebtoken');
 
 
@@ -17,7 +17,7 @@ function isEmailValid(email) {
 }
 
 router.post('/', async (req, res) => {
-    const { email, password, uid } = req.body;
+    const { email, password } = req.body;
 
     if(email && password)  {
 
@@ -32,21 +32,23 @@ router.post('/', async (req, res) => {
         }
 
         try {
-            // const userRecord = await admin.auth().getUserByEmail(email);
-            // console.log(userRecord);
-            // await admin.auth().updateUser(userRecord.uid, { password });
-
-            const customToken = await admin.auth().createCustomToken(uid);
-            console.log(customToken);
-            res.status(200).json({ token: customToken });
-
-
-        
-            // console.log('Usuário autenticado com sucesso.');
-            // res.status(200).send('Usuário autenticado com sucesso.');
+            const userPassaword = '123456';
+            const user = await admin.auth().getUserByEmail(email);
+            
+            if(user.email === email && userPassaword === password) {
+                const customToken = await admin.auth().createCustomToken(user.uid);
+                console.log('Sucesso:', customToken);
+                res.status(200).json({ token: customToken });
+                return;
+            } else {
+                console.log('Senha ou e-mail incorreto.');
+                res.status(401).send('E-mail ou senha incorreta.');
+                return;
+            }    
+    
         } catch (error) {
             console.log('Erro ao autenticar usuário', error);
-            res.status(401).send('Falha na autenticação.');    
+            res.status(401).json({ message: 'Falha na autenticação.'});    
         }
         
     } else {
