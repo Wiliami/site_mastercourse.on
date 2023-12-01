@@ -16,7 +16,7 @@ function isEmailValid(email) {
 
 }
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) => {  
     const { email, password } = req.body;
 
     if(email && password)  {
