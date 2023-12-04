@@ -9,7 +9,7 @@
                                 <div class="section-title">
                                     <h2 class="text-center mb-1" style="font-size: 30px;">Login</h2>
                                 </div>   
-                                <form method="POST" action="" id="form" class="form-user">
+                                <form action="" id="form" class="form-user">
                                     {{>_preloader}}
                                     {{>_alertSuccess}}
                                     {{>_alertDanger}}
@@ -21,7 +21,7 @@
                                         <input type="password" class="form-control required" name="password" id="password" placeholder="Senha" autocomplete="off">
                                         <label for="inputPassword" style="font-size: 15px;">Senha</label>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" type="submit" value="Entrar">
+                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" onclick="login()" type="submit" value="Entrar">
                                 </form>
                                 <div class="mt-4">
                                     <div class="links">
@@ -41,34 +41,8 @@
         </div>
     </section>
 </body>
-
-<script>
-    $(document).ready(() => {
-        const form = $('#form');
-
-        form.on('submit', (e) => {
-        e.preventDefault();
-
-        const email = $('#email').val();
-        console.log(email);
-        const password = $('#password').val();
-
-        $.ajax({
-            type: 'POST',
-            url: '/login',
-            data: JSON.stringify({ email: email, password: password }),
-            contentType: 'application/json',
-            success: (response) => {
-                console.log('Resposta do servidor:', response);
-                $('#error-success').text(response).show();
-            },
-            error: function(xhr, status, error) {
-                console.error('Erro ao tentar logar:', error);
-                $('#error-message').text(xhr.responseText).show();
-            }
-
-        });
-        });
-       
-    });
-</script>
+<script src="./assets/js/firebase-init.js"></script>
+<script src="./assets/js/firebaseLinks/firebase-app-compat.js"></script>
+<script src="./assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+<script src="./assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+<script src="./assets/js/forms/login/login-firebase.js"></script>

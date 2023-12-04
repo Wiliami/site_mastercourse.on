@@ -60,6 +60,11 @@ $(document).ready(() => {
         return inputFields.toArray().some(field => $(field).val().trim() === '');
     }
 
+
+    function verifyFieldsEmpty() {
+        return inputFields.toArray().some(field => $(field).val().trim() === '');
+    }
+
     function verificarEmailValido() {
         const email = $('#email').val();
         if(email === '') {
