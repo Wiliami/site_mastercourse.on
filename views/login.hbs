@@ -21,7 +21,7 @@
                                         <input type="password" class="form-control required" name="password" id="password" placeholder="Senha" autocomplete="off">
                                         <label for="inputPassword" style="font-size: 15px;">Senha</label>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" onclick="login()" type="submit" value="Entrar">
+                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" onclick="search()" type="submit" value="Entrar">
                                 </form>
                                 <div class="mt-4">
                                     <div class="links">
@@ -41,6 +41,22 @@
         </div>
     </section>
 </body>
+<script>
+    function search() {
+
+        fetch('/config.json')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.apiUrl);
+            console.log(data.apiKey);
+        })
+        .catch(error => {
+            console.error('Erro ao carregar arquivo de configuração', error);
+        })
+    }
+
+    search();
+</script>
 <script src="./assets/js/firebase-init.js"></script>
 <script src="./assets/js/firebaseLinks/firebase-app-compat.js"></script>
 <script src="./assets/js/firebaseLinks/firebase-auth-compat.js"></script>
