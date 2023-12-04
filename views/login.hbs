@@ -44,7 +44,7 @@
 <script>
     function search() {
 
-        fetch('/config.json')
+        fetch('/assets/config.json')
         .then(res => res.json())
         .then(data => {
             console.log(data.apiUrl);
