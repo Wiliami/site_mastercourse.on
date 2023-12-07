@@ -1,4 +1,3 @@
-  {{>_sidebarDashboard}}
   <head>
     <style>
        .search-input {
@@ -18,6 +17,8 @@
     </style>
    
   </head>
+  {{>_navbarDashboard}}
+  {{>_sidebarDashboard}}
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Meus cursos</h1>
@@ -62,8 +63,6 @@
     </nav>
   </main>
     
-  {{>_footerDashboard}}
-  {{>_footerFilesDashboard}}
   <!-- Firebase files init -->
   <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
   <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
@@ -71,3 +70,5 @@
   <script src="/assets/js/firebase-init.js"></script>
   <script src="/assets/js/courses/meus-cursos-firebase.js"></script>
   <script src="/assets/js/courses/pagination.js"></script>
+  {{>_footerDashboard}}
+  {{>_footerFilesDashboard}}

@@ -7,12 +7,13 @@ $(document).ready(() => {
         }
     });
 
-    displayAllCourses();
     
     const rowContainer = document.getElementById("data-course");
     const searchInput = $('#searchInput');
     searchInput.attr('placeholder', 'Digite o nome do curso...');
     searchInput.attr('title', 'Pesquisar cursos...');
+
+    displayAllCourses();
 
    
     searchInput.on('input', () => { 
