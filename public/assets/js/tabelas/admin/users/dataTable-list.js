@@ -37,9 +37,7 @@ $(document).ready(function() {
     });
     
     function findUsers() {
-      firebase.firestore()
-      .collection('users')
-      .get()
+      firebase.firestore().collection('users').get()
       .then(snapshot => {
           const users = snapshot.docs.map(doc => doc.data());
           addUsersToScreen(users);
