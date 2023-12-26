@@ -1,0 +1,48 @@
+{{>_navbarDashboard}}
+{{>_sidebarDashboard}}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Lista de produtos</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+                <li class="breadcrumb-item">Meus produtos</li>
+                <li class="breadcrumb-item active">Lista de produtos</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section dashboard"> 
+        {{_loading}}
+        {{>_alertDanger}}
+        
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="data-course">
+            <!-- Content -->
+            </div>
+        </div>
+        
+        <!-- Right side columns -->
+        <!-- <div class="col-lg-4"></div> -->
+    </section>
+
+{{!-- 
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        <li class="page-item disabled" id="previousPage">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+        </li>
+        <li class="page-item"><a class="page-link" id="page1" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" id="page2" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" id="page3" href="#">3</a></li>
+        <li class="page-item" id="nextPage">
+            <a class="page-link" href="#">Próximo</a>
+        </li>
+        </ul>
+    </nav> --}}
+</main>
+    
+<!-- Firebase files init -->
+{{>_footerDashboard}}
+{{>_footerFilesDashboard}}

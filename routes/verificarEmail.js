@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { admin } = require('../firebaseConfig');
+const { admin } = require('../config/firebaseConfig');
 
 router.post('/', async (req, res) => {
     const { email } = req.body;
