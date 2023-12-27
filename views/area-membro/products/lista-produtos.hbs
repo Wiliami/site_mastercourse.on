@@ -29,8 +29,7 @@
                   <table id="example" class="table is-striped" style="width:100%">
                     <thead>
                       <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
+                        <th>Item</th>
                         <th>Data cadastro</th>
                         <th>Cad. por</th>
                         <th>Atu. por</th>
@@ -40,9 +39,18 @@
                     <tbody>
                         <!-- Content table -->
                         <tr>
-                            <td>Teste</td>
-                            <td>teste@gmail.com</td>
+                            <td>Produto 1</td>
                             <td>23/10/2023</td>
+                            <td>Teste</td>
+                            <td>Admin</td>
+                            <td>
+                                <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
+                                <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Produto 2</td>
+                            <td>24/10/2023</td>
                             <td>Admin</td>
                             <td>Admin</td>
                             <td>
@@ -51,10 +59,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Teste</td>
-                            <td>teste@gmail.com</td>
-                            <td>23/10/2023</td>
-                            <td>Admin</td>
+                            <td>Produto 3</td>
+                            <td>25/10/2023</td>
+                            <td>Creator</td>
                             <td>Admin</td>
                             <td>
                                 <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
@@ -62,10 +69,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Teste</td>
-                            <td>teste@gmail.com</td>
-                            <td>23/10/2023</td>
-                            <td>Admin</td>
+                            <td>Item 4</td>
+                            <td>26/10/2023</td>
+                            <td>Creator</td>
                             <td>Admin</td>
                             <td>
                                 <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
@@ -107,9 +113,9 @@
 
 
 <script type="text/javascript" language="javascript">
-    $(document).ready( function () {
+$(document).ready( function () {
+    $('#example').DataTable({
 
-    $('#example').DataTable();
         autoWidth: false,
         processing: true,
         columnDefs: [
@@ -133,8 +139,9 @@
         search: 'Pesquisar: ',
         searchPlaceholder: 'Pesquisar...',
       }
-      
-
-} );
+        
+    });
+        
+});
      
 </script>
