@@ -12,98 +12,42 @@
             </ol>
         </nav>
     </div>
-     <section class="section dashboard">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="container mt-4">
-              <div class="alert alert-danger" role="alert" style="display: none;">
-                Você não tem permissão para acessar página! <a href="/dashboard" class="text-danger">Voltar a página inicial!</a>
-              </div>
-            <div class="card shadow mb-4">
-              <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                  <h3 class="m-0 text-dark">Produtos</h3>
-                  <a href="/" class="btn btn-primary rounded-pill mb-4" style="border-radius: 50%; font-size: 13px;">Cadastrar usuário</a>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="example" class="table is-striped" style="width:100%">
-                    <thead>
-                      <tr>
-                        <th>Item</th>
-                        <th>Data cadastro</th>
-                        <th>Cad. por</th>
-                        <th>Atu. por</th>
-                        <th>Opções</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Content table -->
-                        <tr>
-                            <td>Produto 1</td>
-                            <td>23/10/2023</td>
-                            <td>Teste</td>
-                            <td>Admin</td>
-                            <td>
-                                <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Produto 2</td>
-                            <td>24/10/2023</td>
-                            <td>Admin</td>
-                            <td>Admin</td>
-                            <td>
-                                <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Produto 3</td>
-                            <td>25/10/2023</td>
-                            <td>Creator</td>
-                            <td>Admin</td>
-                            <td>
-                                <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Item 4</td>
-                            <td>26/10/2023</td>
-                            <td>Creator</td>
-                            <td>Admin</td>
-                            <td>
-                                <a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>    
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="container mt-4">
+            <div class="alert alert-danger" role="alert" style="display: none;">
+              Você não tem permissão para acessar página! <a href="/dashboard" class="text-danger">Voltar a página inicial!</a>
             </div>
-          </div> <!-- End column right -->
-        </div> <!-- End row -->
-      </section>
-
-{{!-- 
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-        <li class="page-item disabled" id="previousPage">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-        </li>
-        <li class="page-item"><a class="page-link" id="page1" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" id="page2" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" id="page3" href="#">3</a></li>
-        <li class="page-item" id="nextPage">
-            <a class="page-link" href="#">Próximo</a>
-        </li>
-        </ul>
-    </nav> --}}
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h3 class="m-0 text-dark">Produtos</h3>
+                <a href="/" class="btn btn-primary rounded-pill mb-4" style="border-radius: 50%; font-size: 13px;">Cadastrar produto</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="example" class="table is-striped" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Data cadastro</th>
+                      <th>Cad. por</th>
+                      <th>Atu. por</th>
+                      <th>Opções</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <!-- Content table -->
+                  </tbody>
+                </table>
+              </div>
+            </div>    
+          </div>
+        </div> <!-- End column right -->
+      </div> <!-- End row -->
+    </section>
 </main>
     
-<!-- Firebase files init -->
 {{>_footerDashboard}}
 {{>_footerFilesDashboard}}
 
@@ -111,37 +55,9 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
-
-<script type="text/javascript" language="javascript">
-$(document).ready( function () {
-    $('#example').DataTable({
-
-        autoWidth: false,
-        processing: true,
-        columnDefs: [
-          {
-              targets: ['_all'],
-              className: 'mdc-data-table__cell',
-          },
-        ],
-        "processing": true,
-        "language": {
-            "lengthMenu": "Mostrando _MENU_ registros por página",
-            "emptyTable": '<div class="spinner-border text-success" role="status"></div>',
-            "zeroRecords": "Nenhum registro foi encontrado",
-            "info": "Mostrando página _PAGE_ de _PAGES_ registros",
-            "infoEmpty": "Nenhum registro foi encontrado",
-            "infoFiltered": "(filtrado de _MAX_ registros no total)",
-            "paginate": {
-            "previous": "Anterior",
-            "next": "Próximo"
-            },
-        search: 'Pesquisar: ',
-        searchPlaceholder: 'Pesquisar...',
-      }
-        
-    });
-        
-});
-     
-</script>
+<!-- Firebase files init -->
+<script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+<script src="/assets/js/painel/home/products/lista-produtos.js"></script>
