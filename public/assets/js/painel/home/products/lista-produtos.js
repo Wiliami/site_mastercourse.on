@@ -47,6 +47,8 @@ $(document).ready(function() {
                 tabela.row 
                 .add([
                     product.item,
+                    formatMoney(product.value),
+                    product.quantity, 
                     product.create_date?.seconds ? new Date(product.create_date?.seconds * 1000).toLocaleDateString('pt-br') : '',
                     product.create_user,
                     product.update_user,
@@ -59,6 +61,11 @@ $(document).ready(function() {
             $(".spinner-border").remove();
             $(".dataTables_empty").text('Nenhum registro correspondente encontrado!');
         }
+    }
+
+
+    function formatMoney(money) {
+        return `R$ ${money.toFixed(2).replace('.', ',')}`;
     }
 
 
