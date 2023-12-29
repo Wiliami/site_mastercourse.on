@@ -19,6 +19,24 @@ describe('test operations math', () => {
     });
 
     it('List contain leite', () => {
-        expect(shoppingList).toContain('sabão');
+        expect(shoppingList).toContain('sacos de lixo');
     });
+
+    describe('sum two numbers', () => {
+        it('2 + 2 é igual a 4', () => {
+            expect(2 + 2).toBe(4);
+        });
+    });
+
+    describe('attribute object', () => {
+        it('attribute object', () => {
+            const data = { one: 1 };
+            data['two'] = 2;
+            expect(data).toEqual({ one: 1, two: 2 });
+         });
+    });
+
+
+    describe("", () => {});
+    
 });
