@@ -5,8 +5,8 @@
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (factory());
+    typeof define === 'function' && define.amd ? define(factory) :
+      (factory());
 }(this, (function () { 'use strict';
 
   function ownKeys(object, enumerableOnly) {
@@ -36,12 +36,12 @@
   }
 
   function _typeof(obj) {
-    "@babel/helpers - typeof";
+    '@babel/helpers - typeof';
 
-    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return _typeof = 'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator ? function (obj) {
       return typeof obj;
     } : function (obj) {
-      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      return obj && 'function' == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj;
     }, _typeof(obj);
   }
 
@@ -69,16 +69,16 @@
   }
 
   function _iterableToArray(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+    if (typeof Symbol !== 'undefined' && iter[Symbol.iterator] != null || iter['@@iterator'] != null) return Array.from(iter);
   }
 
   function _unsupportedIterableToArray(o, minLen) {
     if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+    if (n === 'Object' && o.constructor) n = o.constructor.name;
+    if (n === 'Map' || n === 'Set') return Array.from(o);
+    if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
   }
 
   function _arrayLikeToArray(arr, len) {
@@ -90,7 +90,7 @@
   }
 
   function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    throw new TypeError('Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.');
   }
 
   var _WINDOW = {};
@@ -102,8 +102,8 @@
   } catch (e) {}
 
   var _ref = _WINDOW.navigator || {},
-      _ref$userAgent = _ref.userAgent,
-      userAgent = _ref$userAgent === void 0 ? '' : _ref$userAgent;
+    _ref$userAgent = _ref.userAgent,
+    userAgent = _ref$userAgent === void 0 ? '' : _ref$userAgent;
   var WINDOW = _WINDOW;
   var DOCUMENT = _DOCUMENT;
   var IS_BROWSER = !!WINDOW.document;
@@ -134,7 +134,7 @@
 
   function report (_ref) {
     var nodesTested = _ref.nodesTested,
-        nodesFound = _ref.nodesFound;
+      nodesFound = _ref.nodesFound;
     var timedOutTests = {};
 
     for (var key in nodesFound) {
@@ -146,7 +146,7 @@
     var conflictsCount = Object.keys(nodesTested.conflict).length;
 
     if (conflictsCount > 0) {
-      console.info("%cConflict".concat(conflictsCount > 1 ? 's' : '', " found:"), 'color: darkred; font-size: large');
+      console.info('%cConflict'.concat(conflictsCount > 1 ? 's' : '', ' found:'), 'color: darkred; font-size: large');
       var data = {};
 
       for (var _key in nodesTested.conflict) {
@@ -164,7 +164,7 @@
     var noConflictsCount = Object.keys(nodesTested.noConflict).length;
 
     if (noConflictsCount > 0) {
-      console.info("%cNo conflict".concat(noConflictsCount > 1 ? 's' : '', " found with ").concat(noConflictsCount === 1 ? 'this' : 'these', ":"), 'color: green; font-size: large');
+      console.info('%cNo conflict'.concat(noConflictsCount > 1 ? 's' : '', ' found with ').concat(noConflictsCount === 1 ? 'this' : 'these', ':'), 'color: green; font-size: large');
       var _data = {};
 
       for (var _key2 in nodesTested.noConflict) {
@@ -182,7 +182,7 @@
     var timeOutCount = Object.keys(timedOutTests).length;
 
     if (timeOutCount > 0) {
-      console.info("%cLeftovers--we timed out before collecting test results for ".concat(timeOutCount === 1 ? 'this' : 'these', ":"), 'color: blue; font-size: large');
+      console.info('%cLeftovers--we timed out before collecting test results for '.concat(timeOutCount === 1 ? 'this' : 'these', ':'), 'color: blue; font-size: large');
       var _data2 = {};
 
       for (var _key3 in timedOutTests) {
@@ -645,16 +645,16 @@
 
   function pollUntil(_ref) {
     var _ref$fn = _ref.fn,
-        fn = _ref$fn === void 0 ? function () {
-      return true;
-    } : _ref$fn,
-        _ref$initialDuration = _ref.initialDuration,
-        initialDuration = _ref$initialDuration === void 0 ? 1 : _ref$initialDuration,
-        _ref$maxDuration = _ref.maxDuration,
-        maxDuration = _ref$maxDuration === void 0 ? WINDOW.FontAwesomeDetection.timeout : _ref$maxDuration,
-        _ref$showProgress = _ref.showProgress,
-        showProgress = _ref$showProgress === void 0 ? false : _ref$showProgress,
-        progressIndicator = _ref.progressIndicator;
+      fn = _ref$fn === void 0 ? function () {
+        return true;
+      } : _ref$fn,
+      _ref$initialDuration = _ref.initialDuration,
+      initialDuration = _ref$initialDuration === void 0 ? 1 : _ref$initialDuration,
+      _ref$maxDuration = _ref.maxDuration,
+      maxDuration = _ref$maxDuration === void 0 ? WINDOW.FontAwesomeDetection.timeout : _ref$maxDuration,
+      _ref$showProgress = _ref.showProgress,
+      showProgress = _ref$showProgress === void 0 ? false : _ref$showProgress,
+      progressIndicator = _ref.progressIndicator;
     return new Promise(function (resolve, reject) {
       // eslint-disable-line compat/compat
       function poll(duration, cumulativeDuration) {
@@ -665,7 +665,7 @@
             console.info(progressIndicator);
           }
 
-          if (!!result) {
+          if (result) {
             // eslint-disable-line no-extra-boolean-cast
             resolve(result);
           } else {
@@ -697,7 +697,7 @@
       // this <style> would only produce a false negative anyway.
 
 
-      if (WINDOW.FontAwesomeConfig && t.innerText.match(new RegExp("svg:not\\(:root\\)\\.".concat(WINDOW.FontAwesomeConfig.replacementClass)))) {
+      if (WINDOW.FontAwesomeConfig && t.innerText.match(new RegExp('svg:not\\(:root\\)\\.'.concat(WINDOW.FontAwesomeConfig.replacementClass)))) {
         return false;
       }
 
@@ -764,7 +764,7 @@
       };
 
       var parentOrigin = WINDOW.location.origin === 'file://' ? '*' : WINDOW.location.origin;
-      diagScript.innerText = "(".concat(diagScriptFun.toString(), ")('").concat(nodeUnderTestId, "', '").concat(testIconId || 'foo', "', '").concat(md5, "', '").concat(parentOrigin, "');");
+      diagScript.innerText = '('.concat(diagScriptFun.toString(), ')(\'').concat(nodeUnderTestId, '\', \'').concat(testIconId || 'foo', '\', \'').concat(md5, '\', \'').concat(parentOrigin, '\');');
 
       diagFrame.onload = function () {
         diagFrame.contentWindow.addEventListener('error', silenceErrors, true);
@@ -864,7 +864,7 @@
         });
       };
 
-      diagScript.innerText = "(".concat(diagScriptFun.toString(), ")('").concat(nodeUnderTestId, "', '").concat(md5ForScript, "', '").concat(parentOrigin, "');");
+      diagScript.innerText = '('.concat(diagScriptFun.toString(), ')(\'').concat(nodeUnderTestId, '\', \'').concat(md5ForScript, '\', \'').concat(parentOrigin, '\');');
 
       diagFrame.onload = function () {
         diagFrame.contentWindow.addEventListener('error', silenceErrors, true);
@@ -886,7 +886,7 @@
 
   function setDoneResults(_ref2) {
     var nodesTested = _ref2.nodesTested,
-        nodesFound = _ref2.nodesFound;
+      nodesFound = _ref2.nodesFound;
     WINDOW.FontAwesomeDetection = WINDOW.FontAwesomeDetection || {};
     WINDOW.FontAwesomeDetection.nodesTested = nodesTested;
     WINDOW.FontAwesomeDetection.nodesFound = nodesFound;
@@ -931,11 +931,11 @@
       console.info('%cAll Good!', 'color: green; font-size: large');
       console.info('We didn\'t find anything that needs testing for conflicts. Ergo, no conflicts.');
     } else {
-      console.info("Testing ".concat(testCount, " possible conflicts."));
-      console.info("We'll wait about ".concat(Math.round(WINDOW.FontAwesomeDetection.timeout / 10) / 100, " seconds while testing these and\n") + "then up to another ".concat(Math.round(WINDOW.FontAwesomeDetection.resultsCollectionMaxWait / 10) / 100, " to allow the browser time\n") + "to accumulate the results. But we'll probably be outta here way before then.\n\n");
-      console.info("You can adjust those durations by assigning values to these attributes on the <script> element that loads this detection:");
-      console.info("\t%c".concat(timeoutAttr, "%c: milliseconds to wait for each test before deciding whether it's a conflict."), 'font-weight: bold;', 'font-size: normal;');
-      console.info("\t%c".concat(resultsCollectionMaxWaitAttr, "%c: milliseconds to wait for the browser to accumulate test results before giving up."), 'font-weight: bold;', 'font-size: normal;');
+      console.info('Testing '.concat(testCount, ' possible conflicts.'));
+      console.info('We\'ll wait about '.concat(Math.round(WINDOW.FontAwesomeDetection.timeout / 10) / 100, ' seconds while testing these and\n') + 'then up to another '.concat(Math.round(WINDOW.FontAwesomeDetection.resultsCollectionMaxWait / 10) / 100, ' to allow the browser time\n') + 'to accumulate the results. But we\'ll probably be outta here way before then.\n\n');
+      console.info('You can adjust those durations by assigning values to these attributes on the <script> element that loads this detection:');
+      console.info('\t%c'.concat(timeoutAttr, '%c: milliseconds to wait for each test before deciding whether it\'s a conflict.'), 'font-weight: bold;', 'font-size: normal;');
+      console.info('\t%c'.concat(resultsCollectionMaxWaitAttr, '%c: milliseconds to wait for the browser to accumulate test results before giving up.'), 'font-weight: bold;', 'font-size: normal;');
       pollUntil({
         // Give this overall timer a little extra cushion
         maxDuration: masterTimeout,
@@ -988,8 +988,8 @@
 
   var _default = {
     report: report,
-    timeout: +(DOCUMENT.currentScript.getAttribute(timeoutAttr) || "2000"),
-    resultsCollectionMaxWait: +(DOCUMENT.currentScript.getAttribute(resultsCollectionMaxWaitAttr) || "5000")
+    timeout: +(DOCUMENT.currentScript.getAttribute(timeoutAttr) || '2000'),
+    resultsCollectionMaxWait: +(DOCUMENT.currentScript.getAttribute(resultsCollectionMaxWaitAttr) || '5000')
   };
 
   var _config = _objectSpread2(_objectSpread2(_objectSpread2({}, _default), initialConfig), {}, {
@@ -1110,9 +1110,9 @@
   Object.keys(STYLE_TO_PREFIX[FAMILY_CLASSIC]).map(prefixes.add.bind(prefixes));
   Object.keys(STYLE_TO_PREFIX[FAMILY_SHARP]).map(prefixes.add.bind(prefixes));
   var RESERVED_CLASSES = [].concat(FAMILIES, _toConsumableArray(prefixes), ['2xs', 'xs', 'sm', 'lg', 'xl', '2xl', 'beat', 'border', 'fade', 'beat-fade', 'bounce', 'flip-both', 'flip-horizontal', 'flip-vertical', 'flip', 'fw', 'inverse', 'layers-counter', 'layers-text', 'layers', 'li', 'pull-left', 'pull-right', 'pulse', 'rotate-180', 'rotate-270', 'rotate-90', 'rotate-by', 'shake', 'spin-pulse', 'spin-reverse', 'spin', 'stack-1x', 'stack-2x', 'stack', 'ul', DUOTONE_CLASSES.GROUP, DUOTONE_CLASSES.SWAP_OPACITY, DUOTONE_CLASSES.PRIMARY, DUOTONE_CLASSES.SECONDARY]).concat(oneToTen.map(function (n) {
-    return "".concat(n, "x");
+    return ''.concat(n, 'x');
   })).concat(oneToTwenty.map(function (n) {
-    return "w-".concat(n);
+    return 'w-'.concat(n);
   }));
 
   function bunker(fn) {

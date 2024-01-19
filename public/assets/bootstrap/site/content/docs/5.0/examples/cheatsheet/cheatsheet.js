@@ -7,7 +7,7 @@
   document.querySelectorAll('.tooltip-demo')
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
+        selector: '[data-bs-toggle="tooltip"]',
       })
     })
 
@@ -19,7 +19,7 @@
   document.querySelectorAll('.toast')
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
-        autohide: false
+        autohide: false,
       })
 
       toast.show()

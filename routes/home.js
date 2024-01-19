@@ -1,4 +1,4 @@
-const express = require("express");
+import express from 'express';
 const router = express.Router();
 // const bcrypt = require('bcryptjs');
 // const salt = bcrypt.genSaltSync(10);
@@ -14,4 +14,4 @@ router.get('/course-details', (req, res) => res.render('course-details'));
 router.get('/home', (req, res) => res.render('teste'));
 router.get('/home/teste', (req, res) => res.render('teste1'));
 
-module.exports = router;
+export default router;

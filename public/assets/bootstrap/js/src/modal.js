@@ -11,7 +11,7 @@ import {
   isRTL,
   isVisible,
   reflow,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -35,13 +35,13 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  focus: true
+  focus: true,
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  focus: 'boolean'
+  focus: 'boolean',
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -108,7 +108,7 @@ class Modal extends BaseComponent {
     }
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget
+      relatedTarget,
     })
 
     if (showEvent.defaultPrevented) {
@@ -202,7 +202,7 @@ class Modal extends BaseComponent {
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-      isAnimated: this._isAnimated()
+      isAnimated: this._isAnimated(),
     })
   }
 
@@ -210,7 +210,7 @@ class Modal extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
+      ...(typeof config === 'object' ? config : {}),
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -252,7 +252,7 @@ class Modal extends BaseComponent {
 
       this._isTransitioning = false
       EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget
+        relatedTarget,
       })
     }
 
@@ -262,9 +262,9 @@ class Modal extends BaseComponent {
   _enforceFocus() {
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
-      if (document !== event.target &&
-          this._element !== event.target &&
-          !this._element.contains(event.target)) {
+      if (document !== event.target
+          && this._element !== event.target
+          && !this._element.contains(event.target)) {
         this._element.focus()
       }
     })
@@ -396,7 +396,7 @@ class Modal extends BaseComponent {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 

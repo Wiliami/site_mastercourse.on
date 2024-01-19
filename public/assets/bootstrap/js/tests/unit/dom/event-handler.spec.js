@@ -87,7 +87,7 @@ describe('EventHandler', () => {
         '</div>',
         '</div>',
         '<div class="sibling"></div>',
-        '</div>'
+        '</div>',
       ]
 
       const outer = fixtureEl.querySelector('.outer')
@@ -117,12 +117,12 @@ describe('EventHandler', () => {
       const moveMouse = (from, to) => {
         from.dispatchEvent(new MouseEvent('mouseout', {
           bubbles: true,
-          relatedTarget: to
+          relatedTarget: to,
         }))
 
         to.dispatchEvent(new MouseEvent('mouseover', {
           bubbles: true,
-          relatedTarget: from
+          relatedTarget: from,
         }))
       }
 
@@ -156,7 +156,7 @@ describe('EventHandler', () => {
       const obj = {
         oneListener() {
           called++
-        }
+        },
       }
 
       EventHandler.one(div, 'bootstrap', obj.oneListener)
@@ -178,7 +178,7 @@ describe('EventHandler', () => {
       const obj = {
         oneListener() {
           called++
-        }
+        },
       }
 
       EventHandler.one(fixtureEl, 'bootstrap', 'div', obj.oneListener)

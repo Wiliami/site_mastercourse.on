@@ -11,7 +11,7 @@ import {
   getSelectorFromElement,
   getElementFromSelector,
   reflow,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -32,12 +32,12 @@ const DATA_API_KEY = '.data-api'
 
 const Default = {
   toggle: true,
-  parent: ''
+  parent: '',
 }
 
 const DefaultType = {
   toggle: 'boolean',
-  parent: '(string|element)'
+  parent: '(string|element)',
 }
 
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -70,8 +70,8 @@ class Collapse extends BaseComponent {
     this._isTransitioning = false
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
-      `${SELECTOR_DATA_TOGGLE}[href="#${this._element.id}"],` +
-      `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${this._element.id}"]`
+      `${SELECTOR_DATA_TOGGLE}[href="#${this._element.id}"],`
+      + `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${this._element.id}"]`,
     )
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -258,7 +258,7 @@ class Collapse extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
-      ...config
+      ...config,
     }
     config.toggle = Boolean(config.toggle) // Coerce string values
     typeCheckConfig(NAME, config, DefaultType)
@@ -282,7 +282,7 @@ class Collapse extends BaseComponent {
 
         this._addAriaAndCollapsedClass(
           selected,
-          [element]
+          [element],
         )
       })
 
@@ -314,7 +314,7 @@ class Collapse extends BaseComponent {
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
-      ...(typeof config === 'object' && config ? config : {})
+      ...(typeof config === 'object' && config ? config : {}),
     }
 
     if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
@@ -326,7 +326,7 @@ class Collapse extends BaseComponent {
     }
 
     if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 

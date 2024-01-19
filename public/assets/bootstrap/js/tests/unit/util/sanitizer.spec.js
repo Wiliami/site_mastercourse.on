@@ -15,7 +15,7 @@ describe('Sanitizer', () => {
         '<div>',
         '  <a href="javascript:alert(7)">Click me</a>',
         '  <span>Some content</span>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
@@ -27,7 +27,7 @@ describe('Sanitizer', () => {
       const template = [
         '<div aria-pressed="true">',
         '  <span class="test">Some content</span>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
@@ -40,7 +40,7 @@ describe('Sanitizer', () => {
       const template = [
         '<div>',
         '  <script>alert(7)</script>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
@@ -52,7 +52,7 @@ describe('Sanitizer', () => {
       const template = [
         '<div>',
         '  <span>Some content</span>',
-        '</div>'
+        '</div>',
       ].join('')
 
       function mySanitize(htmlUnsafe) {

@@ -27,7 +27,7 @@ describe('Util', () => {
     it('should get selector from data-bs-target', () => {
       fixtureEl.innerHTML = [
         '<div id="test" data-bs-target=".target"></div>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -38,7 +38,7 @@ describe('Util', () => {
     it('should get selector from href if no data-bs-target set', () => {
       fixtureEl.innerHTML = [
         '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -49,7 +49,7 @@ describe('Util', () => {
     it('should get selector from href if data-bs-target equal to #', () => {
       fixtureEl.innerHTML = [
         '<a id="test" data-bs-target="#" href=".target"></a>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -60,7 +60,7 @@ describe('Util', () => {
     it('should return null if a selector from a href is a url without an anchor', () => {
       fixtureEl.innerHTML = [
         '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -71,7 +71,7 @@ describe('Util', () => {
     it('should return the anchor if a selector from a href is a url', () => {
       fixtureEl.innerHTML = [
         '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
-        '<div id="target"></div>'
+        '<div id="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -100,7 +100,7 @@ describe('Util', () => {
     it('should get element from data-bs-target', () => {
       fixtureEl.innerHTML = [
         '<div id="test" data-bs-target=".target"></div>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -111,7 +111,7 @@ describe('Util', () => {
     it('should get element from href if no data-bs-target set', () => {
       fixtureEl.innerHTML = [
         '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
+        '<div class="target"></div>',
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')
@@ -173,10 +173,10 @@ describe('Util', () => {
 
   describe('isElement', () => {
     it('should detect if the parameter is an element or not and return Boolean', () => {
-      fixtureEl.innerHTML =
-        [
+      fixtureEl.innerHTML
+        = [
           '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
+          '<div id="bar" class="test"></div>',
         ].join('')
 
       const el = fixtureEl.querySelector('#foo')
@@ -192,7 +192,7 @@ describe('Util', () => {
       const el = fixtureEl.querySelector('div')
       const fakejQuery = {
         0: el,
-        jquery: 'foo'
+        jquery: 'foo',
       }
 
       expect(Util.isElement(fakejQuery)).toEqual(true)
@@ -201,10 +201,10 @@ describe('Util', () => {
 
   describe('getElement', () => {
     it('should try to parse element', () => {
-      fixtureEl.innerHTML =
-        [
+      fixtureEl.innerHTML
+        = [
           '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
+          '<div id="bar" class="test"></div>',
         ].join('')
 
       const el = fixtureEl.querySelector('div')
@@ -220,7 +220,7 @@ describe('Util', () => {
 
       const fakejQueryObject = {
         0: el,
-        jquery: 'foo'
+        jquery: 'foo',
       }
 
       expect(Util.getElement(fakejQueryObject)).toEqual(el)
@@ -233,11 +233,11 @@ describe('Util', () => {
     it('should check type of the config object', () => {
       const defaultType = {
         toggle: 'boolean',
-        parent: '(string|element)'
+        parent: '(string|element)',
       }
       const config = {
         toggle: true,
-        parent: 777
+        parent: 777,
       }
 
       expect(() => {
@@ -248,11 +248,11 @@ describe('Util', () => {
     it('should return null stringified when null is passed', () => {
       const defaultType = {
         toggle: 'boolean',
-        parent: '(null|element)'
+        parent: '(null|element)',
       }
       const config = {
         toggle: true,
-        parent: null
+        parent: null,
       }
 
       Util.typeCheckConfig(namePlugin, config, defaultType)
@@ -262,11 +262,11 @@ describe('Util', () => {
     it('should return undefined stringified when undefined is passed', () => {
       const defaultType = {
         toggle: 'boolean',
-        parent: '(undefined|element)'
+        parent: '(undefined|element)',
       }
       const config = {
         toggle: true,
-        parent: undefined
+        parent: undefined,
       }
 
       Util.typeCheckConfig(namePlugin, config, defaultType)
@@ -308,7 +308,7 @@ describe('Util', () => {
         '      <div class="content"></div>',
         '    </div>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
@@ -324,7 +324,7 @@ describe('Util', () => {
         '      <div class="content"></div>',
         '    </div>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
@@ -340,7 +340,7 @@ describe('Util', () => {
         '      <div class="content"></div>',
         '    </div>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
@@ -352,7 +352,7 @@ describe('Util', () => {
       fixtureEl.innerHTML = [
         '<div>',
         '  <div id="element"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
@@ -364,7 +364,7 @@ describe('Util', () => {
       fixtureEl.innerHTML = [
         '<details>',
         '  <div id="element"></div>',
-        '</details>'
+        '</details>',
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
@@ -391,7 +391,7 @@ describe('Util', () => {
         '  <div id="element" disabled="disabled"></div>',
         '  <div id="element1" disabled="true"></div>',
         '  <div id="element2" disabled></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
@@ -408,7 +408,7 @@ describe('Util', () => {
         '<div>',
         '  <div id="element" disabled="false"></div>',
         '  <div id="element1" ></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
@@ -424,7 +424,7 @@ describe('Util', () => {
         '  <button id="button"></button>',
         '  <select id="select"></select>',
         '  <select id="input"></select>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const el = selector => fixtureEl.querySelector(selector)
@@ -443,7 +443,7 @@ describe('Util', () => {
         '  <button id="button2" disabled></button>',
         '  <select id="select" disabled></select>',
         '  <select id="input" disabled></select>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const el = selector => fixtureEl.querySelector(selector)
@@ -460,7 +460,7 @@ describe('Util', () => {
       fixtureEl.innerHTML = [
         '<div>',
         '  <div id="element" class="disabled"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
@@ -472,7 +472,7 @@ describe('Util', () => {
       fixtureEl.innerHTML = [
         '<div>',
         '  <input id="input" class="disabled" disabled="false"/>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const div = fixtureEl.querySelector('#input')
@@ -521,7 +521,7 @@ describe('Util', () => {
 
       const div = fixtureEl.querySelector('div')
       const shadowRoot = div.attachShadow({
-        mode: 'open'
+        mode: 'open',
       })
 
       expect(Util.findShadowRoot(shadowRoot)).toEqual(shadowRoot)
@@ -554,7 +554,7 @@ describe('Util', () => {
     beforeEach(() => {
       Object.defineProperty(window, 'jQuery', {
         value: fakejQuery,
-        writable: true
+        writable: true,
       })
     })
 
@@ -594,7 +594,7 @@ describe('Util', () => {
 
       document.dispatchEvent(new Event('DOMContentLoaded', {
         bubbles: true,
-        cancelable: true
+        cancelable: true,
       }))
 
       expect(spy).toHaveBeenCalled()
@@ -615,7 +615,7 @@ describe('Util', () => {
     beforeEach(() => {
       Object.defineProperty(window, 'jQuery', {
         value: fakejQuery,
-        writable: true
+        writable: true,
       })
     })
 
@@ -661,7 +661,7 @@ describe('Util', () => {
 
       spyOn(window, 'getComputedStyle').and.returnValue({
         transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        transitionDelay: '0s',
       })
 
       Util.executeAfterTransition(callbackSpy, el)
@@ -677,7 +677,7 @@ describe('Util', () => {
 
       spyOn(window, 'getComputedStyle').and.returnValue({
         transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        transitionDelay: '0s',
       })
 
       Util.executeAfterTransition(callbackSpy, el)
@@ -694,7 +694,7 @@ describe('Util', () => {
 
       spyOn(window, 'getComputedStyle').and.returnValue({
         transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        transitionDelay: '0s',
       })
 
       Util.executeAfterTransition(callbackSpy, el)
@@ -714,7 +714,7 @@ describe('Util', () => {
 
       spyOn(window, 'getComputedStyle').and.returnValue({
         transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        transitionDelay: '0s',
       })
 
       Util.executeAfterTransition(() => {}, el)
@@ -735,7 +735,7 @@ describe('Util', () => {
       fixtureEl.innerHTML = [
         '<div class="outer">',
         '  <div class="nested"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const outer = fixtureEl.querySelector('.outer')
@@ -744,13 +744,13 @@ describe('Util', () => {
 
       spyOn(window, 'getComputedStyle').and.returnValue({
         transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        transitionDelay: '0s',
       })
 
       Util.executeAfterTransition(callbackSpy, outer)
 
       nested.dispatchEvent(new TransitionEvent('transitionend', {
-        bubbles: true
+        bubbles: true,
       }))
 
       setTimeout(() => {

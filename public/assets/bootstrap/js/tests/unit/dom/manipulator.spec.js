@@ -69,7 +69,7 @@ describe('Manipulator', () => {
 
       expect(Manipulator.getDataAttributes(div)).toEqual({
         toggle: 'tabs',
-        target: '#element'
+        target: '#element',
       })
     })
   })

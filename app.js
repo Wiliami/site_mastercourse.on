@@ -1,15 +1,19 @@
-const express  = require('express');
+import express from 'express';
+import { engine } from 'express-handlebars';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import home from './routes/home.js';
+import login from './routes/login.js';
+import register from './routes/register.js';
+import routeUser from './routes/user.js';
+import routeUserAdmin from './routes/admin.js';
+import verifyUserEmailRoute from './routes/verificarEmail.js';
+import githubAPI from './services/api/github.service.js';
 const app = express();
-const { engine } = require('express-handlebars');
-const { request } = require('http');
-const path = require('path');
-const home = require('./routes/home');
-const login = require('./routes/login');
-const register = require('./routes/register');
-const routeUser = require('./routes/user');
-const routeUserAdmin = require('./routes/admin');
-const verifyUserEmailRoute = require('./routes/verificarEmail');
 // const checkIfAuthenticated = require("./middlewares/authenticate");
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +29,7 @@ app.use('/home', routeUser); // Rotas com permissão de acesso: Token válido
 app.use('/admin', routeUserAdmin);
 app.use('/verificar-email', verifyUserEmailRoute);
 app.use('/cadastro', register);
+app.use('/api/data', githubAPI);
 
 app.get('*', (req, res) => res.render('404'));
 

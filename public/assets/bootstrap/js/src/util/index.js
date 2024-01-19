@@ -7,7 +7,7 @@ import SelectorEngine from '../dom/selector-engine'
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1000000
+const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
@@ -17,7 +17,7 @@ const toType = obj => {
     return `${obj}`
   }
 
-  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
@@ -107,11 +107,11 @@ const isElement = obj => {
     return false
   }
 
-  if (typeof obj.jquery !== 'undefined') {
+  if (obj.jquery !== undefined) {
     obj = obj[0]
   }
 
-  return typeof obj.nodeType !== 'undefined'
+  return obj.nodeType !== undefined
 }
 
 const getElement = obj => {
@@ -134,7 +134,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 
     if (!new RegExp(expectedTypes).test(valueType)) {
       throw new TypeError(
-        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
+        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`,
       )
     }
   })
@@ -157,7 +157,7 @@ const isDisabled = element => {
     return true
   }
 
-  if (typeof element.disabled !== 'undefined') {
+  if (element.disabled !== undefined) {
     return element.disabled
   }
 
@@ -320,5 +320,5 @@ export {
   isRTL,
   defineJQueryPlugin,
   execute,
-  executeAfterTransition
+  executeAfterTransition,
 }

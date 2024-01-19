@@ -2,7 +2,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
@@ -11,7 +11,7 @@ const replace = require('@rollup/plugin-replace')
 
 const {
   browsers,
-  browsersKeys
+  browsersKeys,
 } = require('./browsers')
 
 const ENV = process.env
@@ -20,12 +20,12 @@ const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
 
 const frameworks = [
-  'jasmine'
+  'jasmine',
 ]
 
 const plugins = [
   'karma-jasmine',
-  'karma-rollup-preprocessor'
+  'karma-rollup-preprocessor',
 ]
 
 const reporters = ['dots']
@@ -51,7 +51,7 @@ const detectBrowsers = {
     }
 
     throw new Error('Please install Chrome, Chromium or Firefox')
-  }
+  },
 }
 
 const conf = {
@@ -62,45 +62,45 @@ const conf = {
   singleRun: true,
   concurrency: Number.POSITIVE_INFINITY,
   client: {
-    clearContext: false
+    clearContext: false,
   },
   files: [
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !BROWSERSTACK
-    }
+      watched: !BROWSERSTACK,
+    },
   ],
   preprocessors: {
-    'js/tests/unit/**/*.spec.js': ['rollup']
+    'js/tests/unit/**/*.spec.js': ['rollup'],
   },
   rollupPreprocessor: {
     plugins: [
       replace({
         'process.env.NODE_ENV': '"dev"',
-        preventAssignment: true
+        preventAssignment: true,
       }),
       istanbul({
         exclude: [
           'node_modules/**',
           'js/tests/unit/**/*.spec.js',
-          'js/tests/helpers/**/*.js'
-        ]
+          'js/tests/helpers/**/*.js',
+        ],
       }),
       babel({
         // Only transpile our source code
         exclude: 'node_modules/**',
         // Inline the required helpers in each file
-        babelHelpers: 'inline'
+        babelHelpers: 'inline',
       }),
-      nodeResolve()
+      nodeResolve(),
     ],
     output: {
       format: 'iife',
       name: 'bootstrapTest',
-      sourcemap: 'inline'
-    }
-  }
+      sourcemap: 'inline',
+    },
+  },
 }
 
 if (BROWSERSTACK) {
@@ -110,7 +110,7 @@ if (BROWSERSTACK) {
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
     project: 'Bootstrap',
-    retryLimit: 2
+    retryLimit: 2,
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   conf.customLaunchers = browsers
@@ -121,15 +121,15 @@ if (BROWSERSTACK) {
   plugins.push(
     'karma-chrome-launcher',
     'karma-firefox-launcher',
-    'karma-detect-browsers'
+    'karma-detect-browsers',
   )
   conf.detectBrowsers = detectBrowsers
   conf.files = [
     'node_modules/jquery/dist/jquery.slim.min.js',
     {
       pattern: 'js/tests/unit/jquery.spec.js',
-      watched: false
-    }
+      watched: false,
+    },
   ]
 } else {
   frameworks.push('detectBrowsers')
@@ -137,7 +137,7 @@ if (BROWSERSTACK) {
     'karma-chrome-launcher',
     'karma-firefox-launcher',
     'karma-detect-browsers',
-    'karma-coverage-istanbul-reporter'
+    'karma-coverage-istanbul-reporter',
   )
   reporters.push('coverage-istanbul')
   conf.detectBrowsers = detectBrowsers
@@ -150,9 +150,9 @@ if (BROWSERSTACK) {
         statements: 90,
         branches: 89,
         functions: 90,
-        lines: 90
-      }
-    }
+        lines: 90,
+      },
+    },
   }
 
   if (DEBUG) {

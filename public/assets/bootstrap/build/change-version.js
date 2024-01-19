@@ -9,8 +9,8 @@
 
 'use strict'
 
-const fs = require('fs').promises
-const path = require('path')
+const fs = require('node:fs').promises
+const path = require('node:path')
 const globby = require('globby')
 
 const VERBOSE = process.argv.includes('--verbose')
@@ -18,26 +18,26 @@ const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-r
 
 // These are the filetypes we only care about replacing the version
 const GLOB = [
-  '**/*.{css,html,js,json,md,scss,txt,yml}'
+  '**/*.{css,html,js,json,md,scss,txt,yml}',
 ]
 const GLOBBY_OPTIONS = {
   cwd: path.join(__dirname, '..'),
-  gitignore: true
+  gitignore: true,
 }
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
-  return string.replace(/[$()*+-.?[\\\]^{|}]/g, '\\$&')
+  return string.replaceAll(/[$()*+-.?[\\\]^{|}]/g, '\\$&')
 }
 
 function regExpQuoteReplacement(string) {
-  return string.replace(/\$/g, '$$')
+  return string.replaceAll('$', '$$')
 }
 
 async function replaceRecursively(file, oldVersion, newVersion) {
   const originalString = await fs.readFile(file, 'utf8')
-  const newString = originalString.replace(
-    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
+  const newString = originalString.replaceAll(
+    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion),
   )
 
   // No need to move any further if the strings are identical

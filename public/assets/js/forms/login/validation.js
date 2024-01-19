@@ -5,33 +5,33 @@ const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\")
 
 
 buttonSubmit.addEventListener('click', (e) => {
-    e.preventDefault();
-    emailValidate();
-    passwordValidate();
+  e.preventDefault();
+  emailValidate();
+  passwordValidate();
 });
 
 function setError(index) {
-    campos[index].style.border = '2px solid #e63656';
-    span[index].style.display = 'block';
+  campos[index].style.border = '2px solid #e63656';
+  span[index].style.display = 'block';
 }
 
 function removeError(index) {
-    campos[index].style.border = '';
-    span[index].style.display = 'none';
+  campos[index].style.border = '';
+  span[index].style.display = 'none';
 }
 
 function emailValidate() {
-    if(!emailRegex.test(campos[0].value)) {
-        setError(0);
-    } else {
-        removeError(0);
-    }
+  if(!emailRegex.test(campos[0].value)) {
+    setError(0);
+  } else {
+    removeError(0);
+  }
 } 
 
 function passwordValidate() {
-    if(campos[1].value.length < 8)  {
-        setError(1);
-    } else {
-        removeError(1);
-    }
+  if(campos[1].value.length < 8)  {
+    setError(1);
+  } else {
+    removeError(1);
+  }
 }

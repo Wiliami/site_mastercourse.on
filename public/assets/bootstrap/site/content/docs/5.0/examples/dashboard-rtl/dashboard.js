@@ -18,36 +18,36 @@
         'الأربعاء',
         'الخميس',
         'الجمعة',
-        'السبت'
+        'السبت',
       ],
       datasets: [{
         data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
+          15_339,
+          21_345,
+          18_483,
+          24_003,
+          23_489,
+          24_092,
+          12_034
         ],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
         borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+        pointBackgroundColor: '#007bff',
       }]
     },
     options: {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: false
+            beginAtZero: false,
           }
-        }]
+        }],
       },
       legend: {
-        display: false
+        display: false,
       }
-    }
+    },
   })
 })()

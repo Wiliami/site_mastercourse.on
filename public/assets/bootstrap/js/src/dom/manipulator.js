@@ -26,7 +26,7 @@ function normalizeData(val) {
 }
 
 function normalizeDataKey(key) {
-  return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`)
+  return key.replaceAll(/[A-Z]/g, chr => `-${chr.toLowerCase()}`)
 }
 
 const Manipulator = {
@@ -65,16 +65,16 @@ const Manipulator = {
 
     return {
       top: rect.top + document.body.scrollTop,
-      left: rect.left + document.body.scrollLeft
+      left: rect.left + document.body.scrollLeft,
     }
   },
 
   position(element) {
     return {
       top: element.offsetTop,
-      left: element.offsetLeft
+      left: element.offsetLeft,
     }
-  }
+  },
 }
 
 export default Manipulator

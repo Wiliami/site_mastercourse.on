@@ -64,7 +64,7 @@ describe('Base Component', () => {
       it('should accept element, either passed as a CSS selector or DOM element', () => {
         fixtureEl.innerHTML = [
           '<div id="foo"></div>',
-          '<div id="bar"></div>'
+          '<div id="bar"></div>',
         ].join('')
 
         const el = fixtureEl.querySelector('#foo')

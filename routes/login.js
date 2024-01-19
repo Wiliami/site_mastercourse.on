@@ -1,10 +1,10 @@
-const express = require("express");
+import express from 'express';
 const router = express.Router();
 // const { admin, db } = require('../firebaseConfig');
 // const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-    res.render('login');
+  res.render('login');
 });
 
 // console.log(process.env.FIREBASE_AUTH_DOMAIN);
@@ -59,4 +59,4 @@ router.get('/', (req, res) => {
     
 // });
 
-module.exports = router;
+export default router;

@@ -17,7 +17,7 @@ import {
   isRTL,
   noop,
   getNextActiveElement,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -77,7 +77,7 @@ const Default = {
   reference: 'toggle',
   display: 'dynamic',
   popperConfig: null,
-  autoClose: true
+  autoClose: true,
 }
 
 const DefaultType = {
@@ -86,7 +86,7 @@ const DefaultType = {
   reference: '(string|element|object)',
   display: 'string',
   popperConfig: '(null|object|function)',
-  autoClose: '(boolean|string)'
+  autoClose: '(boolean|string)',
 }
 
 /**
@@ -145,7 +145,7 @@ class Dropdown extends BaseComponent {
 
     const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
-      relatedTarget: this._element
+      relatedTarget: this._element,
     }
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget)
@@ -158,7 +158,7 @@ class Dropdown extends BaseComponent {
     if (this._inNavbar) {
       Manipulator.setDataAttribute(this._menu, 'popper', 'none')
     } else {
-      if (typeof Popper === 'undefined') {
+      if (Popper === undefined) {
         throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
       }
 
@@ -186,9 +186,9 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement &&
-      !parent.closest(SELECTOR_NAVBAR_NAV)) {
-      [].concat(...document.body.children)
+    if ('ontouchstart' in document.documentElement
+      && !parent.closest(SELECTOR_NAVBAR_NAV)) {
+      document.body.children.flat()
         .forEach(elem => EventHandler.on(elem, 'mouseover', noop))
     }
 
@@ -206,7 +206,7 @@ class Dropdown extends BaseComponent {
     }
 
     const relatedTarget = {
-      relatedTarget: this._element
+      relatedTarget: this._element,
     }
 
     this._completeHide(relatedTarget)
@@ -245,7 +245,7 @@ class Dropdown extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
+      document.body.children.flat()
         .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
     }
 
@@ -264,13 +264,13 @@ class Dropdown extends BaseComponent {
     config = {
       ...this.constructor.Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...config
+      ...config,
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
-    if (typeof config.reference === 'object' && !isElement(config.reference) &&
-      typeof config.reference.getBoundingClientRect !== 'function'
+    if (typeof config.reference === 'object' && !isElement(config.reference)
+      && typeof config.reference.getBoundingClientRect !== 'function'
     ) {
       // Popper virtual elements require a getBoundingClientRect method
       throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
@@ -328,28 +328,28 @@ class Dropdown extends BaseComponent {
       modifiers: [{
         name: 'preventOverflow',
         options: {
-          boundary: this._config.boundary
-        }
+          boundary: this._config.boundary,
+        },
       },
       {
         name: 'offset',
         options: {
-          offset: this._getOffset()
-        }
-      }]
+          offset: this._getOffset(),
+        },
+      }],
     }
 
     // Disable Popper if we have a static display
     if (this._config.display === 'static') {
       defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
-        enabled: false
+        enabled: false,
       }]
     }
 
     return {
       ...defaultBsPopperConfig,
-      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig),
     }
   }
 
@@ -371,7 +371,7 @@ class Dropdown extends BaseComponent {
     const data = Dropdown.getOrCreateInstance(element, config)
 
     if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 
@@ -403,16 +403,16 @@ class Dropdown extends BaseComponent {
       }
 
       const relatedTarget = {
-        relatedTarget: context._element
+        relatedTarget: context._element,
       }
 
       if (event) {
         const composedPath = event.composedPath()
         const isMenuTarget = composedPath.includes(context._menu)
         if (
-          composedPath.includes(context._element) ||
-          (context._config.autoClose === 'inside' && !isMenuTarget) ||
-          (context._config.autoClose === 'outside' && isMenuTarget)
+          composedPath.includes(context._element)
+          || (context._config.autoClose === 'inside' && !isMenuTarget)
+          || (context._config.autoClose === 'outside' && isMenuTarget)
         ) {
           continue
         }
@@ -443,11 +443,11 @@ class Dropdown extends BaseComponent {
     //  - If key is other than escape
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
-      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        event.target.closest(SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.key)) {
+    if (/input|textarea/i.test(event.target.tagName)
+      ? event.key === SPACE_KEY || (event.key !== ESCAPE_KEY
+      && ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY)
+        || event.target.closest(SELECTOR_MENU)))
+      : !REGEXP_KEYDOWN.test(event.key)) {
       return
     }
 

@@ -83,7 +83,7 @@ describe('Popover', () => {
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
         title: () => 'Bootstrap',
-        content: () => 'loves writing tests （╯°□°）╯︵ ┻━┻'
+        content: () => 'loves writing tests （╯°□°）╯︵ ┻━┻',
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -103,7 +103,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        content: 'Popover content'
+        content: 'Popover content',
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -122,7 +122,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        content: 'Some beautiful content :)'
+        content: 'Some beautiful content :)',
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -142,7 +142,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        title: 'Title, which does not require content'
+        title: 'Title, which does not require content',
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -217,7 +217,7 @@ describe('Popover', () => {
       jQueryMock.elements = [popoverEl]
 
       jQueryMock.fn.popover.call(jQueryMock, {
-        content: 'Popover content'
+        content: 'Popover content',
       })
 
       expect(Popover.getInstance(popoverEl)).not.toBeNull()
@@ -316,7 +316,7 @@ describe('Popover', () => {
 
       expect(Popover.getInstance(div)).toEqual(null)
       const popover = Popover.getOrCreateInstance(div, {
-        placement: 'top'
+        placement: 'top',
       })
       expect(popover).toBeInstanceOf(Popover)
 
@@ -328,12 +328,12 @@ describe('Popover', () => {
 
       const div = fixtureEl.querySelector('div')
       const popover = new Popover(div, {
-        placement: 'top'
+        placement: 'top',
       })
       expect(Popover.getInstance(div)).toEqual(popover)
 
       const popover2 = Popover.getOrCreateInstance(div, {
-        placement: 'bottom'
+        placement: 'bottom',
       })
       expect(popover).toBeInstanceOf(Popover)
       expect(popover2).toEqual(popover)

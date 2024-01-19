@@ -27,16 +27,16 @@ const Default = {
   offset: [0, 8],
   trigger: 'click',
   content: '',
-  template: '<div class="popover" role="tooltip">' +
-              '<div class="popover-arrow"></div>' +
-              '<h3 class="popover-header"></h3>' +
-              '<div class="popover-body"></div>' +
-            '</div>'
+  template: '<div class="popover" role="tooltip">'
+              + '<div class="popover-arrow"></div>'
+              + '<h3 class="popover-header"></h3>'
+              + '<div class="popover-body"></div>'
+            + '</div>',
 }
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
+  content: '(string|element|function)',
 }
 
 const Event = {
@@ -49,7 +49,7 @@ const Event = {
   FOCUSIN: `focusin${EVENT_KEY}`,
   FOCUSOUT: `focusout${EVENT_KEY}`,
   MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
+  MOUSELEAVE: `mouseleave${EVENT_KEY}`,
 }
 
 const CLASS_NAME_FADE = 'fade'
@@ -148,7 +148,7 @@ class Popover extends Tooltip {
       const data = Popover.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

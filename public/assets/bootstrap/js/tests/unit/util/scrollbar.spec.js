@@ -12,17 +12,15 @@ describe('ScrollBar', () => {
   const getPaddingAttr = el => Manipulator.getDataAttribute(el, 'padding-right')
   const getMarginAttr = el => Manipulator.getDataAttribute(el, 'margin-right')
   const getOverFlowAttr = el => Manipulator.getDataAttribute(el, 'overflow')
-  const windowCalculations = () => {
-    return {
-      htmlClient: document.documentElement.clientWidth,
-      htmlOffset: document.documentElement.offsetWidth,
-      docClient: document.body.clientWidth,
-      htmlBound: document.documentElement.getBoundingClientRect().width,
-      bodyBound: document.body.getBoundingClientRect().width,
-      window: window.innerWidth,
-      width: Math.abs(window.innerWidth - document.documentElement.clientWidth)
-    }
-  }
+  const windowCalculations = () => ({
+    htmlClient: document.documentElement.clientWidth,
+    htmlOffset: document.documentElement.offsetWidth,
+    docClient: document.body.clientWidth,
+    htmlBound: document.documentElement.getBoundingClientRect().width,
+    bodyBound: document.body.getBoundingClientRect().width,
+    window: window.innerWidth,
+    width: Math.abs(window.innerWidth - document.documentElement.clientWidth),
+  })
 
   const isScrollBarHidden = () => { // IOS devices, Android devices and Browsers on Mac, hide scrollbar by default and appear it, only while scrolling. So the tests for scrollbar would fail
     const calc = windowCalculations()
@@ -53,7 +51,7 @@ describe('ScrollBar', () => {
       document.documentElement.style.overflowY = 'scroll'
       document.body.style.overflowY = 'scroll'
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
+        '<div style="height: 110vh; width: 100%"></div>',
       ].join('')
       const result = new ScrollBarHelper().isOverflowing()
 
@@ -68,7 +66,7 @@ describe('ScrollBar', () => {
       doc.style.overflowY = 'hidden'
       document.body.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
+        '<div style="height: 110vh; width: 100%"></div>',
       ].join('')
       const scrollBar = new ScrollBarHelper()
       const result = scrollBar.isOverflowing()
@@ -82,7 +80,7 @@ describe('ScrollBar', () => {
       doc.style.overflowY = 'scroll'
       document.body.style.overflowY = 'scroll'
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
+        '<div style="height: 110vh; width: 100%"></div>',
       ].join('')
       const result = new ScrollBarHelper().getWidth()
 
@@ -97,7 +95,7 @@ describe('ScrollBar', () => {
       document.documentElement.style.overflowY = 'hidden'
       document.body.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
+        '<div style="height: 110vh; width: 100%"></div>',
       ].join('')
 
       const result = new ScrollBarHelper().getWidth()
@@ -109,10 +107,10 @@ describe('ScrollBar', () => {
   describe('hide - reset', () => {
     it('should adjust the inline padding of fixed elements which are full-width', done => {
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%">' +
-        '<div class="fixed-top" id="fixed1" style="padding-right: 0px; width: 100vw"></div>',
+        '<div style="height: 110vh; width: 100%">'
+        + '<div class="fixed-top" id="fixed1" style="padding-right: 0px; width: 100vw"></div>',
         '<div class="fixed-top" id="fixed2" style="padding-right: 5px; width: 100vw"></div>',
-        '</div>'
+        '</div>',
       ].join('')
       doc.style.overflowY = 'scroll'
 
@@ -145,9 +143,9 @@ describe('ScrollBar', () => {
 
     it('should adjust the inline margin and padding of sticky elements', done => {
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh">' +
-        '<div class="sticky-top" style="margin-right: 10px; padding-right: 20px; width: 100vw; height: 10px"></div>',
-        '</div>'
+        '<div style="height: 110vh">'
+        + '<div class="sticky-top" style="margin-right: 10px; padding-right: 20px; width: 100vw; height: 10px"></div>',
+        '</div>',
       ].join('')
       doc.style.overflowY = 'scroll'
 
@@ -174,7 +172,7 @@ describe('ScrollBar', () => {
 
     it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', () => {
       fixtureEl.innerHTML = [
-        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: 50vw"></div>'
+        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: 50vw"></div>',
       ].join('')
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
@@ -195,9 +193,9 @@ describe('ScrollBar', () => {
 
     it('should not put data-attribute if element doesn\'t have the proper style property, should just remove style property if element didn\'t had one', () => {
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%">' +
-        '<div class="sticky-top" id="sticky" style="width: 100vw"></div>',
-        '</div>'
+        '<div style="height: 110vh; width: 100%">'
+        + '<div class="sticky-top" id="sticky" style="width: 100vw"></div>',
+        '</div>',
       ].join('')
 
       document.body.style.overflowY = 'scroll'
@@ -245,7 +243,7 @@ describe('ScrollBar', () => {
           '  body {',
           `       padding-right: ${styleSheetPadding} }`,
           '  }',
-          '</style>'
+          '</style>',
         ].join('')
 
         const el = document.body
@@ -285,7 +283,7 @@ describe('ScrollBar', () => {
           '  body {',
           `       padding-right: ${styleSheetPadding} }`,
           '  }',
-          '</style>'
+          '</style>',
         ].join('')
         const el = document.body
         const originalPadding = getPaddingX(el)

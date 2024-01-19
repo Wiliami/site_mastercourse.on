@@ -24,7 +24,7 @@ describe('Tab', () => {
     it('should take care of element either passed as a CSS selector or DOM element', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav"><li><a href="#home" role="tab">Home</a></li></ul>',
-        '<ul><li id="home"></li></ul>'
+        '<ul><li id="home"></li></ul>',
       ].join('')
 
       const tabEl = fixtureEl.querySelector('[href="#home"]')
@@ -46,7 +46,7 @@ describe('Tab', () => {
         '<ul>',
         '  <li id="home" role="tabpanel"></li>',
         '  <li id="profile" role="tabpanel"></li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -70,7 +70,7 @@ describe('Tab', () => {
         '<ul>',
         '  <li id="home" role="tabpanel"></li>',
         '  <li id="profile" role="tabpanel"></li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -94,7 +94,7 @@ describe('Tab', () => {
         '<ol>',
         '  <li id="home" role="tabpanel"></li>',
         '  <li id="profile" role="tabpanel"></li>',
-        '</ol>'
+        '</ol>',
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -114,7 +114,7 @@ describe('Tab', () => {
         '  <button type="button" data-bs-target="#home" role="tab">Home</button>',
         '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</a>',
         '</nav>',
-        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>'
+        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>',
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -134,7 +134,7 @@ describe('Tab', () => {
         '  <button type="button" data-bs-target="#home" role="tab">Home</button>',
         '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button>',
         '</div>',
-        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>'
+        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>',
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -181,7 +181,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const triggerActive = fixtureEl.querySelector('button.active')
@@ -207,7 +207,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const secondTabTrigger = fixtureEl.querySelector('#triggerProfile')
@@ -232,7 +232,7 @@ describe('Tab', () => {
         '<ul class="nav" role="tablist">',
         '  <li><button type="button" data-bs-target="#home" role="tab">Home</button></li>',
         '  <li><button type="button" data-bs-target="#profile">Profile</button></li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const triggerList = fixtureEl.querySelectorAll('button')
@@ -263,7 +263,7 @@ describe('Tab', () => {
         '<ul class="nav" role="tablist">',
         '  <li><button type="button" data-bs-target="#home" role="tab">Home</button></li>',
         '  <li><button type="button" data-bs-target="#profile" role="tab">Profile</button></li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const triggerList = fixtureEl.querySelectorAll('button')
@@ -315,7 +315,7 @@ describe('Tab', () => {
         '  <div role="tabpanel" class="tab-pane fade show active" id="profile">test 1</div>',
         '  <div role="tabpanel" class="tab-pane fade" id="buzz">test 2</div>',
         '  <div role="tabpanel" class="tab-pane fade" id="references">test 3</div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const secondNavEl = fixtureEl.querySelector('#secondNav')
@@ -465,7 +465,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const secondTabTrigger = fixtureEl.querySelector('#triggerProfile')
@@ -491,7 +491,7 @@ describe('Tab', () => {
         '      <a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a>',
         '    </div>',
         '  </li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const firstLiLinkEl = fixtureEl.querySelector('li:first-child a')
@@ -512,7 +512,7 @@ describe('Tab', () => {
         '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
         '  </li>',
-        '</ul>'
+        '</ul>',
       ].join('')
       const nav2 = [
         '<ul class="nav nav-tabs" id="nav2">',
@@ -523,7 +523,7 @@ describe('Tab', () => {
         '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
         '  </li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       fixtureEl.innerHTML = nav1 + nav2
@@ -549,7 +549,7 @@ describe('Tab', () => {
         '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a></li>',
         '    </ul>',
         '  </li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const firstDropItem = fixtureEl.querySelector('.dropdown-item')
@@ -579,7 +579,7 @@ describe('Tab', () => {
         '  </div>',
         '  <div class="tab-pane active" id="x-tab2" role="tabpanel">Tab2 Content</div>',
         '  <div class="tab-pane" id="x-tab3" role="tabpanel">Tab3 Content</div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const tab1El = fixtureEl.querySelector('#tab1')
@@ -608,7 +608,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane fade" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane fade" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const triggerTabProfileEl = fixtureEl.querySelector('#tab-profile')
@@ -649,7 +649,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div role="tabpanel" class="tab-pane" id="home">test 1</div>',
         '  <div role="tabpanel" class="tab-pane" id="profile">test 2</div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const secondNavEl = fixtureEl.querySelector('#secondNav')
@@ -675,7 +675,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div role="tabpanel" class="tab-pane fade" id="home">test 1</div>',
         '  <div role="tabpanel" class="tab-pane fade" id="profile">test 2</div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const secondNavEl = fixtureEl.querySelector('#secondNav')
@@ -693,7 +693,7 @@ describe('Tab', () => {
         '<ul class="nav" role="tablist">',
         '  <li><a type="button" href="#test"  class="active" role="tab" data-bs-toggle="tab">Home</a></li>',
         '  <li><a type="button" href="#test2" role="tab" data-bs-toggle="tab">Home</a></li>',
-        '</ul>'
+        '</ul>',
       ].join('')
 
       const tabEl = fixtureEl.querySelector('[href="#test2"]')
@@ -717,7 +717,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const triggerDisabled = fixtureEl.querySelector('button[disabled]')
@@ -741,7 +741,7 @@ describe('Tab', () => {
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
         '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const triggerDisabled = fixtureEl.querySelector('a.disabled')

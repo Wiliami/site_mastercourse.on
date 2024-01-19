@@ -1,7 +1,7 @@
-const express = require("express");
+import express from 'express';
+import { db } from '../config/firebaseConfig.js';
+// const { json } = require("sequelize");
 const router = express.Router();
-const { json } = require("sequelize");
-const { db } = require('../config/firebaseConfig');
 
 router.get('/account/user-profile', (req, res) => res.render('account/user-profile'));
 router.get('/checkout', (req, res) => res.render('checkout'));
@@ -20,26 +20,26 @@ router.get('/area-membro/products/produtos-pendentes', (req, res) => res.render(
 
 router.get('/area-membro/courses/meus-cursos', (req, res) => res.render('area-membro/courses/meus-cursos'));
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
-    const query = req.body.query;
+  const query = req.body.query;
     
-        try {
-           const coursesRef = db.collection('courses');
+  try {
+    const coursesRef = db.collection('courses');
 
-            // const lowerCaseQuery = query.toLowerCase();
-           const snapshot = await coursesRef
-           .where('nameCourseLowerCase', '>=', query)
-           .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
-           .get();  
+    // const lowerCaseQuery = query.toLowerCase();
+    const snapshot = await coursesRef
+      .where('nameCourseLowerCase', '>=', query)
+      .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
+      .get();  
 
-            const courses = snapshot.docs.map(doc => doc.data());
+    const courses = snapshot.docs.map(doc => doc.data());
 
-            res.json(courses);
+    res.json(courses);
      
-        } catch (error) {
-            console.log('Erro ao obter dados: ', error);
-            res.status(500).send('Erro ao obter os dados.');
-        }
+  } catch (error) {
+    console.log('Erro ao obter dados: ', error);
+    res.status(500).send('Erro ao obter os dados.');
+  }
     
 });
 
-module.exports = router;
+export default router;

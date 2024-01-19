@@ -12,9 +12,9 @@
 
 'use strict'
 
-const crypto = require('crypto')
-const fs = require('fs')
-const path = require('path')
+const crypto = require('node:crypto')
+const fs = require('node:fs')
+const path = require('node:path')
 const sh = require('shelljs')
 
 sh.config.fatal = true
@@ -27,24 +27,24 @@ const configFile = path.join(__dirname, '../config.yml')
 const files = [
   {
     file: 'dist/css/bootstrap.min.css',
-    configPropertyName: 'css_hash'
+    configPropertyName: 'css_hash',
   },
   {
     file: 'dist/css/bootstrap.rtl.min.css',
-    configPropertyName: 'css_rtl_hash'
+    configPropertyName: 'css_rtl_hash',
   },
   {
     file: 'dist/js/bootstrap.min.js',
-    configPropertyName: 'js_hash'
+    configPropertyName: 'js_hash',
   },
   {
     file: 'dist/js/bootstrap.bundle.min.js',
-    configPropertyName: 'js_bundle_hash'
+    configPropertyName: 'js_bundle_hash',
   },
   {
     file: 'node_modules/@popperjs/core/dist/umd/popper.min.js',
-    configPropertyName: 'popper_hash'
-  }
+    configPropertyName: 'popper_hash',
+  },
 ]
 
 files.forEach(file => {

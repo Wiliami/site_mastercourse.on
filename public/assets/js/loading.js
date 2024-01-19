@@ -1,7 +1,7 @@
 $(document).ready(() => {
-    $('#preloader').show();
+  $('#preloader').show();
 
-    setTimeout(() => {
-        $('#preloader').hide();
-    }, 2000);
+  setTimeout(() => {
+    $('#preloader').hide();
+  }, 2000);
 });

@@ -1,14 +1,15 @@
   {{>_navbarDashboard}}
   {{>_sidebarDashboard}}
   <main id="main" class="main">
-    <div class="pagetitle">
     <h1 id="usersame"></h1>
+    <div class="pagetitle">
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
         </ol>
       </nav>
     </div>
+    <button id="getDataBtn" class="btn btn-success">Obter Dados</button>
     <section class="section">
       <div class="row">
         <!-- Left side columns -->
@@ -25,6 +26,15 @@
   {{>_preloader}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
+  {{!-- <script src="../services/api/github.service.js"></script> --}}
+  <script>
+      document.getElementById('getDataBtn').addEventListener('click', () => {
+        fetch('http://localhost:8080/api/data')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log('Error:', error));
+      });
+  </script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>

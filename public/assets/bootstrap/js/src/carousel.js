@@ -13,7 +13,7 @@ import {
   getNextActiveElement,
   reflow,
   triggerTransitionEnd,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -42,7 +42,7 @@ const Default = {
   slide: false,
   pause: 'hover',
   wrap: true,
-  touch: true
+  touch: true,
 }
 
 const DefaultType = {
@@ -51,7 +51,7 @@ const DefaultType = {
   slide: '(boolean|string)',
   pause: '(string|boolean)',
   wrap: 'boolean',
-  touch: 'boolean'
+  touch: 'boolean',
 }
 
 const ORDER_NEXT = 'next'
@@ -61,7 +61,7 @@ const DIRECTION_RIGHT = 'right'
 
 const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
-  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+  [ARROW_RIGHT_KEY]: DIRECTION_LEFT,
 }
 
 const EVENT_SLIDE = `slide${EVENT_KEY}`
@@ -183,7 +183,7 @@ class Carousel extends BaseComponent {
 
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
-        this._config.interval
+        this._config.interval,
       )
     }
   }
@@ -207,9 +207,9 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const order = index > activeIndex ?
-      ORDER_NEXT :
-      ORDER_PREV
+    const order = index > activeIndex
+      ? ORDER_NEXT
+      : ORDER_PREV
 
     this._slide(order, this._items[index])
   }
@@ -220,7 +220,7 @@ class Carousel extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
+      ...(typeof config === 'object' ? config : {}),
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -270,9 +270,9 @@ class Carousel extends BaseComponent {
 
     const move = event => {
       // ensure swiping with one touch and not pinching
-      this.touchDeltaX = event.touches && event.touches.length > 1 ?
-        0 :
-        event.touches[0].clientX - this.touchStartX
+      this.touchDeltaX = event.touches && event.touches.length > 1
+        ? 0
+        : event.touches[0].clientX - this.touchStartX
     }
 
     const end = event => {
@@ -328,9 +328,9 @@ class Carousel extends BaseComponent {
   }
 
   _getItemIndex(element) {
-    this._items = element && element.parentNode ?
-      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
-      []
+    this._items = element && element.parentNode
+      ? SelectorEngine.find(SELECTOR_ITEM, element.parentNode)
+      : []
 
     return this._items.indexOf(element)
   }
@@ -348,7 +348,7 @@ class Carousel extends BaseComponent {
       relatedTarget,
       direction: eventDirectionName,
       from: fromIndex,
-      to: targetIndex
+      to: targetIndex,
     })
   }
 
@@ -435,7 +435,7 @@ class Carousel extends BaseComponent {
         relatedTarget: nextElement,
         direction: eventDirectionName,
         from: activeElementIndex,
-        to: nextElementIndex
+        to: nextElementIndex,
       })
     }
 
@@ -505,7 +505,7 @@ class Carousel extends BaseComponent {
     if (typeof config === 'object') {
       _config = {
         ..._config,
-        ...config
+        ...config,
       }
     }
 
@@ -514,7 +514,7 @@ class Carousel extends BaseComponent {
     if (typeof config === 'number') {
       data.to(config)
     } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
+      if (data[action] === undefined) {
         throw new TypeError(`No method named "${action}"`)
       }
 
@@ -540,7 +540,7 @@ class Carousel extends BaseComponent {
 
     const config = {
       ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
+      ...Manipulator.getDataAttributes(this),
     }
     const slideIndex = this.getAttribute('data-bs-slide-to')
 

@@ -1,6 +1,6 @@
-const express = require("express");
-const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(10);
+import express from 'express';
+// const bcrypt = require('bcryptjs');
+// const salt = bcrypt.wgenSaltSync(10);
 const router = express.Router();
 
  
@@ -10,4 +10,4 @@ router.get('/users/update', (req, res) => res.render('admin/users/update'));
 router.get('/users/delete', (req, res) => res.render('admin/users/delete'));
 router.get('/users/example', (req, res) => res.render('admin/users/example'));
 
-module.exports = router;
+export default router;

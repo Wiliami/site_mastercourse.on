@@ -1,19 +1,19 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.GLightbox = factory());
+    typeof define === 'function' && define.amd ? define(factory) :
+      (global = global || self, global.GLightbox = factory());
 }(this, (function () { 'use strict';
 
   function _typeof(obj) {
-    "@babel/helpers - typeof";
+    '@babel/helpers - typeof';
 
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
       _typeof = function (obj) {
         return typeof obj;
       };
     } else {
       _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+        return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj;
       };
     }
 
@@ -22,7 +22,7 @@
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
+      throw new TypeError('Cannot call a class as a function');
     }
   }
 
@@ -31,7 +31,7 @@
       var descriptor = props[i];
       descriptor.enumerable = descriptor.enumerable || false;
       descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
+      if ('value' in descriptor) descriptor.writable = true;
       Object.defineProperty(target, descriptor.key, descriptor);
     }
   }
@@ -88,7 +88,7 @@
 
     if (isArrayLike(collection) && !isObject(collection)) {
       var l = collection.length,
-          i = 0;
+        i = 0;
 
       for (; i < l; i++) {
         if (callback.call(collection[i], collection[i], i, collection) === false) {
@@ -129,14 +129,14 @@
   }
   function addEvent(eventName) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        onElement = _ref.onElement,
-        withCallback = _ref.withCallback,
-        _ref$avoidDuplicate = _ref.avoidDuplicate,
-        avoidDuplicate = _ref$avoidDuplicate === void 0 ? true : _ref$avoidDuplicate,
-        _ref$once = _ref.once,
-        once = _ref$once === void 0 ? false : _ref$once,
-        _ref$useCapture = _ref.useCapture,
-        useCapture = _ref$useCapture === void 0 ? false : _ref$useCapture;
+      onElement = _ref.onElement,
+      withCallback = _ref.withCallback,
+      _ref$avoidDuplicate = _ref.avoidDuplicate,
+      avoidDuplicate = _ref$avoidDuplicate === void 0 ? true : _ref$avoidDuplicate,
+      _ref$once = _ref.once,
+      once = _ref$once === void 0 ? false : _ref$once,
+      _ref$useCapture = _ref.useCapture,
+      useCapture = _ref$useCapture === void 0 ? false : _ref$useCapture;
 
     var thisArg = arguments.length > 2 ? arguments[2] : undefined;
     var element = onElement || [];
@@ -272,7 +272,7 @@
   }
   function createHTML(htmlStr) {
     var frag = document.createDocumentFragment(),
-        temp = document.createElement('div');
+      temp = document.createElement('div');
     temp.innerHTML = htmlStr;
 
     while (temp.firstChild) {
@@ -289,7 +289,7 @@
   }
   function whichAnimationEvent() {
     var t,
-        el = document.createElement('fakeelement');
+      el = document.createElement('fakeelement');
     var animations = {
       animation: 'animationend',
       OAnimation: 'oAnimationEnd',
@@ -305,7 +305,7 @@
   }
   function whichTransitionEvent() {
     var t,
-        el = document.createElement('fakeelement');
+      el = document.createElement('fakeelement');
     var transitions = {
       transition: 'transitionend',
       OTransition: 'oTransitionEnd',
@@ -321,9 +321,9 @@
   }
   function createIframe(config) {
     var url = config.url,
-        allow = config.allow,
-        callback = config.callback,
-        appendTo = config.appendTo;
+      allow = config.allow,
+      callback = config.callback,
+      appendTo = config.appendTo;
     var iframe = document.createElement('iframe');
     iframe.className = 'vimeo-video gvideo';
     iframe.src = url;
@@ -561,7 +561,7 @@
       return el >= parseInt(newIndex);
     });
     var nextFocus = nextOrders.sort()[0];
-    return document.querySelector(".gbtn[data-taborder=\"".concat(nextFocus, "\"]"));
+    return document.querySelector('.gbtn[data-taborder="'.concat(nextFocus, '"]'));
   }
 
   function keyboardNavigation(instance) {
@@ -676,12 +676,12 @@
     }
 
     _createClass(EventsHandlerAdmin, [{
-      key: "add",
+      key: 'add',
       value: function add(handler) {
         this.handlers.push(handler);
       }
     }, {
-      key: "del",
+      key: 'del',
       value: function del(handler) {
         if (!handler) {
           this.handlers = [];
@@ -694,7 +694,7 @@
         }
       }
     }, {
-      key: "dispatch",
+      key: 'dispatch',
       value: function dispatch() {
         for (var i = 0, len = this.handlers.length; i < len; i++) {
           var handler = this.handlers[i];
@@ -771,7 +771,7 @@
     }
 
     _createClass(TouchEvents, [{
-      key: "start",
+      key: 'start',
       value: function start(evt) {
         if (!evt.touches) {
           return;
@@ -802,7 +802,7 @@
         this.preTapPosition.y = this.y1;
         this.last = this.now;
         var preV = this.preV,
-            len = evt.touches.length;
+          len = evt.touches.length;
 
         if (len > 1) {
           this._cancelLongTap();
@@ -826,21 +826,21 @@
         }.bind(this), 750);
       }
     }, {
-      key: "move",
+      key: 'move',
       value: function move(evt) {
         if (!evt.touches) {
           return;
         }
 
         var preV = this.preV,
-            len = evt.touches.length,
-            currentX = evt.touches[0].pageX,
-            currentY = evt.touches[0].pageY;
+          len = evt.touches.length,
+          currentX = evt.touches[0].pageX,
+          currentY = evt.touches[0].pageY;
         this.isDoubleTap = false;
 
         if (len > 1) {
           var sCurrentX = evt.touches[1].pageX,
-              sCurrentY = evt.touches[1].pageY;
+            sCurrentY = evt.touches[1].pageY;
           var v = {
             x: evt.touches[1].pageX - currentX,
             y: evt.touches[1].pageY - currentY
@@ -875,7 +875,7 @@
             evt.deltaX = currentX - this.x2;
             evt.deltaY = currentY - this.y2;
             var movedX = Math.abs(this.x1 - this.x2),
-                movedY = Math.abs(this.y1 - this.y2);
+              movedY = Math.abs(this.y1 - this.y2);
 
             if (movedX > 10 || movedY > 10) {
               this._preventTap = true;
@@ -900,7 +900,7 @@
         }
       }
     }, {
-      key: "end",
+      key: 'end',
       value: function end(evt) {
         if (!evt.changedTouches) {
           return;
@@ -947,7 +947,7 @@
         this.x1 = this.x2 = this.y1 = this.y2 = null;
       }
     }, {
-      key: "cancelAll",
+      key: 'cancelAll',
       value: function cancelAll() {
         this._preventTap = true;
         clearTimeout(this.singleTapTimeout);
@@ -956,42 +956,42 @@
         clearTimeout(this.swipeTimeout);
       }
     }, {
-      key: "cancel",
+      key: 'cancel',
       value: function cancel(evt) {
         this.cancelAll();
         this.touchCancel.dispatch(evt, this.element);
       }
     }, {
-      key: "_cancelLongTap",
+      key: '_cancelLongTap',
       value: function _cancelLongTap() {
         clearTimeout(this.longTapTimeout);
       }
     }, {
-      key: "_cancelSingleTap",
+      key: '_cancelSingleTap',
       value: function _cancelSingleTap() {
         clearTimeout(this.singleTapTimeout);
       }
     }, {
-      key: "_swipeDirection",
+      key: '_swipeDirection',
       value: function _swipeDirection(x1, x2, y1, y2) {
         return Math.abs(x1 - x2) >= Math.abs(y1 - y2) ? x1 - x2 > 0 ? 'Left' : 'Right' : y1 - y2 > 0 ? 'Up' : 'Down';
       }
     }, {
-      key: "on",
+      key: 'on',
       value: function on(evt, handler) {
         if (this[evt]) {
           this[evt].add(handler);
         }
       }
     }, {
-      key: "off",
+      key: 'off',
       value: function off(evt, handler) {
         if (this[evt]) {
           this[evt].del(handler);
         }
       }
     }, {
-      key: "destroy",
+      key: 'destroy',
       value: function destroy() {
         if (this.singleTapTimeout) {
           clearTimeout(this.singleTapTimeout);
@@ -1199,10 +1199,10 @@
         }
 
         if (!mediaImage) {
-          return cssTransform(media, "translate3d(".concat(hDistancePercent, "%, 0, 0)"));
+          return cssTransform(media, 'translate3d('.concat(hDistancePercent, '%, 0, 0)'));
         }
 
-        cssTransform(media, "translate3d(".concat(hDistancePercent, "%, ").concat(vDistancePercent, "%, 0)"));
+        cssTransform(media, 'translate3d('.concat(hDistancePercent, '%, ').concat(vDistancePercent, '%, 0)'));
       },
       touchEnd: function touchEnd() {
         if (!process) {
@@ -1265,7 +1265,7 @@
           scale = maxScale;
         }
 
-        mediaImage.style.transform = "scale3d(".concat(scale, ", ").concat(scale, ", 1)");
+        mediaImage.style.transform = 'scale3d('.concat(scale, ', ').concat(scale, ', 1)');
         currentScale = scale;
       },
       pressMove: function pressMove(e) {
@@ -1283,10 +1283,10 @@
 
           zoomedPosX = mhDistance;
           zoomedPosY = mvDistance;
-          var style = "translate3d(".concat(mhDistance, "px, ").concat(mvDistance, "px, 0)");
+          var style = 'translate3d('.concat(mhDistance, 'px, ').concat(mvDistance, 'px, 0)');
 
           if (currentScale) {
-            style += " scale3d(".concat(currentScale, ", ").concat(currentScale, ", 1)");
+            style += ' scale3d('.concat(currentScale, ', ').concat(currentScale, ', 1)');
           }
 
           cssTransform(mediaImage, style);
@@ -1375,7 +1375,7 @@
     }
 
     _createClass(ZoomImages, [{
-      key: "zoomIn",
+      key: 'zoomIn',
       value: function zoomIn() {
         var winWidth = this.widowWidth();
 
@@ -1397,7 +1397,7 @@
         this.zoomedIn = true;
       }
     }, {
-      key: "zoomOut",
+      key: 'zoomOut',
       value: function zoomOut() {
         this.img.parentNode.setAttribute('style', '');
         this.img.setAttribute('style', this.img.getAttribute('data-style'));
@@ -1415,7 +1415,7 @@
         }
       }
     }, {
-      key: "dragStart",
+      key: 'dragStart',
       value: function dragStart(e) {
         e.preventDefault();
 
@@ -1438,7 +1438,7 @@
         }
       }
     }, {
-      key: "dragEnd",
+      key: 'dragEnd',
       value: function dragEnd(e) {
         var _this2 = this;
 
@@ -1454,7 +1454,7 @@
         }, 100);
       }
     }, {
-      key: "drag",
+      key: 'drag',
       value: function drag(e) {
         if (this.active) {
           e.preventDefault();
@@ -1475,7 +1475,7 @@
         }
       }
     }, {
-      key: "onMove",
+      key: 'onMove',
       value: function onMove(e) {
         if (!this.zoomedIn) {
           return;
@@ -1486,12 +1486,12 @@
         this.setTranslate(this.img, xOffset, yOffset);
       }
     }, {
-      key: "setTranslate",
+      key: 'setTranslate',
       value: function setTranslate(node, xPos, yPos) {
         node.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
       }
     }, {
-      key: "widowWidth",
+      key: 'widowWidth',
       value: function widowWidth() {
         return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
       }
@@ -1509,14 +1509,14 @@
       _classCallCheck(this, DragSlides);
 
       var dragEl = config.dragEl,
-          _config$toleranceX = config.toleranceX,
-          toleranceX = _config$toleranceX === void 0 ? 40 : _config$toleranceX,
-          _config$toleranceY = config.toleranceY,
-          toleranceY = _config$toleranceY === void 0 ? 65 : _config$toleranceY,
-          _config$slide = config.slide,
-          slide = _config$slide === void 0 ? null : _config$slide,
-          _config$instance = config.instance,
-          instance = _config$instance === void 0 ? null : _config$instance;
+        _config$toleranceX = config.toleranceX,
+        toleranceX = _config$toleranceX === void 0 ? 40 : _config$toleranceX,
+        _config$toleranceY = config.toleranceY,
+        toleranceY = _config$toleranceY === void 0 ? 65 : _config$toleranceY,
+        _config$slide = config.slide,
+        slide = _config$slide === void 0 ? null : _config$slide,
+        _config$instance = config.instance,
+        instance = _config$instance === void 0 ? null : _config$instance;
       this.el = dragEl;
       this.active = false;
       this.dragging = false;
@@ -1546,7 +1546,7 @@
     }
 
     _createClass(DragSlides, [{
-      key: "dragStart",
+      key: 'dragStart',
       value: function dragStart(e) {
         if (this.slide.classList.contains('zoomed')) {
           this.active = false;
@@ -1578,7 +1578,7 @@
         }
       }
     }, {
-      key: "dragEnd",
+      key: 'dragEnd',
       value: function dragEnd(e) {
         var _this2 = this;
 
@@ -1623,7 +1623,7 @@
         }, 100);
       }
     }, {
-      key: "drag",
+      key: 'drag',
       value: function drag(e) {
         if (this.active) {
           e.preventDefault();
@@ -1687,7 +1687,7 @@
         }
       }
     }, {
-      key: "shouldChange",
+      key: 'shouldChange',
       value: function shouldChange() {
         var doChange = false;
         var currentXInt = Math.abs(this.currentX);
@@ -1703,7 +1703,7 @@
         return doChange;
       }
     }, {
-      key: "shouldClose",
+      key: 'shouldClose',
       value: function shouldClose() {
         var doClose = false;
         var currentYInt = Math.abs(this.currentY);
@@ -1715,7 +1715,7 @@
         return doClose;
       }
     }, {
-      key: "setTranslate",
+      key: 'setTranslate',
       value: function setTranslate(node, xPos, yPos) {
         var animated = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
@@ -1725,7 +1725,7 @@
           node.style.transition = '';
         }
 
-        node.style.transform = "translate3d(".concat(xPos, "px, ").concat(yPos, "px, 0)");
+        node.style.transform = 'translate3d('.concat(xPos, 'px, ').concat(yPos, 'px, 0)');
       }
     }]);
 
@@ -1802,19 +1802,19 @@
       if (provider === 'local' || !provider) {
         provider = 'local';
         var html = '<video id="' + videoID + '" ';
-        html += "style=\"background:#000; max-width: ".concat(data.width, ";\" ");
+        html += 'style="background:#000; max-width: '.concat(data.width, ';" ');
         html += 'preload="metadata" ';
         html += 'x-webkit-airplay="allow" ';
         html += 'playsinline ';
         html += 'controls ';
         html += 'class="gvideo-local">';
-        html += "<source src=\"".concat(url, "\">");
+        html += '<source src="'.concat(url, '">');
         html += '</video>';
         customPlaceholder = createHTML(html);
       }
 
-      var placeholder = customPlaceholder ? customPlaceholder : createHTML("<div id=\"".concat(videoID, "\" data-plyr-provider=\"").concat(provider, "\" data-plyr-embed-id=\"").concat(url, "\"></div>"));
-      addClass(videoWrapper, "".concat(provider, "-video gvideo"));
+      var placeholder = customPlaceholder ? customPlaceholder : createHTML('<div id="'.concat(videoID, '" data-plyr-provider="').concat(provider, '" data-plyr-embed-id="').concat(url, '"></div>'));
+      addClass(videoWrapper, ''.concat(provider, '-video gvideo'));
       videoWrapper.appendChild(placeholder);
       videoWrapper.setAttribute('data-id', videoID);
       videoWrapper.setAttribute('data-index', index);
@@ -1859,7 +1859,7 @@
 
     if (content) {
       if (isString(content)) {
-        innerContent = createHTML("<div class=\"ginlined-content\">".concat(content, "</div>"));
+        innerContent = createHTML('<div class="ginlined-content">'.concat(content, '</div>'));
       }
 
       if (isNode(content)) {
@@ -1954,7 +1954,7 @@
     }
 
     _createClass(SlideConfigParser, [{
-      key: "sourceType",
+      key: 'sourceType',
       value: function sourceType(url) {
         var origin = url;
         url = url.toLowerCase();
@@ -1994,7 +1994,7 @@
         return 'external';
       }
     }, {
-      key: "parseConfig",
+      key: 'parseConfig',
       value: function parseConfig(element, settings) {
         var _this = this;
 
@@ -2117,7 +2117,7 @@
         return data;
       }
     }, {
-      key: "setSize",
+      key: 'setSize',
       value: function setSize(data, settings) {
         var element = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
         var defaultWith = data.type == 'video' ? this.checkSize(settings.videosWidth) : this.checkSize(settings.width);
@@ -2133,12 +2133,12 @@
         return data;
       }
     }, {
-      key: "checkSize",
+      key: 'checkSize',
       value: function checkSize(size) {
-        return isNumber(size) ? "".concat(size, "px") : size;
+        return isNumber(size) ? ''.concat(size, 'px') : size;
       }
     }, {
-      key: "sanitizeValue",
+      key: 'sanitizeValue',
       value: function sanitizeValue(val) {
         if (val !== 'true' && val !== 'false') {
           return val;
@@ -2161,7 +2161,7 @@
     }
 
     _createClass(Slide, [{
-      key: "setContent",
+      key: 'setContent',
       value: function setContent() {
         var _this = this;
 
@@ -2234,11 +2234,11 @@
             slideText.parentNode.removeChild(slideText);
           }
 
-          addClass(slideMedia.parentNode, "desc-".concat(position));
-          addClass(slideDesc.parentNode, "description-".concat(position));
+          addClass(slideMedia.parentNode, 'desc-'.concat(position));
+          addClass(slideDesc.parentNode, 'description-'.concat(position));
         }
 
-        addClass(slideMedia, "gslide-".concat(type));
+        addClass(slideMedia, 'gslide-'.concat(type));
         addClass(slide, 'loaded');
 
         if (type === 'video') {
@@ -2300,7 +2300,7 @@
         }
       }
     }, {
-      key: "slideShortDesc",
+      key: 'slideShortDesc',
       value: function slideShortDesc(string) {
         var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 50;
         var wordBoundary = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -2324,7 +2324,7 @@
         return subString + '... <a href="#" class="desc-more">' + wordBoundary + '</a>';
       }
     }, {
-      key: "descriptionEvents",
+      key: 'descriptionEvents',
       value: function descriptionEvents(desc, data) {
         var _this2 = this;
 
@@ -2368,12 +2368,12 @@
         });
       }
     }, {
-      key: "create",
+      key: 'create',
       value: function create() {
         return createHTML(this.instance.settings.slideHTML);
       }
     }, {
-      key: "getConfig",
+      key: 'getConfig',
       value: function getConfig() {
         if (!isNode(this.element) && !this.element.hasOwnProperty('draggable')) {
           this.element.draggable = this.instance.settings.draggable;
@@ -2460,23 +2460,23 @@
     moreLength: 60,
     cssEfects: {
       fade: {
-        "in": 'fadeIn',
+        'in': 'fadeIn',
         out: 'fadeOut'
       },
       zoom: {
-        "in": 'zoomIn',
+        'in': 'zoomIn',
         out: 'zoomOut'
       },
       slide: {
-        "in": 'slideInRight',
+        'in': 'slideInRight',
         out: 'slideOutLeft'
       },
       slideBack: {
-        "in": 'slideInLeft',
+        'in': 'slideInLeft',
         out: 'slideOutRight'
       },
       none: {
-        "in": 'none',
+        'in': 'none',
         out: 'none'
       }
     },
@@ -2486,8 +2486,8 @@
       prev: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" xml:space="preserve"><g><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/></g></svg>'
     }
   };
-  defaults.slideHTML = "<div class=\"gslide\">\n    <div class=\"gslide-inner-content\">\n        <div class=\"ginner-container\">\n            <div class=\"gslide-media\">\n            </div>\n            <div class=\"gslide-description\">\n                <div class=\"gdesc-inner\">\n                    <h4 class=\"gslide-title\"></h4>\n                    <div class=\"gslide-desc\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
-  defaults.lightboxHTML = "<div id=\"glightbox-body\" class=\"glightbox-container\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"false\">\n    <div class=\"gloader visible\"></div>\n    <div class=\"goverlay\"></div>\n    <div class=\"gcontainer\">\n    <div id=\"glightbox-slider\" class=\"gslider\"></div>\n    <button class=\"gclose gbtn\" aria-label=\"Close\" data-taborder=\"3\">{closeSVG}</button>\n    <button class=\"gprev gbtn\" aria-label=\"Previous\" data-taborder=\"2\">{prevSVG}</button>\n    <button class=\"gnext gbtn\" aria-label=\"Next\" data-taborder=\"1\">{nextSVG}</button>\n</div>\n</div>";
+  defaults.slideHTML = '<div class="gslide">\n    <div class="gslide-inner-content">\n        <div class="ginner-container">\n            <div class="gslide-media">\n            </div>\n            <div class="gslide-description">\n                <div class="gdesc-inner">\n                    <h4 class="gslide-title"></h4>\n                    <div class="gslide-desc"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>';
+  defaults.lightboxHTML = '<div id="glightbox-body" class="glightbox-container" tabindex="-1" role="dialog" aria-hidden="false">\n    <div class="gloader visible"></div>\n    <div class="goverlay"></div>\n    <div class="gcontainer">\n    <div id="glightbox-slider" class="gslider"></div>\n    <button class="gclose gbtn" aria-label="Close" data-taborder="3">{closeSVG}</button>\n    <button class="gprev gbtn" aria-label="Previous" data-taborder="2">{prevSVG}</button>\n    <button class="gnext gbtn" aria-label="Next" data-taborder="1">{nextSVG}</button>\n</div>\n</div>';
 
   var GlightboxInit = function () {
     function GlightboxInit() {
@@ -2504,7 +2504,7 @@
     }
 
     _createClass(GlightboxInit, [{
-      key: "init",
+      key: 'init',
       value: function init() {
         var _this = this;
 
@@ -2524,7 +2524,7 @@
         this.elements = this.getElements();
       }
     }, {
-      key: "open",
+      key: 'open',
       value: function open() {
         var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
         var startAt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -2561,7 +2561,7 @@
 
         this.build();
 
-        animateElement(this.overlay, this.settings.openEffect === 'none' ? 'none' : this.settings.cssEfects.fade["in"]);
+        animateElement(this.overlay, this.settings.openEffect === 'none' ? 'none' : this.settings.cssEfects.fade['in']);
 
         var body = document.body;
         var scrollBar = window.innerWidth - document.documentElement.clientWidth;
@@ -2570,7 +2570,7 @@
           var styleSheet = document.createElement('style');
           styleSheet.type = 'text/css';
           styleSheet.className = 'gcss-styles';
-          styleSheet.innerText = ".gscrollbar-fixer {margin-right: ".concat(scrollBar, "px}");
+          styleSheet.innerText = '.gscrollbar-fixer {margin-right: '.concat(scrollBar, 'px}');
           document.head.appendChild(styleSheet);
 
           addClass(body, 'gscrollbar-fixer');
@@ -2614,13 +2614,13 @@
         }
       }
     }, {
-      key: "openAt",
+      key: 'openAt',
       value: function openAt() {
         var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
         this.open(null, index);
       }
     }, {
-      key: "showSlide",
+      key: 'showSlide',
       value: function showSlide() {
         var _this2 = this;
 
@@ -2680,7 +2680,7 @@
         this.activeSlide = slideNode;
       }
     }, {
-      key: "preloadSlide",
+      key: 'preloadSlide',
       value: function preloadSlide(index) {
         var _this3 = this;
 
@@ -2724,17 +2724,17 @@
         }
       }
     }, {
-      key: "prevSlide",
+      key: 'prevSlide',
       value: function prevSlide() {
         this.goToSlide(this.index - 1);
       }
     }, {
-      key: "nextSlide",
+      key: 'nextSlide',
       value: function nextSlide() {
         this.goToSlide(this.index + 1);
       }
     }, {
-      key: "goToSlide",
+      key: 'goToSlide',
       value: function goToSlide() {
         var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
         this.prevActiveSlide = this.activeSlide;
@@ -2753,7 +2753,7 @@
         this.showSlide(index);
       }
     }, {
-      key: "insertSlide",
+      key: 'insertSlide',
       value: function insertSlide() {
         var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
@@ -2818,7 +2818,7 @@
         }
       }
     }, {
-      key: "removeSlide",
+      key: 'removeSlide',
       value: function removeSlide() {
         var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
 
@@ -2848,7 +2848,7 @@
         }
       }
     }, {
-      key: "slideAnimateIn",
+      key: 'slideAnimateIn',
       value: function slideAnimateIn(slide, first) {
         var _this4 = this;
 
@@ -2882,7 +2882,7 @@
         removeClass(slide, this.effectsClasses);
 
         if (first) {
-          animateElement(slide, this.settings.cssEfects[this.settings.openEffect]["in"], function () {
+          animateElement(slide, this.settings.cssEfects[this.settings.openEffect]['in'], function () {
             if (_this4.settings.autoplayVideos) {
               _this4.slidePlayerPlay(slide);
             }
@@ -2898,11 +2898,11 @@
           });
         } else {
           var effectName = this.settings.slideEffect;
-          var animIn = effectName !== 'none' ? this.settings.cssEfects[effectName]["in"] : effectName;
+          var animIn = effectName !== 'none' ? this.settings.cssEfects[effectName]['in'] : effectName;
 
           if (this.prevActiveSlideIndex > this.index) {
             if (this.settings.slideEffect == 'slide') {
-              animIn = this.settings.cssEfects.slideBack["in"];
+              animIn = this.settings.cssEfects.slideBack['in'];
             }
           }
 
@@ -2929,7 +2929,7 @@
         addClass(slide, 'current');
       }
     }, {
-      key: "slideAnimateOut",
+      key: 'slideAnimateOut',
       value: function slideAnimateOut() {
         if (!this.prevActiveSlide) {
           return false;
@@ -3000,12 +3000,12 @@
         });
       }
     }, {
-      key: "getAllPlayers",
+      key: 'getAllPlayers',
       value: function getAllPlayers() {
         return this.videoPlayers;
       }
     }, {
-      key: "getSlidePlayerInstance",
+      key: 'getSlidePlayerInstance',
       value: function getSlidePlayerInstance(index) {
         var id = 'gvideo' + index;
         var videoPlayers = this.getAllPlayers();
@@ -3017,7 +3017,7 @@
         return false;
       }
     }, {
-      key: "stopSlideVideo",
+      key: 'stopSlideVideo',
       value: function stopSlideVideo(slide) {
         if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
@@ -3035,7 +3035,7 @@
         }
       }
     }, {
-      key: "slidePlayerPause",
+      key: 'slidePlayerPause',
       value: function slidePlayerPause(slide) {
         if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
@@ -3052,7 +3052,7 @@
         }
       }
     }, {
-      key: "playSlideVideo",
+      key: 'playSlideVideo',
       value: function playSlideVideo(slide) {
         if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
@@ -3070,7 +3070,7 @@
         }
       }
     }, {
-      key: "slidePlayerPlay",
+      key: 'slidePlayerPlay',
       value: function slidePlayerPlay(slide) {
         var _this$settings$plyr$c;
 
@@ -3097,7 +3097,7 @@
         }
       }
     }, {
-      key: "setElements",
+      key: 'setElements',
       value: function setElements(elements) {
         var _this5 = this;
 
@@ -3135,7 +3135,7 @@
         }
       }
     }, {
-      key: "getElementIndex",
+      key: 'getElementIndex',
       value: function getElementIndex(node) {
         var index = false;
 
@@ -3149,7 +3149,7 @@
         return index;
       }
     }, {
-      key: "getElements",
+      key: 'getElements',
       value: function getElements() {
         var _this6 = this;
 
@@ -3199,52 +3199,52 @@
         return list;
       }
     }, {
-      key: "getGalleryElements",
+      key: 'getGalleryElements',
       value: function getGalleryElements(list, gallery) {
         return list.filter(function (el) {
           return el.gallery == gallery;
         });
       }
     }, {
-      key: "getSelector",
+      key: 'getSelector',
       value: function getSelector() {
         if (this.settings.elements) {
           return false;
         }
 
         if (this.settings.selector && this.settings.selector.substring(0, 5) == 'data-') {
-          return "*[".concat(this.settings.selector, "]");
+          return '*['.concat(this.settings.selector, ']');
         }
 
         return this.settings.selector;
       }
     }, {
-      key: "getActiveSlide",
+      key: 'getActiveSlide',
       value: function getActiveSlide() {
         return this.slidesContainer.querySelectorAll('.gslide')[this.index];
       }
     }, {
-      key: "getActiveSlideIndex",
+      key: 'getActiveSlideIndex',
       value: function getActiveSlideIndex() {
         return this.index;
       }
     }, {
-      key: "getAnimationClasses",
+      key: 'getAnimationClasses',
       value: function getAnimationClasses() {
         var effects = [];
 
         for (var key in this.settings.cssEfects) {
           if (this.settings.cssEfects.hasOwnProperty(key)) {
             var effect = this.settings.cssEfects[key];
-            effects.push("g".concat(effect["in"]));
-            effects.push("g".concat(effect.out));
+            effects.push('g'.concat(effect['in']));
+            effects.push('g'.concat(effect.out));
           }
         }
 
         return effects.join(' ');
       }
     }, {
-      key: "build",
+      key: 'build',
       value: function build() {
         var _this7 = this;
 
@@ -3353,7 +3353,7 @@
         this.built = true;
       }
     }, {
-      key: "resize",
+      key: 'resize',
       value: function resize() {
         var slide = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
         slide = !slide ? this.activeSlide : slide;
@@ -3394,9 +3394,9 @@
 
             var _imgNode = image.querySelector('img');
 
-            _imgNode.setAttribute('style', "max-height: calc(100vh - ".concat(descHeight, "px)"));
+            _imgNode.setAttribute('style', 'max-height: calc(100vh - '.concat(descHeight, 'px)'));
 
-            description.setAttribute('style', "max-width: ".concat(_imgNode.offsetWidth, "px;"));
+            description.setAttribute('style', 'max-width: '.concat(_imgNode.offsetWidth, 'px;'));
           }
         }
 
@@ -3407,7 +3407,7 @@
             var containerWidth = video.clientWidth;
             var containerHeight = video.clientHeight;
             var divisor = containerWidth / containerHeight;
-            ratio = "".concat(containerWidth / divisor, ":").concat(containerHeight / divisor);
+            ratio = ''.concat(containerWidth / divisor, ':').concat(containerHeight / divisor);
           }
 
           var videoRatio = ratio.split(':');
@@ -3445,27 +3445,27 @@
               width: vwidth * _ratio,
               height: vheight * _ratio
             };
-            video.parentNode.setAttribute('style', "max-width: ".concat(vsize.width, "px"));
+            video.parentNode.setAttribute('style', 'max-width: '.concat(vsize.width, 'px'));
 
             if (descriptionResize) {
-              description.setAttribute('style', "max-width: ".concat(vsize.width, "px;"));
+              description.setAttribute('style', 'max-width: '.concat(vsize.width, 'px;'));
             }
           } else {
-            video.parentNode.style.maxWidth = "".concat(videoWidth);
+            video.parentNode.style.maxWidth = ''.concat(videoWidth);
 
             if (descriptionResize) {
-              description.setAttribute('style', "max-width: ".concat(videoWidth, ";"));
+              description.setAttribute('style', 'max-width: '.concat(videoWidth, ';'));
             }
           }
         }
       }
     }, {
-      key: "reload",
+      key: 'reload',
       value: function reload() {
         this.init();
       }
     }, {
-      key: "updateNavigationClasses",
+      key: 'updateNavigationClasses',
       value: function updateNavigationClasses() {
         var loop = this.loop();
 
@@ -3484,14 +3484,14 @@
         }
       }
     }, {
-      key: "loop",
+      key: 'loop',
       value: function loop() {
         var loop = has(this.settings, 'loopAtEnd') ? this.settings.loopAtEnd : null;
         loop = has(this.settings, 'loop') ? this.settings.loop : loop;
         return loop;
       }
     }, {
-      key: "close",
+      key: 'close',
       value: function close() {
         var _this8 = this;
 
@@ -3571,7 +3571,7 @@
         });
       }
     }, {
-      key: "destroy",
+      key: 'destroy',
       value: function destroy() {
         this.close();
         this.clearAllEvents();
@@ -3581,7 +3581,7 @@
         }
       }
     }, {
-      key: "on",
+      key: 'on',
       value: function on(evt, callback) {
         var once = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -3596,12 +3596,12 @@
         });
       }
     }, {
-      key: "once",
+      key: 'once',
       value: function once(evt, callback) {
         this.on(evt, callback, true);
       }
     }, {
-      key: "trigger",
+      key: 'trigger',
       value: function trigger(eventName) {
         var _this9 = this;
 
@@ -3610,8 +3610,8 @@
 
         each(this.apiEvents, function (event, i) {
           var evt = event.evt,
-              once = event.once,
-              callback = event.callback;
+            once = event.once,
+            callback = event.callback;
 
           if (evt == eventName) {
             callback(data);
@@ -3629,12 +3629,12 @@
         }
       }
     }, {
-      key: "clearAllEvents",
+      key: 'clearAllEvents',
       value: function clearAllEvents() {
         this.apiEvents.splice(0, this.apiEvents.length);
       }
     }, {
-      key: "version",
+      key: 'version',
       value: function version() {
         return _version;
       }
