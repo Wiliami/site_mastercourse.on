@@ -1,6 +1,5 @@
-const express = require('express');
-const router = express.Router();
-const { admin, db } = require('../config/firebaseConfig');
+import { Router } from 'express';
+const router = Router();
 
 router.get('/', (req, res) => {
     res.render('register');
@@ -58,4 +57,4 @@ router.post('/', async(req, res) => {
 });
 
 
-module.exports = router;
+export default router;

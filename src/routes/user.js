@@ -1,7 +1,5 @@
-const express = require("express");
-const router = express.Router();
-const { json } = require("sequelize");
-const { db } = require('../config/firebaseConfig');
+import { Router } from 'express';
+const router = Router();
 
 router.get('/account/user-profile', (req, res) => res.render('account/user-profile'));
 router.get('/checkout', (req, res) => res.render('checkout'));
@@ -15,31 +13,29 @@ router.get('/area-membro/courses/course-details', (req, res) => res.render('area
 
 router.get('/area-membro/products/lista-produtos', (req, res) => res.render('area-membro/products/lista-produtos'));
 router.get('/area-membro/products/produtos-pendentes', (req, res) => res.render('area-membro/products/produtos-pendentes'));
-
-
-
 router.get('/area-membro/courses/meus-cursos', (req, res) => res.render('area-membro/courses/meus-cursos'));
+
 router.post('/area-membro/courses/meus-cursos', async(req, res) => {
     const query = req.body.query;
     
-        try {
-           const coursesRef = db.collection('courses');
+    try {
+        const coursesRef = db.collection('courses');
 
-            // const lowerCaseQuery = query.toLowerCase();
-           const snapshot = await coursesRef
-           .where('nameCourseLowerCase', '>=', query)
-           .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
-           .get();  
+        // const lowerCaseQuery = query.toLowerCase();
+        const snapshot = await coursesRef
+        .where('nameCourseLowerCase', '>=', query)
+        .where('nameCourseLowerCase', '<=', query + '\uf8ff') // Garante que seja um prefixo
+        .get();  
 
-            const courses = snapshot.docs.map(doc => doc.data());
+        const courses = snapshot.docs.map(doc => doc.data());
 
-            res.json(courses);
-     
-        } catch (error) {
-            console.log('Erro ao obter dados: ', error);
-            res.status(500).send('Erro ao obter os dados.');
-        }
+        res.json(courses);
+    
+    } catch (error) {
+        console.log('Erro ao obter dados: ', error);
+        res.status(500).send('Erro ao obter os dados.');
+    }
     
 });
 
-module.exports = router;
+export default router;
