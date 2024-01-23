@@ -15,11 +15,11 @@ import {
   isElement,
   isRTL,
   noop,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import {
   DefaultAllowlist,
-  sanitizeHtml
+  sanitizeHtml,
 } from './util/sanitizer'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -57,7 +57,7 @@ const DefaultType = {
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   allowList: 'object',
-  popperConfig: '(null|object|function)'
+  popperConfig: '(null|object|function)',
 }
 
 const AttachmentMap = {
@@ -65,15 +65,15 @@ const AttachmentMap = {
   TOP: 'top',
   RIGHT: isRTL() ? 'left' : 'right',
   BOTTOM: 'bottom',
-  LEFT: isRTL() ? 'right' : 'left'
+  LEFT: isRTL() ? 'right' : 'left',
 }
 
 const Default = {
   animation: true,
-  template: '<div class="tooltip" role="tooltip">' +
-              '<div class="tooltip-arrow"></div>' +
-              '<div class="tooltip-inner"></div>' +
-            '</div>',
+  template: '<div class="tooltip" role="tooltip">'
+              + '<div class="tooltip-arrow"></div>'
+              + '<div class="tooltip-inner"></div>'
+            + '</div>',
   trigger: 'hover focus',
   title: '',
   delay: 0,
@@ -88,7 +88,7 @@ const Default = {
   sanitize: true,
   sanitizeFn: null,
   allowList: DefaultAllowlist,
-  popperConfig: null
+  popperConfig: null,
 }
 
 const Event = {
@@ -101,7 +101,7 @@ const Event = {
   FOCUSIN: `focusin${EVENT_KEY}`,
   FOCUSOUT: `focusout${EVENT_KEY}`,
   MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
+  MOUSELEAVE: `mouseleave${EVENT_KEY}`,
 }
 
 const CLASS_NAME_FADE = 'fade'
@@ -126,7 +126,7 @@ const TRIGGER_MANUAL = 'manual'
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
+    if (Popper === undefined) {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
@@ -230,9 +230,9 @@ class Tooltip extends BaseComponent {
 
     const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW)
     const shadowRoot = findShadowRoot(this._element)
-    const isInTheDom = shadowRoot === null ?
-      this._element.ownerDocument.documentElement.contains(this._element) :
-      shadowRoot.contains(this._element)
+    const isInTheDom = shadowRoot === null
+      ? this._element.ownerDocument.documentElement.contains(this._element)
+      : shadowRoot.contains(this._element)
 
     if (showEvent.defaultPrevented || !isInTheDom) {
       return
@@ -250,9 +250,9 @@ class Tooltip extends BaseComponent {
       tip.classList.add(CLASS_NAME_FADE)
     }
 
-    const placement = typeof this._config.placement === 'function' ?
-      this._config.placement.call(this, tip, this._element) :
-      this._config.placement
+    const placement = typeof this._config.placement === 'function'
+      ? this._config.placement.call(this, tip, this._element)
+      : this._config.placement
 
     const attachment = this._getAttachment(placement)
     this._addAttachmentClass(attachment)
@@ -283,7 +283,7 @@ class Tooltip extends BaseComponent {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => {
+      document.body.children.flat().forEach(element => {
         EventHandler.on(element, 'mouseover', noop)
       })
     }
@@ -338,7 +338,7 @@ class Tooltip extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
+      document.body.children.flat()
         .forEach(element => EventHandler.off(element, 'mouseover', noop))
     }
 
@@ -417,9 +417,9 @@ class Tooltip extends BaseComponent {
     let title = this._element.getAttribute('data-bs-original-title')
 
     if (!title) {
-      title = typeof this._config.title === 'function' ?
-        this._config.title.call(this._element) :
-        this._config.title
+      title = typeof this._config.title === 'function'
+        ? this._config.title.call(this._element)
+        : this._config.title
     }
 
     return title
@@ -472,44 +472,44 @@ class Tooltip extends BaseComponent {
         {
           name: 'flip',
           options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
+            fallbackPlacements: this._config.fallbackPlacements,
+          },
         },
         {
           name: 'offset',
           options: {
-            offset: this._getOffset()
-          }
+            offset: this._getOffset(),
+          },
         },
         {
           name: 'preventOverflow',
           options: {
-            boundary: this._config.boundary
-          }
+            boundary: this._config.boundary,
+          },
         },
         {
           name: 'arrow',
           options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
+            element: `.${this.constructor.NAME}-arrow`,
+          },
         },
         {
           name: 'onChange',
           enabled: true,
           phase: 'afterWrite',
-          fn: data => this._handlePopperPlacementChange(data)
-        }
+          fn: data => this._handlePopperPlacementChange(data),
+        },
       ],
       onFirstUpdate: data => {
         if (data.options.placement !== data.placement) {
           this._handlePopperPlacementChange(data)
         }
-      }
+      },
     }
 
     return {
       ...defaultBsPopperConfig,
-      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig),
     }
   }
 
@@ -528,12 +528,12 @@ class Tooltip extends BaseComponent {
       if (trigger === 'click') {
         EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
-        const eventIn = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSEENTER :
-          this.constructor.Event.FOCUSIN
-        const eventOut = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSELEAVE :
-          this.constructor.Event.FOCUSOUT
+        const eventIn = trigger === TRIGGER_HOVER
+          ? this.constructor.Event.MOUSEENTER
+          : this.constructor.Event.FOCUSIN
+        const eventOut = trigger === TRIGGER_HOVER
+          ? this.constructor.Event.MOUSELEAVE
+          : this.constructor.Event.FOCUSOUT
 
         EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event))
         EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event))
@@ -552,7 +552,7 @@ class Tooltip extends BaseComponent {
       this._config = {
         ...this._config,
         trigger: 'manual',
-        selector: ''
+        selector: '',
       }
     } else {
       this._fixTitle()
@@ -654,7 +654,7 @@ class Tooltip extends BaseComponent {
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
-      ...(typeof config === 'object' && config ? config : {})
+      ...(typeof config === 'object' && config ? config : {}),
     }
 
     config.container = config.container === false ? document.body : getElement(config.container)
@@ -662,7 +662,7 @@ class Tooltip extends BaseComponent {
     if (typeof config.delay === 'number') {
       config.delay = {
         show: config.delay,
-        hide: config.delay
+        hide: config.delay,
       }
     }
 
@@ -725,7 +725,7 @@ class Tooltip extends BaseComponent {
       const data = Tooltip.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

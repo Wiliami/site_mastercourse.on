@@ -8,8 +8,8 @@ const config = {
   input: 'js/tests/integration/bundle-modularity.js',
   output: {
     file: 'js/coverage/bundle-modularity.js',
-    format: 'iife'
-  }
+    format: 'iife',
+  },
 }
 
 config.plugins.unshift(commonjs())

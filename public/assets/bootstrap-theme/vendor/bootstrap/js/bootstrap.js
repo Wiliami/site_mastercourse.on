@@ -5,8 +5,8 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory(global.Popper));
+    typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory(global.Popper));
 })(this, (function (Popper) { 'use strict';
 
   function _interopNamespace(e) {
@@ -5152,19 +5152,19 @@
 
     _onInteraction(event, isInteracting) {
       switch (event.type) {
-        case 'mouseover':
-        case 'mouseout':
-          {
-            this._hasMouseInteraction = isInteracting;
-            break;
-          }
+      case 'mouseover':
+      case 'mouseout':
+      {
+        this._hasMouseInteraction = isInteracting;
+        break;
+      }
 
-        case 'focusin':
-        case 'focusout':
-          {
-            this._hasKeyboardInteraction = isInteracting;
-            break;
-          }
+      case 'focusin':
+      case 'focusout':
+      {
+        this._hasKeyboardInteraction = isInteracting;
+        break;
+      }
       }
 
       if (isInteracting) {

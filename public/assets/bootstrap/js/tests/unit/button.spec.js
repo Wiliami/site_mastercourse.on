@@ -4,7 +4,7 @@ import Button from '../../src/button'
 import {
   getFixture,
   clearFixture,
-  jQueryMock
+  jQueryMock,
 } from '../helpers/fixture'
 
 describe('Button', () => {
@@ -44,7 +44,7 @@ describe('Button', () => {
     it('should toggle active class on click', () => {
       fixtureEl.innerHTML = [
         '<button class="btn" data-bs-toggle="button">btn</button>',
-        '<button class="btn testParent" data-bs-toggle="button"><div class="test"></div></button>'
+        '<button class="btn testParent" data-bs-toggle="button"><div class="test"></div></button>',
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')

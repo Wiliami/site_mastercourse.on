@@ -20,7 +20,7 @@ const eventRegistry = {} // Events storage
 let uidEvent = 1
 const customEvents = {
   mouseenter: 'mouseover',
-  mouseleave: 'mouseout'
+  mouseleave: 'mouseout',
 }
 const customEventsRegex = /^(mouseenter|mouseleave)/i
 const nativeEvents = new Set([
@@ -69,7 +69,7 @@ const nativeEvents = new Set([
   'readystatechange',
   'error',
   'abort',
-  'scroll'
+  'scroll',
 ])
 
 /**
@@ -113,7 +113,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target
 
           if (handler.oneOff) {
-            // eslint-disable-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, selector, fn)
           }
 
@@ -168,11 +167,9 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
   if (customEventsRegex.test(originalTypeEvent)) {
-    const wrapFn = fn => {
-      return function (event) {
-        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
-          return fn.call(this, event)
-        }
+    const wrapFn = fn => function (event) {
+      if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
+        return fn.call(this, event)
       }
     }
 
@@ -195,9 +192,9 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   }
 
   const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
-  const fn = delegation ?
-    bootstrapDelegationHandler(element, handler, delegationFn) :
-    bootstrapHandler(element, handler)
+  const fn = delegation
+    ? bootstrapDelegationHandler(element, handler, delegationFn)
+    : bootstrapHandler(element, handler)
 
   fn.delegationSelector = delegation ? handler : null
   fn.originalHandler = originalHandler
@@ -256,7 +253,7 @@ const EventHandler = {
     const events = getEvent(element)
     const isNamespace = originalTypeEvent.startsWith('.')
 
-    if (typeof originalHandler !== 'undefined') {
+    if (originalHandler !== undefined) {
       // Simplest case: handler is passed, remove that listener ONLY.
       if (!events || !events[typeEvent]) {
         return
@@ -315,17 +312,17 @@ const EventHandler = {
     } else {
       evt = new CustomEvent(event, {
         bubbles,
-        cancelable: true
+        cancelable: true,
       })
     }
 
     // merge custom information in our event
-    if (typeof args !== 'undefined') {
+    if (args !== undefined) {
       Object.keys(args).forEach(key => {
         Object.defineProperty(evt, key, {
           get() {
             return args[key]
-          }
+          },
         })
       })
     }
@@ -338,12 +335,12 @@ const EventHandler = {
       element.dispatchEvent(evt)
     }
 
-    if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
+    if (evt.defaultPrevented && jQueryEvent !== undefined) {
       jQueryEvent.preventDefault()
     }
 
     return evt
-  }
+  },
 }
 
 export default EventHandler

@@ -44,12 +44,12 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl, {
-        delay: 1
+        delay: 1,
       })
 
       toastEl.addEventListener('shown.bs.toast', () => {
@@ -64,7 +64,7 @@ describe('Toast', () => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
         '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('div')
@@ -96,7 +96,7 @@ describe('Toast', () => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
         '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('div')
@@ -119,7 +119,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -139,7 +139,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -159,7 +159,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -190,7 +190,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -217,7 +217,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -248,7 +248,7 @@ describe('Toast', () => {
         '    a simple toast',
         '    <button>with a button</button>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -279,7 +279,7 @@ describe('Toast', () => {
         '    a simple toast',
         '    <button>with a button</button>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -321,7 +321,7 @@ describe('Toast', () => {
         '    a simple toast',
         '    <button>with a button</button>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -358,7 +358,7 @@ describe('Toast', () => {
         '    a simple toast',
         '    <button>with a button</button>',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -395,7 +395,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '  </div>'
+        '  </div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -432,7 +432,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
@@ -487,7 +487,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const toastEl = fixtureEl.querySelector('div')
@@ -620,7 +620,7 @@ describe('Toast', () => {
 
       expect(Toast.getInstance(div)).toEqual(null)
       const toast = Toast.getOrCreateInstance(div, {
-        delay: 1
+        delay: 1,
       })
       expect(toast).toBeInstanceOf(Toast)
 
@@ -632,12 +632,12 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div, {
-        delay: 1
+        delay: 1,
       })
       expect(Toast.getInstance(div)).toEqual(toast)
 
       const toast2 = Toast.getOrCreateInstance(div, {
-        delay: 2
+        delay: 2,
       })
       expect(toast).toBeInstanceOf(Toast)
       expect(toast2).toEqual(toast)

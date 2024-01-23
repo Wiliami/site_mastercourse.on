@@ -10,7 +10,7 @@ import {
   getSelectorFromElement,
   getUID,
   isElement,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -31,13 +31,13 @@ const DATA_API_KEY = '.data-api'
 const Default = {
   offset: 10,
   method: 'auto',
-  target: ''
+  target: '',
 }
 
 const DefaultType = {
   offset: 'number',
   method: 'string',
-  target: '(string|element)'
+  target: '(string|element)',
 }
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
@@ -94,17 +94,17 @@ class ScrollSpy extends BaseComponent {
   // Public
 
   refresh() {
-    const autoMethod = this._scrollElement === this._scrollElement.window ?
-      METHOD_OFFSET :
-      METHOD_POSITION
+    const autoMethod = this._scrollElement === this._scrollElement.window
+      ? METHOD_OFFSET
+      : METHOD_POSITION
 
-    const offsetMethod = this._config.method === 'auto' ?
-      autoMethod :
-      this._config.method
+    const offsetMethod = this._config.method === 'auto'
+      ? autoMethod
+      : this._config.method
 
-    const offsetBase = offsetMethod === METHOD_POSITION ?
-      this._getScrollTop() :
-      0
+    const offsetBase = offsetMethod === METHOD_POSITION
+      ? this._getScrollTop()
+      : 0
 
     this._offsets = []
     this._targets = []
@@ -121,14 +121,14 @@ class ScrollSpy extends BaseComponent {
         if (targetBCR.width || targetBCR.height) {
           return [
             Manipulator[offsetMethod](target).top + offsetBase,
-            targetSelector
+            targetSelector,
           ]
         }
       }
 
       return null
     })
-      .filter(item => item)
+      .filter(Boolean)
       .sort((a, b) => a[0] - b[0])
       .forEach(item => {
         this._offsets.push(item[0])
@@ -147,7 +147,7 @@ class ScrollSpy extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {})
+      ...(typeof config === 'object' && config ? config : {}),
     }
 
     if (typeof config.target !== 'string' && isElement(config.target)) {
@@ -166,22 +166,22 @@ class ScrollSpy extends BaseComponent {
   }
 
   _getScrollTop() {
-    return this._scrollElement === window ?
-      this._scrollElement.pageYOffset :
-      this._scrollElement.scrollTop
+    return this._scrollElement === window
+      ? this._scrollElement.pageYOffset
+      : this._scrollElement.scrollTop
   }
 
   _getScrollHeight() {
     return this._scrollElement.scrollHeight || Math.max(
       document.body.scrollHeight,
-      document.documentElement.scrollHeight
+      document.documentElement.scrollHeight,
     )
   }
 
   _getOffsetHeight() {
-    return this._scrollElement === window ?
-      window.innerHeight :
-      this._scrollElement.getBoundingClientRect().height
+    return this._scrollElement === window
+      ? window.innerHeight
+      : this._scrollElement.getBoundingClientRect().height
   }
 
   _process() {
@@ -194,7 +194,7 @@ class ScrollSpy extends BaseComponent {
     }
 
     if (scrollTop >= maxScroll) {
-      const target = this._targets[this._targets.length - 1]
+      const target = this._targets.at(-1)
 
       if (this._activeTarget !== target) {
         this._activate(target)
@@ -210,9 +210,9 @@ class ScrollSpy extends BaseComponent {
     }
 
     for (let i = this._offsets.length; i--;) {
-      const isActiveTarget = this._activeTarget !== this._targets[i] &&
-          scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
+      const isActiveTarget = this._activeTarget !== this._targets[i]
+          && scrollTop >= this._offsets[i]
+          && (this._offsets[i + 1] === undefined || scrollTop < this._offsets[i + 1])
 
       if (isActiveTarget) {
         this._activate(this._targets[i])
@@ -256,7 +256,7 @@ class ScrollSpy extends BaseComponent {
     }
 
     EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
-      relatedTarget: target
+      relatedTarget: target,
     })
   }
 
@@ -276,7 +276,7 @@ class ScrollSpy extends BaseComponent {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 

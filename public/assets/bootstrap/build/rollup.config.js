@@ -1,6 +1,6 @@
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const { babel } = require('@rollup/plugin-babel')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
@@ -16,11 +16,11 @@ const plugins = [
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include the helpers in the bundle, at most one copy of each
-    babelHelpers: 'bundled'
-  })
+    babelHelpers: 'bundled',
+  }),
 ]
 const globals = {
-  '@popperjs/core': 'Popper'
+  '@popperjs/core': 'Popper',
 }
 
 if (BUNDLE) {
@@ -31,9 +31,9 @@ if (BUNDLE) {
   plugins.push(
     replace({
       'process.env.NODE_ENV': '"production"',
-      preventAssignment: true
+      preventAssignment: true,
     }),
-    nodeResolve()
+    nodeResolve(),
   )
 }
 
@@ -43,10 +43,10 @@ const rollupConfig = {
     banner,
     file: path.resolve(__dirname, `../dist/js/${fileDest}.js`),
     format: ESM ? 'esm' : 'umd',
-    globals
+    globals,
   },
   external,
-  plugins
+  plugins,
 }
 
 if (!ESM) {

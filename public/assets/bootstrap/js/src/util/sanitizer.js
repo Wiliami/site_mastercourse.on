@@ -13,7 +13,7 @@ const uriAttrs = new Set([
   'longdesc',
   'poster',
   'src',
-  'xlink:href'
+  'xlink:href',
 ])
 
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
@@ -86,7 +86,7 @@ export const DefaultAllowlist = {
   sup: [],
   strong: [],
   u: [],
-  ul: []
+  ul: [],
 }
 
 export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
@@ -101,7 +101,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
   const domParser = new window.DOMParser()
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const allowlistKeys = Object.keys(allowList)
-  const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
+  const elements = createdDocument.body.querySelectorAll('*').flat()
 
   for (let i = 0, len = elements.length; i < len; i++) {
     const el = elements[i]
@@ -113,7 +113,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
       continue
     }
 
-    const attributeList = [].concat(...el.attributes)
+    const attributeList = el.attributes.flat()
     const allowedAttributes = [].concat(allowList['*'] || [], allowList[elName] || [])
 
     attributeList.forEach(attr => {

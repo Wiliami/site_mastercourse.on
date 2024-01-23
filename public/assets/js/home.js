@@ -1,11 +1,11 @@
 firebase.auth().onAuthStateChanged(userAuthenticated => {
-    if (userAuthenticated) {
-        const displayName = userAuthenticated.displayName;
-        const welcome = 'Seja bem-vindo, ';
-        $('#usersame').text(welcome + displayName);
-    } else {
-        console.log('O usuário autenticado não tem um nome definido.');
-    }
+  if (userAuthenticated) {
+    const displayName = userAuthenticated.displayName;
+    const welcome = 'Seja bem-vindo, ';
+    $('#usersame').text(welcome + displayName);
+  } else {
+    console.log('O usuário autenticado não tem um nome definido.');
+  }
 });
 
 
@@ -22,24 +22,24 @@ firebase.auth().onAuthStateChanged(userAuthenticated => {
 // findUsers();
 
 function addUserstoScreen(users) {
-    const orderedList = document.getElementById('users');
+  const orderedList = document.getElementById('users');
 
-    users.forEach(user => {
-        const tr = document.createElement('tr');  
-        tr.classList.add(user.listUsers);
+  users.forEach(user => {
+    const tr = document.createElement('tr');  
+    tr.classList.add(user.listUsers);
 
-        const name = document.createElement('td');
-        name.innerHTML = user.name;
-        tr.appendChild(name);
+    const name = document.createElement('td');
+    name.innerHTML = user.name;
+    tr.appendChild(name);
 
-        const email = document.createElement('td');
-        email.innerHTML = user.email;
-        tr.appendChild(email);
+    const email = document.createElement('td');
+    email.innerHTML = user.email;
+    tr.appendChild(email);
 
-        const password = document.createElement('td');
-        password.innerHTML = user.password;
-        tr.appendChild(password);
+    const password = document.createElement('td');
+    password.innerHTML = user.password;
+    tr.appendChild(password);
 
-        orderedList.appendChild(tr);
-    });
+    orderedList.appendChild(tr);
+  });
 }

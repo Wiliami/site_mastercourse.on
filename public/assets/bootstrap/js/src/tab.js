@@ -9,7 +9,7 @@ import {
   defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
-  reflow
+  reflow,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
@@ -61,9 +61,9 @@ class Tab extends BaseComponent {
   // Public
 
   show() {
-    if ((this._element.parentNode &&
-      this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(CLASS_NAME_ACTIVE))) {
+    if ((this._element.parentNode
+      && this._element.parentNode.nodeType === Node.ELEMENT_NODE
+      && this._element.classList.contains(CLASS_NAME_ACTIVE))) {
       return
     }
 
@@ -74,17 +74,17 @@ class Tab extends BaseComponent {
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE
       previous = SelectorEngine.find(itemSelector, listElement)
-      previous = previous[previous.length - 1]
+      previous = previous.at(-1)
     }
 
-    const hideEvent = previous ?
-      EventHandler.trigger(previous, EVENT_HIDE, {
-        relatedTarget: this._element
-      }) :
-      null
+    const hideEvent = previous
+      ? EventHandler.trigger(previous, EVENT_HIDE, {
+        relatedTarget: this._element,
+      })
+      : null
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget: previous
+      relatedTarget: previous,
     })
 
     if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
@@ -95,10 +95,10 @@ class Tab extends BaseComponent {
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
-        relatedTarget: this._element
+        relatedTarget: this._element,
       })
       EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget: previous
+        relatedTarget: previous,
       })
     }
 
@@ -112,9 +112,9 @@ class Tab extends BaseComponent {
   // Private
 
   _activate(element, container, callback) {
-    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
-      SelectorEngine.find(SELECTOR_ACTIVE_UL, container) :
-      SelectorEngine.children(container, SELECTOR_ACTIVE)
+    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL')
+      ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container)
+      : SelectorEngine.children(container, SELECTOR_ACTIVE)
 
     const active = activeElements[0]
     const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
@@ -183,7 +183,7 @@ class Tab extends BaseComponent {
       const data = Tab.getOrCreateInstance(this)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

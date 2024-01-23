@@ -46,7 +46,7 @@ describe('Offcanvas', () => {
       fixtureEl.innerHTML = [
         '<div class="offcanvas">',
         '  <a href="#" data-bs-dismiss="offcanvas">Close</a>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
@@ -112,7 +112,7 @@ describe('Offcanvas', () => {
     it('should have default values', () => {
       fixtureEl.innerHTML = [
         '<div class="offcanvas">',
-        '</div>'
+        '</div>',
       ].join('')
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
@@ -127,7 +127,7 @@ describe('Offcanvas', () => {
     it('should read data attributes and override default config', () => {
       fixtureEl.innerHTML = [
         '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
+        '</div>',
       ].join('')
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
@@ -142,14 +142,14 @@ describe('Offcanvas', () => {
     it('given a config object must override data attributes', () => {
       fixtureEl.innerHTML = [
         '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
+        '</div>',
       ].join('')
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, {
         backdrop: true,
         keyboard: true,
-        scroll: false
+        scroll: false,
       })
       expect(offCanvas._config.backdrop).toEqual(true)
       expect(offCanvas._config.keyboard).toEqual(true)
@@ -224,7 +224,7 @@ describe('Offcanvas', () => {
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, {
-        scroll: true
+        scroll: true,
       })
 
       spyOn(offCanvas, '_enforceFocusOnElement')
@@ -448,7 +448,7 @@ describe('Offcanvas', () => {
     it('should not prevent event for input', done => {
       fixtureEl.innerHTML = [
         '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" />',
-        '<div id="offcanvasdiv1" class="offcanvas"></div>'
+        '<div id="offcanvasdiv1" class="offcanvas"></div>',
       ].join('')
 
       const target = fixtureEl.querySelector('input')
@@ -466,7 +466,7 @@ describe('Offcanvas', () => {
     it('should not call toggle on disabled elements', () => {
       fixtureEl.innerHTML = [
         '<a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" class="disabled"></a>',
-        '<div id="offcanvasdiv1" class="offcanvas"></div>'
+        '<div id="offcanvasdiv1" class="offcanvas"></div>',
       ].join('')
 
       const target = fixtureEl.querySelector('a')
@@ -482,7 +482,7 @@ describe('Offcanvas', () => {
       fixtureEl.innerHTML = [
         '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" ></button>',
         '<div id="offcanvas1" class="offcanvas"></div>',
-        '<div id="offcanvas2" class="offcanvas"></div>'
+        '<div id="offcanvas2" class="offcanvas"></div>',
       ].join('')
 
       const trigger2 = fixtureEl.querySelector('#btn2')
@@ -503,7 +503,7 @@ describe('Offcanvas', () => {
     it('should focus on trigger element after closing offcanvas', done => {
       fixtureEl.innerHTML = [
         '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
-        '<div id="offcanvas" class="offcanvas"></div>'
+        '<div id="offcanvas" class="offcanvas"></div>',
       ].join('')
 
       const trigger = fixtureEl.querySelector('#btn')
@@ -527,7 +527,7 @@ describe('Offcanvas', () => {
     it('should not focus on trigger element after closing offcanvas, if it is not visible', done => {
       fixtureEl.innerHTML = [
         '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
-        '<div id="offcanvas" class="offcanvas"></div>'
+        '<div id="offcanvas" class="offcanvas"></div>',
       ].join('')
 
       const trigger = fixtureEl.querySelector('#btn')
@@ -699,7 +699,7 @@ describe('Offcanvas', () => {
 
       expect(Offcanvas.getInstance(div)).toEqual(null)
       const offcanvas = Offcanvas.getOrCreateInstance(div, {
-        scroll: true
+        scroll: true,
       })
       expect(offcanvas).toBeInstanceOf(Offcanvas)
 
@@ -711,12 +711,12 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
       const offcanvas = new Offcanvas(div, {
-        scroll: true
+        scroll: true,
       })
       expect(Offcanvas.getInstance(div)).toEqual(offcanvas)
 
       const offcanvas2 = Offcanvas.getOrCreateInstance(div, {
-        scroll: false
+        scroll: false,
       })
       expect(offcanvas).toBeInstanceOf(Offcanvas)
       expect(offcanvas2).toEqual(offcanvas)

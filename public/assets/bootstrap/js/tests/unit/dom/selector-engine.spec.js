@@ -66,7 +66,7 @@ describe('SelectorEngine', () => {
       </ul>`
 
       const list = fixtureEl.querySelector('ul')
-      const liList = [].concat(...fixtureEl.querySelectorAll('li'))
+      const liList = fixtureEl.querySelectorAll('li').flat()
       const result = SelectorEngine.children(list, 'li')
 
       expect(result).toEqual(liList)
@@ -93,7 +93,7 @@ describe('SelectorEngine', () => {
       fixtureEl.innerHTML = [
         '<div class="test"></div>',
         '<span></span>',
-        '<button class="btn"></button>'
+        '<button class="btn"></button>',
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')
@@ -108,7 +108,7 @@ describe('SelectorEngine', () => {
         '<div class="test"></div>',
         '<!-- Comment-->',
         'Text',
-        '<button class="btn"></button>'
+        '<button class="btn"></button>',
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')
@@ -132,7 +132,7 @@ describe('SelectorEngine', () => {
       fixtureEl.innerHTML = [
         '<div class="test"></div>',
         '<span></span>',
-        '<button class="btn"></button>'
+        '<button class="btn"></button>',
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')
@@ -147,7 +147,7 @@ describe('SelectorEngine', () => {
         '<!-- Comment-->',
         'Text',
         '<button class="btn"></button>',
-        '<button class="btn"></button>'
+        '<button class="btn"></button>',
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')

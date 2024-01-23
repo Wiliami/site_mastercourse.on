@@ -9,7 +9,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const rollup = require('rollup')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
@@ -20,8 +20,8 @@ const plugins = [
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include the helpers in each file, at most one copy of each
-    babelHelpers: 'bundled'
-  })
+    babelHelpers: 'bundled',
+  }),
 ]
 const bsPlugins = {
   Data: path.resolve(__dirname, '../js/src/dom/data.js'),
@@ -40,7 +40,7 @@ const bsPlugins = {
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
 }
 
 const defaultPluginConfig = {
@@ -48,28 +48,28 @@ const defaultPluginConfig = {
     bsPlugins.Data,
     bsPlugins.Base,
     bsPlugins.EventHandler,
-    bsPlugins.SelectorEngine
+    bsPlugins.SelectorEngine,
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
     [bsPlugins.Base]: 'Base',
     [bsPlugins.EventHandler]: 'EventHandler',
-    [bsPlugins.SelectorEngine]: 'SelectorEngine'
-  }
+    [bsPlugins.SelectorEngine]: 'SelectorEngine',
+  },
 }
 
 const getConfigByPluginKey = pluginKey => {
   if (
-    pluginKey === 'Data' ||
-    pluginKey === 'Manipulator' ||
-    pluginKey === 'EventHandler' ||
-    pluginKey === 'SelectorEngine' ||
-    pluginKey === 'Util' ||
-    pluginKey === 'Sanitizer' ||
-    pluginKey === 'Backdrop'
+    pluginKey === 'Data'
+    || pluginKey === 'Manipulator'
+    || pluginKey === 'EventHandler'
+    || pluginKey === 'SelectorEngine'
+    || pluginKey === 'Util'
+    || pluginKey === 'Sanitizer'
+    || pluginKey === 'Backdrop'
   ) {
     return {
-      external: []
+      external: [],
     }
   }
 
@@ -78,12 +78,12 @@ const getConfigByPluginKey = pluginKey => {
   }
 
   if (
-    pluginKey === 'Base' ||
-    pluginKey === 'Button' ||
-    pluginKey === 'Carousel' ||
-    pluginKey === 'Collapse' ||
-    pluginKey === 'Modal' ||
-    pluginKey === 'ScrollSpy'
+    pluginKey === 'Base'
+    || pluginKey === 'Button'
+    || pluginKey === 'Carousel'
+    || pluginKey === 'Collapse'
+    || pluginKey === 'Modal'
+    || pluginKey === 'ScrollSpy'
   ) {
     const config = Object.assign(defaultPluginConfig)
     config.external.push(bsPlugins.Manipulator)
@@ -104,13 +104,13 @@ const getConfigByPluginKey = pluginKey => {
       external: [
         bsPlugins.Data,
         bsPlugins.SelectorEngine,
-        bsPlugins.Tooltip
+        bsPlugins.Tooltip,
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.SelectorEngine]: 'SelectorEngine',
-        [bsPlugins.Tooltip]: 'Tooltip'
-      }
+        [bsPlugins.Tooltip]: 'Tooltip',
+      },
     }
   }
 
@@ -120,14 +120,14 @@ const getConfigByPluginKey = pluginKey => {
         bsPlugins.Data,
         bsPlugins.Base,
         bsPlugins.EventHandler,
-        bsPlugins.Manipulator
+        bsPlugins.Manipulator,
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.Base]: 'Base',
         [bsPlugins.EventHandler]: 'EventHandler',
-        [bsPlugins.Manipulator]: 'Manipulator'
-      }
+        [bsPlugins.Manipulator]: 'Manipulator',
+      },
     }
   }
 }
@@ -135,14 +135,14 @@ const getConfigByPluginKey = pluginKey => {
 const utilObjects = new Set([
   'Util',
   'Sanitizer',
-  'Backdrop'
+  'Backdrop',
 ])
 
 const domObjects = new Set([
   'Data',
   'EventHandler',
   'Manipulator',
-  'SelectorEngine'
+  'SelectorEngine',
 ])
 
 const build = async plugin => {
@@ -163,7 +163,7 @@ const build = async plugin => {
   const bundle = await rollup.rollup({
     input: bsPlugins[plugin],
     plugins,
-    external
+    external,
   })
 
   await bundle.write({
@@ -172,7 +172,7 @@ const build = async plugin => {
     name: plugin,
     sourcemap: true,
     globals,
-    file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
+    file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`),
   })
 
   console.log(`Building ${plugin} plugin... Done!`)

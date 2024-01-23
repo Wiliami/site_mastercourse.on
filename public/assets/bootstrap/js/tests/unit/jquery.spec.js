@@ -43,7 +43,7 @@ describe('jQuery', () => {
     fixtureEl.innerHTML = [
       '<div class="alert">',
       '  <button type="button" data-bs-dismiss="alert">x</button>',
-      '</div>'
+      '</div>',
     ].join('')
 
     $(fixtureEl).find('.alert')

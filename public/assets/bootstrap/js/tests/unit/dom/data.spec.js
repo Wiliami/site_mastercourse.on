@@ -7,7 +7,7 @@ describe('Data', () => {
   const TEST_KEY = 'bs.test'
   const UNKNOWN_KEY = 'bs.unknown'
   const TEST_DATA = {
-    test: 'bsData'
+    test: 'bsData',
   }
 
   let fixtureEl

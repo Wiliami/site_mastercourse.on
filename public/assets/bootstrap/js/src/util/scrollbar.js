@@ -70,7 +70,7 @@ class ScrollBarHelper {
   _resetElementAttributes(selector, styleProp) {
     const manipulationCallBack = element => {
       const value = Manipulator.getDataAttribute(element, styleProp)
-      if (typeof value === 'undefined') {
+      if (value === undefined) {
         element.style.removeProperty(styleProp)
       } else {
         Manipulator.removeDataAttribute(element, styleProp)

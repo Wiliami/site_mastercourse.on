@@ -12,14 +12,14 @@ const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
   rootElement: 'body', // give the choice to place backdrop under different elements
-  clickCallback: null
+  clickCallback: null,
 }
 
 const DefaultType = {
   isVisible: 'boolean',
   isAnimated: 'boolean',
   rootElement: '(element|string)',
-  clickCallback: '(function|null)'
+  clickCallback: '(function|null)',
 }
 const NAME = 'backdrop'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
@@ -87,7 +87,7 @@ class Backdrop {
   _getConfig(config) {
     config = {
       ...Default,
-      ...(typeof config === 'object' ? config : {})
+      ...(typeof config === 'object' ? config : {}),
     }
 
     // use getElement() with the default "body" to get a fresh Element on each instantiation

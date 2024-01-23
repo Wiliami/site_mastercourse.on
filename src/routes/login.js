@@ -1,10 +1,15 @@
+<<<<<<< HEAD:src/routes/login.js
 import { Router } from 'express';
 const router = Router();
+=======
+import express from 'express';
+const router = express.Router();
+>>>>>>> f961faa82baa43abc7f3e1b61f7bd5139fd97095:routes/login.js
 // const { admin, db } = require('../firebaseConfig');
 // const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-    res.render('login');
+  res.render('login');
 });
 
 // console.log(process.env.FIREBASE_AUTH_DOMAIN);

@@ -41,7 +41,7 @@ describe('Alert', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-bs-dismiss="alert">x</button>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const button = document.querySelector('button')
@@ -54,7 +54,7 @@ describe('Alert', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-bs-target=".alert" data-bs-dismiss="alert">x</button>',
-        '</div>'
+        '</div>',
       ].join('')
 
       const button = document.querySelector('button')

@@ -19,7 +19,7 @@
   document.querySelectorAll('.tooltip-demo')
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
+        selector: '[data-bs-toggle="tooltip"]',
       })
     })
 
@@ -42,7 +42,7 @@
   document.querySelectorAll('.bd-example .toast')
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
-        autohide: false
+        autohide: false,
       })
 
       toast.show()
@@ -134,7 +134,7 @@
   var clipboard = new ClipboardJS('.btn-clipboard', {
     target: function (trigger) {
       return trigger.parentNode.nextElementSibling
-    }
+    },
   })
 
   clipboard.on('success', function (e) {
@@ -159,7 +159,7 @@
   })
 
   anchors.options = {
-    icon: '#'
+    icon: '#',
   }
   anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 })()

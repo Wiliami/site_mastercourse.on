@@ -9,7 +9,7 @@
 
 'use strict'
 
-const { execFile, spawn } = require('child_process')
+const { execFile, spawn } = require('node:child_process')
 const vnu = require('vnu-jar')
 
 execFile('java', ['-version'], (error, stdout, stderr) => {
@@ -26,7 +26,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     // "autocomplete" is included in <button> and checkboxes and radio <input>s due to
     // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is.*',
-    'Attribute “autocomplete” not allowed on element “button” at this point.'
+    'Attribute “autocomplete” not allowed on element “button” at this point.',
   ].join('|')
 
   const args = [
@@ -37,7 +37,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     '--Werror',
     `--filterpattern "${ignores}"`,
     '_site/',
-    'js/tests/'
+    'js/tests/',
   ]
 
   // For the 32-bit Java we need to pass `-Xss512k`
@@ -47,7 +47,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
 
   return spawn('java', args, {
     shell: true,
-    stdio: 'inherit'
+    stdio: 'inherit',
   })
     .on('exit', process.exit)
 })

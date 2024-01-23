@@ -53,5 +53,5 @@ export default {
     if (instanceMap.size === 0) {
       elementMap.delete(element)
     }
-  }
+  },
 }

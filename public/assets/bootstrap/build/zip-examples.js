@@ -9,7 +9,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const sh = require('shelljs')
 
 const pkg = require('../package.json')
@@ -24,15 +24,15 @@ const cssFiles = [
   'bootstrap.min.css',
   'bootstrap.min.css.map',
   'bootstrap.rtl.min.css',
-  'bootstrap.rtl.min.css.map'
+  'bootstrap.rtl.min.css.map',
 ]
 const jsFiles = [
   'bootstrap.bundle.min.js',
-  'bootstrap.bundle.min.js.map'
+  'bootstrap.bundle.min.js.map',
 ]
 const imgFiles = [
   'bootstrap-logo.svg',
-  'bootstrap-logo-white.svg'
+  'bootstrap-logo-white.svg',
 ]
 
 sh.config.fatal = true
@@ -52,7 +52,7 @@ sh.mkdir('-p', [
   distFolder,
   `${distFolder}/assets/brand/`,
   `${distFolder}/assets/dist/css/`,
-  `${distFolder}/assets/dist/js/`
+  `${distFolder}/assets/dist/js/`,
 ])
 
 sh.cp('-Rf', `${docsDir}/examples/*`, distFolder)
@@ -75,10 +75,10 @@ sh.rm(`${distFolder}/index.html`)
 sh.find(`${distFolder}/**/*.html`).forEach(file => {
   const fileContents = sh.cat(file)
     .toString()
-    .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
-    .replace(/"..\/dist\//g, '"../assets/dist/')
-    .replace(/(<link href="\.\.\/.*) integrity=".*>/g, '$1>')
-    .replace(/(<script src="\.\.\/.*) integrity=".*>/g, '$1></script>')
+    .replaceAll(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
+    .replaceAll(/"..\/dist\//g, '"../assets/dist/')
+    .replaceAll(/(<link href="\.\.\/.*) integrity=".*>/g, '$1>')
+    .replaceAll(/(<script src="\.\.\/.*) integrity=".*>/g, '$1></script>')
     .replace(/( +)<!-- favicons(.|\n)+<style>/i, '    <style>')
   new sh.ShellString(fileContents).to(file)
 })

@@ -8,7 +8,7 @@
 import {
   defineJQueryPlugin,
   reflow,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -42,13 +42,13 @@ const CLASS_NAME_SHOWING = 'showing'
 const DefaultType = {
   animation: 'boolean',
   autohide: 'boolean',
-  delay: 'number'
+  delay: 'number',
 }
 
 const Default = {
   animation: true,
   autohide: true,
-  delay: 5000
+  delay: 5000,
 }
 
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
@@ -151,7 +151,7 @@ class Toast extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {})
+      ...(typeof config === 'object' && config ? config : {}),
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
@@ -176,15 +176,20 @@ class Toast extends BaseComponent {
   _onInteraction(event, isInteracting) {
     switch (event.type) {
       case 'mouseover':
-      case 'mouseout':
+      case 'mouseout': {
         this._hasMouseInteraction = isInteracting
         break
+      }
+
       case 'focusin':
-      case 'focusout':
+      case 'focusout': {
         this._hasKeyboardInteraction = isInteracting
         break
-      default:
+      }
+
+      default: {
         break
+      }
     }
 
     if (isInteracting) {
@@ -220,7 +225,7 @@ class Toast extends BaseComponent {
       const data = Toast.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

@@ -10,7 +10,7 @@ import {
   getElementFromSelector,
   isDisabled,
   isVisible,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
@@ -35,13 +35,13 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
 }
 
 const DefaultType = {
   backdrop: 'boolean',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
 }
 
 const CLASS_NAME_SHOW = 'show'
@@ -169,7 +169,7 @@ class Offcanvas extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
+      ...(typeof config === 'object' ? config : {}),
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -180,16 +180,16 @@ class Offcanvas extends BaseComponent {
       isVisible: this._config.backdrop,
       isAnimated: true,
       rootElement: this._element.parentNode,
-      clickCallback: () => this.hide()
+      clickCallback: () => this.hide(),
     })
   }
 
   _enforceFocusOnElement(element) {
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
-      if (document !== event.target &&
-        element !== event.target &&
-        !element.contains(event.target)) {
+      if (document !== event.target
+        && element !== event.target
+        && !element.contains(event.target)) {
         element.focus()
       }
     })
@@ -260,7 +260,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
-  SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show())
+  SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show()),
 )
 
 /**
