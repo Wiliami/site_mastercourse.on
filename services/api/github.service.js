@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
             console.log(response);
         } else {
             res.status(500).json({ message: 'GitHub API request failed' });
+            console.log('GitHub API request failed');
         }
         
     } catch (error) {

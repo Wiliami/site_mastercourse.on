@@ -10,6 +10,7 @@
       </nav>
     </div>
     <button id="getDataBtn" class="btn btn-success">Obter Dados</button>
+    <div id="dataContainer"></div>
     <section class="section">
       <div class="row">
         <!-- Left side columns -->
@@ -31,8 +32,8 @@
       document.getElementById('getDataBtn').addEventListener('click', () => {
         fetch('http://localhost:8080/api/data')
         .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log('Error:', error));
+        .then(data => console.log(data))  
+        .catch(error => console.log('Error:', error)) 
       });
   </script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
