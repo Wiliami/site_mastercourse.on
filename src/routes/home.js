@@ -1,12 +1,5 @@
-<<<<<<< HEAD:src/routes/home.js
 import { Router } from 'express';
 const router = Router();
-=======
-import express from 'express';
-const router = express.Router();
-// const bcrypt = require('bcryptjs');
-// const salt = bcrypt.genSaltSync(10);
->>>>>>> f961faa82baa43abc7f3e1b61f7bd5139fd97095:routes/home.js
 
 router.get('/', (req, res) => res.render('home'));
 router.get('/dashboard', (req, res) => res.render('dashboard'));

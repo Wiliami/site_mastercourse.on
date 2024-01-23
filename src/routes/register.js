@@ -1,15 +1,9 @@
-<<<<<<< HEAD:src/routes/register.js
 import { Router } from 'express';
 const router = Router();
 
 router.get('/', (req, res) => {
     res.render('register');
 });
-=======
-import express from 'express';
-import { admin, db } from '../config/firebaseConfig.js';
-const router = express.Router();
->>>>>>> f961faa82baa43abc7f3e1b61f7bd5139fd97095:routes/register.js
 
 router.get('/', (req, res) => res.render('register'));
 
