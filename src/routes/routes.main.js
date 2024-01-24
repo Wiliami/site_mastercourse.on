@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import home from './home.js'
+import home from './home.js';
 import login from './login.js';
 import register from './register.js';
 import user from './user.js';
