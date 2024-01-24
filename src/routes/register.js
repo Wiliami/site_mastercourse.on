@@ -1,9 +1,6 @@
 import { Router } from 'express';
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.render('register');
-});
 
 router.get('/', (req, res) => res.render('register'));
 
@@ -45,7 +42,6 @@ router.post('/', async(req, res) => {
       console.log('Erro ao criar usuário: ', error);
       res.status(500).send('Erro ao criar usuário');
     }
-        
 
   } else {
     console.log('Preencha todos os dados');
@@ -53,9 +49,6 @@ router.post('/', async(req, res) => {
     return;
   }
 
-       
-
 });
-
 
 export default router;
