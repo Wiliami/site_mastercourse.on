@@ -24,3 +24,7 @@ class Create {
 }
 
 export default Create;
+
+const createUser = new Create();
+createUser.createUser('teste@gmail.com', '123456');
+console.log(createUser);
