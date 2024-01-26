@@ -1,8 +1,15 @@
-var a = 1;
-var b = 2;
+console.time('Execution time');
 
-function soma(a, b) {
-    return a + b;
-};
+function fib(n) {
+    for(let i = 0; i < n; i++) {
+        console.log(i)
+    }
 
-soma(); 
+    return 'Huuuuge table foi lida';
+}
+
+let result = fib(10);
+console.log(result);
+
+
+console.timeEnd('Execution time');
