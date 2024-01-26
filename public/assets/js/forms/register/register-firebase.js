@@ -26,8 +26,6 @@ function register() {
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
 
-    
-
   if(username && email && password && confirmPassword) {  
     showLoading();
 

@@ -53,7 +53,7 @@ $(document).ready(function() {
             product.create_user,
             product.update_user,
             '<a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar produto"><i class="bi bi-pencil-square"></i></a> ' +
-                    '<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>'
+            '<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir produto"><i class="bi bi-trash"></i></a>'
           ])
           .draw(false);
       });
