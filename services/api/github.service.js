@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         console.log(response);
         
         if(response.status === 200) {
-            res.status(200).json({ message: 'ok' });
+            res.status(200).send(response);
             console.log(response);
         } else {
             res.status(500).json({ message: 'GitHub API request failed' });
