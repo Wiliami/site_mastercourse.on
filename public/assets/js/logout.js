@@ -1,7 +1,8 @@
+import { Logout } from '../../../src/classes/Logout.js';
+
 function logout() {
-  firebase.auth().signOut().then(() => {
-    window.location.href = '/login';
-  }).catch((error) => {
-    alert(error);
-  });
-}
+  const logoutSession = new Logout();
+  logoutSession.logout();
+};
+
+console.log(logout());
