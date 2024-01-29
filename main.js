@@ -1,15 +1,19 @@
-console.time('Execution time');
-
-function fib(n) {
-    for(let i = 0; i < n; i++) {
-        console.log(i)
+/**
+ * 
+ * @param {string} text Passa um argumento de string 
+ */
+function transformaEmMaiuscula(text) {
+    if(typeof text === 'string') {
+        console.log(text.toUpperCase());
+    } else {
+        console.error('Error: O argumento preciso ser uma string');
     }
-
-    return 'Huuuuge table foi lida';
 }
 
-let result = fib(10);
+// transformaEmMaiuscula(1);
+
+
+let word = 'teste1';
+
+const result = word.toUpperCase();
 console.log(result);
-
-
-console.timeEnd('Execution time');
