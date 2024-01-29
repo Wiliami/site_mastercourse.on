@@ -11,9 +11,3 @@ function transformaEmMaiuscula(text) {
 }
 
 // transformaEmMaiuscula(1);
-
-
-let word = 'teste1';
-
-const result = word.toUpperCase();
-console.log(result);
