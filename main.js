@@ -1,18 +1,30 @@
-<<<<<<< HEAD
-=======
-console.time('Execution time');
+import admin from 'firebase-admin';
 
-function fib(n) {
-    for(let i = 0; i < n; i++) {
-        console.log(i)
+class CreateUser {
+    
+    constructor() {
+        admin.initializeApp({
+            credential: admin.credential.cert('serviceAccountKey.json'),
+        });
     }
 
-    return 'Huuuuge table foi lida';
+    async createUser(email, password) {
+        try {
+            const userRecord = await admin.auth().createUser({
+                email: email,
+                password: password
+            });
+            console.log('Usuário cadastrado com sucesso:', userRecord.uid);
+            return userRecord.uid;
+        } catch (error) {
+            console.error('Erro ao criar usuário:', error);
+            throw error;
+        }
+    }
 }
 
-let result = fib(10);
-console.log(result);
+export default CreateUser;
 
-
-console.timeEnd('Execution time');
->>>>>>> 825fa674c12f8bde86c05c40fa65b8a08cde1d09
+const userRecord = new CreateUser();
+userRecord.createUser('admin.teste1@gmail.com', '123456');
+console.log(userRecord);
