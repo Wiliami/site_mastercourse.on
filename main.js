@@ -28,3 +28,14 @@ export default CreateUser;
 const userRecord = new CreateUser();
 userRecord.createUser('admin.teste1@gmail.com', '123456');
 console.log(userRecord);
+/**
+ * 
+ * @param {string} text Passa um argumento de string 
+ */
+function transformaEmMaiuscula(text) {
+    if(typeof text === 'string') {
+        console.log(text.toUpperCase());
+    } else {
+        console.error('Error: O argumento preciso ser uma string');
+    }
+}
