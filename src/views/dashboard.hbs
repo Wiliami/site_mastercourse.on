@@ -27,16 +27,16 @@
   {{>_preloader}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
-  {{!-- <script src="../services/api/github.service.js"></script> --}}
+  
   <script>
-      /* document.getElementById('getDataBtn').addEventListener('click', () => {
+      document.getElementById('getDataBtn').addEventListener('click', () => {
         fetch('http://localhost:8080/api/data')
         .then(response => response.json())
-        .then(data => console.log(data))  
-        .catch(error => console.log('Error:', error)) 
-      });
-      */
+        .then(data => console.log(data))
+        .catch(error => console.log('Error:', error))
+      }); 
   </script>
+
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>

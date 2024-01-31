@@ -1,4 +1,4 @@
-import configFirebase from '../../config/firebaseConfig';
+import { FirebaseService } from '../../config/FirebaseService.js';
 
 class Create {
     configFirebase
