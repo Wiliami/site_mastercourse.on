@@ -1,12 +1,17 @@
 import admin from 'firebase-admin';
 
-admin.initializeApp({   
-  credential: admin.credential.cert('serviceAccountKey.json')
-});
+class firebaseService {
+  constructor() {
+     this.initializeApp();
+      this.db = admin.firestore();
+  }
 
-const db = admin.firestore();
+  initializeApp() {
+    admin.initializeApp({   
+      credential: admin.credential.cert('serviceAccountKey.json')
+    });
+  }
+  
+}
 
-export {
-  admin,
-  db
-};
+export default firebaseService;
