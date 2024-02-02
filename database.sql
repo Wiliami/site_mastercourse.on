@@ -1,6 +1,9 @@
-/* Tipos de dadoss PostgreSQL*/
+/* Tipos de dados PostgreSQL*/
 -- https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-data-types/
 
+/**
+ * Sintaxe de SQL - Postgres - Gerenciador de banco de dados 
+ */
 /* 1. Criar tabela */
 CREATE TABLE table_name (
     column1 datatype,

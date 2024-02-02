@@ -4,7 +4,6 @@ import { engine } from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import routes from './routes/routes.main.js';
 
-
 class App {
     constructor() {
         this.app = express();
