@@ -5,12 +5,8 @@ const firebase = new FirebaseService;
 
 const router = Router();
 
-// router.get('/', (req, res) => res.render('dashboard'));
-
 router.get('/', async (req, res) => {
     try {
-        await firebase.initializeApp();
-
         const data = await firebase.getData('users', '13dMGj2dbPNCbAzZQOYNkzvL0ZS2');
 
         res.status(200).json({ ok: true, data });
