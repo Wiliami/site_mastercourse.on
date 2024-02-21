@@ -28,14 +28,20 @@
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
   
-  <script>
+  {{!-- <script>
       document.getElementById('getDataBtn').addEventListener('click', () => {
         fetch('http://localhost:8080/api/data')
-        .then(response => response.json())
+        .then(response => {
+          if(!response.ok) {
+            throw new Error(`Error na solicitação: ${response.statusText}`);
+          }
+
+          return response.json();
+        })
         .then(data => console.log(data))
         .catch(error => console.log('Error:', error))
       });
-  </script>
+  </script> --}}
 
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
