@@ -6,7 +6,7 @@ import axios from 'axios';
 const router = Router();
 
 router.get('/', async (req, res) => {
-    // return res.json({ message: 'Dados do frotend' });
+
     try {
         const response = await axios.get('https://api.github.com/');    
         console.log(response.data);
@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
         console.log('Error:', error);
         res.status(500).json({ message: 'Internal Server Error'});
     }
+    
 });
 
 export default router;

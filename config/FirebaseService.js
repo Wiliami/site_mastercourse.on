@@ -52,4 +52,4 @@ class FirebaseService {
 }
 
 
-export { FirebaseService };
+export default FirebaseService;

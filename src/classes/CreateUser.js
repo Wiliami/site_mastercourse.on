@@ -2,12 +2,6 @@ import admin from 'firebase-admin'
 
 class CreateUser {
     
-    constructor() {
-        admin.initializeApp({
-            credential: admin.credential.cert('../../serviceAccountKey.json'),
-        });
-    }
-
     async createUser(email, password) {
         try {
             const userRecord = await admin.auth().createUser({
@@ -24,7 +18,3 @@ class CreateUser {
 }
 
 export default CreateUser;
-
-const userRecord = new CreateUser();
-userRecord.createUser('admin.teste@gmail.com', '123456');
-console.log(userRecord);
