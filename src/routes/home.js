@@ -9,6 +9,6 @@ router.get('/help', (req, res) => res.render('help'));
 router.get('/forgot-password', (req, res) => res.render('forgot-password'));
 router.get('/courses', (req, res) => res.render('courses'));
 router.get('/course-details', (req, res) => res.render('course-details'));
-
+router.get('/dashboard', (req, res) => res.render('dashboard'));
 
 export default router;
