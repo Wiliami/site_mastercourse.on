@@ -12,5 +12,6 @@ router.use('/login', login);
 router.use('/cadastro', register);
 router.use('/home', user);
 router.use('/admin', admin);
+// router.use('/dashboard', (req, res) =>  res.render('dashboard'));
 
 export default router;
