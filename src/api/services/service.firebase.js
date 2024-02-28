@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import FirebaseService from '../../../_app/FirebaseService.js';
+import FirebaseService from './FirebaseService.js';
 
 const firebase = new FirebaseService;
 
