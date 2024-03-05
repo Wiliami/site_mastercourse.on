@@ -9,11 +9,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
-
   "imports": {
     "#services/*.js": "./src/api/services/*.js"
   },
-
   "author": "Wiliamis Oliveira",
   "license": "ISC",
   "dependencies": {
