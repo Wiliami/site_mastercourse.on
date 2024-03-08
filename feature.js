@@ -27,12 +27,12 @@ class Create {
     }
 }
 
-const create = new Create();
-console.log(create.execute('Wiliamis Oliveira', 'wiliamis@gmail.com', ''));
-const createUser = new Create();
-console.log(create.execute('Dudu', 'dudu@gmail.com', '12345678'));
-const createUserAdmin = new Create();
-console.log(create.execute('Admin', '', '12345678'));
+const create = new Create('Wiliamis Oliveira', 'wiliamis@gmail.com', '');
+create.execute();
+const createUser = new Create('Dudu', 'dudu@gmail.com', '12345678');
+create.execute();
+const createUserAdmin = new Create('Admin', '', '12345678');
+create.execute();
 
 
 
