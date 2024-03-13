@@ -10,4 +10,4 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 const firebase = FirebaseAdminInitializer();
-firebase.
+firebase
