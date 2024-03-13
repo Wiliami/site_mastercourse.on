@@ -1,4 +1,4 @@
-import FirebaseAdminInitializer from "#services/FirebaseAdminInitializer";
+import FirebaseAdminInitializer from "#services/FirebaseAdminInitializer.js";
 
 // import FirebaseAdminInitializer from "../../../../../src/api/services/FirebaseAdminInitializer";
 
@@ -10,4 +10,4 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 const firebase = FirebaseAdminInitializer();
-firebase;
+firebase.
