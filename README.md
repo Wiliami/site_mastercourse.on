@@ -1,6 +1,4 @@
-# Website created with Node.js
-## Details project
-
+# Dashboard Company Courses
 ## How run project:
 - 1 step run: Install all dependencies
 ```
