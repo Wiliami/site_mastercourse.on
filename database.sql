@@ -9,6 +9,7 @@ CREATE TABLE table_name (
     column1 datatype,
     column2 datatype,
 );
+
 CREATE TABLE livro (
     livro_id INT PRIMARY KEY,
     name VARCHAR NOT NULL,
@@ -19,6 +20,7 @@ CREATE TABLE livro (
 
 
 /* 2. ALTER */
+-- Altera a estrutura de uma tabela existente, você usa o PostgreSQL ALTER TABLE Declaração.
 ALTER TABLE table_name ADD column1 TEXT;
 
 
