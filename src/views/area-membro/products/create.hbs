@@ -28,15 +28,20 @@
                             <div id="form">
                                 <div class="mb-3">
                                     <label for="exampleInputName" class="form-label">Nome do produto</label>
-                                    <input type="text" class="form-control required" id="username" name="username" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
-                                    <span class="form-text span-required">Nome precisa conter 3 ou mais caracteres</span>
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
+                                    <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Valor</label>
-                                    <input type="email" class="form-control required" id="email" name="email" aria-describedby="emailHelp" placeholder="R$0,00" oninput="emailValidate()">
-                                    <span class="form-text span-required">Digite um e-mail válido</sp>
+                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="emailValidate()">
+                                    <span class="form-text span-required">Digite um valor válido</sp>
                                 </div>
-                                <button class="btn btn-primary" class="call-btn">Cadastrar</button>
+                                 <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Quant. item</label>
+                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="emailValidate()">
+                                    <span class="form-text span-required">Digite a quantidade de item(s)</sp>
+                                </div>
+                                <button type="submit" id="submit" class="btn btn-primary call-btn">Cadastrar</button>
                                 <a class="btn btn-dark" href="/products/list">
                                     Voltar
                                 </a>
@@ -50,16 +55,7 @@
     </section>
 </main>
 
-<script>
-    $(document).ready(function() => {
-        $.fn.myFunction = function() { 
-            alert('You have successfully defined your function!'); 
-        }
-        $(".call-btn").click(function(){
-            $.fn.myFunction();
-        });
-    });
-</script>
+
 
 <!-- Firebase files init -->
 <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
@@ -69,3 +65,33 @@
 
 {{>_footerDashboard}}
 {{>_footerFilesDashboard}}
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // button submit
+    // campos de input
+    //span
+
+    const buttonSubmit = document.getElementById('submit');
+    const campos = document.querySelectorAll('')
+    const span = document.querySelectorAll('.span-required');
+
+
+</script>
+
+
+
+
+
+
+
+
