@@ -1,5 +1,6 @@
 # Dashboard Company Courses
 ## How run project:
+Follow the steps
 - 1 step run: Install all dependencies
 ```
 npm install
