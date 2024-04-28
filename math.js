@@ -19,11 +19,11 @@ export default class Math {
 };
 
 
-execute();
+execute(5, 5);
 
-function execute() {
-    console.log('Soma:', Math.sum(2, 2));
-    console.log('Subtração:', Math.substract(1, 5));
-    console.log('Multiplicação:', Math.multiplicator(2, 3));
-    console.log('Divisão:', Math.divider(5, 5));
-}
+function execute(a, b) {
+    console.log('Soma:', Math.sum(a, b));
+    console.log('Subtração:', Math.substract(a, b));
+    console.log('Multiplicação:', Math.multiplicator(a, b));
+    console.log('Divisão:', Math.divider(a, b));
+};
