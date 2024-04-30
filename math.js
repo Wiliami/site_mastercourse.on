@@ -21,6 +21,8 @@ export default class Math {
 
 execute(5, 5);
 
+
+// this function will runs everything
 function execute(a, b) {
     console.log('Soma:', Math.sum(a, b));
     console.log('Subtração:', Math.substract(a, b));
