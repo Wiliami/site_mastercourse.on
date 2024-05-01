@@ -23,6 +23,7 @@ execute(5, 5);
 
 
 // this function will runs everything
+// this cod run automatically
 function execute(a, b) {
     console.log('Soma:', Math.sum(a, b));
     console.log('Subtração:', Math.substract(a, b));
