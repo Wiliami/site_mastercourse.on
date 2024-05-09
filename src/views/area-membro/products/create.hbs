@@ -28,17 +28,17 @@
                             <div id="form">
                                 <div class="mb-3">
                                     <label for="exampleInputName" class="form-label">Nome do produto</label>
-                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" required>
                                     <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Valor</label>
-                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="emailValidate()">
+                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00">
                                     <span class="form-text span-required">Digite um valor válido</sp>
                                 </div>
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Quant. item</label>
-                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="emailValidate()">
+                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens">
                                     <span class="form-text span-required">Digite a quantidade de item(s)</sp>
                                 </div>
                                 <button type="submit" id="submit" class="btn btn-primary call-btn">Cadastrar</button>
@@ -65,3 +65,16 @@
 
 {{>_footerDashboard}}
 {{>_footerFilesDashboard}}
+
+
+<script>
+    const buttonSubmit = document.getElementById('submit');
+    buttonSubmit.addEventListener('click', () => {
+        alert('Botão clicado');
+    });
+
+
+    // const campos = document.querySelectorAll('.required').values;
+    // console.log(campos[1])
+
+</script>
