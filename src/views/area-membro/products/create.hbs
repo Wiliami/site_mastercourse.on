@@ -68,13 +68,15 @@
 
 
 <script>
+    const produto = document.getElementById('product');
+
     const buttonSubmit = document.getElementById('submit');
     buttonSubmit.addEventListener('click', () => {
-        alert('Botão clicado');
+        if(produto.style.display === 'none') {
+            produto.style.display === 'block';
+        }
     });
 
 
-    // const campos = document.querySelectorAll('.required').values;
-    // console.log(campos[1])
 
 </script>
