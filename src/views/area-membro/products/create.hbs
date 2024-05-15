@@ -41,7 +41,7 @@
                                     <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="emailValidate()">
                                     <span class="form-text span-required">Digite a quantidade de item(s)</sp>
                                 </div>
-                                <button type="submit" id="submit" class="btn btn-primary call-btn">Cadastrar</button>
+                                <button type="submit" id="button-submit" class="btn btn-primary call-btn">Cadastrar</button>
                                 <a class="btn btn-dark" href="/products/list">
                                     Voltar
                                 </a>
@@ -81,9 +81,27 @@
     // campos de input
     //span
 
-    const buttonSubmit = document.getElementById('submit');
-    const campos = document.querySelectorAll('')
-    const span = document.querySelectorAll('.span-required');
+
+        const buttonSubmit = document.getElementById('button-submit')
+
+        buttonSubmit.addEventListener('submit', (e) => {
+
+        e.preventDefault();
+        console.log(buttonSubmit);
+
+
+        const product = document.getElementById('product').value;
+        const price = document.getElementById('price').value;
+        const amount = document.getElementById('amount').value;
+
+        let isValid = true;
+
+        if(!product) {
+            alert('Por favor, preencha o campo produto.');
+            isValid = false;
+        }
+
+    })
 
 
 </script>
