@@ -41,7 +41,7 @@
                                     <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens">
                                     <span class="form-text span-required">Digite a quantidade de item(s)</sp>
                                 </div>
-                                <button type="submit" id="submit" class="btn btn-primary call-btn">Cadastrar</button>
+                                <button type="submit" id="button-submit" class="btn btn-primary call-btn">Cadastrar</button>
                                 <a class="btn btn-dark" href="/products/list">
                                     Voltar
                                 </a>
@@ -70,11 +70,9 @@
 <script>
     const produto = document.getElementById('product');
 
-    const buttonSubmit = document.getElementById('submit');
+    const buttonSubmit = document.getElementById('button-submit');
     buttonSubmit.addEventListener('click', () => {
-        if(produto.style.display === 'none') {
-            produto.style.display === 'block';
-        }
+            alert('Botão clicado...');
     });
 
 
