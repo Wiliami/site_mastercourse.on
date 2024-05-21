@@ -28,17 +28,17 @@
                             <div id="form">
                                 <div class="mb-3">
                                     <label for="exampleInputName" class="form-label">Nome do produto</label>
-                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="productValidate()">
                                     <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Valor</label>
-                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="emailValidate()">
-                                    <span class="form-text span-required">Digite um valor válido</sp>
+                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="valueValidate()">
+                                    <span class="form-text span-required">Digite o valor do item.</sp>
                                 </div>
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Quant. item</label>
-                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="emailValidate()">
+                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="itensValidate()">
                                     <span class="form-text span-required">Digite a quantidade de item(s)</sp>
                                 </div>
                                 <button type="submit" id="button-submit" class="btn btn-primary call-btn">Cadastrar</button>
@@ -82,26 +82,54 @@
     //span
 
 
-        const buttonSubmit = document.getElementById('button-submit')
+        const buttonSubmit = document.getElementById('button-submit');
+        const campos = document.querySelectorAll('.required');
+        const spans = document.querySelectorAll('.span-required');
 
-        buttonSubmit.addEventListener('submit', (e) => {
+        buttonSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
 
-        e.preventDefault();
-        console.log(buttonSubmit);
+            productValidate();
+            valueValidate();
+            itensValidate();
+        });
 
 
-        const product = document.getElementById('product').value;
-        const price = document.getElementById('price').value;
-        const amount = document.getElementById('amount').value;
-
-        let isValid = true;
-
-        if(!product) {
-            alert('Por favor, preencha o campo produto.');
-            isValid = false;
+        function setError(index) {
+            campos[index].style.border = '2px solid #e63636';
+            spans[index].style.display = 'block';
         }
 
-    })
+        function removeError(index) {
+            campos[index].style.border = '';
+            spans[index].style.display = 'none';
+        }
+
+        function productValidate() {
+            if(campos[0].value.length < 3) {
+                setError(0);
+            } else {
+                removeError(0)
+            }
+        }
+
+        function valueValidate() {
+            if(campos[1].value.trim() === '') {
+                setError(1);
+            } else {
+                removeError(1);
+            }
+        }
+
+        function itensValidate() {
+            if(campos[2].value.trim() === '') {
+                setError(2);
+            } else {
+                removeError(2);
+            }
+        }
+
+
 
 
 </script>
