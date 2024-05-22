@@ -28,17 +28,17 @@
                             <div id="form">
                                 <div class="mb-3">
                                     <label for="exampleInputName" class="form-label">Nome do produto</label>
-                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" required>
-                                    <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres</span>
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
+                                    <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres.</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Valor</label>
-                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00">
-                                    <span class="form-text span-required">Digite um valor válido</sp>
+                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="valueValidate()">
+                                    <span class="form-text span-required">Digite um valor para este campo.</sp>
                                 </div>
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Quant. item</label>
-                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens">
+                                    <input type="email" class="form-control required" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="itensValidate()">
                                     <span class="form-text span-required">Digite a quantidade de item(s)</sp>
                                 </div>
                                 <button type="submit" id="button-submit" class="btn btn-primary call-btn">Cadastrar</button>
@@ -68,13 +68,50 @@
 
 
 <script>
-    const produto = document.getElementById('product');
+    const form = document.getElementById('form');
+    const campos = document.querySelectorAll('.required');
+    const spans = document.querySelectorAll('.span-required');
 
-    const buttonSubmit = document.getElementById('button-submit');
-    buttonSubmit.addEventListener('click', () => {
-            alert('Botão clicado...');
-    });
+    form.addEventListener('click', (e) => {
+        e.preventDefault();
 
+        nameValidate();
+        valueValidate();
+        itensValidate();
+    })
 
+    function setError(index) {
+        campos[index].style.border = '2px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    function removeError(index) {
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
+    function nameValidate() {
+        if(campos[0].value.length < 3) {
+            setError(0);
+        } else {
+            removeError(0);
+        }
+    }
+
+    function valueValidate() {
+        if(campos[1].value === '') {
+            setError(1);
+        } else {
+            removeError(1);
+        }
+    }
+
+    function itensValidate() {
+        if(campos[2].value === '') {
+            setError(2);
+        } else {
+            removeError(2);
+        }
+    }
 
 </script>
