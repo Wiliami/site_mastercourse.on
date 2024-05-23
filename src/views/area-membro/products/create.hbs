@@ -28,7 +28,7 @@
                             <div id="form">
                                 <div class="mb-3">
                                     <label for="exampleInputName" class="form-label">Nome do produto</label>
-                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="nameValidate()">
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="productValidate()">
                                     <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres.</span>
                                 </div>
                                 <div class="mb-3">
@@ -68,14 +68,14 @@
 
 
 <script>
-    const form = document.getElementById('form');
+    const buttonSubmit = document.getElementById('button-submit');
     const campos = document.querySelectorAll('.required');
     const spans = document.querySelectorAll('.span-required');
 
-    form.addEventListener('click', (e) => {
+    buttonSubmit.addEventListener('click', (e) => {
         e.preventDefault();
 
-        nameValidate();
+        productValidate();
         valueValidate();
         itensValidate();
     })
@@ -90,7 +90,7 @@
         spans[index].style.display = 'none';
     }
 
-    function nameValidate() {
+    function productValidate() {
         if(campos[0].value.length < 3) {
             setError(0);
         } else {
@@ -112,6 +112,11 @@
         } else {
             removeError(2);
         }
+    }
+
+
+    function successInput(index) {
+        campos[index].style.border = '#ADFF2F';
     }
 
 </script>
