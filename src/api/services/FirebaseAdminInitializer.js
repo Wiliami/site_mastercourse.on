@@ -10,13 +10,16 @@ class FirebaseAdminInitializer {
   }
 
   initializeApp() {
-    const serviceAccount = require(this.serviceAccountKeyPath);
+    const serviceAccount = require(this.serviceAccountKeyPath); 
 
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
       databaseURL: this.databaseURL
     }); 
 
+    const db = admin.firestore();
+
+    console.log(db);
     console.log('Firebase Admin initialized successfully!');
   }
 }

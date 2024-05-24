@@ -47,13 +47,12 @@ export default CreateUser;
 //     update_user: new Date(),   
 // };
 
-// const dataUser = {
-//     displayName,
-//     create_user: new Date(),
-//     update_user: new Date(),  
-// };
+const dataUser = {
+    displayName: 'Wiliamis',
+    create_user: new Date(),
+    update_user: new Date(),  
+};
 
 
-// const createUser = new CreateUser();
-// createUser.createUser('123@gmail.com', '12345678', dataUser);
-// console.log();
+const createUser = new CreateUser();
+createUser.createUser('examplecreateuser@gmail.com', '12345678', dataUser);
