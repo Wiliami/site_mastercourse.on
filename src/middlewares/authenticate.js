@@ -8,7 +8,7 @@ const firebaseAuthMiddleware = (req, res, next) => {
   }
 
   firestore.auth().verifyIdToken(idToken)
-    .then((decodedToken) => {
+    .then((decodedToken) => { 
     // O token é válido, e decodedToken contém informações do usuário autenticado
       req.user = decodedToken;
       return next();
