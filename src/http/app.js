@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
 import { fileURLToPath } from 'url';
-import routes from './routes/routes.main.js';
+import routes from '../routes/routes.main.js';
 
 class App {
     constructor() {
@@ -15,7 +15,7 @@ class App {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
 
-        this.app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+        this.app.use('/assets', express.static(path.join(__dirname, '../../public/assets')));
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.engine('.hbs', engine({extname: '.hbs'}));
         this.app.set('view engine', '.hbs');
