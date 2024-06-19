@@ -2,12 +2,13 @@
   "name": "master-course",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/http/server.js",
   "type": "module",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix --ext .js,.jsx ."
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
+    "dev": "nodemon"
   },
   "jest": {
     "testEnvironment": "node",
