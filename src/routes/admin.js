@@ -1,9 +1,16 @@
 import { Router } from 'express';
+
 const router = Router();
- 
-router.get('/users/create', (req, res) => res.render('admin/users/create'));
-router.get('/users/list', (req, res) => res.render('admin/users/list'));
-router.get('/users/update', (req, res) => res.render('admin/users/update'));
-router.get('/users/delete', (req, res) => res.render('admin/users/delete'));
+
+const routes = [
+    { path: '/users/create', view: 'admin/users/create' },
+    { path: '/users/list', view: 'admin/users/list' },
+    { path: '/users/update', view: 'admin/users/update' },
+    { path: '/users/delete', view: 'admin/users/delete' },
+]
+
+routes.forEach(({ path, view }) => {
+    router.get(path, (req, res) => res.render(view))
+})
 
 export default router;  

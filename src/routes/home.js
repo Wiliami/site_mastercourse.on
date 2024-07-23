@@ -2,13 +2,19 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.get('/', (req, res) => res.render('home'));
-router.get('/sobre', (req, res) => res.render('sobre'));
-router.get('/contatos', (req, res) => res.render('contatos'));
-router.get('/help', (req, res) => res.render('help'));
-router.get('/forgot-password', (req, res) => res.render('forgot-password'));
-router.get('/courses', (req, res) => res.render('courses'));
-router.get('/course-details', (req, res) => res.render('course-details'));
-router.get('/dashboard', (req, res) => res.render('dashboard'));
+const routes = [
+    { path: '/', view: 'home' },
+    { path: '/sobre', view: 'sobre' },
+    { path: '/contatos', view: 'home' },
+    { path: '/help', view: 'help' },
+    { path: '/forgot-password', view: 'forgot-password' },
+    { path: '/courses', view: 'courses' },
+    { path: '/course-details', view: 'course-details' },
+    { path: '/dashboard', view: 'dashboard' },
+]
+
+routes.forEach(({ path, view }) => {
+    router.get(path, (req, res) => res.render(view))
+})
 
 export default router;

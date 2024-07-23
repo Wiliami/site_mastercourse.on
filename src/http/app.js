@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
 import { fileURLToPath } from 'url';
-import routes from '../routes/routes.main.js';
+import routes from '../routes/index.js';
 
 class App {
     constructor() {
