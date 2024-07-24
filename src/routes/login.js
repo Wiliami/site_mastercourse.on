@@ -3,9 +3,7 @@ const router = Router();
 // const { admin, db } = require('../firebaseConfig');
 // const jwt = require('jsonwebtoken');
 
-router.get('/', (req, res) => {
-  res.render('login');
-});
+router.get('/', (req, res) => res.render('login'))
 
 // console.log(process.env.FIREBASE_AUTH_DOMAIN);
 /* Validate format E-mail */

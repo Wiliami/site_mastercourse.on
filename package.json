@@ -2,7 +2,7 @@
   "name": "master-course",
   "version": "1.0.0",
   "description": "",
-  "main": "src/http/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "jest",

@@ -1,0 +1,24 @@
+<h1>Users</h1>
+
+<script id="my-tamplate" type="text/x-handlebars-template">
+    <h1>{{title}}</h1>
+    <p>{{title}}</p>
+</script>
+
+
+<div id="content"></div>
+
+
+<script>
+    var data = {
+        title: 'Olá, mundo!',
+        body: 'Este é um exemplo de uso de variáveis com handlebars'
+    }
+
+
+    var source = document.getElementById('my-tamplate').innerHTML
+    var template = Handlebars.compile(source)
+    var html = template(data)
+
+
+</script>
