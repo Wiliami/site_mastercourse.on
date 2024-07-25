@@ -16,7 +16,7 @@ const routes = [
     {path: '/admin', view: admin},
     {path: '/products', view: products},
 ]
-
+    
 routes.forEach(({ path, view }) => {
     router.use(path, view)
 })
