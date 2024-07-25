@@ -2,17 +2,16 @@ import { Router } from 'express';
 const router = Router();
 
 const routes = [
-    { path: '/users', view: 'users'},
-    { path: '/account/user-profile', view: 'account/user-profile'},
-    { path: '/checkout', view: 'checkout'},
     { path: '/posts', view: 'posts'},
-    { path: '/area-membro/courses/course-completed', view: 'area-membro/courses/course-completed' },
-    { path: '/area-membro/courses/course-pending', view: 'area-membro/courses/course-pending' },
-    { path: '/area-membro/courses/purchase-user', view: 'area-membro/courses/purchase-user' },
+    { path: '/checkout', view: 'checkout'},
+    { path: '/account/user-profile', view: 'account/user-profile'},
     { path: '/area-membro/courses/area-curso', view: 'area-membro/courses/area-curso' },
-    { path: '/area-membro/courses/course-details', view: 'area-membro/courses/course-details' },
-    { path: '/area-membro/products/produtos-pendentes', view: 'area-membro/products/produtos-pendentes' },
     { path: '/area-membro/courses/meus-cursos', view: 'area-membro/courses/meus-cursos' },
+    { path: '/area-membro/courses/purchase-user', view: 'area-membro/courses/purchase-user' },
+    { path: '/area-membro/courses/course-pending', view: 'area-membro/courses/course-pending' },
+    { path: '/area-membro/courses/course-details', view: 'area-membro/courses/course-details' },
+    { path: '/area-membro/courses/course-completed', view: 'area-membro/courses/course-completed' },
+    { path: '/area-membro/products/produtos-pendentes', view: 'area-membro/products/produtos-pendentes' },
 ]
 
 routes.forEach(({ path, view }) => {
