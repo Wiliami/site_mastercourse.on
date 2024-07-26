@@ -24,5 +24,5 @@
 git clone https://github.com/Wiliami/site_mastercourse.on.git
 $ cd site_mastercourse.on
 $ npm install
-$ nodemon app.js
+$ npm run dev
 ```
