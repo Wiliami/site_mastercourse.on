@@ -1,8 +1,9 @@
-### PostgreSQL commands via terminal
+### PostgreSQL commands via terminal (PowerShell)
 
-
-<!-- This content will not appear in the rendered Markdown -->
-> psql -U postgres
+Access postgres:
+```
+psql -U postgres
+```
 
 Create database:
 ```
