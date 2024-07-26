@@ -1,6 +1,7 @@
-### Acessando Postgres via Terminal
+### PostgreSQL commands via terminal
 
-<!-- Entrar no postgres -->
+
+<!-- This content will not appear in the rendered Markdown -->
 > psql -U postgres
 
 <!-- Criar o banco de dados -->
