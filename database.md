@@ -2,7 +2,7 @@
 
 Access postgres:
 ```
-psql -U postgres
+psql -U username
 ```
 
 Create database:
