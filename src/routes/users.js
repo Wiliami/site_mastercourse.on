@@ -1,10 +1,14 @@
 import { Router } from 'express'
-import { users, products } from '../../database.js'
+import getUsers from './users/read.js'
 
 const router = Router()
 
+
+
+const users = JSON.stringify(getUsers())
+
 router.get('/', (req, res) => {
-    res.render('users', { users, products })
+    res.render('users', { users })
 })
 
 export default router
