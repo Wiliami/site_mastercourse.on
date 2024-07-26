@@ -9,4 +9,6 @@ const createUser = async (name, email) => {
     }
 }
 
-createUser('Bob', 'bob@gmail.com')
+// createUser('KipperDev', 'kipperdev@gmail.com')
+
+export default createUser
