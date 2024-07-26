@@ -1,4 +1,6 @@
 import pkg from 'pg'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const { Pool } = pkg
 
@@ -9,6 +11,5 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 })
-
 
 export default pool 
