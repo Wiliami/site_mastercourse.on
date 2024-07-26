@@ -4,7 +4,10 @@
 /**
  * Sintaxe de SQL - Postgres - Gerenciador de banco de dados 
  */
-/* 1. Criar tabela */
+/* 1. Criar database */
+CREATE DATABASE database_name;
+
+/* 2. Criar tabela */
 CREATE TABLE table_name (
     column1 datatype,
     column2 datatype,
@@ -19,37 +22,37 @@ CREATE TABLE livro (
 );
 
 
-/* 2. ALTER */
+/* 3. ALTER */
 -- Altera a estrutura de uma tabela existente, você usa o PostgreSQL ALTER TABLE Declaração.
 ALTER TABLE table_name ADD column1 TEXT;
 
 
-/* 3. TRUNCATE */
+/* 4. TRUNCATE */
 -- Comando irá deletar somente os dados da tabela
 TRUNCATE TABLE table_name;
 
 
-/* 4. DROP */
+/* 5. DROP */
 -- Comando deleta os dados e a tabela
 DROP TABLE table_name;
 
 
-/* 5. RENAME */
+/* 6. RENAME */
 -- Renomear tabela
 ALTER TABLE table_name RENAME to new_table_name;
 
 
-/* 6. INSERT */
+/* 7. INSERT */
 INSERT INTO table_name (column1, column2, column3) VALUES (value1, value2, value3); 
 
 
-/* 7. SELECT */
+/* 8. SELECT */
 SELECT column1, column2 FROM table_name;
 
 
-/* 8. UPDATE */
+/* 9. UPDATE */
 UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
 
 
-/* 9. DELETE */
+/* 10. DELETE */
 DELETE FROM table_name WHERE condition;
