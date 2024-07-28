@@ -29,8 +29,13 @@ Access table:
 SELECT * FROM users;
 ```
 
-Quit postgres:
-<!-- Quit databas -->
+Quit database:
 ```
 \q
+```
+
+Clear terminal
+
+```
+\! cls
 ```
