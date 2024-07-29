@@ -24,10 +24,16 @@ CREATE TABLE users (
 );
 ```
 
+Inserir dados na tabela
+```
+INSERT INTO users (name, email) VALUES ('Teste', 'teste@gmail.com')
+```
+
 Access table:
 ```
 SELECT * FROM users;
 ```
+
 
 Quit database:
 ```
