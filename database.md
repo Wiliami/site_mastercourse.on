@@ -24,7 +24,7 @@ CREATE TABLE users (
 );
 ```
 
-Inserir dados na tabela
+Inserir dados na tabela:
 ```
 INSERT INTO users (name, email) VALUES ('Teste', 'teste@gmail.com');
 ```
@@ -40,7 +40,7 @@ Quit database:
 \q
 ```
 
-Clear terminal
+Clear terminal:
 
 ```
 \! cls
