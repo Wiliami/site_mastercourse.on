@@ -9,6 +9,6 @@ const getUsers = async () => {
   }
 }
 
-// getUsers()
+console.log(getUsers())
 
 export default getUsers

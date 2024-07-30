@@ -1,7 +1,5 @@
 <ul>
     {{#each users}}
-    <li>
-        {{name}} - {{email}}
-    </li>
+        <li>{{this.name}} - {{this.email}}</li>
     {{/each}}
 </ul>
