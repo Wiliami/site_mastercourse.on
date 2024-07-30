@@ -17,7 +17,7 @@ const routes = [
     { path: '/login', view: login },
     { path: '/cadastro', view: register },
     { path: '/products', view: products },
-]
+]   
     
 routes.forEach(({ path, view }) => {
     router.use(path, view)

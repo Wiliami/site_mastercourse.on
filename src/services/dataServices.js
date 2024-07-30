@@ -1,4 +1,4 @@
-import pool from '../../config/database.js'
+import pool from '../config/database.js'
 
 /** CREATE
  * @param {*} data Dados para serem passados
@@ -13,20 +13,18 @@ export const create = async (name, email) => {
 }
 
 
-
 /**
  * READ
- * @param {String} table Nome da tabela
+ * @param {String} table Nome da tabela no banco de dados
  */
 export const read = async (table) => {
     try {
         const res = await pool.query(`SELECT * FROM ${table}`)
-        console.log(res.rows)
+        return res.rows
     } catch (error) {
         console.error('Erro ao buscar itens:', error)
     }
 }
-
 
 
 /**
@@ -42,11 +40,11 @@ export const update = async () => {
 }
 
 
-
 /**
  * DELETE 
  * @param {String} table Nome da tabela no banco de dados
  * @param {String} column Nome da coluna que será deletada na tabela
+ * @param {String} value Valor que será deletado na tabela
  */
 export const deleteItem = async (table, column, value) => {
   try {
@@ -62,4 +60,4 @@ export const deleteItem = async (table, column, value) => {
   }
 };
 
-console.log(deleteItem("users", "email", "teste@gmail.com"))
+// console.log(deleteItem("users", "email", "teste@gmail.com"))
