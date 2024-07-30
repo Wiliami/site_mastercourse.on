@@ -1,5 +1,7 @@
 import pool from '../../config/database.js'
-
+/**
+ * @param {*} data Dados para serem passados
+ */
 const createUser = async (name, email) => {
     try {
         const res = await pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email])

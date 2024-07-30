@@ -24,17 +24,33 @@ CREATE TABLE users (
 );
 ```
 
-Access table:
+CREATE:
+```
+INSERT INTO users (name, email) VALUES ('Teste', 'teste@gmail.com');
+```
+
+READ:
 ```
 SELECT * FROM users;
 ```
+
+UPDATE:
+```
+UPDATE users SET name = 'Teste' WHERE email = 'teste@example.com';
+```
+
+DELETE:
+```
+DELETE users WHERE email = 'teste@example.com';
+```
+
 
 Quit database:
 ```
 \q
 ```
 
-Clear terminal
+Clear terminal:
 
 ```
 \! cls
