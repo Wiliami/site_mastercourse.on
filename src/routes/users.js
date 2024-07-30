@@ -1,10 +1,9 @@
 import { Router } from 'express'
-import getUsers from './users/read.js'
 
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.render('users', { users })
+    res.render('users')
 })
 
 export default router
