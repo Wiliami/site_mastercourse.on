@@ -2,7 +2,7 @@ import pool from '../config/database.js'
 
 /** CREATE
  * @param {String} table Nome da tabela que será atualizada 
- * @param {object} data Dados para serem passados como objeto para serem atualizados na tabela
+ * @param {Object} data Dados para serem passados como objeto para serem atualizados na tabela
  */
 export const create = async (table, data) => {
     try {
