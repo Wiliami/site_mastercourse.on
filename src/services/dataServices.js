@@ -1,14 +1,29 @@
 import pool from '../config/database.js'
 
 /** CREATE
- * @param {*} data Dados para serem passados
+ * @param {String} table Nome da tabela que será atualizada 
+ * @param {object} data Dados para serem passados como objeto para serem atualizados na tabela
  */
-export const create = async (name, email) => {
+export const create = async (table, data) => {
     try {
-        const res = await pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email])
-        console.log('Usuário criado:', res.rows[0])
+        const columns = Object.keys(data)
+        const values = Object.values(data)
+        const placeholders = columns.map((_, index) => `$${index + 1}`)
+
+        const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
+
+
+        console.log(`Query: ${query}`)
+        console.log(`Values: ${values}`)
+
+        const res = await pool.query(query, values)
+        if(res.rowCount > 0) {
+          console.log('Item inserido com sucesso:', res.rows[0])
+        } else {
+          console.log('Nenhum item foi inserido')
+        }  
     } catch (error) {
-        console.error('Erro ao criar usuário:', error)
+        console.error('Erro ao inserir item na tabela:', error)
     }
 }
 

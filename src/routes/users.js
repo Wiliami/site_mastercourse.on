@@ -15,8 +15,8 @@ router.get('/create', async (req, res) => {
 
 router.get('/list', async (req, res) => {
     try {
-        const products = await read('products')
-        res.render('area-membro/users/list', { products })
+        const users = await read('users')
+        res.render('area-membro/users/list', { users })
     } catch (error) {
         res.status('Erro ao recuperar tabela no banco de dados')
     }
