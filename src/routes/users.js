@@ -14,7 +14,7 @@ router.get('/users', async (req, res) => {
 })
 
 router.post('/users', async (req, res) => {
-    const data = { name: 'Teste 2', email: 'teste2@gmail.com' }
+    const data = { name: 'Teste 3', email: 'teste3@gmail.com' }
 
     try {
         const users = await create('users', data)
