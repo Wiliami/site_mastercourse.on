@@ -4,7 +4,7 @@ import { create, read } from '../services/dataServices.js'
 const router = Router()
 
 
-router.get('/list', async (req, res) => {
+router.get('/users', async (req, res) => {
     try {
         const users = await read('users')
         res.render('area-membro/users/list', { users })
@@ -13,7 +13,7 @@ router.get('/list', async (req, res) => {
     }
 })
 
-router.get('/create', async (req, res) => {
+router.post('/users', async (req, res) => {
     const data = { name: 'Teste 2', email: 'teste2@gmail.com' }
 
     try {

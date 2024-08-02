@@ -1,0 +1,7 @@
+POST http://localhost:8080/users
+
+
+{
+    "name": "Teste 3",
+    "email": "teste3@gmail.com" 
+}
