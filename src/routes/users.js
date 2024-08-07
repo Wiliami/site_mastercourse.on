@@ -6,7 +6,7 @@ const router = Router()
 router.post('/users', async (req, res) => {
 
     const data = { 
-        name: 'Teste 2',
+        name: 'Teste 3',
         email: 'teste2@gmail.com'
     }
 
