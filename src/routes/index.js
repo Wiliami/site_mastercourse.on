@@ -12,7 +12,7 @@ const router = Router();
 const routes = [
     { path: '/', view: home },
     { path: '/home', view: membership },
-    { path: '/users', view: users },
+    { path: '/', view: users },
     { path: '/admin', view: admin },
     { path: '/login', view: login },
     { path: '/cadastro', view: register },

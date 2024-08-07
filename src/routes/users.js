@@ -3,18 +3,12 @@ import { create, read } from '../services/dataServices.js'
 
 const router = Router()
 
+router.post('/users', async (req, res) => {
 
-router.get('/list', async (req, res) => {
-    try {
-        const users = await read('users')
-        res.render('area-membro/users/list', { users })
-    } catch (error) {
-        res.status('Erro ao recuperar tabela no banco de dados')
+    const data = { 
+        name: 'Teste 2',
+        email: 'teste2@gmail.com'
     }
-})
-
-router.get('/create', async (req, res) => {
-    const data = { name: 'Teste 2', email: 'teste2@gmail.com' }
 
     try {
         const users = await create('users', data)
@@ -32,6 +26,15 @@ router.get('/create', async (req, res) => {
             message: 'Erro ao criar usuário',
             error: error.message
         })
+    }
+})
+
+router.get('/users', async (req, res) => {
+    try {
+        const users = await read('users')
+        res.render('area-membro/users/list', { users })
+    } catch (error) {
+        res.status('Erro ao recuperar tabela no banco de dados')
     }
 })
 
