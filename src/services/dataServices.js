@@ -45,9 +45,9 @@ export const read = async (table) => {
 
 /**
  * UPDATE
- * @param {String}
+ * @param {String} 
  */
-export const update = async () => {
+export const update = async (id, column, value) => {
   try {
     console.log('Successo')
   } catch (error) {
@@ -66,14 +66,14 @@ export const deleteItem = async (table, column, value) => {
   try {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])
+
     if (res.rowCount > 0) {
-      console.log('Item exlcluído com sucesso:', res.rows[0])
+      console.log('Item excluído com sucesso:', res.rows[0])
     } else {
       console.log(`Nenhum item encontrado com o ${column}:`, value)
     }
+
   } catch (err) {
     console.error('Erro ao deletar item:', err)
   }
 };
-
-// console.log(deleteItem("users", "email", "teste@gmail.com"))
