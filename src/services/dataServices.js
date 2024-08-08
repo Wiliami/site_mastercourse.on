@@ -3,7 +3,7 @@ import pool from '../config/database.js'
 /** CREATE
  * @param {String} table Nome da tabela que será atualizada 
  * @param {Object} data - Dados para serem passados como objeto no parâmetro da função
- * @param {value} data.property - Você pode passar várias propriedades para o objeto para serem enviados para o banco
+ * @param {value} data.p  roperty - Você pode passar várias propriedades para o objeto para serem enviados para o banco
  */
 export const create = async (table, data) => {
     try {

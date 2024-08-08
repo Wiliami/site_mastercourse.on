@@ -5,9 +5,11 @@ const router = Router()
 
 router.post('/users', async (req, res) => {
 
+    const { name, email } = req.body
+
     const data = {  
-        name: 'Fernando',
-        email: 'fernando@gmail.com'
+        name,
+        email
     }
 
     try {
