@@ -15,6 +15,7 @@ export const create = async (table, data) => {
         const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
 
 
+
         console.log(`Query: ${query}`)
         console.log(`Values: ${values}`)
 
@@ -34,12 +35,17 @@ export const create = async (table, data) => {
  * READ
  * @param {String} table Nome da tabela no banco de dados
  */
-export const read = async (table) => {
+export const read = async (table, column, value) => {
+    const query = `SELECT * FROM ${table} WHERE ${column} = $1`
+    const values = [value]
+
     try {
-        const res = await pool.query(`SELECT * FROM ${table}`)
-        return res.rows
+        const result = await pool.query(query, values)
+        return result.rows
+
     } catch (error) {
         console.error('Erro ao buscar itens:', error)
+        throw error
     }
 }
 
