@@ -2,14 +2,25 @@ import pool from '../config/database.js'
 
 /** CREATE
  * @param {String} table Nome da tabela que será atualizada 
- * @param {Object} data - Dados para serem passados como {objeto} no parâmetro da função
- * @param {value} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
- * @param {value} data.property2 A segunda propriedade se caso for necessário 
+ * @param {Object} data - Dados para serem passados como segundo parâmetro da função do tipo {objeto}
+ * @param {value1} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
+ * @param {value2} data.property2 Inserir a segunda propriedade se caso for necessário e se assim por diante
 */
 export const create = async (table, data) => {
     try {
+
+
+
+      
+        const data = {
+          name: 'Wiliamis',
+          email: 'oliveirawiliamis34@gmail.com'
+        }
+      
         const columns = Object.keys(data)
         const values = Object.values(data)
+
+
         const placeholders = columns.map((_, index) => `$${index + 1}`)
 
         const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
