@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, read } from '../services/data.js'
+import { create, read, deleteItem } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router()
@@ -20,7 +20,6 @@ async function checkEmailExists(email) {
 
 
 router.post('/users', async (req, res) => {
-
     const { name, email } = req.body
 
     const data = {  
@@ -32,9 +31,9 @@ router.post('/users', async (req, res) => {
         const emailExists = await checkEmailExists(email)
 
         if(emailExists) {
-            console.log('Este email já está cadastrado.')
+            console.log('Este e-mail já sendo utilizado por outro usuário.')
             res.status(409).json({
-                message: 'Este email já está cadastrado.'
+                message: 'Este e-mail já sendo utilizado por outro usuário.'
             })
 
             return;
@@ -61,11 +60,22 @@ router.post('/users', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const users = await read('users')
-        res.render('area-membro/users/list', { users })
+        const users = await read('users')   
+        // res.render('area-membro/users/list', { users })
+
+        return res.json(users)
     } catch (error) {
         res.status('Erro ao recuperar tabela no banco de dados')
     }
+})
+
+
+router.delete('/users/id', async(req, res) => {
+    const userId = req.params.id
+
+
+    deleteItem('users', id, )
+
 })
 
 export default router

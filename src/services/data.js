@@ -1,7 +1,7 @@
 import pool from '../config/database.js'
 
 /** CREATE
- * @param {String} table Nome da tabela que será atualizada 
+ * @param {String} table Nome da tabela no formato {String} 
  * @param {Object} data - Dados para serem passados como segundo parâmetro da função do tipo {objeto}
  * @param {value1} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
  * @param {value2} data.property2 Inserir a segunda propriedade se caso for necessário e se assim por diante
@@ -9,27 +9,12 @@ import pool from '../config/database.js'
 export const create = async (table, data) => {
     try {
 
-
-        const data = {
-          name: 'Wiliamis',
-          email: 'oliveirawiliamis34@gmail.com',
-          age: 26
-        }
+        const columns = Object.keys(data)
+        const values = Object.values(data)
+        const placeholders = columns.map((_, index) => `$${index + 1}`)
 
 
-
-
-      
-        // const columns = Object.keys(data)
-        // // columns = name, email...
-        // const values = Object.values(data)
-
-
-        // const placeholders = columns.map((_, index) => `$${index + 1}`) 
-
-        // const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
-
-
+        const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`;
 
         console.log(`Query: ${query}`)
         console.log(`Values: ${values}`)
@@ -48,14 +33,13 @@ export const create = async (table, data) => {
 
 /**
  * READ
- * @param {String} table Nome da tabela no banco de dados
+ * @param {String} table Nome da tabela no banco de dados em formato string
  */
-export const read = async (table, column, value) => {
-    const query = `SELECT * FROM ${table} WHERE ${column} = $1`
-    const values = [value]
+export const read = async (table) => {
+    const query = `SELECT * FROM ${table}`
 
     try {
-        const result = await pool.query(query, values)
+        const result = await pool.query(query)
         return result.rows
 
     } catch (error) {
