@@ -2,12 +2,12 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-    "name": "Fabio Akita", 
-    "email": "akita.dev@gmail.com"
+    "name": "Teste", 
+    "email": "teste@gmail.com"
 }
 
 ###
 GET http://localhost:8080/users
 
 ###
-DELETE http://localhost:8080/users/id
+DELETE http://localhost:8080/users/14
