@@ -10,20 +10,24 @@ export const create = async (table, data) => {
     try {
 
 
-
-      
         const data = {
           name: 'Wiliamis',
-          email: 'oliveirawiliamis34@gmail.com'
+          email: 'oliveirawiliamis34@gmail.com',
+          age: 26
         }
+
+
+
+
       
-        const columns = Object.keys(data)
-        const values = Object.values(data)
+        // const columns = Object.keys(data)
+        // // columns = name, email...
+        // const values = Object.values(data)
 
 
-        const placeholders = columns.map((_, index) => `$${index + 1}`)
+        // const placeholders = columns.map((_, index) => `$${index + 1}`) 
 
-        const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
+        // const query = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`
 
 
 
