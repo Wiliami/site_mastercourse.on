@@ -77,9 +77,11 @@ export const deleteItem = async (table, column, value) => {
       console.log('Item excluído com sucesso:', res.rows[0])
     } else {
       console.log(`Nenhum item encontrado com o ${column}:`, value)
+      return null
     }
 
   } catch (err) {
     console.error('Erro ao deletar item:', err)
+    throw err
   }
 };

@@ -70,11 +70,36 @@ router.get('/users', async (req, res) => {
 })
 
 
-router.delete('/users/id', async(req, res) => {
+router.delete('/users/:id', async(req, res) => {
     const userId = req.params.id
 
+    // http://localhost:8080/users/2
 
-    deleteItem('users', id, )
+
+    try {
+        const deleteUser = deleteItem('users', 'id', userId)
+        
+            if(deleteUser) {
+                res.status(200).json({
+                    message: 'Usuário excluído com sucesso',
+                    user: deleteUser
+                })
+
+            } else {
+                res.status(404).json({
+                    message: 'Usuário não encontrado',
+                }) 
+            } 
+
+
+    } catch (error) {
+        res.status(500).json({
+            message: 'Erro ao ecluir usuário',
+            error: error.message
+        })
+    }
+
+
 
 })
 
