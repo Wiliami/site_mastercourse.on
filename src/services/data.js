@@ -74,6 +74,7 @@ export const deleteItem = async (table, column, value) => {
     const res = await pool.query(query, [value])
 
     if (res.rowCount > 0) {
+      console.log('Res.rowCount:', res.rowCount)
       console.log('Item excluído com sucesso:', res.rows[0])
     } else {
       console.log(`Nenhum item encontrado com o ${column}:`, value)
