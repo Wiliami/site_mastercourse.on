@@ -76,6 +76,8 @@ router.delete('/users/:id', async (req, res) => {
     try {
         const deleteUser = await deleteItem('users', 'id', userId)
 
+        console.log(deleteUser)
+
         if (deleteUser) {
             res.status(200).json({
                 message: 'Usuário excluído com sucesso',
