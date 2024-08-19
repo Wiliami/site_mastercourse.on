@@ -76,7 +76,7 @@ router.delete('/users/:id', async (req, res) => {
     try {
         const deleteUser = await deleteItem('users', 'id', userId)
 
-        console.log(deleteUser)
+        console.log('Usuário:', deleteUser)
 
         if (deleteUser) {
             res.status(200).json({
