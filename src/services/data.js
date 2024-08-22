@@ -65,7 +65,7 @@ export const update = async (id, column, value) => {
 /**
  * DELETE 
  * @param {String} table Nome da tabela no banco de dados
- * @param {String} column Nome da coluna que será deletada na tabela
+ * @param {String} column Nome da coluna onde será aplicada a condição de exclusão
  * @param {String} value Valor que será deletado na tabela
  */
 export const deleteItem = async (table, column, value) => {
@@ -73,8 +73,8 @@ export const deleteItem = async (table, column, value) => {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])
 
-    if (res.rowCount > 0) {
-      console.log('Res.rowCount:', res.rowCount)
+    if (res.rowCount > 0 ) {
+      console.log('Registro encontrado:', res.rowCount)
       console.log('Item excluído com sucesso:', res.rows[0])
     } else {
       console.log(`Nenhum item encontrado com o ${column}:`, value)
