@@ -71,13 +71,13 @@ router.get('/users', async (req, res) => {
 
 
 router.delete('/users/:id', async (req, res) => {
-    const userId = req.params.id
+    const userId = parseInt(req.params.id, 10)
 
     try {
         const deleteUser = await deleteItem('users', 'id', userId)
-
         console.log('Usuário:', deleteUser)
 
+        
         if (deleteUser) {
             res.status(200).json({
                 message: 'Usuário excluído com sucesso',
