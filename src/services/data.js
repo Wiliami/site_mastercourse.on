@@ -68,7 +68,7 @@ export const update = async (id, column, value) => {
  * @param {String} column Nome da coluna onde será aplicada a condição de exclusão
  * @param {String} value Valor que será deletado na tabela
  */
-export const deleteItem = async (table, column, value) => {
+export const deleteResource = async (table, column, value) => {
   try {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])

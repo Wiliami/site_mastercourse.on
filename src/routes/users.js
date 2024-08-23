@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, read, deleteItem } from '../services/data.js'
+import { create, read, deleteResource } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router()
@@ -70,11 +70,22 @@ router.get('/users', async (req, res) => {
 })
 
 
+router.put('/users/:id', (req, res) => {
+    const userId = req.params.id
+    
+    try {
+        console.log('Item atualizado com sucesso')
+    } catch (error) {
+        console.error('Falha ao atualizar recurso:', error)
+    }
+})
+
+
 router.delete('/users/:id', async (req, res) => {
     const userId = parseInt(req.params.id, 10)
 
     try {
-        const deleteUser = await deleteItem('users', 'id', userId)
+        const deleteUser = await deleteResource('users', 'id', userId)
         console.log('Usuário:', deleteUser)
 
         
