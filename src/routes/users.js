@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, read, deleteResource } from '../services/data.js'
+import { createResource, readResource, deleteResource } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router()
@@ -39,7 +39,7 @@ router.post('/users', async (req, res) => {
             return;
         }
 
-        const users = await create('users', data)
+        const users = await createResource('users', data)
         console.log(`Usuário criado com sucesso: ${JSON.stringify(users)}`)   
 
 
@@ -60,7 +60,7 @@ router.post('/users', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const users = await read('users')   
+        const users = await readResource('users')   
         // res.render('area-membro/users/list', { users })
 
         return res.json(users)

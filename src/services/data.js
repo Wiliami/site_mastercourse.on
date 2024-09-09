@@ -6,7 +6,7 @@ import pool from '../config/database.js'
  * @param {value1} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
  * @param {value2} data.property2 Inserir a segunda propriedade se caso for necessário e se assim por diante
 */
-export const create = async (table, data) => {
+export const createResource = async (table, data) => {
     try {
 
         const columns = Object.keys(data)
@@ -35,7 +35,7 @@ export const create = async (table, data) => {
  * READ
  * @param {String} table Nome da tabela no banco de dados em formato string
  */
-export const read = async (table) => {
+export const readResource = async (table) => {
     const query = `SELECT * FROM ${table}`
 
     try {
@@ -53,7 +53,7 @@ export const read = async (table) => {
  * UPDATE
  * @param {String} 
  */
-export const update = async (id, column, value) => {
+export const updateResource = async (id, column, value) => {
   try {
     console.log('Successo')
   } catch (error) {
