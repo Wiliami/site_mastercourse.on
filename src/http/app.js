@@ -29,7 +29,7 @@ class App {
     }
 
     listen(port) {
-        this.app.listen(port, () => console.log('Servidor iniciado na porta 8080: http://localhost:8080 🔥'));
+        this.app.listen(port, () => console.log('Servidor iniciado na porta 3000: http://localhost:3000 🔥'));
     }
 }
 
