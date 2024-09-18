@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, read, deleteItem } from '../services/data.js'
+import { createResource, readResource, deleteResource } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router()
@@ -39,7 +39,7 @@ router.post('/users', async (req, res) => {
             return;
         }
 
-        const users = await create('users', data)
+        const users = await createResource('users', data)
         console.log(`Usuário criado com sucesso: ${JSON.stringify(users)}`)   
 
 
@@ -60,7 +60,7 @@ router.post('/users', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const users = await read('users')   
+        const users = await readResource('users')   
         // res.render('area-membro/users/list', { users })
 
         return res.json(users)
@@ -70,14 +70,25 @@ router.get('/users', async (req, res) => {
 })
 
 
-router.delete('/users/:id', async (req, res) => {
+router.put('/users/:id', (req, res) => {
     const userId = req.params.id
+    
+    try {
+        console.log('Item atualizado com sucesso')
+    } catch (error) {
+        console.error('Falha ao atualizar recurso:', error)
+    }
+})
+
+
+router.delete('/users/:id', async (req, res) => {
+    const userId = parseInt(req.params.id, 10)
 
     try {
-        const deleteUser = await deleteItem('users', 'id', userId)
-
+        const deleteUser = await deleteResource('users', 'id', userId)
         console.log('Usuário:', deleteUser)
 
+        
         if (deleteUser) {
             res.status(200).json({
                 message: 'Usuário excluído com sucesso',

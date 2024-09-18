@@ -6,7 +6,7 @@ import pool from '../config/database.js'
  * @param {value1} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
  * @param {value2} data.property2 Inserir a segunda propriedade se caso for necessário e se assim por diante
 */
-export const create = async (table, data) => {
+export const createResource = async (table, data) => {
     try {
 
         const columns = Object.keys(data)
@@ -35,7 +35,7 @@ export const create = async (table, data) => {
  * READ
  * @param {String} table Nome da tabela no banco de dados em formato string
  */
-export const read = async (table) => {
+export const readResource = async (table) => {
     const query = `SELECT * FROM ${table}`
 
     try {
@@ -53,7 +53,7 @@ export const read = async (table) => {
  * UPDATE
  * @param {String} 
  */
-export const update = async (id, column, value) => {
+export const updateResource = async (id, column, value) => {
   try {
     console.log('Successo')
   } catch (error) {
@@ -65,16 +65,16 @@ export const update = async (id, column, value) => {
 /**
  * DELETE 
  * @param {String} table Nome da tabela no banco de dados
- * @param {String} column Nome da coluna que será deletada na tabela
+ * @param {String} column Nome da coluna onde será aplicada a condição de exclusão
  * @param {String} value Valor que será deletado na tabela
  */
-export const deleteItem = async (table, column, value) => {
+export const deleteResource = async (table, column, value) => {
   try {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])
 
-    if (res.rowCount > 0) {
-      console.log('Res.rowCount:', res.rowCount)
+    if (res.rowCount > 0 ) {
+      console.log('Registro encontrado:', res.rowCount)
       console.log('Item excluído com sucesso:', res.rows[0])
     } else {
       console.log(`Nenhum item encontrado com o ${column}:`, value)
