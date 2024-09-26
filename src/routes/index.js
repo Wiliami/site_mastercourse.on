@@ -6,11 +6,13 @@ import users from './users.js'
 import register from './register.js'
 import products from './products.js'
 import membership from './membership.js'
+import dashboard from './dashboard.js'
 
 const router = Router()
 
 const routes = [
     { path: '/', view: home },
+    { path: '/area-membro', view: dashboard },
     { path: '/home', view: membership },
     { path: '/', view: users },
     { path: '/admin', view: admin },

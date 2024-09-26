@@ -10,7 +10,6 @@ const routes = [
     { path: '/forgot-password', view: 'forgot-password' },
     { path: '/courses', view: 'courses' },
     { path: '/course-details', view: 'course-details' },
-    { path: '/dashboard', view: 'dashboard' },
 ]
 
 routes.forEach(({ path, view }) => {
