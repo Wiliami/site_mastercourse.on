@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import home from './home.js'
+import homepage from './home.js'
 import login from './login.js'
 import admin from './admin.js'
 import users from './users.js'
@@ -11,7 +11,7 @@ import dashboard from './dashboard.js'
 const router = Router()
 
 const routes = [
-    { path: '/', view: home },
+    { path: '/', view: homepage },
     { path: '/area-membro', view: dashboard },
     { path: '/home', view: membership },
     { path: '/', view: users },
