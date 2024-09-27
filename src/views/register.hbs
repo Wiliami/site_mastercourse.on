@@ -14,11 +14,11 @@
                                 {{>_alertSuccess}}
                                
                                 <form method="POST" action="" id="form" class="form-user">
-                                    <div class="form-floating mb-2">
+                                    {{!-- <div class="form-floating mb-2">
                                         <input type="text" class="form-control required" name="username" id="username" placeholder="Nome e sobrenome">
                                         <label for="inputName" style="font-size: 15px;">Nome</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Nome deve ter no mínimo 3 caracteres</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-floating mb-2">
                                         <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail">
                                         <label for="inputEmail" style="font-size: 15px;">E-mail</label>
@@ -29,11 +29,11 @@
                                         <label for="inputPassword" style="font-size: 15px;">Senha</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Digite uma senha com no mínimo 8 caracteres</span>
                                     </div>
-                                    <div class="form-floating mb-2">
+                                    {{!-- <div class="form-floating mb-2">
                                         <input type="password" class="form-control required" name="confirmPassword" id="confirmPassword" autocomplete="on" placeholder="Confirmar senha" title="Senha">
                                         <label for="inputPassword" style="font-size: 15px;">Confirmar senha</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Senhas devem ser compatíveis</span>
-                                    </div>
+                                    </div> --}}
                                     <input class="btn btn-lg btn-success mt-4 w-100" id="submit" style="font-size: 17px;" type="submit" value="Criar">
                                 </form>
                                 <div class="mt-4">
@@ -54,7 +54,7 @@
 $(document).ready(() => {
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
-    const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"], input[type="confirmPassword"]');
+    const inputFields = form.find('input[type="email"], input[type="password"]');
 
     function verificarCamposVazios() {
         return inputFields.toArray().some(field => $(field).val().trim() === '');

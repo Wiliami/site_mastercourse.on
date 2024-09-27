@@ -90,7 +90,7 @@ router.delete('/users/:id', async (req, res) => {
 
         
         if (deleteUser) {
-            res.status(200).json({
+            res.status(201).json({
                 message: 'Usuário excluído com sucesso',
                 user: deleteUser
             })
