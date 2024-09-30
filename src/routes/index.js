@@ -17,7 +17,7 @@ const routes = [
     { path: '/', view: users },
     { path: '/admin', view: admin },
     { path: '/login', view: login },
-    { path: '/cadastro', view: register },
+    { path: '/register', view: register },
     { path: '/products', view: products },
 ]
     
