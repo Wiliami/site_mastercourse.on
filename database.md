@@ -5,6 +5,11 @@ Access postgres:
 psql -U username
 ```
 
+List tables:
+```
+\dt
+```
+
 Create database:
 ```
 CREATE DATABASE my_database;
