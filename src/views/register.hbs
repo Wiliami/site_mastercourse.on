@@ -14,11 +14,11 @@
                                 {{>_alertSuccess}}
                                
                                 <form method="POST" action="" id="form" class="form-user">
-                                    {{!-- <div class="form-floating mb-2">
+                                    <div class="form-floating mb-2">
                                         <input type="text" class="form-control required" name="username" id="username" placeholder="Nome e sobrenome">
                                         <label for="inputName" style="font-size: 15px;">Nome</label>
                                         <span class="span-required text-start" style="font-size: 15px;">Nome deve ter no mínimo 3 caracteres</span>
-                                    </div> --}}
+                                    </div>
                                     <div class="form-floating mb-2">
                                         <input type="email" class="form-control required" name="email" id="email" placeholder="E-mail">
                                         <label for="inputEmail" style="font-size: 15px;">E-mail</label>
@@ -54,11 +54,7 @@
 $(document).ready(() => {
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
-    const inputFields = form.find('input[type="email"], input[type="password"]');
-
-    function verificarCamposVazios() {
-        return inputFields.toArray().some(field => $(field).val().trim() === '');
-    }
+    const inputFields = form.find('input[type="username"], input[type="email"], input[type="password"]');
 
 
     function verifyFieldsEmpty() {
@@ -82,7 +78,7 @@ $(document).ready(() => {
 
                 const isEmailValid = checkEmailValidity(response);
 
-                if (isEmailValid && !verificarCamposVazios()) {
+                if (isEmailValid && !verifyFieldsEmpty()) {
                 // Email é válido
                     habilitarBotaoDeEnvio();
                 } else {
@@ -90,12 +86,12 @@ $(document).ready(() => {
                     desabilitarBotaoDeEnvio();
                     showError('Este e-mail já está cadastrado.');
                 }
-            },  
+            },      
             error: function(xhr, status, error) {
                 console.error('Erro ao verificar o email:', error);
-                $('#error-message').text(xhr.responseText).show();  
-                desabilitarBotaoDeEnvio();
-                showError('Informe um e-mal válido.');
+                $('#error-message').text(xhr.responseText).show();                                                                                                  
+                desabilitarBotaoDeEnvio();                                                                                                  
+                showError('Informe um e-mal válido.');  
             }
         });
     }   
