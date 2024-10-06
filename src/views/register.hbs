@@ -54,7 +54,15 @@
 $(document).ready(() => {
     const form = $('#form');
     const buttonSubmit = form.find('input[type="submit"]');
+<<<<<<< HEAD
     const inputFields = form.find('input[type="username"], input[type="email"], input[type="password"]');
+=======
+    const inputFields = form.find('input[type="text"], input[type="email"], input[type="password"]');
+
+    function verificarCamposVazios() {
+        return inputFields.toArray().some(field => $(field).val().trim() === '');
+    }
+>>>>>>> ca777cc64a9b5b061a43eba41bf1033f00d6501e
 
 
     function verifyFieldsEmpty() {
@@ -71,7 +79,7 @@ $(document).ready(() => {
             type: 'POST',
             url: '/verificar-email',
             data: JSON.stringify({ email: email }),
-            contentType: 'application/json',
+            contentType: 'application/json',    
             success: (response) => {
                 console.log('Resposta do servidor:', response);
                 $('#error-message').text('').hide();
@@ -89,9 +97,15 @@ $(document).ready(() => {
             },      
             error: function(xhr, status, error) {
                 console.error('Erro ao verificar o email:', error);
+<<<<<<< HEAD
                 $('#error-message').text(xhr.responseText).show();                                                                                                  
                 desabilitarBotaoDeEnvio();                                                                                                  
                 showError('Informe um e-mal válido.');  
+=======
+                $('#error-message').text(xhr.responseText).show();  
+                desabilitarBotaoDeEnvio();
+                showError('Informe um e-mail válido.');
+>>>>>>> ca777cc64a9b5b061a43eba41bf1033f00d6501e
             }
         });
     }   

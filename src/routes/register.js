@@ -4,11 +4,9 @@ import dotenv from 'dotenv'
 import pool from '../config/databas e.js'
 import bcrypt from 'bcryptjs'
 
-
 const router = Router();
 
 dotenv.config()
-
 
 const generateToken = (user) => {
     return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
@@ -26,11 +24,11 @@ router.post('/', async(req, res) => {
 
       return res.status(400).json({ error: 'Campos obrigatórios.' })
     } 
-
     
     try {
 
       const userExist = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+      console.log(userExist)
       if(userExist.rows.length > 0) {
         return res.status(400).json({ error: 'Usuário já existe.' })
       }
@@ -43,12 +41,10 @@ router.post('/', async(req, res) => {
 
       const token = generateToken(createUser.rows[0])
       res.status(201).json({ message: 'Usuário cadastrado com sucesso!', token })
-
     
     } catch (err) {
       res.status(500).send('Erro no servidor.');
     }
-
 
 });
 
