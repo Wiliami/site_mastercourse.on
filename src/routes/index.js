@@ -18,7 +18,7 @@ const routes = [
     { path: '/admin', view: admin },
     { path: '/login', view: login },
     { path: '/register', view: register },
-    { path: '/products', view: products },
+    { path: '/products', view: products },  
 ]
     
 routes.forEach(({ path, view }) => {
