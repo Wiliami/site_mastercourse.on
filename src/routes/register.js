@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import pool from '../config/database.js'
+import pool from '../config/databas e.js'
 import bcrypt from 'bcryptjs'
 
 
@@ -20,11 +20,11 @@ router.get('/', (req, res) => res.render('register'));
 
 
 router.post('/', async(req, res) => {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
   
     if(!email || !password) {
-            
-      return res.status(400).json({ error: 'Email e senha são obrigatórios.' })
+
+      return res.status(400).json({ error: 'Campos obrigatórios.' })
     } 
 
     
