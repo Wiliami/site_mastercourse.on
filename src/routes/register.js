@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import pool from '../config/databas e.js'
+import pool from '../config/database.js'
 import bcrypt from 'bcryptjs'
 
 const router = Router();
@@ -20,7 +20,7 @@ router.get('/', (req, res) => res.render('register'));
 router.post('/', async(req, res) => {
     const { username, email, password } = req.body;
   
-    if(!email || !password) {
+    if(!username || !email || !password) {
 
       return res.status(400).json({ error: 'Campos obrigatórios.' })
     } 
@@ -35,7 +35,7 @@ router.post('/', async(req, res) => {
 
       const hashedPassword = await bcrypt.hash(password, 10)
         
-      const createUser = await pool.query('INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *',
+      const createUser = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
         [email, hashedPassword]
       )
 
@@ -43,7 +43,7 @@ router.post('/', async(req, res) => {
       res.status(201).json({ message: 'Usuário cadastrado com sucesso!', token })
     
     } catch (err) {
-      res.status(500).send('Erro no servidor.');
+      res.status(500).send('Erro no servidor.', err);
     }
 
 });
