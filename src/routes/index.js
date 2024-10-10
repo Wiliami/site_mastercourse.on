@@ -7,6 +7,7 @@ import register from './register.js'
 import products from './products.js'
 import membership from './membership.js'
 import dashboard from './dashboard.js'
+import verifyEmail from './verificarEmail.js'
 
 const router = Router()
 
@@ -19,6 +20,7 @@ const routes = [
     { path: '/login', view: login },
     { path: '/register', view: register },
     { path: '/products', view: products },  
+    { path: '/verificar-email', view: verifyEmail }, 
 ]
     
 routes.forEach(({ path, view }) => {

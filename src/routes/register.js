@@ -43,7 +43,7 @@ router.post('/', async(req, res) => {
       res.status(201).json({ message: 'Usuário cadastrado com sucesso!', token })
     
     } catch (err) {
-      res.status(500).send('Erro no servidor.', err);
+      res.status(500).send('Erro no servidor');
     }
 
 });
