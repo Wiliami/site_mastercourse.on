@@ -8,7 +8,7 @@ router.get('/list', async (req, res) => {
     try {
         const products = await readResource('products') 
         res.render('area-membro/products/read', { products })
-    } catch (error) {
+    } catch (error) { 
         console.error('Erro ao buscar dados da tabela:', error)
     }
 
