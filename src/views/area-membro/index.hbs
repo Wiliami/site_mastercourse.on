@@ -9,31 +9,27 @@
         </ol>
       </nav>
     </div>
-    <div id="dataContainer"></div>
+
+    <table id="myTable" class="display">
+      <thead>
+          <tr>
+              <th>Nome</th>
+              <th>Idade</th>
+          </tr>
+      </thead>
+      <tbody id="data">
+        {{!-- <tr>
+            <td>Row 1 Data 1</td>
+            <td>Row 1 Data 2</td>
+        </tr> --}}
+      </tbody>
+    </table>
+
     <section class="section">
       <div class="row">
         <!-- Left side columns -->
         <div class="col-lg-4">
           <div class="row">
-              <tboby id="users"></tbody>
-            <table id="myTable" class="display"></table>
-              <thead>
-                  <tr>
-                      <th>Column 1</th>
-                      <th>Column 2</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
         
@@ -44,32 +40,55 @@
   {{>_preloader}}
   {{>_footerDashboard}}
   {{>_footerFilesDashboard}}
-  
-  {{!-- <script>
-      document.getElementById('getDataButton').addEventListener('click', () => {
-        fetch('http://localhost:8080/dashboard')
-        .then(response => {
-          if(!response.ok) {
-            throw new Error(`Error na solicitação: ${response.statusText}`);
-          }
 
-          return response.json();
-        })
-        .then(data => console.log(data))
-        .catch(error => console.log('Error:', error))
-      });
-  </script> --}}
+  <script>
+    $(document).ready( function () {
+      $('#myTable').DataTable({
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nenhum registro foi encontrado",
+            "info": "Mostrando página _PAGE_ de _PAGES_ registros",
+            "infoEmpty": "Nenhum registro foi encontrado",
+            "infoFiltered": "(filtrado de _MAX_ registros no total)",
+            "Search": "Pesquisar"
+        },
+        language: {
+          search: 'Pesquisar:'
+        }
 
-  {{!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-  <script src="/assets/js/firebase-init.js"></script> --}}
-  {{!-- <script src="/assets/js/auth-guard.js"></script> --}}
+      });       
+    });
+
+    const users = [
+      { name: 'Wiliamis', age: 27, gender: 'male' },
+      { name: 'Kipper dev', age: 25, gender: 'female' },
+      { name: 'Mario Souto', age: 34, gender: 'male' },
+      { name: 'Rafaela', age: 17, gender: 'female' },
+    ]
+
+    users.forEach((user) => {
+      const tbody = document.getElementById('data')
+
+      const tr = document.createElement('tr')
+      
+      const td = document.createElement('td')
+      td.innerHTML = user.name
+    
+      tr.append(td) 
+      tbody.append(tr)
+    })
+
+
+    
+
+
+
+
+  </script>
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />  
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
   <script src="/assets/js/home.js"></script>
   <script src="/assets/js/logout.js"></script>
   <script src="/assets/js/loading.js"></script>
-
-  <script>
-    var template = Handlebars.compile('Name': {{name}})
-    console.log(template({  name: 'Wiliamis' }))
-</script>
