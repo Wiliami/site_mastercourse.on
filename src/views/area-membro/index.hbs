@@ -9,12 +9,13 @@
         </ol>
       </nav>
     </div>
+    <button id="addRow" class="btn btn-success">Adicionar usuário</button>
 
     <table id="myTable" class="display">
       <thead>
           <tr>
-              <th>Nome</th>
-              <th>Idade</th>
+              <th>Column 1</th>
+              <th>Column 2</th>
           </tr>
       </thead>
       <tbody id="data">
@@ -43,7 +44,7 @@
 
   <script>
     $(document).ready( function () {
-      $('#myTable').DataTable({
+      const table = $('#myTable').DataTable({
         "language": {
             "lengthMenu": "Mostrando _MENU_ registros por página",
             "zeroRecords": "Nenhum registro foi encontrado",
@@ -56,27 +57,61 @@
           search: 'Pesquisar:'
         }
 
-      });       
-    });
+      }); 
 
-    const users = [
-      { name: 'Wiliamis', age: 27, gender: 'male' },
-      { name: 'Kipper dev', age: 25, gender: 'female' },
-      { name: 'Mario Souto', age: 34, gender: 'male' },
-      { name: 'Rafaela', age: 17, gender: 'female' },
-    ]
+      function addNewUser() {
+        table.row
+        .add([
+            counter + '.1'
+            counter + '.2'
+        ])
+        .draw(false)
 
-    users.forEach((user) => {
-      const tbody = document.getElementById('data')
+        counter++
+      }    
 
-      const tr = document.createElement('tr')
-      
-      const td = document.createElement('td')
-      td.innerHTML = user.name
+      });
+
+      let counter = 1
+
+      const users = [
+        { name: 'Wiliamis', age: 27, gender: 'male' },
+        { name: 'Kipper dev', age: 25, gender: 'female' },
+        { name: 'Mario Souto', age: 34, gender: 'male' },
+        { name: 'Rafaela', age: 17, gender: 'female' },
+      ]
+
+   
+
+
+   
+
+    const button = document.querySelector('#addRow').addEventListener('click', addNewUser)
+    console.log(button)
+
+    addNewUser()
+
+
+
+
+
+
+
+
+
+
+  /* users.forEach((user) => {
+    const tbody = document.getElementById('data')
+
+    const tr = document.createElement('tr')
     
-      tr.append(td) 
-      tbody.append(tr)
-    })
+    const td = document.createElement('td')
+    td.innerHTML = user.name
+  
+    tr.append(td) 
+    tbody.append(tr)
+  }) */
+  
 
 
     
