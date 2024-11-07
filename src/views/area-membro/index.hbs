@@ -14,16 +14,11 @@
     <table id="myTable" class="display">
       <thead>
           <tr>
-              <th>Column 1</th>
-              <th>Column 2</th>
+              <th>Nome</th>
+              <th>E-mail</th>
           </tr>
       </thead>
-      <tbody id="data">
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-      </tbody>
+     
     </table>
 
     <section class="section">
@@ -43,87 +38,56 @@
   {{>_footerFilesDashboard}}
 
   <script>
-    $(document).ready( function () {
-      const table = $('#myTable').DataTable({
-        "language": {
-            "lengthMenu": "Mostrando _MENU_ registros por página",
-            "zeroRecords": "Nenhum registro foi encontrado",
-            "info": "Mostrando página _PAGE_ de _PAGES_ registros",
-            "infoEmpty": "Nenhum registro foi encontrado",
-            "infoFiltered": "(filtrado de _MAX_ registros no total)",
-            "Search": "Pesquisar"
-        },
-        language: {
-          search: 'Pesquisar:'
-        }
-
-      }); 
-
-      function addNewUser() {
-        table.row
-        .add([
-            counter + '.1'
-            counter + '.2'
-        ])
-        .draw(false)
-
-        counter++
-      }    
-      let counter = 1
-
-      });
-
+    $(document).ready(function () {
+      const table = new DataTable('#myTable', {
+          language: {
+            lengthMenu: "Mostrando _MENU_ registros por página",
+            info: "Mostrando página _PAGE_ de _PAGES_ registros",
+            infoEmpty: "Nenhum registro foi encontrado",
+            zeroRecords: "Nenhum registro foi encontrado",
+            emptyTable: "Nenhum registro foi encontrado",
+            infoFiltered: "(filtrado de _MAX_ registros no total)",
+            search: "Pesquisar",
+            searchPlaceholder: 'Pesquisar...',
+            paginate: {
+              'previous': 'Anterior',
+              'next': 'Próximo'
+            },
+          },          
+      })
 
       const users = [
-        { name: 'Wiliamis', age: 27, gender: 'male' },
-        { name: 'Kipper dev', age: 25, gender: 'female' },
-        { name: 'Mario Souto', age: 34, gender: 'male' },
-        { name: 'Rafaela', age: 17, gender: 'female' },
+        { name: 'Wiliamis', email: 'wiliamis@gmail.com', age: 27, gender: 'male' },
+        { name: 'Kipper dev', email: 'kipperdev@gmail.com', age: 25, gender: 'female' },
+        { name: 'Mario Souto', email: 'mariosoutinho@gmail.com', age: 34, gender: 'male' },
+        { name: 'Rafaela', email: 'rafaela@gmail.com', age: 17, gender: 'female' },
       ]
 
-   
+      function addUsersToScreen() {
+        if(users.length) {
+          users.forEach(user => {
+            table.row
+            .add([
+              user.name,
+              user.email  
+            ])
+            .draw(false)
+          })
 
-
-   
-
-    const button = document.querySelector('#addRow').addEventListener('click', addNewUser)
-    console.log(button)
-
-    addNewUser()
-
-
-
-
-
-
-
-
-
-
-  /* users.forEach((user) => {
-    const tbody = document.getElementById('data')
-
-    const tr = document.createElement('tr')
+        } else {
+          $('.dataTables_empty').text('Nenhum registro foi encontrado!');
+        }
+      }  
     
-    const td = document.createElement('td')
-    td.innerHTML = user.name
-  
-    tr.append(td) 
-    tbody.append(tr)
-  }) */
-  
-
-
-    
-
-
-
-
-  </script>
+      const button = document.querySelector('#addRow').addEventListener('click', addUsersToScreen)
+      addUsersToScreen()
+      
+    })
+    </script>
  
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />  
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
   <script src="/assets/js/home.js"></script>
-  <script src="/assets/js/logout.js"></script>
-  <script src="/assets/js/loading.js"></script>
+  {{!-- <script src="/assets/js/loading.js"></script> --}}
