@@ -16,6 +16,7 @@
           <tr>
               <th>Nome</th>
               <th>E-mail</th>
+              <th>Ações</th>
           </tr>
       </thead>
      
@@ -69,7 +70,9 @@
             table.row
             .add([
               user.name,
-              user.email  
+              user.email,
+              `<a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
+              `<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>`
             ])
             .draw(false)
           })
@@ -81,7 +84,7 @@
     
       const button = document.querySelector('#addRow').addEventListener('click', addUsersToScreen)
       addUsersToScreen()
-      
+
     })
     </script>
  
