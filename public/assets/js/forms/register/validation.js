@@ -1,82 +1,110 @@
-const buttonSubmit = document.getElementById('form');
-const campos = document.querySelectorAll('.required');
-const spans = document.querySelectorAll('.span-required');
-const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+$(document).ready(() => {
+    const form = $('#form');
 
-buttonSubmit.addEventListener('click', (e) => {
-  e.preventDefault();
-  disableButton();
-  nameValidate();
-  emailValidate();    
-  mainPasswordValidate();
-  comparePassword();
-}); 
+    const buttonSubmit = form.find('input[type="submit"]');
+    const inputFields = form.find('input[type="username"], input[type="email"], input[type="password"]');
 
 
-function setError(index) {
-  campos[index].style.border = '2px solid #e63656';
-  spans[index].style.display = 'block';
-}
+    function verifyFieldsEmpty() {
+        return inputFields.toArray().some(field => $(field).val().trim() === '');
+    }
 
-function removeError(index) {
-  campos[index].style.border = '';
-  spans[index].style.display = 'none';
-}
+    function verificarEmailValido() {
+        const email = $('#email').val();
+        if(email === '') {
+            return false;
+        }
 
-function nameValidate() {
-  if(campos[0].value.length < 3) {
-    setError(0);
-  } else {
-    removeError(0);
-  }
-}
+        $.ajax({
+            type: 'POST',
+            url: '/verificar-email',
+            data: JSON.stringify({ email: email }),
+            contentType: 'application/json',    
+            success: (response) => {
+                console.log('Resposta do servidor:', response);
+                $('#error-message').text('').hide();
 
-function emailValidate() {
-  if(!emailRegex.test(campos[1].value)) {
-    setError(1);
-  } else {
-    removeError(1);
-  }
-}
+                const isEmailValid = checkEmailValidity(response);
 
-function mainPasswordValidate() {
-  if(campos[2].value.length < 8) {
-    setError(2);
-  } else {
-    removeError(2);
-  }
-}
+                if (isEmailValid && !verifyFieldsEmpty()) {
+                // Email é válido
+                    habilitarBotaoDeEnvio();
+                } else {
+                    // Email não é válido
+                    desabilitarBotaoDeEnvio();
+                    showError('Este e-mail já está cadastrado.');
+                }
+            },      
+            error: function(xhr, status, error) {
+                console.error('Erro ao verificar o email:', error);
+                $('#error-message').text(xhr.responseText).show();                                                                                                  
+                desabilitarBotaoDeEnvio();                                                                                                  
+                showError('Informe um e-mal válido.');  
+            }
+        });
+    }   
 
-function comparePassword() {
-  if(campos[2].value == campos[3].value && campos[3].value.length >= 8) {
-    removeError(3);
-  } else {
-    setError(3);
-  }
-}
+    inputFields.on('input', () => {
+        if(!verifyFieldsEmpty()) {
+            verificarEmailValido();
+        } else {
+            desabilitarBotaoDeEnvio();
+        }
+    });     
 
-function disableButton() {
-  $(document).ready(function() {
-    $('input[type="submit"]').attr('disabled', true);
-    $('input[type="text"], input[type="email"], input[type="password"]').on('keyup',function() {
-      if($(this).val() != '') {
-        $('input[type="submit"]').attr('disabled' , false);
-      }else{
-        $('input[type="submit"]').attr('disabled' , true);
-      }
+    function checkEmailValidity(response) {
+        console.log('Resposta do servidor:', response);
+        if(response && response.isValid !== undefined) {
+            console.log('Campo "isValid" na resposta:', response.isValid);
+            return response.isValid === true;    
+        } else {
+            console.log('Resposta não contém um campo "isValid" ou está vazio.');
+            return false;
+        }
+    }
+
+    function habilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", false);
+    }
+
+    function desabilitarBotaoDeEnvio() {
+        return buttonSubmit.prop("disabled", true);
+    }
+
+    function showError(message) {
+        const messageError = $('#error-message');
+        messageError.text(message);
+        messageError.show();
+    }
+
+
+    form.on('submit', (e) => {
+        e.preventDefault(); 
+
+        const username = $('#username').val();
+        const email = $('#email').val();
+        const password = $('#password').val();
+        const confirmPassword = $('#confirmPassword').val();
+        
+        $.ajax({
+            type: 'POST',
+            url: '/register',
+            data: JSON.stringify({ 
+                username: username,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword
+            }),
+            contentType: 'application/json',
+            success: (response) => {
+                $('#error-success').text(response).show();
+                console.log('Resposta do servidor', response);
+            },
+            error: (xhr, status, error) => {
+                $('#error-message').text(xhr.responseText).show();
+                console.log('Erro ao criar usuário:', xhr.responseText);
+            }
+        });
+
     });
-  });
-}
-
-
-// function enableButtonWhenAllFieldsFilled() {
-//     const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
-//     const submitButton = document.querySelector('input[type="submit"]');
-
-//     inputs.forEach(input => {
-//         input.addEventListener('keyup', function() {
-//             const allFieldsFilled = Array.from(inputs).every(input => input.value.trim() !== '');
-//             submitButton.disabled = !allFieldsFilled;
-//         });
-//     });
-// }
+ });

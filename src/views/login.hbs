@@ -26,7 +26,7 @@
                                 <div class="mt-4">
                                     <div class="links">
                                         <p class="mb-0" style="font-size: 15px;">Não tem uma conta? 
-                                            <a href="/cadastro">Criar uma</a>
+                                            <a href="/register">Criar uma</a>
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-center">
@@ -41,8 +41,30 @@
         </div>
     </section>
 </body>
-<script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
-<script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
-<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
-<script src="/assets/js/firebase-init.js"></script>
-<script src="/assets/js/forms/login/login-firebase.js"></script>
+
+<script>
+    $(document).ready(() => {
+       const form = $('#form')
+
+
+       const buttonSubmit = form.find('input[type"submit"]')
+       const inputsFields = form.find('input[type="email"], input[type="password"]')
+
+        function verifyFieldsEmpty() {
+            return inputsFields.toArray().some(field => $(field).val().trim() === '')
+        }
+
+        function verifyEmailValidity() {
+            const email = $('#email').val()
+
+            if(email === '') {
+                return false
+            }
+        }
+
+
+
+        
+
+    })
+</script>

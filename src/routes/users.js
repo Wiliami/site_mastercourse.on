@@ -5,20 +5,6 @@ import pool from '../config/database.js'
 const router = Router()
 
 
-async function checkEmailExists(email) {
-    const query = 'SELECT * FROM users WHERE email = $1'
-    const values = [email]
-
-    try {
-        const result = await pool.query(query, values)
-        return result.rows.length > 0
-    } catch (error) {
-        console.log('Erro ao verificar email', error)
-        throw error
-    }
-}
-
-
 router.post('/users', async (req, res) => {
     const { name, email } = req.body
 
