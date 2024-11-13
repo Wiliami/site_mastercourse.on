@@ -2,7 +2,7 @@ $(document).ready(() => {
     const form = $('#form');
 
     const buttonSubmit = form.find('input[type="submit"]');
-    const inputFields = form.find('input[type="username"], input[type="email"], input[type="password"]');
+    const inputFields = form.find('input[name="username"], input[name="email"], input[name="password"]');
 
 
     function verifyFieldsEmpty() {

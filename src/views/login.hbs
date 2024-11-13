@@ -21,7 +21,7 @@
                                         <input type="password" class="form-control required" name="password" id="password" placeholder="Senha" autocomplete="off">
                                         <label for="inputPassword" style="font-size: 15px;">Senha</label>
                                     </div>
-                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" onclick="login()" type="submit" value="Entrar">
+                                    <input class="btn btn-lg btn-success mt-3 w-100" style="font-size: 17px;" id="submit" type="submit" value="Entrar">
                                 <div>
                                 <div class="mt-4">
                                     <div class="links">
@@ -47,11 +47,11 @@
        const form = $('#form')
 
 
-       const buttonSubmit = form.find('input[type"submit"]')
-       const inputsFields = form.find('input[type="email"], input[type="password"]')
+       const buttonSubmit = form.find('input[type="submit"]')
+       const inputsFields = form.find('input[name="email"], input[name="password"]')
 
         function verifyFieldsEmpty() {
-            return inputsFields.toArray().some(field => $(field).val().trim() === '')
+            return inputsFields.toArray().some(field => $.(field).val().trim() === '')
         }
 
         function verifyEmailValidity() {
@@ -63,8 +63,22 @@
         }
 
 
+        form.on('submit', (e) => {
+            e.preventDefault();
 
-        
+            const email = $('#email').val();
+            const password = $('#password').val();
 
+            $.ajax.({
+            type: 'POST',
+            url: '/login',
+            data: JSON.stringify({ 
+                email: email,
+                password: password
+                }),
+                contentType: 'application/json'
+            })
+
+        })        
     })
 </script>
