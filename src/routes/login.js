@@ -2,20 +2,20 @@ import { Router } from 'express';
 const router = Router();
 // const jwt = require('jsonwebtoken');
 
-router.get('/login', (req, res) => res.render('login'))
-
+router.get('/', (req, res) => res.render('login'))
 
 /* Validate format E-mail */
 function isEmailValid(email) {
     const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
     return emailRegex.test(email);
-
 }
 
-router.post('/login', async (req, res) => {  
+router.post('/', async (req, res) => {  
     const { email, password } = req.body;
+    console.log(email)
+    console.log(password)
 
-    if(email && password)  {
+    if(email && password) {
        
         if(password.length < 6) {
             console.log('A senha deve ter pelo menos 6 caracteres.');
