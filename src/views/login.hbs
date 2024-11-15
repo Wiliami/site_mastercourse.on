@@ -54,14 +54,6 @@
             return inputsFields.toArray().some(field => $(field).val().trim() === '')
         }
 
-        function verifyEmailValidity() {
-            const email = $('#email').val()
-
-            if(email === '') {
-                return false
-            }
-        }
-
 
         form.on('submit', (e) => {
             e.preventDefault();

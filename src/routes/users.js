@@ -2,15 +2,28 @@ import { Router } from 'express'
 import { createResource, readResource, deleteResource } from '../services/data.js'
 import pool from '../config/database.js'
 
-const router = Router()
+const router = Router() 
+
+async function checkEmailExists(email) {
+    const query = 'SELECT COUNT(*) AS count FROM users WHERE email = $1'
+
+    try {
+        const result = await pool.query(query, [email])
+        return parseInt(result.rows[0].count, 10) > 0
+    } catch (err) {
+        console.error('Erro ao verificar email:', err)
+        throw err
+    }
+}
 
 
 router.post('/users', async (req, res) => {
-    const { name, email } = req.body
+    const { name, email, password } = req.body
 
     const data = {  
         name,
-        email
+        email,
+        password
     }
 
     try {
