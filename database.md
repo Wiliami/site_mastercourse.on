@@ -47,7 +47,7 @@ UPDATE users SET name = 'Teste' WHERE email = 'teste@example.com';
 
 DELETE:
 ```
-DELETE users WHERE email = 'teste@example.com';
+DELETE FROM users WHERE email = 'teste@example.com';
 ```
 
 
