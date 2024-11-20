@@ -2,7 +2,7 @@
 
 Access postgres:
 ```
-psql -U username
+psql -U postgres
 ```
 
 List tables:
