@@ -62,6 +62,16 @@ router.get('/users', async (req, res) => {
         const users = await readResource('users')   
         // res.render('area-membro/users/list', { users })
 
+
+        const draw = req.query.draw
+        const start = parseInt(req.query.start) || 0
+        const length = parseInt()
+
+        const totalQuery = await pool.query('SELECT COUNT(*) as total FROM users')
+        const total = parseInt(totalQuery.rows[0].total)
+
+
+
         return res.json(users)
     } catch (error) {
         res.status('Erro ao recuperar tabela no banco de dados')
