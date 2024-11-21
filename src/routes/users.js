@@ -20,10 +20,10 @@ async function checkEmailExists(email) {
 router.post('/users', async (req, res) => {
     const { name, email, password } = req.body
 
-    const data = {  
-        name,
-        email,
-        password
+    const data = { name, email, password }
+
+    if(!name || !email || !password) {
+        return res.status(400).json({ error: 'Dados são obrigatórios' })
     }
 
     try {
@@ -59,18 +59,40 @@ router.post('/users', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const users = await readResource('users')   
-        // res.render('area-membro/users/list', { users })
+        const users = await readResource('users')
 
-
-        const draw = req.query.draw
+        const draw = req.query.draw 
         const start = parseInt(req.query.start) || 0
-        const length = parseInt()
+        const length = parseInt(req.query.length) || 10
+        const search = req.query.search?.value || ''
 
         const totalQuery = await pool.query('SELECT COUNT(*) as total FROM users')
         const total = parseInt(totalQuery.rows[0].total)
 
 
+        const searchQuery = `
+            SELECT userid, name, email
+            FROM users
+            WHERE
+                name ILIKE $1 OR
+                email ILIKE $1
+            ORDER BY userid DESC
+            LIMIT $2 OFFSET $3
+        `;
+
+        const result = await pool.query(searchQuery, [
+            `%${search}%`,
+            length,
+            start
+        ]);
+
+
+        res.json({
+            draw: parseInt(draw),
+            recordsTotal: total,
+            recordsFiltered: total,
+            data: result.rows
+        })
 
         return res.json(users)
     } catch (error) {
