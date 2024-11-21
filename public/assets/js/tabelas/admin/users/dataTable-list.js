@@ -55,8 +55,8 @@ $(document).ready(function() {
             user.create_date?.seconds ? new Date(user.create_date?.seconds * 1000).toLocaleDateString('pt-br') : '',
             user.cad_user,
             user.update_user,
-            `<a href="/admin/users/update?id=${encodeURIComponent(userId)}" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
-            `<a href="/admin/users/delete?id=${encodeURIComponent(userId)}" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>`
+              `<a href="/admin/users/update?id=${encodeURIComponent(userId)}" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
+              `<a href="/admin/users/delete?id=${encodeURIComponent(userId)}" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>`
           ])
           .draw(false);
       });
