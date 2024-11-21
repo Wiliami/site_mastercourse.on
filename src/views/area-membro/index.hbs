@@ -5,13 +5,45 @@
     <div class="pagetitle">
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+          <li class="breadcrumb-item"><a href="/area-membro">Página inicial</a></li>
         </ol>
       </nav>
     </div>
-    <button id="addRow" class="btn btn-success">Adicionar usuário</button>
 
-    <table id="myTable" class="display">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Cadastrar novo usuário</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Novo usuário</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="userForm">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nome:</label>
+                <input type="text" class="form-control" id="recipient-name" name="name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-email" class="col-form-label">E-mail:</label>
+                <input type="text" class="form-control" id="recipient-email" name="email">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-password" class="col-form-label">Senha:</label>
+                <input type="password" class="form-control" id="recipient-password" name="password">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table id="example" class="display">
       <thead>
           <tr>
               <th>Nome</th>
@@ -25,21 +57,50 @@
       <div class="row">
         <!-- Left side columns -->
         <div class="col-lg-4">
-          <div class="row">
-          </div>
+          <div class="row"></div>
         </div>
         
       </div> <!-- End row container -->
 
     </section>
   </main><!-- End #main -->
-  {{>_preloader}}
+
   {{>_footerDashboard}}
-  {{>_footerFilesDashboard}}
+  {{>_footerFilesDashboard}}  
 
   <script>
     $(document).ready(function () {
-      const table = new DataTable('#myTable', {
+      const table = new DataTable('#example', {
+          ajax: {
+            url: 'http://localhost:3000/users',
+            type: 'GET',
+          },
+          processing: true,
+          serverSide: true,
+          columns: [
+            { data: 'name' },
+            { data: 'email' },
+            {
+              data: null,
+              orderable: false,
+              render: function(data, type, row) {
+                return `
+                  <a href="/admin/users/update/${row.userid}"
+                    class="btn btn-primary btn-sm"
+                    title="Editar usuário">
+                    <i class="bi bi-pencil-square"></i>
+                  </a>
+                
+                  <a href="/admin/users/delete/${row.userid}"
+                    class="btn btn-danger btn-sm"
+                    title="Excluir item">
+                    <i class="bi bi-trash"></i>
+                  </a>
+                `;
+              }
+            }
+          ],
+
           language: {
             lengthMenu: "Mostrando _MENU_ registros por página",
             info: "Mostrando página _PAGE_ de _PAGES_ registros",
@@ -56,42 +117,39 @@
           },          
       })
 
+      $('#userForm').on('submit', function(e) {
+        e.preventDefault()
 
-      // Fake database
-      const users = [
-        { name: 'Wiliamis', email: 'wiliamis@gmail.com', age: 27, gender: 'male' },
-        { name: 'Kipper dev', email: 'kipperdev@gmail.com', age: 25, gender: 'female' },
-        { name: 'Mario Souto', email: 'mariosoutinho@gmail.com', age: 34, gender: 'male' },
-        { name: 'Rafaela', email: 'rafaela@gmail.com', age: 17, gender: 'female' },
-      ]
-
-      function addUsersToScreen() {
-        if(users.length) {
-          users.forEach(user => {
-            table.row
-            .add([
-              user.name,
-              user.email,
-              `<a href="/admin/users/update" class="btn btn-primary btn-sm" title="Editar usuário"><i class="bi bi-pencil-square"></i></a> ` +
-              `<a href="/admin/users/delete" class="btn btn-danger btn-sm" title="Excluir item"><i class="bi bi-trash"></i></a>`
-            ])
-            .draw(false)
-          })
-
-        } else {
-          $('.dataTables_empty').text('Nenhum registro foi encontrado!');
+        const formData = {
+          name: $('input[name="name"]').val(),
+          email: $('input[name="email"]').val(),
+          password: $('input[name="password"]').val()
         }
-      }  
-    
-      const button = document.querySelector('#addRow').addEventListener('click', addUsersToScreen)
-      addUsersToScreen()
 
+        $.ajax({
+          url: 'http://localhost:3000/users',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function(response) {
+            $('#exampleModal').modal('hide')
+
+
+            $('#userForm')[0].reset() 
+
+            table.ajax.reload()
+
+            alert('Usuário cadastrado com sucesso!')
+          },
+          error: function(xhr) {
+            alert('Erro ao cadastrar: ' + xhr.responseJSON.error)
+          }
+        })
+      })  
     })
+
     </script>
  
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />  
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-
-  <script src="/assets/js/home.js"></script>
-  {{!-- <script src="/assets/js/loading.js"></script> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />  
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
