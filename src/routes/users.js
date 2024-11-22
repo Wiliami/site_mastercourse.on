@@ -113,23 +113,31 @@ router.put('/users/:id', (req, res) => {
 
 
 router.delete('/users/:id', async (req, res) => {
-    const userId = parseInt(req.params.id, 10)
+   
 
     try {
-        const deleteUser = await deleteResource('users', 'id', userId)
+        const userId = parseInt(req.params.id, 10)  
+
+        const checkUser = pool.query('SELECT * FROM users WHERE userid = $1', [userId])
+
+        if(checkUser.rows.length === 0) {
+            return res.status(404).json({ error: 'Usuário não encontrado.' })
+        }
+
+        const deleteUser = await deleteResource('users', 'userid', userId)
         console.log('Usuário:', deleteUser)
 
         
-        if (deleteUser) {
-            res.status(201).json({
-                message: 'Usuário excluído com sucesso',
-                user: deleteUser
-            })
-        } else {
-            res.status(404).json({
-                message: 'Usuário não encontrado'
-            })
-        }
+        // if (deleteUser) {
+        //     res.status(201).json({
+        //         message: 'Usuário excluído com sucesso',
+        //         user: deleteUser
+        //     })
+        // } else {
+        //     res.status(404).json({
+        //         message: 'Usuário não encontrado'
+        //     })
+        // }
 
         
     } catch (error) {
