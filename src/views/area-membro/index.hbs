@@ -4,7 +4,7 @@
     <h1 id="usersame"></h1>
     <div class="pagetitle">
       <nav>
-        <ol class="breadcrumb">
+        <ol class="breadcrumb"> 
           <li class="breadcrumb-item"><a href="/area-membro">Página inicial</a></li>
         </ol>
       </nav>
@@ -129,7 +129,7 @@
               render: function(data, type, row) {
                 return `
                   <a
-                   href="/admin/users/update/${row.userid}"
+                   href="/area-membro/update"
                     class="btn btn-primary btn-sm"
                     title="Editar usuário">
                     <i class="bi bi-pencil-square"></i>
@@ -191,21 +191,32 @@
           }
         })
       })  
-      
-      /* 
-      $('#example').on('click' '#deleteUserModal', function(e) {
         
 
-
+      $('#confirmDeleteBtn').on('click', funcution() {
+        const userId = $('#userIdToDelete').val()
 
 
         $.ajax({
-          url: 'http://localhost:3000/users',
+          url: `http://localhost:3000/users${userId}`,
           type: 'DELETE',
+          success: function(response) {
+            $('#deleteConfirmModal').modal('hide')
+
+
+            table.ajax.reload()
+
+            alert('Usuário excluído com sucesso.')
+          },
+          error: function(xhr) {
+            alert('Erro ao excluir: ' + xhr.responseJSON.error)
+          }
         })
+      })
+
+        
         
       })
-      */
     })
 
     </script>
