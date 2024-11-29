@@ -190,33 +190,31 @@
             alert('Erro ao cadastrar: ' + xhr.responseJSON.error)
           }
         })
-      })  
-        
+      })
 
       $('#confirmDeleteBtn').on('click', funcution() {
+        
+
+      })
         const userId = $('#userIdToDelete').val()
-
-
+        
         $.ajax({
-          url: `http://localhost:3000/users${userId}`,
-          type: 'DELETE',
-          success: function(response) {
-            $('#deleteConfirmModal').modal('hide')
+            url: `http://localhost:3000/users${userId}`,
+            type: 'DELETE',
+            success: function(response) {
+              $('#deleteConfirmModal').modal('hide')
 
+              table.ajax.reload()
 
-            table.ajax.reload()
-
-            alert('Usuário excluído com sucesso.')
-          },
-          error: function(xhr) {
-            alert('Erro ao excluir: ' + xhr.responseJSON.error)
-          }
+              alert('Usuário excluído com sucesso.')
+            },
+            error: function(xhr) {
+              alert('Erro ao excluir: ' + xhr.responseJSON.error)
+            }
         })
-      })
+
 
         
-        
-      })
     })
 
     </script>
