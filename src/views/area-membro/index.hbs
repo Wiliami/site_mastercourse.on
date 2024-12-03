@@ -192,12 +192,9 @@
         })
       })
 
-      $('#confirmDeleteBtn').on('click', funcution() {
-        
-
-      })
+      $('#confirmDeleteBtn').on('click', function() {
         const userId = $('#userIdToDelete').val()
-        
+
         $.ajax({
             url: `http://localhost:3000/users${userId}`,
             type: 'DELETE',
@@ -212,6 +209,9 @@
               alert('Erro ao excluir: ' + xhr.responseJSON.error)
             }
         })
+      })
+        
+      
 
 
         
