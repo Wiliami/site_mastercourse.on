@@ -1,15 +1,15 @@
 import { Router } from 'express'
 const router = Router()
 
-async function getData() {
+async function getData(userId) {
 
     try {
-        const url = 'https://dummyjson.com/users/1'
+        const url = `https://dummyjson.com/users/${userId}`
         const response = await fetch(url)
 
         if(response.status == 200) {
             const obj = await response.json()
-            console.log(obj) 
+            return obj
         } else {
             console.error('Erro ao buscar dados')
         }
@@ -19,10 +19,14 @@ async function getData() {
     }
 }
 
-const users = getData()
 
-router.get('/teste', (req, res) => {
-    res.json({ user: users }) 
+router.get('/teste', async (req, res) => {
+    try {
+        const user = await getData(2)
+        res.json({ user })
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar usuário.' })
+    }
 }) 
 
 
