@@ -1,32 +1,38 @@
 import { Router } from 'express'
 const router = Router()
 
-async function getData(userId) {
+async function getData() {
 
     try {
-        const url = `https://dummyjson.com/users/${userId}`
+        const url = 'https://dummyjson.com/users/1'
         const response = await fetch(url)
 
-        if(response.status == 200) {
-            const obj = await response.json()
-            return obj
+        if(response.status === 200) {
+            const { id, username, role } = await response.json()
+            return {
+                id,
+                username,
+                role
+            }
+            
         } else {
-            console.error('Erro ao buscar dados')
+            throw new Error('Erro ao buscar dados')
         }
         
     } catch (err) {
         console.error(err.message)
+        throw err
     }
 }
 
 
 router.get('/teste', async (req, res) => {
-    try {
-        const user = await getData(2)
-        res.json({ user })
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar usuário.' })
-    }
+  try {
+    const user = await getData()
+    res.json({ user })
+  } catch (err) {
+    res.status(500).json({ err: 'Erro ao buscar dados' })
+  }
 }) 
 
 

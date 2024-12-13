@@ -136,10 +136,12 @@
                   </a>
 
                   <button type="button"
-                    class="btn btn-danger btn-sm"
+                    class="btn btn-danger btn-sm delete-user"
+                    data-id="${row.id}"
                     data-bs-toggle="modal"
                     data-bs-target="#deleteUserModal"
-                    data-bs-whatever="@mdo">
+                    data-bs-whatever="@mdo"
+                  >
                     <i class="bi bi-trash"></i>
                   </button>
                 `;
@@ -192,11 +194,20 @@
         })
       })
 
+      // Abrim modal de confirmação de exclusão
+      $('#example').on('click', '.delete-user', function() {
+        const userId = $(this).data('id')
+        $('#userIdToDelete').val(userId)
+        $('#deleteConfirmModal').modal('show')
+      })
+    
+      
       $('#confirmDeleteBtn').on('click', function() {
         const userId = $('#userIdToDelete').val()
+        console.log(userId)
 
         $.ajax({
-            url: `http://localhost:3000/users${userId}`,
+            url: `http://localhost:3000/users/${userId}`,
             type: 'DELETE',
             success: function(response) {
               $('#deleteConfirmModal').modal('hide')
