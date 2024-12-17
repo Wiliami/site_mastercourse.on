@@ -23,7 +23,7 @@ async function getData() {
         console.error(err.message)
         throw err
     }
-}
+} 
 
 
 router.get('/teste', async (req, res) => {
