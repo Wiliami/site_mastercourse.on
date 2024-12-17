@@ -9,6 +9,7 @@ import membership from './membership.js'
 import dashboard from './dashboard.js'
 import verifyEmail from './verificarEmail.js'
 import api from './api.js'
+import posts from './posts.js'
 
 const router = Router()
 
@@ -22,7 +23,8 @@ const routes = [
     { path: '/register', view: register },
     { path: '/products', view: products },  
     { path: '/verificar-email', view: verifyEmail }, 
-    { path: '/api', view: api }, 
+    { path: '/api', view: api },
+    { path: '/', view: posts }
 ]
     
 routes.forEach(({ path, view }) => {
