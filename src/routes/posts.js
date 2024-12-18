@@ -11,7 +11,7 @@ async function getData() {
 
         if(response.ok) {
             const obj = await response.json()
-            console.log(obj)
+            return obj
         } else {
             throw new Error(`Erro ao buscar dados: ${response.status}`)
             // preciso saber o status code caso algum dê algum erro 
