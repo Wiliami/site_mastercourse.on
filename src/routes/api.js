@@ -7,16 +7,12 @@ async function getData() {
         const url = 'https://dummyjson.com/users/1'
         const response = await fetch(url)
 
-        if(response.status === 200) {
-            const { id, username, role } = await response.json()
-            return {
-                id,
-                username,
-                role
-            }
-            
+        if(response.ok) {
+            const obj = await response.json()  
+            console.log(obj) 
+          
         } else {
-            throw new Error('Erro ao buscar dados')
+            throw new Error(`Erro ao buscar dados: ${response.status}`)
         }
         
     } catch (err) {
