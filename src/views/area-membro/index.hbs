@@ -135,13 +135,7 @@
                     <i class="bi bi-pencil-square"></i>
                   </a>
 
-                  <button type="button"
-                    class="btn btn-danger btn-sm delete-user"
-                    data-id="${row.id}"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteUserModal"
-                    data-bs-whatever="@mdo"
-                  >
+                  <button class="btn btn-danger btn-sm delete-user" data-id="${row.id}">
                     <i class="bi bi-trash"></i>
                   </button>
                 `;
@@ -196,7 +190,16 @@
 
       // Abrim modal de confirmação de exclusão
       $('#example').on('click', '.delete-user', function() {
-        const userId = $(this).data('id')
+        const userId = this.getAttribute('data-id')
+        console.log(userId)
+
+
+        if(!userId || isNaN(userId)) {
+          alert('ID do usuário inválido')
+          return;
+        }
+
+
         $('#userIdToDelete').val(userId)
         $('#deleteConfirmModal').modal('show')
       })
@@ -204,20 +207,24 @@
       
       $('#confirmDeleteBtn').on('click', function() {
         const userId = $('#userIdToDelete').val()
-        console.log(userId)
+
+        if(!userId || isNaN(userId)) {
+          alert('ID do usuário inválido')
+          return;
+        }
 
         $.ajax({
             url: `http://localhost:3000/users/${userId}`,
             type: 'DELETE',
             success: function(response) {
               $('#deleteConfirmModal').modal('hide')
-
+              alert('Usuário excluído com sucesso.')
+            
               table.ajax.reload()
 
-              alert('Usuário excluído com sucesso.')
             },
             error: function(xhr) {
-              alert('Erro ao excluir: ' + xhr.responseJSON.error)
+              alert('Erro ao excluir usuário: ' + xhr.responseJSON.error || 'Erro desconhecido.')
             }
         })
       })
