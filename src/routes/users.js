@@ -113,7 +113,6 @@ router.put('/users/:id', (req, res) => {
 
 
 router.delete('/users/:id', async (req, res) => {
-   
 
     try {
         const userId = parseInt(req.params.id, 10)  
@@ -122,7 +121,7 @@ router.delete('/users/:id', async (req, res) => {
             return res.status(400).json({ err: 'ID inválido.' })
         }
 
-        const checkUser = pool.query('SELECT * FROM users WHERE userid = $1', [userId])
+        const checkUser = await pool.query('SELECT * FROM users WHERE userid = $1', [userId])
 
         if(checkUser.rows.length === 0) {
             return res.status(404).json({ error: 'Usuário não encontrado.' })
