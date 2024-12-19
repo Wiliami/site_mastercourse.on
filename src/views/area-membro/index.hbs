@@ -24,11 +24,11 @@
             <form id="addUserForm">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nome:</label>
-                <input type="text" class="form-control" id="recipient-name" name="name">
+                <input type="text" class="form-control" id="recipient-name" name="name" placeholder="Ex.: Mohamed Salah">
               </div>
               <div class="mb-3">
                 <label for="recipient-email" class="col-form-label">E-mail:</label>
-                <input type="text" class="form-control" id="recipient-email" name="email">
+                <input type="text" class="form-control" id="recipient-email" name="email" placeholder="Ex.: mohamed.salah@gmail.com">
               </div>
               <div class="mb-3">
                 <label for="recipient-password" class="col-form-label">Senha:</label>
@@ -135,13 +135,15 @@
                     <i class="bi bi-pencil-square"></i>
                   </a>
 
-                  <button class="btn btn-danger btn-sm delete-user" data-id="${row.id}">
+                  <button class="btn btn-danger btn-sm delete-user" data-id="${row.userid}">
                     <i class="bi bi-trash"></i>
                   </button>
                 `;
               }
             }
           ],
+
+          
 
           language: {
             lengthMenu: "Mostrando _MENU_ registros por página",
@@ -189,13 +191,12 @@
       })
 
       // Abrim modal de confirmação de exclusão
-      $('#example').on('click', '.delete-user', function() {
-        const userId = this.getAttribute('data-id')
-        console.log(userId)
-
+      $('#example').on('click', '.delete-user', function(e) {
+        e.preventDefault()
+        const userId = $(this).attr("data-id")
 
         if(!userId || isNaN(userId)) {
-          alert('ID do usuário inválido')
+          alert('ID do usuário inválido: ', userId)
           return;
         }
 
@@ -208,7 +209,7 @@
       $('#confirmDeleteBtn').on('click', function() {
         const userId = $('#userIdToDelete').val()
 
-        if(!userId || isNaN(userId)) {
+        if(!userId) {
           alert('ID do usuário inválido')
           return;
         }
@@ -217,10 +218,13 @@
             url: `http://localhost:3000/users/${userId}`,
             type: 'DELETE',
             success: function(response) {
-              $('#deleteConfirmModal').modal('hide')
-              alert('Usuário excluído com sucesso.')
+
+              setTimeout(function() {
+                $('#deleteConfirmModal').modal('hide')
+              }, 500);
             
               table.ajax.reload()
+              alert('Usuário excluído com sucesso.')
 
             },
             error: function(xhr) {
