@@ -2,13 +2,13 @@ POST http://localhost:3000/users
 Content-Type: application/json
    
 {
-    "name": "Wiliamis", 
-    "email": "wiliamis@gmail.com",
-    "password": "12345678"
+    "name": "Carlos Alberto da Silva", 
+    "email": "carlos.alberto232@gmail.com",
+    "password": "123"
 }
 
 ###
 GET http://localhost:3000/users
 
 ###
-DELETE http://localhost:3000/users/28
+DELETE http://localhost:3000/users/31
