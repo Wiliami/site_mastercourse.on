@@ -218,10 +218,7 @@
             url: `http://localhost:3000/users/${userId}`,
             type: 'DELETE',
             success: function(response) {
-
-              setTimeout(function() {
-                $('#deleteConfirmModal').modal('hide')
-              }, 500);
+              $('#deleteConfirmModal').modal('hide')
             
               table.ajax.reload()
               alert('Usuário excluído com sucesso.')
