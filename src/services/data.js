@@ -51,15 +51,30 @@ export const readResource = async (table) => {
 
 /**
  * UPDATE
- * @param {String} 
+ * @param {String} table - Name of table 
+ * @param {} 
  */
-export const updateResource = async (id, column, value) => {
+export const updateResource = async (table, id, columns) => {
   try {
-    console.log('Successo')
-  } catch (error) {
-    console.error('Error')
+    const query = [`update ${table}`]
+    query.push('set')
+
+    const set = []
+    Object.keys(columns).forEach((key, i) => {
+      set.push(key + ' = ($' + (i + 1) + ')')      
+    })
+
+    query.push(set.join(', '))
+
+    query.push(`where ${id} = ${id}`)
+    
+  } catch (err) {
+    console.error('Erro ao atualizar recurso: ', err)
+    throw err
   }
 }
+
+updateResource()
 
 
 /**
