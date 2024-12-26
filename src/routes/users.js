@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createResource, readResource, deleteResource } from '../services/data.js'
+import { createResource, readResource, updateResource, deleteResource } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router() 
@@ -103,9 +103,15 @@ router.get('/users', async (req, res) => {
 
 router.put('/users/:id', (req, res) => {
     const userId = req.params.id
+
+    const userSchema = {
+        name,
+        email,
+        password
+    }
     
     try {
-        console.log('Item atualizado com sucesso')
+        const result = updateResource('users', 'userid', userId, userSchema)
     } catch (error) {
         console.error('Falha ao atualizar recurso:', error)
     }

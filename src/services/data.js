@@ -51,10 +51,12 @@ export const readResource = async (table) => {
 
 /**
  * UPDATE
- * @param {String} table - Name of table 
- * @param {} 
+ * @param {String} table - Nome da tabela 
+ * @param {String} IDResource - Coluna ID do recurso que receberá as atualizações
+ * @param {Number} id - ID do recurso Ex.: userId, productId...
+ * @param {Object} columns - Colunas que receberão as atualizações
  */
-export const updateResource = async (table, id, columns) => {
+export const updateResource = async (table, IDResource, id, columns) => {
   try {
     const query = [`update ${table}`]
     query.push('set')
@@ -66,7 +68,7 @@ export const updateResource = async (table, id, columns) => {
 
     query.push(set.join(', '))
 
-    query.push(`where ${id} = ${id}`)
+    query.push(`where ${IDResource} = ${id}`)
     
   } catch (err) {
     console.error('Erro ao atualizar recurso: ', err)

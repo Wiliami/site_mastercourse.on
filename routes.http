@@ -7,8 +7,14 @@ Content-Type: application/json
     "password": "123"
 }
 
+
 ###
 GET http://localhost:3000/users
+
+
+###
+PUT http://localhost:3000/users/
+
 
 ###
 DELETE http://localhost:3000/users/31
