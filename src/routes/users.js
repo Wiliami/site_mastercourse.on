@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createResource, readResource, updateResource, deleteResource } from '../services/data.js'
+import { create, read, update, Delete } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router() 
@@ -38,7 +38,7 @@ router.post('/users', async (req, res) => {
             return;
         }
 
-        const users = await createResource('users', data)
+        const users = await create('users', data)
         console.log(`Usuário criado com sucesso: ${JSON.stringify(users)}`)   
 
 
@@ -59,7 +59,7 @@ router.post('/users', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const users = await readResource('users')
+        const users = await read('users')
 
         const draw = req.query.draw 
         const start = parseInt(req.query.start) || 0
@@ -111,7 +111,7 @@ router.put('/users/:id', (req, res) => {
     }
     
     try {
-        const result = updateResource('users', 'userid', userId, userSchema)
+        const result = update('users', 'userid', userId, userSchema)
     } catch (error) {
         console.error('Falha ao atualizar recurso:', error)
     }
@@ -133,7 +133,7 @@ router.delete('/users/:id', async (req, res) => {
             return res.status(404).json({ error: 'Usuário não encontrado.' })
         }
 
-        const deleteUser = await deleteResource('users', 'userid', userId)
+        const deleteUser = await Delete('users', 'userid', userId)
         console.log('Usuário:', deleteUser)
 
         

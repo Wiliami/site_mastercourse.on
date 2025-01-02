@@ -6,7 +6,7 @@ import pool from '../config/database.js'
  * @param {value1} data.property1 Você pode passar várias propriedades para o objeto para serem enviados para o banco
  * @param {value2} data.property2 Inserir a segunda propriedade se caso for necessário e se assim por diante
 */
-export const createResource = async (table, data) => {
+export const create = async (table, data) => {
     try {
 
         const columns = Object.keys(data)
@@ -35,7 +35,7 @@ export const createResource = async (table, data) => {
  * READ
  * @param {String} table Nome da tabela no banco de dados em formato string
  */
-export const readResource = async (table) => {
+export const read = async (table) => {
     const query = `SELECT * FROM ${table}`
 
     try {
@@ -56,7 +56,7 @@ export const readResource = async (table) => {
  * @param {Number} id - ID do recurso Ex.: userId, productId...
  * @param {Object} columns - Colunas que receberão as atualizações
  */
-export const updateResource = async (table, IDResource, id, columns) => {
+export const update = async (table, IDResource, id, columns) => {
   try {
     const query = [`update ${table}`]
     query.push('set')
@@ -76,8 +76,6 @@ export const updateResource = async (table, IDResource, id, columns) => {
   }
 }
 
-updateResource()
-
 
 /**
  * DELETE 
@@ -85,7 +83,7 @@ updateResource()
  * @param {String} column Nome da coluna onde será aplicada a condição de exclusão
  * @param {String} value Valor que será deletado na tabela
  */
-export const deleteResource = async (table, column, value) => {
+export const Delete = async (table, column, value) => {
   try {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])
