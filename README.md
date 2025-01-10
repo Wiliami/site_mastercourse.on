@@ -9,6 +9,7 @@
   - NodeJS
   - Express
   - Firebase
+- Curl
 
 
 # Layout
