@@ -13,7 +13,15 @@ GET http://localhost:3000/users
 
 
 ###
-PUT http://localhost:3000/users/
+PUT http://localhost:3000/users/50
+Content-Type: application/json
+
+{
+    "name": "Carlos Alberto Rodrigues", 
+    "email": "carlos.alberto232@gmail.com",
+    "password": "123"
+}
+
 
 
 ###

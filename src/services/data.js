@@ -1,4 +1,5 @@
 import pool from '../config/database.js'
+import { Router } from 'express'
 
 /** CREATE
  * @param {String} table Nome da tabela no formato {String} 
@@ -56,19 +57,29 @@ export const read = async (table) => {
  * @param {Number} id - ID do recurso Ex.: userId, productId...
  * @param {Object} columns - Colunas que receberão as atualizações
  */
-export const update = async (table, IDResource, id, columns) => {
+export const update = async (table, data) => {
   try {
+    // update users set name = 'Teste' where id = 1; 
+    // statement
+    
+    // const data = {
+    //   id: 1,
+    //   name: 'Teste',
+    //   emai: 'teste@gmail.com',
+    //   password: '1231',
+    // }
+
+    const columns = Object.keys(data)
+
     const query = [`update ${table}`]
     query.push('set')
 
-    const set = []
-    Object.keys(columns).forEach((key, i) => {
+    const set = [] // 
+    columns.forEach((key, i) => {
       set.push(key + ' = ($' + (i + 1) + ')')      
     })
 
-    query.push(set.join(', '))
-
-    query.push(`where ${IDResource} = ${id}`)
+    await query.push(set.join(', '))
     
   } catch (err) {
     console.error('Erro ao atualizar recurso: ', err)
@@ -83,7 +94,7 @@ export const update = async (table, IDResource, id, columns) => {
  * @param {String} column Nome da coluna onde será aplicada a condição de exclusão
  * @param {String} value Valor que será deletado na tabela
  */
-export const Delete = async (table, column, value) => {
+export const _delete = async (table, column, value) => {
   try {
     const query = `DELETE FROM ${table} WHERE ${column} = $1 RETURNING *`
     const res = await pool.query(query, [value])

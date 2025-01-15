@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, read, update, Delete } from '../services/data.js'
+import { create, read, update, _delete } from '../services/data.js'
 import pool from '../config/database.js'
 
 const router = Router() 
@@ -104,14 +104,17 @@ router.get('/users', async (req, res) => {
 router.put('/users/:id', (req, res) => {
     const userId = req.params.id
 
+    const { name, email, password } = req.body
+
     const userSchema = {
         name,
         email,
         password
     }
-    
+
     try {
         const result = update('users', 'userid', userId, userSchema)
+        console.log(result)
     } catch (error) {
         console.error('Falha ao atualizar recurso:', error)
     }
@@ -133,7 +136,7 @@ router.delete('/users/:id', async (req, res) => {
             return res.status(404).json({ error: 'Usuário não encontrado.' })
         }
 
-        const deleteUser = await Delete('users', 'userid', userId)
+        const deleteUser = await _delete('users', 'userid', userId)
         console.log('Usuário:', deleteUser)
 
         

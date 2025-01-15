@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { readResource } from '../services/data.js'
+// import { readResource } from '../services/data.js'
 
 const router = Router();
 
