@@ -101,19 +101,20 @@ router.get('/users', async (req, res) => {
 })
 
 
-router.put('/users/:id', (req, res) => {
+router.put('/users/:id', async (req, res) => {
     const userId = req.params.id
 
     const { name, email, password } = req.body
 
     const userSchema = {
+        userId,
         name,
         email,
         password
     }
 
     try {
-        const result = update('users', 'userid', userId, userSchema)
+        const result = await update('users', userSchema)
         console.log(result)
     } catch (error) {
         console.error('Falha ao atualizar recurso:', error)

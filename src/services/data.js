@@ -59,30 +59,30 @@ export const read = async (table) => {
  */
 export const update = async (table, data) => {
   try {
-    // update users set name = 'Teste' where id = 1; 
-    // statement
-    
-    // const data = {
-    //   id: 1,
-    //   name: 'Teste',
-    //   emai: 'teste@gmail.com',
-    //   password: '1231',
-    // }
 
     const columns = Object.keys(data)
+    const values = Object.values(data)
+    const placeholders = columns.map((_, index) => `$${index + 1}`)
 
-    const query = [`update ${table}`]
-    query.push('set')
 
-    const set = [] // 
-    columns.forEach((key, i) => {
-      set.push(key + ' = ($' + (i + 1) + ')')      
-    })
+    // 'update TABLE_NAME set email where userId = 1'
+    const query = `update ${table} set (${columns.join(', ')}) where (${columns.join(', ')}) = (${placeholders.join(', ')}) returning *`
+    
+    console.log(`Query: ${query}`)
+    console.log(`Values: ${values}`)
 
-    await query.push(set.join(', '))
+
+    const res = await pool.query(query, values)
+    if(res.rowCount > 0) {
+      console.log('Item atualizado com sucesso: ', res.rows[0])
+    } else {
+      console.log('Nenhun item foi atualizado')
+    }
+
+
     
   } catch (err) {
-    console.error('Erro ao atualizar recurso: ', err)
+    console.error('Erro ao atualizar item na tabela: ', err)
     throw err
   }
 }
