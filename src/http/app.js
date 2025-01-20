@@ -19,7 +19,7 @@ class App {
         this.app.set('views', path.join(__dirname, '../views'));
         this.app.engine('.hbs', engine({extname: '.hbs'}));
         this.app.set('view engine', '.hbs');
-        this.app.use(express.urlencoded({extended:false}));
+        this.app.use(express.urlencoded({ extended: false }));
         this.app.use(express.json());
     }
 
