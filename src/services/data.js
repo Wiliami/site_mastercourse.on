@@ -1,5 +1,4 @@
 import pool from '../config/database.js'
-import { Router } from 'express'
 
 /** CREATE
  * @param {String} table Nome da tabela no formato {String} 
@@ -61,18 +60,19 @@ export const update = async (table, data) => {
   try {
 
     const columns = Object.keys(data)
-    const values = Object.values(data)
-    const placeholders = columns.map((_, index) => `$${index + 1}`)
+    const values = Object.keys(data).map((obj, index) => `$${index + 1}`).join(', ');
+    const placeholders = columns.map((_, index) => `$${index + 1}`);
 
+    // name, email, password
 
     // 'update TABLE_NAME set email where userId = 1'
-    const query = `update ${table} set (${columns.join(', ')}) where (${columns.join(', ')}) = (${placeholders.join(', ')}) returning *`
+    const query = `update ${table} set ${columns.join(', ')} = row (${values}) where (${columns.join(', ')}) = (${placeholders.join(', ')}) returning *`
     
     console.log(`Query: ${query}`)
     console.log(`Values: ${values}`)
 
 
-    const res = await pool.query(query, values)
+    const res = await pool.query(query, [values])
     if(res.rowCount > 0) {
       console.log('Item atualizado com sucesso: ', res.rows[0])
     } else {

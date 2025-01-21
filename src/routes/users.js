@@ -102,7 +102,9 @@ router.get('/users', async (req, res) => {
 
 
 router.put('/users/:id', async (req, res) => {
-    const userId = req.params.id
+    const userId = parseInt(req.params.id, 10);
+
+    console.log(typeof userId)
 
     const { name, email, password } = req.body
 
