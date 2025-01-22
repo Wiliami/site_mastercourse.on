@@ -21,12 +21,12 @@ export const create = async (table, data) => {
 
         const res = await pool.query(query, values)
         if(res.rowCount > 0) {
-          console.log('Item inserido com sucesso:', res.rows[0])
+          console.log('Recurso criado com sucesso:', res.rows[0])
         } else {
-          console.log('Nenhum item foi inserido')
+          console.log('Nenhum recurso criado')
         }  
     } catch (error) {
-        console.error('Erro ao inserir item na tabela:', error)
+        console.error('Erro ao tentar criar recurso:', error)
     }
 }
 
@@ -73,6 +73,7 @@ export const update = async (table, data) => {
 
 
     const res = await pool.query(query, [values])
+    console.log(res)
     if(res.rowCount > 0) {
       console.log('Item atualizado com sucesso: ', res.rows[0])
     } else {

@@ -104,7 +104,7 @@ router.get('/users', async (req, res) => {
 router.put('/users/:id', async (req, res) => {
     const userId = parseInt(req.params.id, 10);
 
-    console.log(typeof userId)
+    console.log('Tipo do ID: ', typeof userId)
 
     const { name, email, password } = req.body
 
@@ -118,8 +118,8 @@ router.put('/users/:id', async (req, res) => {
     try {
         const result = await update('users', userSchema)
         console.log(result)
-    } catch (error) {
-        console.error('Falha ao atualizar recurso:', error)
+    } catch (err) {
+        console.error('Falha ao atualizar recurso:', err)
     }
 })
 
