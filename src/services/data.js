@@ -51,28 +51,28 @@ export const read = async (table) => {
 
 /**
  * UPDATE
- * @param {String} table - Nome da tabela 
- * @param {String} IDResource - Coluna ID do recurso que receberá as atualizações
- * @param {Number} id - ID do recurso Ex.: userId, productId...
- * @param {Object} columns - Colunas que receberão as atualizações
+ * @param {string} table - Nome da tabela
+ * @typeof {object} data - Os dados que serão atualizados na tabela
  */
-export const update = async (table, data) => {
+export const update = async (table, data, fieldIDUpdate) => {
   try {
 
-    const columns = Object.keys(data)
-    const values = Object.keys(data).map((obj, index) => `$${index + 1}`).join(', ');
-    const placeholders = columns.map((_, index) => `$${index + 1}`);
+    const { id, ...fields } = data;
 
-    // name, email, password
+    const columns = Object.keys(fields);
+    const values = Object.keys(fields);
+    const setClause = columns.map((key, index) => `${key} = $${index + 1}`).join(', ');
+      
 
     // 'update TABLE_NAME set email where userId = 1'
-    const query = `update ${table} set ${columns.join(', ')} = row (${values}) where (${columns.join(', ')}) = (${placeholders.join(', ')}) returning *`
-    
+    const query = `update ${table} set ${setClause} where ${fieldIDUpdate} = $${columns.length + 1}`;
+    const params = [id, fields];
+      
     console.log(`Query: ${query}`)
     console.log(`Values: ${values}`)
 
 
-    const res = await pool.query(query, [values])
+    const res = await pool.query(query, params)
     console.log(res)
     if(res.rowCount > 0) {
       console.log('Item atualizado com sucesso: ', res.rows[0])
