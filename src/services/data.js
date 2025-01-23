@@ -48,25 +48,34 @@ export const read = async (table) => {
     }
 }
 
-
 /**
  * UPDATE
  * @param {string} table - Nome da tabela
- * @typeof {object} data - Os dados que serão atualizados na tabela
+ * @param {object} data - Os dados que serão atualizados na tabela
+ * @param {string} fieldIDUpdate - Nome ID coluna
+ * @returns {promise<data>}
  */
-export const update = async (table, data, fieldIDUpdate) => {
+export const update = async (table, data) => {
   try {
 
-    const { id, ...fields } = data;
+    if(!table || !data || typeof data !== 'object') {
+      throw new Error('Parâmetros inválidos: "table" dever ser uma string e "data" um objeto.')
+    }
+
+    const { userId, ...fields } = data;
+    if(!userId) {
+      throw new Error('O objeto "data" deve conter um campo "userId" para localizar o registro.')
+    }
 
     const columns = Object.keys(fields);
-    const values = Object.keys(fields);
-    const setClause = columns.map((key, index) => `${key} = $${index + 1}`).join(', ');
-      
+    const values = Object.values(fields);
+    const setClause = columns.map((key, index) => `"${key}" = $${index + 1}`).join(', '); // nome_coluna = 'valor_atualizado'
 
     // 'update TABLE_NAME set email where userId = 1'
-    const query = `update ${table} set ${setClause} where ${fieldIDUpdate} = $${columns.length + 1}`;
-    const params = [id, fields];
+    const query = `update "${table}" set ${setClause} where userid = $${columns.length + 1}`;
+    // const params = [userId,...values]
+    const params = [...values, userId]
+    console.log('Params: ',typeof params)
       
     console.log(`Query: ${query}`)
     console.log(`Values: ${values}`)
@@ -77,13 +86,13 @@ export const update = async (table, data, fieldIDUpdate) => {
     if(res.rowCount > 0) {
       console.log('Item atualizado com sucesso: ', res.rows[0])
     } else {
-      console.log('Nenhun item foi atualizado')
+      console.log('Nenhum item foi atualizado')
     }
 
 
     
   } catch (err) {
-    console.error('Erro ao atualizar item na tabela: ', err)
+    console.error('Erro ao atualizar recurso na tabela: ', err)
     throw err
   }
 }
