@@ -22,7 +22,7 @@ async function getData() {
 } 
 
 
-router.get('/teste', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const user = await getData()
     res.json({ user })
