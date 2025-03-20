@@ -1,0 +1,117 @@
+{{>_headFilesBootstrapDataTables}}x
+{{>_navbarDashboard}}
+{{>_sidebarDashboard}}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Cadastrar produtos</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+                <li class="breadcrumb-item">Meus produtos</li>
+                <li class="breadcrumb-item active">Cadastrar produtos</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container mt-4">
+                    <div class="alert alert-danger" role="alert" style="display: none;">
+                        Você não tem permissão para acessar página! <a href="/dashboard" class="text-danger">Voltar a página inicial!</a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="alert alert-success" id="success-message" role="alert" style="display: none;">
+                                Usuário cadastrado com sucesso!
+                            </div>
+                            <div id="form">
+                                <div class="mb-3">
+                                    <label for="exampleInputName" class="form-label">Nome do produto</label>
+                                    <input type="text" class="form-control required" id="product" name="product" aria-describedby="emailHelp" placeholder="Ex.: Item 1" oninput="productValidate()">
+                                    <span class="form-text span-required">Nome do produto precisa conter 3 ou mais caracteres.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Valor</label>
+                                    <input type="email" class="form-control required" id="price" name="price" aria-describedby="emailHelp" placeholder="Ex.: R$0,00" oninput="valueValidate()">
+                                    <span class="form-text span-required">Digite o valor do produto.</sp>
+                                </div>
+                                 <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Quant. item</label>
+                                    <input type="email" class="form-control required" id="quantity" name="amount" aria-describedby="emailHelp" placeholder="Quantidade de itens" oninput="itensValidate()">
+                                    <span class="form-text span-required">Digite a quantidade de item(s)</sp>
+                                </div>
+                                <button type="submit" id="button-submit" class="btn btn-primary call-btn">Cadastrar</button>
+                                <a class="btn btn-dark" href="/products/list">
+                                    Voltar
+                                </a>
+                            </div> {{!-- </form> --}}
+                        </div> <!-- Fim da col -->
+                    </div> <!-- Fim da row -->
+            
+                </div>
+            </div> <!-- End column right -->
+        </div> <!-- End row -->
+    </section>
+</main>
+
+
+
+<!-- Firebase files init -->
+<script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+<script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+
+{{>_footerDashboard}}
+{{>_footerFilesDashboard}}
+
+
+<script>
+    const buttonSubmit = document.getElementById('button-submit');
+    const campos = document.querySelectorAll('.required');
+    const spans = document.querySelectorAll('.span-required');
+
+    buttonSubmit.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        productValidate();
+        valueValidate();
+        itensValidate();
+    })
+
+    function setError(index) {
+        campos[index].style.border = '2px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    function removeError(index) {
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
+    function productValidate() {
+        if(campos[0].value.length < 3) {
+            setError(0);
+        } else {
+            removeError(0);
+        }
+    }
+
+    function valueValidate() {
+        if(campos[1].value === '') {
+            setError(1);
+        } else {
+            removeError(1);
+        }
+    }
+
+    function itensValidate() {
+        if(campos[2].value === '') {
+            setError(2);
+        } else {
+            removeError(2);
+        }
+    }
+
+</script>

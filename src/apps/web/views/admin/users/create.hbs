@@ -1,0 +1,57 @@
+{{>_sidebarDashboard}}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Cadastrar usuário</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+                <li class="breadcrumb-item">Painel Admin</li>
+                <li class="breadcrumb-item active">Cadastrar usuário</li>
+            </ol>
+        </nav>
+    </div> <!-- End Page Title -->
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-8">
+                <div class="alert alert-success" id="success-message" role="alert" style="display: none;">
+                    Usuário cadastrado com sucesso!
+                </div>
+                <div id="form">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Nome</label>
+                        <input type="text" class="form-control required" id="username" name="username" aria-describedby="emailHelp" placeholder="Ex.: André Silva" oninput="nameValidate()">
+                        <span class="form-text span-required">Nome precisa conter 3 ou mais caracteres</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                        <input type="email" class="form-control required" id="email" name="email" aria-describedby="emailHelp" placeholder="example@gmail.com" oninput="emailValidate()">
+                        <span class="form-text span-required">Digite um e-mail válido</sp>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Senha</label>
+                        <input type="password" class="form-control required" id="mainPassword" name="mainPassword" placeholder="Digite sua senha" oninput="mainPasswordValidate()">
+                        <span class="form-text span-required">Senha precisa conter 6 ou mais caracteres</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">Repita a senha</label>
+                        <input type="password" class="form-control required" id="confirmPassword" name="confirmPassword" placeholder="Repita sua senha" oninput="confirmPassword()">
+                        <span class="form-text span-required">Senhas devem ser compatíveis</span>
+                    </div>
+                    <button onclick="createUser()" class="btn btn-primary">Cadastrar</button>
+                    <button class="btn btn-dark">
+                        <a onclick="routeListUsers()">Voltar</a>
+                    </button>
+                </div> {{!-- </form> --}}
+            </div> <!-- Fim da col -->
+        </div> <!-- Fim da row -->
+    </section>
+</main>
+{{>_footerDashboard}}
+{{>_footerFilesDashboard}}
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="/assets/js/firebase-init.js"></script>
+<script src="/assets/js/auth-guard.js"></script>
+<script src="/assets/js/forms/validation/create.js"></script>
+<script src="/assets/js/logout.js"></script>

@@ -1,0 +1,76 @@
+  {{>_navbarDashboard}}
+  {{>_sidebarDashboard}}
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Cursos não concluídos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/dashboard">Página inicial</a></li>
+          <li class="breadcrumb-item">Meus cursos</li>
+          <li class="breadcrumb-item active">Cursos não concluídos</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section dashboard">
+      <div class="col-lg-8">
+          <div class="row row-cols-1 row-cols-md-3 g-4" id="data-course">
+            <!-- Content -->
+            <div class="col">
+              <div class="card d-flex flex-column h-100">
+                  <div class="card-img-top">
+                      <img src="/assets/images/img-not-found.jpg" class="card-img-top" alt="Banner do curso">
+                  </div>
+                  <div class="card-body flex-grow-1"> 
+                      <h5 class="card-title">Título 1</h5>
+                      <p class="card-text">Descrição 1</p>
+                      <a href="/home/area-membro/courses/course-details" class="btn btn-primary mt-auto">Ver detalhes</a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card d-flex flex-column h-100">
+                  <div class="card-img-top">
+                      <img src="/assets/images/img-not-found.jpg" class="card-img-top" alt="Banner do curso">
+                  </div>
+                  <div class="card-body flex-grow-1"> 
+                      <h5 class="card-title">Título 2</h5>
+                      <p class="card-text">Descrição 2</p>
+                      <a href="/home/area-membro/courses/course-details" class="btn btn-primary mt-auto">Ver detalhes</a>
+                  </div>
+              </div>
+            </div>
+
+
+            <div class="col">
+              <div class="card d-flex flex-column h-100">
+                  <div class="card-img-top">
+                      <img src="/assets/images/img-not-found.jpg" class="card-img-top" alt="Banner do curso">
+                  </div>
+                  <div class="card-body flex-grow-1"> 
+                      <h5 class="card-title">Título 3</h5>
+                      <p class="card-text">Descrição 3</p>
+                      <a href="/home/area-membro/courses/course-details" class="btn btn-primary mt-auto">Ver detalhes</a>
+                  </div>
+              </div>
+            </div>
+
+            
+          </div>
+      </div>
+      
+    </section>
+
+  </main>
+  {{>_footerDashboard}}
+  {{>_footerFilesDashboard}}
+
+ <!-- Firebase files init -->
+  <script src="/assets/js/firebaseLinks/firebase-app-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-auth-compat.js"></script>
+  <script src="/assets/js/firebaseLinks/firebase-firestore-compat.js"></script>
+  <script src="/assets/js/firebase-init.js"></script>
+  <!-- Logout -->
+  <script src="/assets/js/logout.js"></script>
+  {{!-- {{>_footerFilesDashboard}} --}}
