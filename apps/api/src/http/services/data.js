@@ -1,4 +1,4 @@
-import pool from '../config/database.js'
+import pool from '../../../../../config/database.js'
 
 /** CREATE
  * @param {String} table Nome da tabela no formato {String} 

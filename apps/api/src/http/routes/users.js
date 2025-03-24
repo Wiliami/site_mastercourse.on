@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { create, read, update, _delete } from '../services/data.js'
-import pool from '../../../config/database.js'
+import pool from '../../../../../config/database.js'
 
 const router = Router() 
 

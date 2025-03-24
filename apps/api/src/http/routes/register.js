@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import pool from '../../../config/database.js'
+import pool from '../../../../../config/database.js'
 import bcrypt from 'bcryptjs'
 
 const router = Router();
