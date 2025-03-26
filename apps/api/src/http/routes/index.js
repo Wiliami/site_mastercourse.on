@@ -10,6 +10,7 @@ import dashboard from './dashboard.js'
 import verifyEmail from './verificarEmail.js'
 import api from './api.js'
 import posts from './posts.js'
+import sum from './sum.js'
 
 const router = Router()
 
@@ -24,7 +25,8 @@ const routes = [
     { path: '/products', view: products },  
     { path: '/verificar-email', view: verifyEmail }, 
     { path: '/api', view: api },
-    { path: '/', view: posts }
+    { path: '/', view: posts },
+    { path: '/', view: sum },
 ]
     
 routes.forEach(({ path, view }) => {
